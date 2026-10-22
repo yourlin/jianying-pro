@@ -1,13 +1,13 @@
 # Changelog
 
 ## v0.1.0 - 2026-10-22
-First release under the new name **jianying-pro** (forked from [luoluoluo22/jianying-editor-skill](https://github.com/luoluoluo22/jianying-editor-skill), local version 1.12.0). Versioning restarts at 0.1.0. Earlier releases are listed under "jianying-editor history" below.
-- Renamed the skill, directories and cache (`~/.cache/jianying-pro`). Removed the upstream author's donation section.
+First release of **jianying-pro**. Earlier development releases (1.x) are listed under "Earlier releases" below.
+- Renamed the skill, its directories and cache (`~/.cache/jianying-pro`).
 - **In-app preview capture** (macOS, `scripts/jy_preview.py`, `JyProject.preview(at=[...])`): opens the draft in JianYing through accessibility (clicks the draft cover on the home page and switches tabs to refresh the list), seeks with Home / Shift+→ / →, captures only the JianYing window (`screencapture -l`), crops it to the player canvas, then returns to the home page with Cmd+W. It refuses to run while the editor is open so JianYing cannot overwrite a freshly saved draft. A small Swift helper (`tools/macos/jy_macos.swift`) lists windows and sends CGEvent clicks/keys. Verified on JianYing 11.7.
 - Preset generation from packages scans the cache once per run instead of once per template (2,205 package dirs: minutes → about 1 s).
 - **Batch subtitle-template warm-up**: `jy_wrapper.py warmup` builds a draft of ID-only template segments. Opening it makes JianYing download the template packages, and `sync_jy_templates.py --from-packages` then generates presets from them (`preset_from_package`). Checked against 16 genuine presets: dependencies, size, color, font, 花字, animations and spacing all match. JianYing-applied presets always take precedence. Verified in-app (`JY116_PackagePreset_Test`). `--batches N` (0 = all remaining) generates several warm-up drafts at once; `--free-only` and `--vip-only` restrict which templates are included. In batches of 50, after waiting about 1 minute, most packages finish downloading; anything that fails is picked up again by the next batch.
 
-## jianying-editor history
+## Earlier releases
 
 ### v1.12.0 - 2026-10-21
 - **Sticker animations**: `add_sticker(..., anim_in=, anim_out=, anim_loop=)` and `add_sticker_animation()`. The index `panel_sticker_animations.csv` has 33 entries (effect_type 35, which was previously mistaken for text loop animations). Text line spacing now matches JianYing 11.7 (panel 10 -> 0.5), and bold also writes `bold_width`. Letter spacing, alignment, border, background, shadow and background blur were checked against in-app samples and already matched. Text textures and canvas styles are indexed only (not in the desktop panel). Verified in-app (`JY116_Props_Test`).

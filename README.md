@@ -189,8 +189,6 @@ cd ~/.claude/skills/jianying-pro && git pull
 
 [MasterLin (yourlin)](https://github.com/yourlin)
 
-基于 MIT 开源项目 [jianying-editor-skill](https://github.com/luoluoluo22/jianying-editor-skill) 二次开发（按 MIT 协议保留原版权声明），从 0.1.0 重新计版本。
-
 ## 🙏 致谢与协议
 
 - 本项目使用 [MIT License](LICENSE)。
