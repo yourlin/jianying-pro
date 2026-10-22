@@ -260,26 +260,32 @@ def export_srt(name: str, output: str = None, drafts_root: str = None) -> str:
 
 
 def warmup_templates(limit: int = 50, free_only: bool = False, category: str = "", name: str = "JY_Template_Warmup",
-                     drafts_root: str = None, batches: int = 1, vip_only: bool = False):
+                     drafts_root: str = None, batches: int = 1, vip_only: bool = False, kind: str = "subtitle",
+                     min_id: int = 0):
     """
     生成「模板预热」草稿: 挑出还没有预设、本地也没有模板包的字幕模板, 每个放一段只写 ID 的文字。
     在剪映里打开该草稿 (等 1 分钟左右, 让剪映下载模板包) 后回到首页, 再运行
     `sync_jy_templates.py --from-packages`, 即可由模板包批量生成预设。
     batches > 1 时一次生成多个草稿 (<name>_1, <name>_2, ...), 每个 limit 个模板; batches=0 表示覆盖全部剩余模板。
+    kind="text" 预热文字模板 (面板「文字模板」), 默认 "subtitle" 为字幕模板。
     返回草稿名 (batches=1) 或草稿名列表。
     """
     from utils.panel_assets import get_jianying_user_data_dirs, load_panel_rows
     from utils.template_presets import PRESET_DIR, find_preset
 
-    donor = next((find_preset(n) for n in ("创意粗体", "KkQ1-4", "向下弹出-方块粗体黄") if find_preset(n)), None)
+    text = kind == "text"
+    donor_names = ("Thanks You", "穿搭-强烈安利") if text else ("创意粗体", "KkQ1-4", "向下弹出-方块粗体黄")
+    donor = next((find_preset(n) for n in donor_names if find_preset(n)), None)
     if donor is None:
-        raise RuntimeError("需要至少一个字幕模板预设作骨架: 先在剪映里套用任意字幕模板并运行 sync_jy_templates.py")
+        raise RuntimeError("需要至少一个同类模板预设作骨架: 先在剪映里套用任意模板并运行 sync_jy_templates.py")
     roots = [os.path.join(ud, "Cache", "artistEffect") for ud in get_jianying_user_data_dirs()]
     rows = []
-    for r in load_panel_rows("panel_subtitle_templates.csv"):
+    for r in load_panel_rows("panel_text_templates.csv" if text else "panel_subtitle_templates.csv"):
         if free_only and r.get("is_vip") == "1" or vip_only and r.get("is_vip") != "1":
             continue
         if category and category not in (r.get("categories") or ""):
+            continue
+        if min_id and int(r["resource_id"]) < min_id:
             continue
         if os.path.exists(os.path.join(PRESET_DIR, f"{r['resource_id']}.json")):
             continue
@@ -312,13 +318,19 @@ def _warmup_draft(rows, donor, name: str, drafts_root: str = None) -> str:
         inst = instantiate_preset(_copy.deepcopy(donor), r["name"], dur)
         tpl = inst["materials"]["text_templates"][0]
         tpl.update(resource_id=r["resource_id"], effect_id=r["resource_id"], name=r["name"], path="", resources=[])
+        if tpl.get("type") == "text_template":  # 文字模板: 去掉骨架自带的贴纸 / 动画 / 特效, 只留 ID
+            tpl["non_text_info_resources"] = []
+            for info in tpl.get("text_info_resources") or []:
+                info["extra_material_refs"] = []
+            inst["materials"] = {k: v for k, v in inst["materials"].items() if k in ("text_templates", "texts")}
+            inst["extra_material_refs"] = []
         track = f"Warmup{i % 10}"
         p._ensure_track(draft.TrackType.text, track)
         seg = TemplateTextSegment(r["name"], draft.Timerange((i // 10) * dur, dur), inst,
                                   clip_settings=_clip_from_json(inst["clip"]))
         p.script.add_segment(seg, track)
     p.save()
-    print(f"🔥 预热草稿「{name}」: {len(rows)} 个字幕模板。在剪映里打开它, 等 1 分钟左右后回到首页, 再运行 "
+    print(f"🔥 预热草稿「{name}」: {len(rows)} 个模板。在剪映里打开它, 等 1 分钟左右后回到首页, 再运行 "
           f"sync_jy_templates.py --from-packages")
     return name
 
@@ -366,6 +378,12 @@ def _main(argv=None) -> int:
     w.add_argument("--limit", type=int, default=50)
     w.add_argument("--free-only", action="store_true")
     w.add_argument("--vip-only", action="store_true")
+    w.add_argument("--kind", choices=["subtitle", "text"], default="subtitle", help="字幕模板 / 文字模板")
+    w.add_argument("--auto", action="store_true",
+                   help="生成后自动在剪映里逐个打开预热草稿、等待后回首页 (用完的预热草稿移到废纸篓), 再生成预设 (macOS, 需要辅助功能 + 屏幕录制权限)")
+    w.add_argument("--wait", type=float, default=60, help="--auto 时每个草稿停留的秒数")
+    w.add_argument("--min-id", type=int, default=0,
+                   help="只预热 resource_id 不小于它的模板 (较老的文字模板多数已下载不到, 如 7200000000000000000)")
     w.add_argument("--category", default="", help="只预热某个面板分类, 如 口播 / 综艺 / 热门")
     w.add_argument("--name", default="JY_Template_Warmup")
     w.add_argument("--batches", type=int, default=1, help="一次生成多个预热草稿 (每个 --limit 个); 0 = 覆盖全部剩余模板")
@@ -376,8 +394,19 @@ def _main(argv=None) -> int:
     if args.cmd == "sync":
         return sync_all(args.only)
     if args.cmd == "warmup":
-        warmup_templates(args.limit, args.free_only, args.category, args.name, batches=args.batches,
-                         vip_only=args.vip_only)
+        made = warmup_templates(args.limit, args.free_only, args.category, args.name, batches=args.batches,
+                                vip_only=args.vip_only, kind=args.kind, min_id=args.min_id)
+        names = [made] if isinstance(made, str) and made else list(made or [])
+        if args.auto and names:
+            import subprocess
+
+            from jy_preview import open_and_wait
+
+            open_and_wait(names, wait=args.wait, discard=True)
+            subprocess.call([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                                          "sync_jy_templates.py"), "--from-packages"],
+                            stdout=subprocess.DEVNULL)
+            print("✅ 预热完成, 已由模板包生成预设 (sync_jy_templates.py --list 查看)")
         return 0
     if args.cmd == "clone":
         clone_draft(args.template, args.name, args.root, args.replace)

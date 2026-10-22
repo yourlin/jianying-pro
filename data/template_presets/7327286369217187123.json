@@ -1,0 +1,247 @@
+{
+ "resource_id": "7327286369217187123",
+ "name": "日常通用 奔赴日出 小清新简约风标签",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "D51E635B-C2BF-4A49-822C-670EF7D25826",
+   "373FF023-246C-4863-86B6-FA3539E8635E"
+  ]
+ },
+ "template": {
+  "id": "048792A3-FC17-48FA-9D21-ED80D56E573B",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7327286369217187123",
+  "effect_id": "7327286369217187123",
+  "name": "日常通用 奔赴日出 小清新简约风标签",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7327286369217187123/958c90efaa52b27db936775f8359dbe9",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7203638484752405047",
+    "source_platform": 0,
+    "path": ""
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7312719287796371978",
+    "source_platform": 0,
+    "path": ""
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "4AF687AB-663F-4F56-82F3-ABA1893525F2",
+    "text_material_id": "30BCB8D7-9EAB-4833-A425-195A69405F66",
+    "extra_material_refs": [
+     "D51E635B-C2BF-4A49-822C-670EF7D25826"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 294.3992919921875,
+     "original_size_height": 182.20999145507812,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.935843288898468,
+       "y": 0.9358446002006531
+      },
+      "transform": {
+       "x": -199.14797973632812,
+       "y": -4.57763671875e-05
+      }
+     }
+    }
+   },
+   {
+    "id": "5CBDC955-7DBF-4ACD-8E53-ED537B21923A",
+    "text_material_id": "AFC0A3CE-36B9-44FF-83AC-E69A66CA92DA",
+    "extra_material_refs": [
+     "373FF023-246C-4863-86B6-FA3539E8635E"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 460.7234191894531,
+     "original_size_height": 204.26292419433594,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.935844898223877,
+       "y": 0.9358445405960083
+      },
+      "transform": {
+       "x": 121.32095336914062,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "30BCB8D7-9EAB-4833-A425-195A69405F66",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 31.236, \"font\": {\"id\": \"7312719287796371978\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"#02\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 2,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "90CDD265-AACE-42ff-86F0-0839ADE4A4E3",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  },
+  {
+   "id": "AFC0A3CE-36B9-44FF-83AC-E69A66CA92DA",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 33.236, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.94118, 0.46275]}}}, \"font\": {\"id\": \"7203638484752405047\", \"path\": \"\"}}], \"text\": \"奔赴日出\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": -0.05,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#fff076ff",
+   "name": "7C72130C-0B54-43d1-97C6-9CAD68051425",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "D51E635B-C2BF-4A49-822C-670EF7D25826",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "373FF023-246C-4863-86B6-FA3539E8635E",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

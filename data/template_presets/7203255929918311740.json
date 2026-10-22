@@ -1,0 +1,289 @@
+{
+ "resource_id": "7203255929918311740",
+ "name": "复古橙",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "0EB4F7D1-C899-4ADC-9D3F-8F6F1738637D",
+   "451407A3-DE47-4E18-8746-00B2B1ED6A0E"
+  ]
+ },
+ "template": {
+  "id": "D711D31F-5B4E-4036-BC38-9BC09EA0215F",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7203255929918311740",
+  "effect_id": "7203255929918311740",
+  "name": "复古橙",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7203255929918311740/c89979ff6ea2936fdbe24056b4ead8f5",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "6740438140432945675",
+    "source_platform": 0,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6740438140432945675/9bfde9a789862114b6055ed475688908"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6724920249654710791",
+    "source_platform": 0,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6724920249654710791/0dc90e490f15d6bac5fd1d778e501917"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6897084405781631496",
+    "source_platform": 0,
+    "path": ""
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "1A27F976-4845-4007-A9CB-71D15719C6AC",
+    "text_material_id": "EF11894E-416E-4889-BF1E-E471EF7E44C1",
+    "extra_material_refs": [
+     "0EB4F7D1-C899-4ADC-9D3F-8F6F1738637D"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 664.0552978515625,
+     "original_size_height": 244.44786071777344,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1.0000007152557373
+      },
+      "transform": {
+       "x": 0,
+       "y": 42.83757019042969
+      }
+     }
+    }
+   },
+   {
+    "id": "CAD4580F-C97B-471E-AB0A-51AD02330215",
+    "text_material_id": "EE3BA690-C903-40D2-B7E8-391DD3434A46",
+    "extra_material_refs": [
+     "451407A3-DE47-4E18-8746-00B2B1ED6A0E"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 600000,
+     "duration": 2400000,
+     "original_size_width": 301.64117431640625,
+     "original_size_height": 50.32563018798828,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.0000003576278687,
+       "y": 1.0000001192092896
+      },
+      "transform": {
+       "x": 118.62960815429688,
+       "y": -86.27729797363281
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "EF11894E-416E-4889-BF1E-E471EF7E44C1",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 44.779, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.86275, 0.31373, 0.18431]}}}, \"font\": {\"id\": \"6740438140432945675\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6740438140432945675/9bfde9a789862114b6055ed475688908\"}}], \"text\": \"城南旧事\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 2,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#dc502fff",
+   "name": "26539B62-C1B0-49af-9AFA-58A000A2417C",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  },
+  {
+   "id": "EE3BA690-C903-40D2-B7E8-391DD3434A46",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 8.4852, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.97647, 0.96471, 0.92941]}}}, \"font\": {\"id\": \"6740438140432945675\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6740438140432945675/9bfde9a789862114b6055ed475688908\"}}], \"text\": \"＞ South Side Story\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 2,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#f9f6edff",
+   "name": "F70FCEBB-9D0B-49c8-828B-FF12640CAAE8",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "0EB4F7D1-C899-4ADC-9D3F-8F6F1738637D",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6897084405781631496",
+      "path": "",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 2033333,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "451407A3-DE47-4E18-8746-00B2B1ED6A0E",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6724920249654710791",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6724920249654710791/0dc90e490f15d6bac5fd1d778e501917",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 833333,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": []
+ }
+}

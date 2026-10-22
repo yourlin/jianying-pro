@@ -6,7 +6,7 @@
 
 需要两项系统权限 (系统设置 → 隐私与安全性, 勾选运行脚本的终端/应用):
   - 屏幕录制: 截图。只截剪映窗口, 不截其他屏幕内容; 窗口被遮挡也能截到, 最小化时截不到。
-  - 辅助功能: 打开草稿 (点击首页草稿封面), 定位时间 (向剪映发送 Home / ←→ 按键), 回到首页 (Cmd+W)。
+  - 辅助功能: 打开草稿 (点击首页草稿封面), 定位时间 (向剪映发送 Home / ←→ 按键), 回到首页 (菜单「返回首页」)。
 操作时会把剪映切到前台并点击鼠标, 请不要同时操作电脑。剪映需要已打开并停在首页或编辑页。
 """
 
@@ -25,7 +25,7 @@ SWIFT_SRC = os.path.join(HERE, "..", "tools", "macos", "jy_macos.swift")
 BIN = os.path.join(os.path.expanduser("~/.cache/jianying-pro"), "jy_macos")
 PROCESS = "VideoFusion-macOS"
 TITLE_PREFIX = "HomePageDraftTitle:"
-KEY_HOME, KEY_RIGHT = 115, 124
+KEY_HOME, KEY_LEFT, KEY_RIGHT = 115, 123, 124
 PANEL_GAP = (20, 20, 20)  # 剪映 11.x 面板之间的缝隙颜色
 PANEL_BGS = ((38, 38, 38), (48, 48, 48), (20, 20, 20))  # 面板背景 / 标题栏 / 缝隙
 
@@ -108,6 +108,19 @@ end try''')
     return tuple(int(float(v)) for v in out.split(",")) if out else None
 
 
+def _first_title_box() -> Optional[Tuple[int, int, int, int]]:
+    """首页列表里第一个可见草稿标题的位置, 用作滚动的落点。"""
+    out = _tell(f'''try
+set e to first static text of ({WIN}) whose name starts with "{TITLE_PREFIX}"
+set {{px, py}} to position of e
+set {{sx, sy}} to size of e
+return (px as text) & "," & (py as text) & "," & (sx as text) & "," & (sy as text)
+on error
+return ""
+end try''')
+    return tuple(int(float(v)) for v in out.split(",")) if out else None
+
+
 def in_editor() -> bool:
     return _center("currentProgress") is not None
 
@@ -129,12 +142,15 @@ def _key(code: int, shift: bool = False, count: int = 1):
         _tool("key", _pid(), code, *(["shift"] if shift else []), count)
 
 
-def go_home(timeout: float = 15):
-    """编辑页 → 首页 (Cmd+W, 剪映会自动保存草稿)。已在首页时不操作。"""
+def go_home(timeout: float = 20):
+    """编辑页 → 首页 (菜单「剪映专业版 → 返回首页」, 不行再按 Cmd+W; 剪映会自动保存草稿)。已在首页时不操作。"""
     if not in_editor():
         return
     _activate()
-    _tell('keystroke "w" using command down')
+    try:  # 剪映前面常浮着一个小窗口, 按键可能被它接走, 菜单更可靠
+        _tell('click menu item "返回首页" of menu 1 of menu bar item "剪映专业版" of menu bar 1')
+    except PreviewError:
+        _tell('keystroke "w" using command down')
     end = time.time() + timeout
     while time.time() < end:
         time.sleep(0.5)
@@ -168,8 +184,17 @@ def open_draft(name: str, timeout: float = 40, settle: float = 3, close_editor: 
     if box is None:
         refresh_home()
         box = _center(title)
+    scrolled = 0
+    while box is None and scrolled < 40:  # 不在第一屏: 在草稿列表上往下滚动查找
+        anchor = _first_title_box()
+        if anchor is None:
+            break
+        _tool("scroll", anchor[0] + 200, anchor[1], -5)
+        scrolled += 5
+        time.sleep(0.6)
+        box = _center(title)
     if box is None:
-        raise PreviewError(f"首页列表里没看到草稿「{name}」(列表按修改时间排序, 只能打开首屏可见的草稿)")
+        raise PreviewError(f"首页列表里没找到草稿「{name}」")
     # 点击标题左侧的封面 (标题本身只选中不打开)
     _tool("click", box[0] - 42, box[1] + box[3] // 2)
     end = time.time() + timeout
@@ -192,14 +217,44 @@ def draft_fps(name: str) -> float:
         return 30.0
 
 
-def seek(seconds: float, fps: float = 30.0, settle: float = 1.0):
-    """播放头定位到 seconds 秒: Home 回到开头, 再按 Shift+→ (10 帧) / → (1 帧)。"""
-    frames = max(0, int(round(seconds * fps)))
+def current_frame(fps: float = 30.0) -> Optional[int]:
+    """播放头当前位置 (帧), 读自播放器时间码的辅助功能描述 (currentProgress|HH:MM:SS:FF)。"""
+    try:
+        desc = _tell(f'return description of static text "currentProgress" of ({WIN})')
+    except PreviewError:
+        return None
+    tc = desc.split("|")[-1].strip()
+    parts = tc.split(":")
+    if len(parts) != 4 or not all(p.isdigit() for p in parts):
+        return None
+    h, m, sec, ff = map(int, parts)
+    return int(round((h * 3600 + m * 60 + sec) * fps)) + ff
+
+
+def _step(frames: int):
+    """按帧移动播放头: Shift+←/→ 每次 10 帧, ←/→ 每次 1 帧。"""
+    code = KEY_RIGHT if frames > 0 else KEY_LEFT
+    n = abs(frames)
+    _key(code, shift=True, count=n // 10)
+    _key(code, count=n % 10)
+
+
+def seek(seconds: float, fps: float = 30.0, settle: float = 1.0, retries: int = 4):
+    """
+    播放头定位到 seconds 秒: Home 回到开头, 再按 Shift+→ (10 帧) / → (1 帧)。
+    剪映忙 (刚打开草稿、加载素材) 时会丢按键, 所以按完读时间码校验, 不对就补按差值。
+    """
+    target = max(0, int(round(seconds * fps)))
     _activate()
     _key(KEY_HOME)
     time.sleep(0.2)
-    _key(KEY_RIGHT, shift=True, count=frames // 10)
-    _key(KEY_RIGHT, count=frames % 10)
+    _step(target)
+    for _ in range(retries):
+        time.sleep(0.4)
+        cur = current_frame(fps)
+        if cur is None or cur == target:
+            break
+        _step(target - cur)
     time.sleep(settle)
 
 
@@ -269,6 +324,42 @@ def preview(name: str, times: List[float], out_dir: Optional[str] = None, full: 
         if not keep_open:
             go_home()
     return paths
+
+
+def _discard_draft(name: str):
+    """把草稿目录移到废纸篓 (可恢复)。只用于 skill 生成的预热草稿。"""
+    from utils.formatters import get_default_drafts_root
+
+    src = os.path.join(get_default_drafts_root(), name)
+    if os.path.isdir(src):
+        dst = os.path.join(os.path.expanduser("~/.Trash"), f"{name}.{int(time.time())}")
+        os.rename(src, dst)
+
+
+def open_and_wait(names: List[str], wait: float = 60, close_editor: bool = False,
+                  discard: bool = False) -> List[str]:
+    """
+    依次在剪映里打开草稿, 停留 wait 秒 (让剪映下载素材 / 模板包) 后回到首页。用于模板预热。
+    discard=True 时每个草稿用完就移到废纸篓, 免得首页列表越来越长、后面的草稿找不到。
+    返回成功打开的草稿名; 单个失败不影响后面的。
+    """
+    done = []
+    for i, name in enumerate(names, 1):
+        try:
+            open_draft(name, close_editor=close_editor or i > 1)
+            print(f"⏳ [{i}/{len(names)}] 已打开「{name}」, 等待 {wait:.0f} 秒", flush=True)
+            time.sleep(wait)
+            go_home()
+            done.append(name)
+            if discard:
+                _discard_draft(name)
+        except PreviewError as e:
+            print(f"⚠️ [{i}/{len(names)}] 「{name}」: {e}", flush=True)
+            try:
+                go_home()
+            except PreviewError:
+                pass
+    return done
 
 
 def _main(argv=None) -> int:

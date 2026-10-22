@@ -2,9 +2,9 @@
  "resource_id": "7416724149906705683",
  "name": "向下弹出-方块粗体黄",
  "kind": "subtitle_template",
- "source": "JY116_SubtitleTemplate_Test",
+ "source": "10月20日",
  "segment": {
-  "duration": 3000000,
+  "duration": 1766667,
   "clip": {
    "rotation": 0,
    "transform": {
@@ -27,8 +27,8 @@
    "value": 1
   },
   "extra_material_refs": [
-   "DBC4AEAE-8B84-44F4-8722-04A3B25FE725",
-   "D779803A-B911-47C2-953D-6645C8D02E84"
+   "EF1384C2-7329-47D3-AEF1-8D58C2245C7F",
+   "653B9064-08A1-4F3E-9BE2-503600A7E5D2"
   ]
  },
  "template": {
@@ -103,15 +103,15 @@
   "text_info_resources": [
    {
     "clip_type": "",
-    "id": "B44E9C21-276F-4037-BE7F-6E876D0E2023",
+    "id": "7FE1E43D-481E-430F-A90F-7EA9C2C14549",
     "extra_material_refs": [
-     "D779803A-B911-47C2-953D-6645C8D02E84",
-     "DBC4AEAE-8B84-44F4-8722-04A3B25FE725"
+     "653B9064-08A1-4F3E-9BE2-503600A7E5D2",
+     "EF1384C2-7329-47D3-AEF1-8D58C2245C7F"
     ],
     "attach_info": {
      "original_size_height": 37.91666412353515,
      "original_size_width": 211.5830535888672,
-     "duration": 2999998,
+     "duration": 1766666,
      "clip": {
       "rotation": 0,
       "transform": {
@@ -133,13 +133,13 @@
     },
     "word_index": [],
     "capital": "",
-    "text_material_id": "388EF1C4-678F-4E2A-B5B1-BB7AEB7C4700",
+    "text_material_id": "13837536-E09A-40B8-9C17-397FEF5A849B",
     "lyric_keyframes": [],
     "order_in_layer": 0
    }
   ],
   "category_name": "",
-  "id": "DE91AC5D-D5DB-4AA4-BE50-CF07230BC9D2",
+  "id": "9C06EADC-E762-4EC5-BEC7-1F94AF8B1E2E",
   "request_id": "",
   "is_ai_emoji": false,
   "is_dynamic_build": false,
@@ -204,7 +204,7 @@
    "background_color": "",
    "shadow_color": "",
    "font_path": "",
-   "content": "{\"styles\": [{\"fill\": {\"content\": {\"solid\": {\"color\": [1, 0.9764705896377563, 0.21176470816135406]}, \"render_type\": \"solid\"}}, \"range\": [0, 18], \"effectStyle\": {\"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7416717003500686603/fc93a8ebc36090cb3a9791e4dd354567\", \"id\": \"7416717003500686603\"}, \"size\": 6.5, \"font\": {\"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/74696981/97a3a570222328a8dd97b3921d3716bd/一笔壹画潮黑体.ttf\", \"id\": \"7390218461990883876\"}}], \"text\": \"这是一条比较长的字幕用来测试换行效果\"}",
+   "content": "{\"styles\":[{\"fill\":{\"content\":{\"solid\":{\"color\":[1,0.97647058963775635,0.21176470816135406]},\"render_type\":\"solid\"}},\"range\":[0,7],\"effectStyle\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7416717003500686603/fc93a8ebc36090cb3a9791e4dd354567\",\"id\":\"7416717003500686603\"},\"size\":6.5,\"font\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/74696981/97a3a570222328a8dd97b3921d3716bd/一笔壹画潮黑体.ttf\",\"id\":\"7390218461990883876\"}}],\"text\":\"今日好运配送中\"}",
    "is_words_linear": false,
    "lyrics_template": {
     "panel": "",
@@ -235,63 +235,30 @@
    "words": {
     "start_time": [
      0,
-     166,
-     332,
-     498,
-     664,
-     830,
-     996,
-     1162,
-     1328,
-     1494,
-     1660,
-     1826,
-     1992,
-     2158,
-     2324,
-     2490,
-     2656,
-     2822
+     250,
+     500,
+     750,
+     1000,
+     1250,
+     1500
     ],
     "text": [
-     "这",
-     "是",
-     "一",
-     "条",
-     "比",
-     "较",
-     "长",
-     "的",
-     "字",
-     "幕",
-     "用",
-     "来",
-     "测",
-     "试",
-     "换",
-     "行",
-     "效",
-     "果"
+     "今",
+     "日",
+     "好",
+     "运",
+     "配",
+     "送",
+     "中"
     ],
     "end_time": [
-     166,
-     332,
-     498,
-     664,
-     830,
-     996,
-     1162,
-     1328,
-     1494,
-     1660,
-     1826,
-     1992,
-     2158,
-     2324,
-     2490,
-     2656,
-     2822,
-     2988
+     250,
+     500,
+     750,
+     1000,
+     1250,
+     1500,
+     1750
     ]
    },
    "oneline_cutoff": false,
@@ -334,7 +301,7 @@
    "preset_name": "",
    "underline": false,
    "preset_id": "",
-   "group_id": "caption_template_1792496365119822",
+   "group_id": "caption_template_1792495973628",
    "text_preset_resource_id": "",
    "shadow_angle": -45,
    "tts_auto_update": false,
@@ -394,7 +361,7 @@
    "font_title": "none",
    "text_typesetting_path_index": 0,
    "text_exceeds_path_process_type": 0,
-   "id": "388EF1C4-678F-4E2A-B5B1-BB7AEB7C4700",
+   "id": "13837536-E09A-40B8-9C17-397FEF5A849B",
    "typesetting": 0,
    "shadow_thickness_projection_enable": false,
    "alignment": 1,
@@ -411,7 +378,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "DBC4AEAE-8B84-44F4-8722-04A3B25FE725",
+    "id": "EF1384C2-7329-47D3-AEF1-8D58C2245C7F",
     "type": "sticker_animation",
     "animations": [
      {
@@ -469,7 +436,7 @@
     "type": "text_effect",
     "panel_id": "",
     "beauty_body_auto_preset_id": "",
-    "id": "D779803A-B911-47C2-953D-6645C8D02E84",
+    "id": "653B9064-08A1-4F3E-9BE2-503600A7E5D2",
     "effect_id": "",
     "category_id": "",
     "multi_language_current": "",

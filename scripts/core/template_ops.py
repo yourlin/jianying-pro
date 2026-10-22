@@ -1,9 +1,9 @@
-from typing import Optional, Union
+from typing import List, Optional, Sequence, Union
 
 import pyJianYingDraft as draft
 from utils.formatters import safe_tim
 from utils.panel_assets import PanelAssetUnavailable, find_panel_asset
-from utils.template_presets import find_preset, harvest_presets, instantiate_preset
+from utils.template_presets import find_preset, harvest_presets, instantiate_preset, template_texts
 
 
 class TemplateTextSegment(draft.TextSegment):
@@ -53,7 +53,7 @@ class TemplateOpsMixin:
             raise PanelAssetUnavailable(f"⛔ 模板「{preset['name']}」为 VIP 素材, 已按 allow_vip=False 拒绝")
         return preset
 
-    def _add_template_text(self, kind: str, text: str, template: str,
+    def _add_template_text(self, kind: str, text: Union[str, Sequence[Optional[str]]], template: str,
                            start_time: Union[str, int, None], duration: Union[str, int],
                            track_name: str, clip_settings: Optional[draft.ClipSettings]):
         preset = self._load_template_preset(template, kind)
@@ -62,8 +62,9 @@ class TemplateOpsMixin:
         self._ensure_track(draft.TrackType.text, track_name)
         start_us, dur_us = safe_tim(start_time), safe_tim(duration)
         inst = instantiate_preset(preset, text, dur_us)
+        label = text if isinstance(text, str) else " ".join(t for t in text if t)
         seg = TemplateTextSegment(
-            text, draft.Timerange(start_us, dur_us), inst,
+            label, draft.Timerange(start_us, dur_us), inst,
             clip_settings=clip_settings or _clip_from_json(inst["clip"]),
         )
         self.script.add_segment(seg, track_name)
@@ -76,9 +77,16 @@ class TemplateOpsMixin:
         return self._add_template_text("subtitle_template", text, template, start_time, duration,
                                        track_name, clip_settings)
 
-    def add_text_template(self, text: str, template: str, start_time: Union[str, int] = None,
-                          duration: Union[str, int] = "3s", track_name: str = "Subtitles",
-                          clip_settings: Optional[draft.ClipSettings] = None):
-        """添加一段套用文字模板的文字 (多段文字的模板, 每段都替换为 text)。"""
+    def add_text_template(self, text: Union[str, Sequence[Optional[str]]], template: str,
+                          start_time: Union[str, int] = None, duration: Union[str, int] = "3s",
+                          track_name: str = "Subtitles", clip_settings: Optional[draft.ClipSettings] = None):
+        """
+        添加一段套用文字模板的文字。模板里有多段文字时 (如「2025再见」: 5、2、0、2、GOOD BYE),
+        text 传列表按顺序替换各段, None 保留模板原文字 (各段默认内容见 template_texts); 传字符串则每段都替换为它。
+        """
         return self._add_template_text("text_template", text, template, start_time, duration,
                                        track_name, clip_settings)
+
+    def template_texts(self, template: str, kind: str = "text_template") -> List[str]:
+        """模板里各段文字的默认内容, 用来决定 add_text_template 的 text 列表怎么填。"""
+        return template_texts(self._load_template_preset(template, kind))

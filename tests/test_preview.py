@@ -16,8 +16,19 @@ def test_seek_presses_home_then_tens_and_frames(monkeypatch):
     monkeypatch.setattr(jy_preview, "_activate", lambda: None)
     monkeypatch.setattr(jy_preview, "_key", lambda code, shift=False, count=1: keys.append((code, shift, count)))
     monkeypatch.setattr(jy_preview.time, "sleep", lambda s: None)
+    monkeypatch.setattr(jy_preview, "current_frame", lambda fps=30: 75)
     jy_preview.seek(2.5, fps=30)  # 75 帧
     assert keys == [(jy_preview.KEY_HOME, False, 1), (jy_preview.KEY_RIGHT, True, 7), (jy_preview.KEY_RIGHT, False, 5)]
+
+
+def test_seek_corrects_dropped_keys(monkeypatch):
+    keys, frames = [], iter([60, 75])  # 第一次读到 60 帧 (丢了按键), 补按后到 75
+    monkeypatch.setattr(jy_preview, "_activate", lambda: None)
+    monkeypatch.setattr(jy_preview, "_key", lambda code, shift=False, count=1: keys.append((code, shift, count)))
+    monkeypatch.setattr(jy_preview.time, "sleep", lambda s: None)
+    monkeypatch.setattr(jy_preview, "current_frame", lambda fps=30: next(frames))
+    jy_preview.seek(2.5, fps=30)
+    assert keys[-2:] == [(jy_preview.KEY_RIGHT, True, 1), (jy_preview.KEY_RIGHT, False, 5)]
 
 
 def test_player_box_finds_canvas_inside_panel(monkeypatch):

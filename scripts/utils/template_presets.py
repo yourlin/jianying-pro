@@ -16,7 +16,7 @@ import json
 import os
 import time
 import uuid
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence, Union
 
 from utils.panel_assets import find_panel_asset, get_jianying_user_data_dirs
 
@@ -111,6 +111,19 @@ def extract_presets(content: dict, source: str = "") -> List[dict]:
     return presets
 
 
+def _skill_template_ids(draft_dir: str) -> set:
+    """skill 生成草稿时写入的模板素材 ID (来自明文副本 draft_info.skill.json)。"""
+    path = os.path.join(draft_dir, "draft_info.skill.json")
+    if not os.path.exists(path):
+        return set()
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            mats = (json.load(f).get("materials") or {})
+    except (OSError, ValueError):
+        return set()
+    return {m.get("id") for m in mats.get("text_templates") or [] if m.get("id")}
+
+
 def harvest_presets(user_data_dirs=None, preset_dir: str = PRESET_DIR, verbose: bool = True) -> List[dict]:
     """扫描剪映草稿的明文 template.json, 保存其中套用过的模板预设 (较新的草稿优先)。"""
     files = sorted(_draft_json_candidates(user_data_dirs), key=os.path.getmtime)
@@ -123,7 +136,11 @@ def harvest_presets(user_data_dirs=None, preset_dir: str = PRESET_DIR, verbose: 
         if os.path.basename(os.path.dirname(draft_dir)) == "Timelines":
             draft_dir = os.path.dirname(os.path.dirname(draft_dir))
         draft_name = os.path.basename(draft_dir)
+        own = _skill_template_ids(draft_dir)
         for p in extract_presets(content, source=draft_name):
+            # skill 自己写进草稿、剪映没有重新套用的模板 (素材 ID 不变) 不算真实套用, 不采集
+            if p["template"].get("id") in own:
+                continue
             found[p["resource_id"]] = p
     os.makedirs(preset_dir, exist_ok=True)
     for rid, p in found.items():
@@ -180,8 +197,10 @@ def _relocate(path: str) -> str:
     return path
 
 
-def _replace_text_material(mat: dict, text: str, dur_ms: int, group_id: str) -> None:
+def _replace_text_material(mat: dict, text: Optional[str], dur_ms: int, group_id: str) -> None:
     content = json.loads(mat.get("content") or "{}")
+    if text is None:  # 保留模板自带的文字
+        text = content.get("text") or ""
     styles = content.get("styles") or [{}]
     style = copy.deepcopy(styles[0])  # 多段样式 (关键词高亮等) 只保留首段样式铺满全文
     style["range"] = [0, _utf16_len(text)]
@@ -203,9 +222,23 @@ def _replace_text_material(mat: dict, text: str, dur_ms: int, group_id: str) -> 
         mat["group_id"] = group_id
 
 
-def instantiate_preset(preset: dict, text: str, duration_us: int) -> Dict[str, Any]:
+def _scale_attach(attach: dict, duration_us: int, orig_dur: int) -> None:
+    """模板内元素的开始时间 / 时长按片段时长等比缩放 (剪映的做法)。"""
+    if attach.get("start_time"):
+        attach["start_time"] = int(attach["start_time"] * duration_us / orig_dur)
+    if attach.get("duration"):
+        attach["duration"] = min(duration_us, int(attach["duration"] * duration_us / orig_dur))
+
+
+def template_texts(preset: dict) -> List[str]:
+    """模板里各段文字的默认内容 (顺序与 instantiate_preset 的 text 列表一致)。"""
+    return [json.loads(m.get("content") or "{}").get("text", "") for m in preset.get("texts", [])]
+
+
+def instantiate_preset(preset: dict, text: Union[str, Sequence[Optional[str]]], duration_us: int) -> Dict[str, Any]:
     """
     克隆预设, 返回 {"material_id", "extra_material_refs", "clip", "materials": {列表名: [素材]}}。
+    text 为字符串时每段文字都替换为它; 为列表时按顺序替换各段 (见 template_texts), None 或缺少的段保留模板原文字。
     """
     tpl = copy.deepcopy(preset["template"])
     texts = copy.deepcopy(preset["texts"])
@@ -221,9 +254,16 @@ def instantiate_preset(preset: dict, text: str, duration_us: int) -> Dict[str, A
             id_map[m["id"]] = _new_id()
 
     group_id = f"caption_template_{int(time.time() * 1000)}{uuid.uuid4().int % 1000:03d}"
-    for m in texts:
+    if isinstance(text, str):
+        per_text: List[Optional[str]] = [text] * len(texts)
+    else:
+        per_text = list(text)[: len(texts)] + [None] * max(0, len(texts) - len(list(text)))
+    old_ids = [m["id"] for m in texts]
+    for m, t in zip(texts, per_text):
         m["id"] = id_map[m["id"]]
-        _replace_text_material(m, text, dur_ms, group_id)
+        _replace_text_material(m, t, dur_ms, group_id)
+    final = {id_map[i]: json.loads(m["content"]).get("text", "") for i, m in zip(old_ids, texts)}
+    text = next(iter(final.values()), "") if not isinstance(text, str) else text
     for items in extras.values():
         for m in items:
             m["id"] = id_map[m["id"]]
@@ -249,11 +289,12 @@ def instantiate_preset(preset: dict, text: str, duration_us: int) -> Dict[str, A
         info["id"] = _new_id()
         info["text_material_id"] = id_map.get(info.get("text_material_id"), info.get("text_material_id"))
         info["extra_material_refs"] = [id_map.get(r, r) for r in info.get("extra_material_refs", [])]
-        attach = info.get("attach_info") or {}
-        if attach.get("duration"):
-            attach["duration"] = min(duration_us, int(attach["duration"] * duration_us / orig_dur))
+        _scale_attach(info.get("attach_info") or {}, duration_us, orig_dur)
         if info.get("word_index"):
-            info["word_index"] = [0, len(text)]
+            info["word_index"] = [0, len(final.get(info["text_material_id"], text))]
+    for info in tpl.get("non_text_info_resources", []) or []:  # 文字模板里的贴纸
+        info["extra_material_refs"] = [id_map.get(r, r) for r in info.get("extra_material_refs", [])]
+        _scale_attach(info.get("attach_info") or {}, duration_us, orig_dur)
     if tpl.get("material_text_ranges"):
         blen = len(text.encode("utf-8"))
         tpl["material_text_ranges"] = [
@@ -322,10 +363,48 @@ def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_templ
         with open(os.path.join(package_dir, "extra.json"), "r", encoding="utf-8") as f:
             extra = json.load(f)
     local = _local_md5_by_resource()
+    subtitle = kind == "subtitle_template"
+    if not subtitle and any(c.get("type") not in ("text", "sticker") for c in content.get("children") or []):
+        raise ValueError("含形状元素的文字模板暂不支持 (没有真实预设可以对照)")
+    root_dur = int(round(float((content.get("root") or {}).get("duration") or 0) * 1e6))
     children = [c for c in content.get("children") or [] if c.get("type") == "text"]
-    texts, infos, anims, effects, seg_refs = [], [], [], [], []
-    for ch in children:
+    defaults = [str(t) for t in extra.get("texts") or []]
+    if len(defaults) != len(children):
+        defaults = []
+    texts, infos, anims, effects, seg_refs, non_text = [], [], [], [], [], []
+
+    def _us(v) -> int:
+        return int(round(float(v or 0) * 1e6))
+
+    def _anim_material(ch) -> dict:
+        items = []
+        for a in ch.get("anims") or []:
+            if not a.get("anim_resource_id"):
+                continue
+            # 贴纸上挂着下载不到的动画时, 剪映整个不画这个贴纸 (11.7 实测「闪动机械蝴蝶」); 预热后本机仍没有的就去掉。
+            # 文字动画缺失时剪映会自己补下载, 保留。
+            if ch.get("type") == "sticker" and not local.get(a["anim_resource_id"]):
+                continue
+            item = {"type": a.get("anim_type") or "caption", "resource_id": a.get("anim_resource_id", ""),
+                    "path": local.get(a.get("anim_resource_id", ""), ""), "material_type": "sticker", "start": 0,
+                    "duration": 1, "source_platform": 0, "platform": "all", "name": "", "id": "", "panel": "",
+                    "category_id": "", "category_name": "", "third_resource_id": "", "request_id": ""}
+            if not subtitle:  # 文字模板: 时长按模板包 (循环动画取单次循环时长), 剪映 11.7 草稿实测
+                loop = a.get("anim_type") == "loop" and float(a.get("loop_duration") or 0) > 0
+                item.update(duration=_us(a.get("loop_duration") if loop else a.get("duration")), source_platform=1)
+            items.append(item)
+        return {"id": _new_id(), "type": "sticker_animation", "multi_language_current": "none", "animations": items}
+
+    def _clip(ch) -> dict:
+        pos, sc = ch.get("position") or [0, 0, 0], ch.get("scale") or [1, 1, 1]
+        return {"alpha": 1, "rotation": (ch.get("rotation") or [0, 0, 0])[2], "rotation3d": [],
+                "flip": {"horizontal": False, "vertical": False},
+                "scale": {"x": sc[0], "y": sc[1]}, "transform": {"x": pos[0], "y": pos[1]}}
+
+    for idx, ch in enumerate(children):
         tp = ch.get("text_params") or {}
+        m = _re.search(r"\[([^\]]*)\]", tp.get("richText", ""))  # 富文本里方括号内是模板原文字
+        default_text = defaults[idx] if defaults else (m.group(1) if m and m.group(1) else "A")
         style = parse_rich_text(tp.get("richText", ""))
         alpha = style.pop("_alpha", 1.0)
         for k in ("font", "effectStyle"):
@@ -334,9 +413,10 @@ def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_templ
         tid = _new_id()
         rgb = style["fill"]["content"]["solid"]["color"]
         texts.append({
-            "id": tid, "type": "text", "content": json.dumps({"styles": [style], "text": "A"}, ensure_ascii=False),
+            "id": tid, "type": "text", "content": json.dumps({"styles": [style], "text": default_text}, ensure_ascii=False),
             "font_size": 15, "text_size": 30, "line_spacing": tp.get("lineSpacing", 0.02),
-            "letter_spacing": tp.get("letterSpacing", 0), "alignment": tp.get("typeSettingAlign", 1),
+            "letter_spacing": tp.get("letterSpacing", 0),
+            "alignment": tp.get("typeSettingAlign", 1 if subtitle else 0),
             "typesetting": tp.get("typeSettingKind", 0), "bold_width": tp.get("boldValue", 0),
             "italic_degree": tp.get("italicDegree", 0), "underline_offset": tp.get("decorationOffset", 0.22),
             "underline_width": tp.get("decorationWidth", 0.05), "global_alpha": tp.get("globalAlpha", 1),
@@ -346,6 +426,9 @@ def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_templ
             "words": {"text": ["A"], "start_time": [0], "end_time": [1000]},
             "current_words": {"text": [], "start_time": [], "end_time": []},
         })
+        if not subtitle:
+            texts[-1].update(group_id="", force_apply_line_max_width=False, check_flag=47,
+                             words={"text": [], "start_time": [], "end_time": []})
         refs = []
         if style.get("effectStyle"):
             eid = _new_id()
@@ -353,43 +436,51 @@ def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_templ
                             "path": style["effectStyle"]["path"], "source_platform": 1, "value": 0,
                             "apply_target_type": 0, "sub_type": "none", "platform": "all", "visible": True})
             refs.append(eid)
-        aid = _new_id()
-        anims.append({"id": aid, "type": "sticker_animation", "multi_language_current": "none", "animations": [
-            {"type": a.get("anim_type") or "caption", "resource_id": a.get("anim_resource_id", ""),
-             "path": local.get(a.get("anim_resource_id", ""), ""), "material_type": "sticker", "start": 0,
-             "duration": 1, "source_platform": 0, "platform": "all", "name": "", "id": "", "panel": "",
-             "category_id": "", "category_name": "", "third_resource_id": "", "request_id": ""}
-            for a in ch.get("anims") or [] if a.get("anim_resource_id")]})
-        refs.append(aid)
+        anims.append(_anim_material(ch))
+        refs.append(anims[-1]["id"])
         seg_refs += refs
-        pos, sc = ch.get("position") or [0, 0, 0], ch.get("scale") or [1, 1, 1]
         size = ch.get("original_size") or [0, 0]
         infos.append({
             "id": _new_id(), "text_material_id": tid, "extra_material_refs": refs, "clip_type": "", "capital": "",
             "word_index": [], "lyric_keyframes": [], "order_in_layer": ch.get("order_in_layer", 0),
-            "attach_info": {"start_time": 0, "duration": 1, "original_size_width": size[0], "original_size_height": size[1],
-                            "clip": {"alpha": 1, "rotation": (ch.get("rotation") or [0, 0, 0])[2], "rotation3d": [],
-                                     "flip": {"horizontal": False, "vertical": False},
-                                     "scale": {"x": sc[0], "y": sc[1]}, "transform": {"x": pos[0], "y": pos[1]}}},
+            "attach_info": {"start_time": 0 if subtitle else _us(ch.get("start_time")),
+                            "duration": 1 if subtitle else _us(ch.get("duration")),
+                            "original_size_width": size[0], "original_size_height": size[1], "clip": _clip(ch)},
+        })
+        if not subtitle:
+            infos[-1]["order_in_layer"] = 0
+    # 文字模板的贴纸: 由剪映按模板包绘制, 草稿里只记位置 / 大小 / 时间和动画 (剪映会按 layout_params 重新排版)
+    for ch in (content.get("children") or []) if not subtitle else []:
+        if ch.get("type") != "sticker":
+            continue
+        anims.append(_anim_material(ch))
+        seg_refs.append(anims[-1]["id"])
+        size = ch.get("original_size") or [0, 0]
+        non_text.append({
+            "name": ch.get("name", ""), "type": "sticker", "shape_param": {"points": [], "shape_type": 0},
+            "extra_material_refs": [anims[-1]["id"]],
+            "attach_info": {"start_time": _us(ch.get("start_time")), "duration": _us(ch.get("duration")),
+                            "original_size_width": size[0], "original_size_height": size[1], "clip": _clip(ch)},
         })
     resources = [{"panel": d.get("type", ""), "resource_id": str(d.get("resource_id", "")),
                   "source_platform": 1 if d.get("source") == 1 else 0,
                   "path": local.get(str(d.get("resource_id", "")), "")}
                  for d in extra.get("depend_resource_list") or []]
-    subtitle = kind == "subtitle_template"
     tpl = {
         "id": _new_id(), "type": "text_template_subtitle" if subtitle else "text_template",
         "text_template_resource_type": kind, "resource_id": row["resource_id"], "effect_id": row["resource_id"],
         "name": row["name"], "path": package_dir, "resources": resources, "text_info_resources": infos,
-        "source_platform": 1, "category_name": "subtitle-templates" if subtitle else "", "category_id": "",
+        "source_platform": 1, "category_name": "subtitle-templates" if subtitle else "",
+        "category_id": "" if subtitle else "panel-text-template-template",
         "check_flag": 7, "platform": "all", "version": "1.0.0", "preview_time": 0.1, "is_pre_rendered": False,
-        "non_text_info_resources": [], "material_text_ranges": [], "merge_content": "", "text_to_audio_ids": [],
+        "non_text_info_resources": non_text, "material_text_ranges": [], "merge_content": "", "text_to_audio_ids": [],
         "origin_word_info": {"text": "", "words": [], "start_time": 0, "end_time": 0, "keyword_ranges": []},
         "current_word_info": {"text": "", "words": [], "start_time": 0, "end_time": 0, "keyword_ranges": []},
     }
     return {"resource_id": row["resource_id"], "name": row["name"], "kind": kind, "source": "package",
-            "segment": {"duration": 1, "clip": {"alpha": 1, "rotation": 0, "flip": {"horizontal": False, "vertical": False},
-                                                 "scale": {"x": 1, "y": 1}, "transform": {"x": 0, "y": -0.73}},
+            "segment": {"duration": 1 if subtitle else max(1, root_dur),
+                        "clip": {"alpha": 1, "rotation": 0, "flip": {"horizontal": False, "vertical": False},
+                                 "scale": {"x": 1, "y": 1}, "transform": {"x": 0, "y": -0.73 if subtitle else 0}},
                         "uniform_scale": {"on": True, "value": 1}, "extra_material_refs": seg_refs},
             "template": tpl, "texts": texts, "extras": {"material_animations": anims, "effects": effects}}
 

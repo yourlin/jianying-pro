@@ -22,7 +22,7 @@ def main():
     ap = argparse.ArgumentParser(description="采集剪映字幕模板/文字模板预设")
     ap.add_argument("--list", action="store_true", help="只列出已有预设")
     ap.add_argument("--from-packages", action="store_true",
-                    help="同时为本地已下载模板包、还没有预设的字幕模板生成预设 (配合 jy_wrapper.py warmup)")
+                    help="同时为本地已下载模板包、还没有预设的字幕模板 / 文字模板生成预设 (配合 jy_wrapper.py warmup)")
     args = ap.parse_args()
     if not args.list:
         found = harvest_presets()
@@ -30,7 +30,8 @@ def main():
             print("ℹ️ 没找到套用过模板的草稿: 请先在剪映里给文字套用字幕模板/文字模板。")
         if args.from_packages:
             made = presets_from_local_packages("subtitle_template")
-            print(f"由模板包生成 {len(made)} 个字幕模板预设")
+            made_text = presets_from_local_packages("text_template")
+            print(f"由模板包生成 {len(made)} 个字幕模板预设、{len(made_text)} 个文字模板预设")
     for path in sorted(glob.glob(os.path.join(PRESET_DIR, "*.json"))):
         with open(path, "r", encoding="utf-8") as f:
             p = json.load(f)

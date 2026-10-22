@@ -2,7 +2,7 @@
  "resource_id": "7381313557465550119",
  "name": "KkQ1-4",
  "kind": "subtitle_template",
- "source": "JY116_Clone_Native_Test",
+ "source": "AI替代人类？",
  "segment": {
   "duration": 1033334,
   "clip": {
@@ -11,16 +11,15 @@
     "y": -0.8,
     "x": 0
    },
-   "rotation3d": [],
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
    "scale": {
     "y": 1,
     "x": 1
    },
-   "alpha": 1,
-   "flip": {
-    "horizontal": false,
-    "vertical": false
-   }
+   "alpha": 1
   },
   "uniform_scale": {
    "on": true,
@@ -70,7 +69,7 @@
   "resources": [
    {
     "panel": "fonts",
-    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7217732136894206501/c3dc73e45b7b16cae8e867a0a73f35dd/尔雅新大黑.ttf",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/11593555/c3dc73e45b7b16cae8e867a0a73f35dd/尔雅新大黑.ttf",
     "source_platform": 0,
     "resource_id": "7217732136894206501"
    },
@@ -102,16 +101,15 @@
        "y": 0,
        "x": 0
       },
-      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
       "scale": {
        "y": 1,
        "x": 1
       },
-      "alpha": 1,
-      "flip": {
-       "horizontal": false,
-       "vertical": false
-      }
+      "alpha": 1
      },
      "start_time": 0
     },
@@ -191,7 +189,7 @@
    "background_color": "",
    "shadow_color": "",
    "font_path": "",
-   "content": "{\"styles\":[{\"range\":[0,7],\"fill\":{\"content\":{\"solid\":{\"color\":[1,1,1]},\"render_type\":\"solid\"}},\"italic\":true,\"effectStyle\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7127668616656506149/ea313663956a7503d5f1e8caed519afd\",\"id\":\"7127668616656506149\"},\"size\":12,\"font\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7217732136894206501/c3dc73e45b7b16cae8e867a0a73f35dd/尔雅新大黑.ttf\",\"id\":\"7217732136894206501\"}}],\"text\":\"快来领取资料吧\"}",
+   "content": "{\"styles\":[{\"range\":[0,7],\"fill\":{\"content\":{\"solid\":{\"color\":[1,1,1]},\"render_type\":\"solid\"}},\"italic\":true,\"effectStyle\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7127668616656506149/ea313663956a7503d5f1e8caed519afd\",\"id\":\"7127668616656506149\"},\"size\":12,\"font\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/11593555/c3dc73e45b7b16cae8e867a0a73f35dd/尔雅新大黑.ttf\",\"id\":\"7217732136894206501\"}}],\"text\":\"快来领取资料吧\"}",
    "is_words_linear": false,
    "lyrics_template": {
     "panel": "",
@@ -351,7 +349,6 @@
    {
     "apply_target_type": 0,
     "category_name": "",
-    "transparent_params": "",
     "exclusion_group": [],
     "request_id": "",
     "algorithm_artifact_path": "",
@@ -370,8 +367,6 @@
     "adjust_params": [],
     "sub_category_name": "",
     "enable_skin_tone_correction": false,
-    "is_aigc_filter": false,
-    "aigc_current_artifact_path": "",
     "is_from_intelligent_quality": false,
     "smart_color_mode": 0,
     "beauty_face_auto_retouch_info": {

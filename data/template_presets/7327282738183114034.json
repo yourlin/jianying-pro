@@ -1,0 +1,210 @@
+{
+ "resource_id": "7327282738183114034",
+ "name": "日常通用 营业一下 小清新简约风标签",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "5126F56D-D373-40B8-8F9D-9078592F3EA5",
+   "F6433D47-8274-4443-8AD2-594E0D706A29"
+  ]
+ },
+ "template": {
+  "id": "9509EBB6-6CAA-4EE0-812F-2DE77154720A",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7327282738183114034",
+  "effect_id": "7327282738183114034",
+  "name": "日常通用 营业一下 小清新简约风标签",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7327282738183114034/220e40da3cf8d6ab3a76e196d7e777ca",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7327282766117178674",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7327282766117178674/ec1fa358ca937fa380e77fdad7493965"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7217732136894206501",
+    "source_platform": 0,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7217732136894206501/c3dc73e45b7b16cae8e867a0a73f35dd"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "5F490918-73B8-4A9C-8E80-21B5AFFFEE25",
+    "text_material_id": "E65447A9-987D-43D2-988D-14637A7B6D39",
+    "extra_material_refs": [
+     "5126F56D-D373-40B8-8F9D-9078592F3EA5"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 358.3458251953125,
+     "original_size_height": 118.0433349609375,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "4408BE24-7424-44e6-9B8B-989D99A6A1C7",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "F6433D47-8274-4443-8AD2-594E0D706A29"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 332,
+     "original_size_height": 157,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.7727646827697754,
+       "y": 1.5579931735992432
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "E65447A9-987D-43D2-988D-14637A7B6D39",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 20.236, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0039216, 0.0, 0.0]}}}, \"font\": {\"id\": \"7217732136894206501\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7217732136894206501/c3dc73e45b7b16cae8e867a0a73f35dd\"}}], \"text\": \"营业一下\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": -0.030000000000000006,
+   "letter_spacing": -0.05,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#010000ff",
+   "name": "E5DBD581-065C-4632-B6D3-69D0AF9921FE",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "5126F56D-D373-40B8-8F9D-9078592F3EA5",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "F6433D47-8274-4443-8AD2-594E0D706A29",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

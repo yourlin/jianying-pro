@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+- **Text templates from packages**: `warmup --kind text` and `sync_jy_templates.py --from-packages` now generate text-template presets as well (334 usable, 304 of them free). The generated presets include stickers (position/size/timing/animations), per-element timing, loop durations and default texts. Checked against 19 JianYing-applied presets, and 17 were verified in-app by screenshot against the panel covers. Sticker animations that cannot be downloaded are dropped, because JianYing hides the whole sticker otherwise. Templates with shape elements are skipped.
+- Multi-text templates: `add_text_template([...], template)` fills each text in order (`None` keeps the template text); `template_texts()` lists the defaults.
+- **Fully automatic warm-up** (`warmup --auto`, macOS): opens each warm-up draft in JianYing, waits, returns home, moves the used draft to the Trash, then generates presets. `--min-id` skips old templates.
+- `jy_preview`: verifies the playhead after seeking (reads the timecode via accessibility and corrects dropped keys), scrolls the home list to find drafts, and returns home through the menu.
+- Harvest skips templates the skill itself wrote into a draft (unchanged material IDs), so generated presets are never re-imported as "real" ones.
+
 ## v0.1.0 - 2026-10-22
 First release of **jianying-pro**, originally adapted from [luoluoluo22/jianying-editor-skill](https://github.com/luoluoluo22/jianying-editor-skill) (MIT) and since largely rewritten. Earlier development releases (1.x) are listed under "Earlier releases" below.
 - Renamed the skill, its directories and cache (`~/.cache/jianying-pro`).

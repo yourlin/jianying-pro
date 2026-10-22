@@ -2,6 +2,7 @@
 //   jy_macos windows                 列出剪映窗口: <窗口号>\t<在屏幕上>\t<x>\t<y>\t<宽>\t<高>\t<pid>\t<标题>
 //   jy_macos click <x> <y> [次数]    在屏幕坐标 (点) 处点击鼠标左键
 //   jy_macos key <pid> <键码> [shift] [次数]   向剪映进程发送按键 (不依赖前台窗口)
+//   jy_macos scroll <x> <y> <行数>   在屏幕坐标处滚动鼠标滚轮 (正数向上, 负数向下)
 // windows 只读窗口信息; click / key 需要「辅助功能」权限。
 import CoreGraphics
 import Foundation
@@ -48,6 +49,16 @@ case "key":
             e?.postToPid(pid)
             usleep(12_000)
         }
+    }
+case "scroll":
+    guard a.count >= 5, let x = Double(a[2]), let y = Double(a[3]), let lines = Int32(a[4]) else { fail("scroll x y lines") }
+    let p = CGPoint(x: x, y: y)
+    CGEvent(mouseEventSource: src, mouseType: .mouseMoved, mouseCursorPosition: p, mouseButton: .left)?.post(tap: .cghidEventTap)
+    usleep(80_000)
+    let step: Int32 = lines > 0 ? 1 : -1
+    for _ in 0..<abs(lines) {
+        CGEvent(scrollWheelEvent2Source: src, units: .line, wheelCount: 1, wheel1: step, wheel2: 0, wheel3: 0)?.post(tap: .cghidEventTap)
+        usleep(30_000)
     }
 default:
     fail("unknown command \(a[1])")

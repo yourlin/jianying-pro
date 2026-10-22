@@ -1,0 +1,240 @@
+{
+ "resource_id": "7462296892056177945",
+ "name": "哪吒:气笑了",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "F5D61C35-3203-4ECE-916C-AB015EF0F9C1",
+   "994D5484-3FBC-480B-9F1E-5DAE6B1B64A5"
+  ]
+ },
+ "template": {
+  "id": "246831C3-18F6-4D50-8423-FB80B1818926",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7462296892056177945",
+  "effect_id": "7462296892056177945",
+  "name": "哪吒:气笑了",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7462296892056177945/7c22ca086d722f8e605312bae4704f48",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7462305513825389848",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7462305513825389848/60c5458872a7072275ae29efe7107b4f"
+   },
+   {
+    "panel": "sticker",
+    "resource_id": "6884154692398486023",
+    "source_platform": 0,
+    "path": ""
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7290447317247726139",
+    "source_platform": 0,
+    "path": ""
+   },
+   {
+    "panel": "text",
+    "resource_id": "6764189482871689742",
+    "source_platform": 0,
+    "path": ""
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "2A5FCF55-844B-47B8-911F-02981CFCF5ED",
+    "text_material_id": "65426708-41F8-4052-8E06-CAF61D3A8879",
+    "extra_material_refs": [
+     "F5D61C35-3203-4ECE-916C-AB015EF0F9C1"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 364.5833435058594,
+     "original_size_height": 204.16665649414062,
+     "clip": {
+      "alpha": 1,
+      "rotation": 8.792783737182617,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.0408170223236084,
+       "y": 1.0408188104629517
+      },
+      "transform": {
+       "x": -44.61085510253906,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "530FE073-17F1-42BE-A38D-13D5CD47E56E",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "994D5484-3FBC-480B-9F1E-5DAE6B1B64A5"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 595,
+     "original_size_height": 800,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.2639133036136627,
+       "y": 0.26391303539276123
+      },
+      "transform": {
+       "x": 157.66798400878906,
+       "y": -5.340576171875e-05
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "65426708-41F8-4052-8E06-CAF61D3A8879",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 35.0, \"font\": {\"id\": \"7290447317247726139\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"气笑了\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.12,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "50C32B78-A2A9-4E62-A23C-ACF99E48919A",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "F5D61C35-3203-4ECE-916C-AB015EF0F9C1",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "6764189482871689742",
+      "path": "",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 1466666,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "994D5484-3FBC-480B-9F1E-5DAE6B1B64A5",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

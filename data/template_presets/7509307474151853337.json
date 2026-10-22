@@ -2,7 +2,7 @@
  "resource_id": "7509307474151853337",
  "name": "618-惊爆价",
  "kind": "text_template",
- "source": "JY116_Clone_Native_Test",
+ "source": "AI替代人类？",
  "segment": {
   "duration": 2133334,
   "clip": {
@@ -11,16 +11,15 @@
     "y": 0.179970972423803,
     "x": 0
    },
-   "rotation3d": [],
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
    "scale": {
     "y": 0.650597174857579,
     "x": 0.650597174857579
    },
-   "alpha": 1,
-   "flip": {
-    "horizontal": false,
-    "vertical": false
-   }
+   "alpha": 1
   },
   "uniform_scale": {
    "on": true,
@@ -52,16 +51,15 @@
        "y": -19.452590942382812,
        "x": 175.43984985351565
       },
-      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
       "scale": {
        "y": 0.611991465091705,
        "x": 0.500945448875427
       },
-      "alpha": 1,
-      "flip": {
-       "horizontal": false,
-       "vertical": false
-      }
+      "alpha": 1
      },
      "start_time": 0
     },
@@ -86,16 +84,15 @@
        "y": -131.7626495361328,
        "x": 312.0832824707031
       },
-      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
       "scale": {
        "y": 0.095744132995605,
        "x": 0.062142103910446
       },
-      "alpha": 1,
-      "flip": {
-       "horizontal": false,
-       "vertical": false
-      }
+      "alpha": 1
      },
      "start_time": 0
     },
@@ -120,16 +117,15 @@
        "y": 148.73333740234375,
        "x": 92.0269775390625
       },
-      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
       "scale": {
        "y": 0.160418391227722,
        "x": 0.104118578135967
       },
-      "alpha": 1,
-      "flip": {
-       "horizontal": false,
-       "vertical": false
-      }
+      "alpha": 1
      },
      "start_time": 0
     },
@@ -248,16 +244,15 @@
        "y": 0,
        "x": -44.011260986328125
       },
-      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
       "scale": {
        "y": 2.628891468048096,
        "x": 2.628891706466675
       },
-      "alpha": 1,
-      "flip": {
-       "horizontal": false,
-       "vertical": false
-      }
+      "alpha": 1
      },
      "start_time": 0
     },
@@ -652,7 +647,6 @@
    {
     "apply_target_type": 0,
     "category_name": "",
-    "transparent_params": "",
     "exclusion_group": [],
     "request_id": "",
     "algorithm_artifact_path": "",
@@ -671,8 +665,6 @@
     "adjust_params": [],
     "sub_category_name": "",
     "enable_skin_tone_correction": false,
-    "is_aigc_filter": false,
-    "aigc_current_artifact_path": "",
     "is_from_intelligent_quality": false,
     "smart_color_mode": 0,
     "beauty_face_auto_retouch_info": {
