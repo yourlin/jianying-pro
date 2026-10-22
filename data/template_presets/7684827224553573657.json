@@ -1,0 +1,234 @@
+{
+ "resource_id": "7684827224553573657",
+ "name": "hajimi-做完你的做你的",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "43FA8F0C-7281-45DE-A435-90E98B14A4BE",
+   "17EC4383-4923-4D6F-AF20-F24F44F5576A"
+  ]
+ },
+ "template": {
+  "id": "642E5E3A-FA6F-4EF5-BB90-2F9C42CBD123",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7684827224553573657",
+  "effect_id": "7684827224553573657",
+  "name": "hajimi-做完你的做你的",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7684827224553573657/89057fe363fca612408d409624e821b5",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7684850018443955518",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7684850018443955518/e9d4e42d25e5754424bebf3f6a522e14"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7037017159280628231",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7037017159280628231/49573e8f5bb7ae96ce913040780803e3"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7075224569421763079",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7075224569421763079/9b8eba0a0bf377d1df19bc920a59e348"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "AEDD1B50-3BEB-4FD0-BF27-CD475B6B3925",
+    "text_material_id": "D320B4D2-AD17-4B91-AB5B-3BA83187B3C3",
+    "extra_material_refs": [
+     "43FA8F0C-7281-45DE-A435-90E98B14A4BE"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 462.5,
+     "original_size_height": 87.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1
+      },
+      "transform": {
+       "x": 0,
+       "y": -175.41403198242188
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "4F456310-5E2C-4c38-B33E-B14E8514319A",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "17EC4383-4923-4D6F-AF20-F24F44F5576A"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 614,
+     "original_size_height": 519,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.750349760055542,
+       "y": 0.750349760055542
+      },
+      "transform": {
+       "x": 0,
+       "y": 73.94921875
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "D320B4D2-AD17-4B91-AB5B-3BA83187B3C3",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.87843, 0.69412]}}}, \"font\": {\"id\": \"7037017159280628231\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7037017159280628231/49573e8f5bb7ae96ce913040780803e3\"}}], \"text\": \"做完你的做你的\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffe0b1ff",
+   "name": "446F4943-BB45-4f4e-B7CD-97391C454D2B",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "43FA8F0C-7281-45DE-A435-90E98B14A4BE",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7075224569421763079",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7075224569421763079/9b8eba0a0bf377d1df19bc920a59e348",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 1666665,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "17EC4383-4923-4D6F-AF20-F24F44F5576A",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

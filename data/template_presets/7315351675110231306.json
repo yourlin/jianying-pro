@@ -26,14 +26,14 @@
    "value": 1
   },
   "extra_material_refs": [
-   "FB4272D4-98E5-42C5-85A6-4372EB189C39",
-   "E8F37C3D-1A75-4C80-BA76-ECC1A9C57CFB",
-   "A443E89D-479B-4710-999D-6D8B2FC9FFA9",
-   "930730F8-1F7F-47FA-926E-608FF79D752E"
+   "F20EBEB0-867F-4563-86C6-03C333B8290C",
+   "B8ECE4A2-499D-4626-B1B4-3B824973FB27",
+   "DBE1B34B-E7D2-4ED1-A4F2-048F5F12AEFF",
+   "AE2B7DAE-C565-4458-9A44-667FE333F140"
   ]
  },
  "template": {
-  "id": "0060D20E-5494-4958-B1DE-8EEBE50D2E33",
+  "id": "005CE335-786A-4041-89F4-5933B7AF9133",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7315351675110231306",
@@ -86,11 +86,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "E7F11463-1C48-4BAA-BEC8-56250D9DF4DA",
-    "text_material_id": "511AAB5A-090E-4799-A062-807B6D6CB328",
+    "id": "ED6E9453-1781-4634-88BE-E6D9A2DA10A9",
+    "text_material_id": "753D4299-9D99-4C47-A4D5-9A1FC15771AF",
     "extra_material_refs": [
-     "FB4272D4-98E5-42C5-85A6-4372EB189C39",
-     "E8F37C3D-1A75-4C80-BA76-ECC1A9C57CFB"
+     "F20EBEB0-867F-4563-86C6-03C333B8290C",
+     "B8ECE4A2-499D-4626-B1B4-3B824973FB27"
     ],
     "clip_type": "",
     "capital": "",
@@ -122,10 +122,10 @@
     }
    },
    {
-    "id": "4461C6A3-3B22-43EC-A761-3CB12FFD0722",
-    "text_material_id": "A23EAFBF-7EEC-4514-B03D-80AB406F2F81",
+    "id": "03EF36DD-3B79-44F2-B4A8-DA824042D2AE",
+    "text_material_id": "AA621ACE-3B14-467C-A92B-A1A5C4CDD832",
     "extra_material_refs": [
-     "A443E89D-479B-4710-999D-6D8B2FC9FFA9"
+     "DBE1B34B-E7D2-4ED1-A4F2-048F5F12AEFF"
     ],
     "clip_type": "",
     "capital": "",
@@ -174,7 +174,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "930730F8-1F7F-47FA-926E-608FF79D752E"
+     "AE2B7DAE-C565-4458-9A44-667FE333F140"
     ],
     "attach_info": {
      "start_time": 0,
@@ -221,7 +221,7 @@
  },
  "texts": [
   {
-   "id": "511AAB5A-090E-4799-A062-807B6D6CB328",
+   "id": "753D4299-9D99-4C47-A4D5-9A1FC15771AF",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7315345150337748275\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7315345150337748275/4cab4a8a52a27874029b01be12d2fe7f\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.46275, 0.58039, 0.68235]}}}, \"font\": {\"id\": \"7290445172834308664\", \"path\": \"\"}}], \"text\": \"萌萌哒\"}",
    "font_size": 15,
@@ -258,7 +258,7 @@
    }
   },
   {
-   "id": "A23EAFBF-7EEC-4514-B03D-80AB406F2F81",
+   "id": "AA621ACE-3B14-467C-A92B-A1A5C4CDD832",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"6934225430266253837\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6934225430266253837/aee9551fab5ef01c45dbe3335869db1d\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"Cute kids\"}",
    "font_size": 15,
@@ -298,7 +298,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "E8F37C3D-1A75-4C80-BA76-ECC1A9C57CFB",
+    "id": "B8ECE4A2-499D-4626-B1B4-3B824973FB27",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -322,7 +322,7 @@
     ]
    },
    {
-    "id": "A443E89D-479B-4710-999D-6D8B2FC9FFA9",
+    "id": "DBE1B34B-E7D2-4ED1-A4F2-048F5F12AEFF",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -346,7 +346,7 @@
     ]
    },
    {
-    "id": "930730F8-1F7F-47FA-926E-608FF79D752E",
+    "id": "AE2B7DAE-C565-4458-9A44-667FE333F140",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
@@ -354,7 +354,7 @@
   ],
   "effects": [
    {
-    "id": "FB4272D4-98E5-42C5-85A6-4372EB189C39",
+    "id": "F20EBEB0-867F-4563-86C6-03C333B8290C",
     "type": "text_effect",
     "resource_id": "7315345150337748275",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7315345150337748275/4cab4a8a52a27874029b01be12d2fe7f",

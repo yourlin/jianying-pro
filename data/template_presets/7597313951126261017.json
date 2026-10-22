@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "D3C82064-C326-4B1D-82C3-4E655F46E204",
-   "4CFC636A-46F8-4841-B199-FD3DDF36C799"
+   "95B0968F-2145-48BF-9406-D5550B7B5A4A",
+   "03795A43-E191-49A5-9EC6-8B4E2ADE8089"
   ]
  },
  "template": {
-  "id": "28917F20-F5C4-4E93-9499-7731D829F013",
+  "id": "59736F6D-EF95-4002-8BC2-B313B6263366",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7597313951126261017",
@@ -60,11 +60,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "BACD8CD5-51D7-4DDC-A951-0DC2D85044D8",
-    "text_material_id": "47EF040A-FC22-4AF7-B112-5E7B4F058CA7",
+    "id": "E2F63E9D-69B4-424D-A7E1-920F4897B117",
+    "text_material_id": "B09F6F8D-41E6-480F-9C5F-8E0EAB1C37A4",
     "extra_material_refs": [
-     "D3C82064-C326-4B1D-82C3-4E655F46E204",
-     "4CFC636A-46F8-4841-B199-FD3DDF36C799"
+     "95B0968F-2145-48BF-9406-D5550B7B5A4A",
+     "03795A43-E191-49A5-9EC6-8B4E2ADE8089"
     ],
     "clip_type": "",
     "capital": "",
@@ -125,9 +125,9 @@
  },
  "texts": [
   {
-   "id": "47EF040A-FC22-4AF7-B112-5E7B4F058CA7",
+   "id": "B09F6F8D-41E6-480F-9C5F-8E0EAB1C37A4",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7597006218833562942\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7597006218833562942/fc072abaf68347d765bd45864cf1bacf\"}, \"size\": 12.0, \"font\": {\"id\": \"7290445254241555005\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7597006218833562942\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7597006218833562942/fc072abaf68347d765bd45864cf1bacf\"}, \"size\": 12.0, \"font\": {\"id\": \"7290445254241555005\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -142,7 +142,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "1AB9E0FC-D9E7-420d-BE95-BAE9F20E1056",
    "use_effect_default_color": true,
@@ -165,13 +165,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 1,
+   "background_height": 1,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0.3430402874946594,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7597313951126261017/394f66a27c60ceab02f9c36773aa7c57/image/1768895784089.png\", \"range\": 4, \"scale\": 0.5, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "4CFC636A-46F8-4841-B199-FD3DDF36C799",
+    "id": "03795A43-E191-49A5-9EC6-8B4E2ADE8089",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
@@ -179,7 +189,7 @@
   ],
   "effects": [
    {
-    "id": "D3C82064-C326-4B1D-82C3-4E655F46E204",
+    "id": "95B0968F-2145-48BF-9406-D5550B7B5A4A",
     "type": "text_effect",
     "resource_id": "7597006218833562942",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7597006218833562942/fc072abaf68347d765bd45864cf1bacf",

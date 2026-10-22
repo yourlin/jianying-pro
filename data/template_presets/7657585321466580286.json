@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "D5E3BD5B-69EC-41F9-9DBC-903954303603",
-   "68E1C930-A6E2-4AD3-92AC-6A30D0150E76"
+   "708F95EB-7217-4BF2-8F90-BF4190153C9B",
+   "4F374A0F-8714-474C-8291-0C6B80FC747A"
   ]
  },
  "template": {
-  "id": "C65CCFF0-EB4F-477D-BAD6-0C75F5BF13AF",
+  "id": "91502060-6DFB-4B66-A8CE-1A8B1D2B5E30",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7657585321466580286",
@@ -66,11 +66,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "32B70655-F26D-4BCE-9245-04845D607E5C",
-    "text_material_id": "CF9C4064-4A7E-4EE6-874D-648552566E0D",
+    "id": "D12F45E5-34A0-4821-B5B7-20E3A4149CF7",
+    "text_material_id": "6F437112-9C06-47BB-9AA4-00C3CEA5C6B5",
     "extra_material_refs": [
-     "D5E3BD5B-69EC-41F9-9DBC-903954303603",
-     "68E1C930-A6E2-4AD3-92AC-6A30D0150E76"
+     "708F95EB-7217-4BF2-8F90-BF4190153C9B",
+     "4F374A0F-8714-474C-8291-0C6B80FC747A"
     ],
     "clip_type": "",
     "capital": "",
@@ -131,9 +131,9 @@
  },
  "texts": [
   {
-   "id": "CF9C4064-4A7E-4EE6-874D-648552566E0D",
+   "id": "6F437112-9C06-47BB-9AA4-00C3CEA5C6B5",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7658111285854407960\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7658111285854407960/efc1f49272019ece2c20550ec92d977a\"}, \"size\": 12.0, \"font\": {\"id\": \"7619251091233901866\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7658111285854407960\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7658111285854407960/efc1f49272019ece2c20550ec92d977a\"}, \"size\": 12.0, \"font\": {\"id\": \"7619251091233901866\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"好运配送中\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -148,7 +148,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "DF160C27-624D-447b-AC6A-8EB190BC4F42",
    "use_effect_default_color": true,
@@ -171,13 +171,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.20000000298023224,
+   "background_height": 0.20000000298023224,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": -0.255952388048172,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7657585321466580286/d276d3a5a959b942b6953581ca3ba130/image/1783224302669.png\", \"playSpeed\": 1, \"range\": 4, \"scale\": 0.6605263157894743, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "68E1C930-A6E2-4AD3-92AC-6A30D0150E76",
+    "id": "4F374A0F-8714-474C-8291-0C6B80FC747A",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -203,7 +213,7 @@
   ],
   "effects": [
    {
-    "id": "D5E3BD5B-69EC-41F9-9DBC-903954303603",
+    "id": "708F95EB-7217-4BF2-8F90-BF4190153C9B",
     "type": "text_effect",
     "resource_id": "7658111285854407960",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7658111285854407960/efc1f49272019ece2c20550ec92d977a",

@@ -195,14 +195,19 @@ def open_draft(name: str, timeout: float = 40, settle: float = 3, close_editor: 
         box = _center(title)
     if box is None:
         raise PreviewError(f"首页列表里没找到草稿「{name}」")
-    # 点击标题左侧的封面 (标题本身只选中不打开)
-    _tool("click", box[0] - 42, box[1] + box[3] // 2)
+    # 点击标题左侧的封面 (标题本身只选中不打开)。偶尔第一下点击不生效 (首页布局还在变化), 10 秒没反应就重新定位再点
     end = time.time() + timeout
-    while time.time() < end:
-        time.sleep(0.5)
-        if in_editor():
-            time.sleep(settle)  # 等素材/特效加载
-            return
+    for _attempt in range(3):
+        box = _center(title) or box
+        _tool("click", box[0] - 42, box[1] + box[3] // 2)
+        retry_at = time.time() + 10
+        while time.time() < min(end, retry_at) or (_attempt == 2 and time.time() < end):
+            time.sleep(0.5)
+            if in_editor():
+                time.sleep(settle)  # 等素材/特效加载
+                return
+        if time.time() >= end:
+            break
     raise PreviewError(f"打开草稿「{name}」超时")
 
 
@@ -317,7 +322,9 @@ def preview(name: str, times: List[float], out_dir: Optional[str] = None, full: 
     fps = draft_fps(name)
     paths = []
     try:
-        for t in times or [0]:
+        times = list(times or [0])
+        seek(times[0], fps, settle=2)  # 草稿刚打开时剪映还在加载, 第一次定位后画面可能没跟上, 先空跳一次
+        for t in times:
             seek(t, fps)
             paths.append(capture_player(os.path.join(out_dir, f"{name}_{t:g}s.png"), full))
     finally:
@@ -331,34 +338,61 @@ def _discard_draft(name: str):
     from utils.formatters import get_default_drafts_root
 
     src = os.path.join(get_default_drafts_root(), name)
+    time.sleep(5)  # 回首页后剪映还会往草稿目录里写文件; 太早移走, 剪映会在原处重建一个打不开的空目录
     if os.path.isdir(src):
         dst = os.path.join(os.path.expanduser("~/.Trash"), f"{name}.{int(time.time())}")
         os.rename(src, dst)
 
 
+def visible_drafts() -> List[str]:
+    """首页列表当前能看到的草稿名。"""
+    out = _tell(f'return name of (every static text of ({WIN}) whose name starts with "{TITLE_PREFIX}")')
+    return [t.strip()[len(TITLE_PREFIX):] for t in out.split(", ") if t.strip().startswith(TITLE_PREFIX)]
+
+
 def open_and_wait(names: List[str], wait: float = 60, close_editor: bool = False,
-                  discard: bool = False) -> List[str]:
+                  discard: bool = False, rounds: int = 3) -> List[str]:
     """
     依次在剪映里打开草稿, 停留 wait 秒 (让剪映下载素材 / 模板包) 后回到首页。用于模板预热。
-    discard=True 时每个草稿用完就移到废纸篓, 免得首页列表越来越长、后面的草稿找不到。
+    同一时间生成的草稿在首页的顺序不固定, 所以每次先打开当前能看到的; 没打开的下一轮再试 (最多 rounds 轮)。
+    discard=True 时每个草稿用完就移到废纸篓, 免得首页列表越来越长。
     返回成功打开的草稿名; 单个失败不影响后面的。
     """
-    done = []
-    for i, name in enumerate(names, 1):
-        try:
-            open_draft(name, close_editor=close_editor or i > 1)
-            print(f"⏳ [{i}/{len(names)}] 已打开「{name}」, 等待 {wait:.0f} 秒", flush=True)
-            time.sleep(wait)
-            go_home()
-            done.append(name)
-            if discard:
-                _discard_draft(name)
-        except PreviewError as e:
-            print(f"⚠️ [{i}/{len(names)}] 「{name}」: {e}", flush=True)
+    pending, done, total = list(names), [], len(names)
+    for _ in range(max(1, rounds)):
+        failed = []
+        while pending:
             try:
-                go_home()
+                if in_editor():
+                    go_home()
+                seen = set(visible_drafts())
+                if not seen & set(pending):
+                    refresh_home()
+                    seen = set(visible_drafts())
             except PreviewError:
-                pass
+                seen = set()
+            name = next((n for n in pending if n in seen), pending[0])
+            pending.remove(name)
+            try:
+                open_draft(name, close_editor=True)
+                print(f"⏳ [{len(done) + 1}/{total}] 已打开「{name}」, 等待 {wait:.0f} 秒", flush=True)
+                time.sleep(wait)
+                go_home()
+                done.append(name)
+                if discard:
+                    _discard_draft(name)
+            except PreviewError as e:
+                print(f"⚠️ 「{name}」: {e} (稍后重试)", flush=True)
+                failed.append(name)
+                try:
+                    go_home()
+                except PreviewError:
+                    pass
+        if not failed:
+            break
+        pending = failed
+    if pending:
+        print(f"⚠️ 没能打开: {'、'.join(pending)}", flush=True)
     return done
 
 

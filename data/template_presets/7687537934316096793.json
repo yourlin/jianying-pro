@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "5EE9CFCD-F917-4EE8-A034-4017083CC176"
+   "C76FEE44-E91A-4240-A9BD-C929E7E82BE8"
   ]
  },
  "template": {
-  "id": "B6FE5E2F-2196-4757-9A8E-B4AFC58DE492",
+  "id": "5416CEC7-5C60-4686-B9F4-50333091CAB5",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7687537934316096793",
@@ -48,7 +48,7 @@
     "panel": "text",
     "resource_id": "7400730686753083916",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7400730686753083916/28846d8e7ad8ed1d62c402deefb1457b"
    },
    {
     "panel": "system-fonts",
@@ -59,10 +59,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "055FA5A9-B017-4DB2-8E1E-2503E0EA50EA",
-    "text_material_id": "E9F4103A-F0A3-4ABB-B962-0D6665237108",
+    "id": "4934B5AF-7493-43E2-98C2-C742F38A9BD0",
+    "text_material_id": "5184B25C-84A6-4661-8657-F08CCAE9DAED",
     "extra_material_refs": [
-     "5EE9CFCD-F917-4EE8-A034-4017083CC176"
+     "C76FEE44-E91A-4240-A9BD-C929E7E82BE8"
     ],
     "clip_type": "",
     "capital": "",
@@ -123,9 +123,9 @@
  },
  "texts": [
   {
-   "id": "E9F4103A-F0A3-4ABB-B962-0D6665237108",
+   "id": "5184B25C-84A6-4661-8657-F08CCAE9DAED",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7507555414217592127\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7507555414217592127/22111dd8c80eedbf4f9745ea29e8b3c8\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7507555414217592127\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7507555414217592127/22111dd8c80eedbf4f9745ea29e8b3c8\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -140,7 +140,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#000000ff",
    "name": "02B6101B-994C-459e-B0EE-4EAB5DED3FD6",
    "use_effect_default_color": true,
@@ -163,20 +163,30 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0.5,
+   "background_width": 0.71875,
+   "background_height": 0.75,
+   "background_horizontal_offset": -0.171875,
+   "background_vertical_offset": -0.046875,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7687537934316096793/10700ad3a9c9470e39118d627fb5740d/image/1789895337880.png\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "5EE9CFCD-F917-4EE8-A034-4017083CC176",
+    "id": "C76FEE44-E91A-4240-A9BD-C929E7E82BE8",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
      {
       "type": "caption",
       "resource_id": "7400730686753083916",
-      "path": "",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7400730686753083916/28846d8e7ad8ed1d62c402deefb1457b",
       "material_type": "sticker",
       "start": 0,
       "duration": 1,

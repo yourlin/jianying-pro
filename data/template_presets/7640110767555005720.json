@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "A789551D-E26F-46E6-9E49-7233D91324EC",
-   "4F220351-F505-494B-86A8-D954ACE3277F"
+   "D75DECDE-9729-49A3-865A-35C2EAB14369",
+   "DED58837-9708-43FB-8B38-13CE546E3865"
   ]
  },
  "template": {
-  "id": "B5D415F4-1FC8-4E45-8A35-413AD70F39E2",
+  "id": "166AB46E-2280-47D0-BB53-9B7E06736ED1",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7640110767555005720",
@@ -84,11 +84,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "53B66A8D-611F-4B13-9DA5-339270D30AE2",
-    "text_material_id": "6C363501-7280-442B-952B-E32A89174C47",
+    "id": "68CD4069-1BDE-4D7D-B9CF-1316AD0BCABE",
+    "text_material_id": "0E50F851-A7D2-466C-AC7E-80395B7F9BE0",
     "extra_material_refs": [
-     "A789551D-E26F-46E6-9E49-7233D91324EC",
-     "4F220351-F505-494B-86A8-D954ACE3277F"
+     "D75DECDE-9729-49A3-865A-35C2EAB14369",
+     "DED58837-9708-43FB-8B38-13CE546E3865"
     ],
     "clip_type": "",
     "capital": "",
@@ -149,9 +149,9 @@
  },
  "texts": [
   {
-   "id": "6C363501-7280-442B-952B-E32A89174C47",
+   "id": "0E50F851-A7D2-466C-AC7E-80395B7F9BE0",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7639200045413322046\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7639200045413322046/79bd52eae6a2302d273b65b27dd20840\"}, \"size\": 12.0, \"font\": {\"id\": \"7603209594088787206\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7639200045413322046\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7639200045413322046/79bd52eae6a2302d273b65b27dd20840\"}, \"size\": 12.0, \"font\": {\"id\": \"7603209594088787206\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"好运配送中\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -166,7 +166,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "E18EE137-E20E-4866-969B-3919B0AF8936",
    "use_effect_default_color": true,
@@ -189,13 +189,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#7ABAFFFF",
+   "background_round_radius": 0,
+   "background_width": 0,
+   "background_height": 0,
+   "background_horizontal_offset": -0.5545787811279297,
+   "background_vertical_offset": -0.05274725332856178,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [0.47843137383461, 0.729411780834198, 1]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7640110767555005720/0ba76d9cc5e764ccd1f02327f484400b/image/1777625011591.png\", \"range\": 4, \"scale\": 0.6000000000000018, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "4F220351-F505-494B-86A8-D954ACE3277F",
+    "id": "DED58837-9708-43FB-8B38-13CE546E3865",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -221,7 +231,7 @@
   ],
   "effects": [
    {
-    "id": "A789551D-E26F-46E6-9E49-7233D91324EC",
+    "id": "D75DECDE-9729-49A3-865A-35C2EAB14369",
     "type": "text_effect",
     "resource_id": "7639200045413322046",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7639200045413322046/79bd52eae6a2302d273b65b27dd20840",

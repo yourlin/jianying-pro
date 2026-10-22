@@ -1,0 +1,244 @@
+{
+ "resource_id": "7695024348679163161",
+ "name": "文字条-周末的正确打开方式",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "45991D31-A1DE-499F-A377-67E134178DD3",
+   "46770F86-06B5-417B-AF63-1423D44AFC9C"
+  ]
+ },
+ "template": {
+  "id": "D8575BEF-8196-453E-8167-399AC8A30ED7",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7695024348679163161",
+  "effect_id": "7695024348679163161",
+  "name": "文字条-周末的正确打开方式",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7695024348679163161/30c3edaf331e32affcd9e2a42c4c98ec",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7666020624896199977",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7666020624896199977/f53d528d216df4d75a8d82ab23c58697"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6724920249654710791",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6724920249654710791/0dc90e490f15d6bac5fd1d778e501917"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7694999321623809304",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7694999321623809304/2105dda276a1505e849328fa233d188a"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "A7C1D5E6-9B44-4013-A0F5-0E57546D9D4F",
+    "text_material_id": "02020169-AC2C-4CBF-8D61-69D778EA9337",
+    "extra_material_refs": [
+     "45991D31-A1DE-499F-A377-67E134178DD3"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 590.808837890625,
+     "original_size_height": 87.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8845793604850769,
+       "y": 0.9603126049041748
+      },
+      "transform": {
+       "x": 41.300506591796875,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "CD9F60A8-3FC0-4b1e-8E72-657FC94EE7B9",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "46770F86-06B5-417B-AF63-1423D44AFC9C"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 200,
+     "original_size_height": 200,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.41176268458366394,
+       "y": 0.41176316142082214
+      },
+      "transform": {
+       "x": -261.4328918457031,
+       "y": -3.814697265625e-06
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "02020169-AC2C-4CBF-8D61-69D778EA9337",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.1451, 0.1451, 0.51373]}}}, \"font\": {\"id\": \"7666020624896199977\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7666020624896199977/f53d528d216df4d75a8d82ab23c58697\"}}], \"text\": \"周末的正确打开方式\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.4,
+   "letter_spacing": -0.05,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#252583ff",
+   "name": "02979C27-7F45-41ff-AFDB-4726E707FD6C",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.4264705777168274,
+   "background_height": 0.16568627953529358,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7695024348679163161/30c3edaf331e32affcd9e2a42c4c98ec/image/699e1cff7d40e1ef7097f718ca87a282\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "45991D31-A1DE-499F-A377-67E134178DD3",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6724920249654710791",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6724920249654710791/0dc90e490f15d6bac5fd1d778e501917",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "46770F86-06B5-417B-AF63-1423D44AFC9C",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

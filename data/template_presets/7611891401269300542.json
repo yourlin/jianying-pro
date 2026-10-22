@@ -1,0 +1,258 @@
+{
+ "resource_id": "7611891401269300542",
+ "name": "小蓝-春日限定，万事顺遂",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "A32430A9-3067-49DC-AF4B-A93F2202DC9C",
+   "B38F7074-62C9-41DB-9C90-616374315CB0"
+  ]
+ },
+ "template": {
+  "id": "A4570AE5-4ECB-43EC-972B-B1950F43FD19",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7611891401269300542",
+  "effect_id": "7611891401269300542",
+  "name": "小蓝-春日限定，万事顺遂",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7611891401269300542/4d16ff78efc7422de3cb06d04117187b",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7611905888617745726",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7611905888617745726/e926ed1f73ee0db9e56869505768e83b"
+   },
+   {
+    "panel": "sticker",
+    "resource_id": "7426687310445546786",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7426687310445546786/0533e3aeb2cda562cdd8a86693815443"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7035924520854622757",
+    "source_platform": 1,
+    "path": ""
+   },
+   {
+    "panel": "text",
+    "resource_id": "7276407576625943100",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "6C82D500-2991-42FC-AF61-225899D462C7",
+    "text_material_id": "0900DBA4-72C7-4C6A-8F03-725C413EE31C",
+    "extra_material_refs": [
+     "A32430A9-3067-49DC-AF4B-A93F2202DC9C"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 743.714599609375,
+     "original_size_height": 283.28704833984375,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.1459890604019165,
+       "y": 1.1459892988204956
+      },
+      "transform": {
+       "x": 0,
+       "y": -96.32846069335938
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "0D412CFA-460B-4a54-93DD-650DC67B86AA",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "B38F7074-62C9-41DB-9C90-616374315CB0"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 653,
+     "original_size_height": 432,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.7395064234733582,
+       "y": 0.7395064830780029
+      },
+      "transform": {
+       "x": 0,
+       "y": 80.46408081054688
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "0900DBA4-72C7-4C6A-8F03-725C413EE31C",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"7035924520854622757\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"春日限定，万事顺遂\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "32BBF1A4-26AF-43e8-BE45-A4BE0B1C454D",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "A32430A9-3067-49DC-AF4B-A93F2202DC9C",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7276407576625943100",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 766666,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "B38F7074-62C9-41DB-9C90-616374315CB0",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7426687310445546786",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7426687310445546786/0533e3aeb2cda562cdd8a86693815443",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 700000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": []
+ }
+}

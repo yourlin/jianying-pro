@@ -1,0 +1,275 @@
+{
+ "resource_id": "7690496762166922521",
+ "name": "我的旅行日记",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "F0E72F16-502C-42E2-A190-5C5FDBA3527B",
+   "C6E17F60-0083-470B-94B9-D21C7E64684F",
+   "8FEF6B3E-E067-42F2-8EFC-5D98AC030DD0"
+  ]
+ },
+ "template": {
+  "id": "B20349ED-217A-4DA6-B710-551D4D48A0A8",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7690496762166922521",
+  "effect_id": "7690496762166922521",
+  "name": "我的旅行日记",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7690496762166922521/17adb36352e1535d267d09e33c75d1a1",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "6981124381346958629",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6981124381346958629/c06c3db104c3231ec825fc22c6f14174"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7485673940988203558",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7485673940988203558/c2090467a91f15c333bcb983403ebac6"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7672700625825647923",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7672700625825647923/849a13dcaa28fd0efb3ba50a36639c90"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "DA7631EC-FC2F-45D6-AD99-7F836BD52239",
+    "text_material_id": "F8287960-921E-4F9A-87C9-2C0A0285F205",
+    "extra_material_refs": [
+     "F0E72F16-502C-42E2-A190-5C5FDBA3527B"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 384.375,
+     "original_size_height": 87.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.5829800367355347,
+       "y": 1.5829800367355347
+      },
+      "transform": {
+       "x": 0.975341796875,
+       "y": 0.9753799438476562
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "9247DCF3-1508-45b9-8763-56F353C36E51",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "C6E17F60-0083-470B-94B9-D21C7E64684F"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": -180,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.4061322808265686,
+       "y": 0.4061322510242462
+      },
+      "transform": {
+       "x": 302.5682067871094,
+       "y": 36.38504409790039
+      }
+     }
+    }
+   },
+   {
+    "name": "4C954B3D-9B00-4ff6-BACF-207B9A7B41F9",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "8FEF6B3E-E067-42F2-8EFC-5D98AC030DD0"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.40698373317718506,
+       "y": 0.40698373317718506
+      },
+      "transform": {
+       "x": -302.44903564453125,
+       "y": -36.26587677001953
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "F8287960-921E-4F9A-87C9-2C0A0285F205",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"7485673940988203558\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7485673940988203558/c2090467a91f15c333bcb983403ebac6\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"我的旅行日记\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": -0.05,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "8BF0A8BF-1810-4cfd-9B2E-8F9BE409D6B5",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "F0E72F16-502C-42E2-A190-5C5FDBA3527B",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7672700625825647923",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7672700625825647923/849a13dcaa28fd0efb3ba50a36639c90",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "C6E17F60-0083-470B-94B9-D21C7E64684F",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "8FEF6B3E-E067-42F2-8EFC-5D98AC030DD0",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "AC0A1B77-FC95-4D06-8717-9F0FF4D6D821"
+   "889FC84F-9B4B-42E5-B460-7691E78CA4DF"
   ]
  },
  "template": {
-  "id": "8A38C555-ECCC-4E19-A138-5108BC6E5BE2",
+  "id": "08712BDA-DE7A-4466-BDE6-628A3E597A02",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7381393217561906470",
@@ -47,10 +47,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "61958B2B-46A8-423C-AB61-A586B1C5A144",
-    "text_material_id": "16750F33-5AA8-4FC3-966E-ED79CC61C3B8",
+    "id": "9F81D725-80D2-4057-8A7D-CF4FA07F5773",
+    "text_material_id": "D78F5B5B-336B-42D7-9FE0-BD8F56BAD5F5",
     "extra_material_refs": [
-     "AC0A1B77-FC95-4D06-8717-9F0FF4D6D821"
+     "889FC84F-9B4B-42E5-B460-7691E78CA4DF"
     ],
     "clip_type": "",
     "capital": "",
@@ -111,9 +111,9 @@
  },
  "texts": [
   {
-   "id": "16750F33-5AA8-4FC3-966E-ED79CC61C3B8",
+   "id": "D78F5B5B-336B-42D7-9FE0-BD8F56BAD5F5",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 11.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.93333, 0.37255, 0.53333]}}}, \"font\": {\"id\": \"7316746541820023306\", \"path\": \"\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 11.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.93333, 0.37255, 0.53333]}}}, \"font\": {\"id\": \"7316746541820023306\", \"path\": \"\"}}], \"text\": \"字幕输入中…\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.019999999999999973,
@@ -128,7 +128,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ee5f88ff",
    "name": "B1F4E9E1-3E61-49B0-85F7-27DFF2B76741",
    "use_effect_default_color": true,
@@ -151,13 +151,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 0.8091959357261658,
+   "background_color": "#FDFBFBCE",
+   "background_round_radius": 0.25,
+   "background_width": 0.34632784128189087,
+   "background_height": 0.14,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": ""
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "AC0A1B77-FC95-4D06-8717-9F0FF4D6D821",
+    "id": "889FC84F-9B4B-42E5-B460-7691E78CA4DF",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

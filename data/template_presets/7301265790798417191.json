@@ -26,16 +26,16 @@
    "value": 1
   },
   "extra_material_refs": [
-   "458895EC-FC0A-48BB-9EF3-186579114D7C",
-   "EE67D847-BBA5-4599-B5FD-71202A0025EB",
-   "EE44EC50-F5AD-49C3-9174-1A46214D444E",
-   "F4986F51-16D6-49E2-8FA4-8807085C8F80",
-   "A11BACF8-6939-4595-90A3-82F8ACC1A24E",
-   "75FEFE5E-ACD2-44BE-B063-F49CE51A4CFD"
+   "4540CAD3-9BE6-4E95-8B1E-C824B58397AF",
+   "D028443E-C938-41F9-B62F-308353F0AF45",
+   "4078A848-4B94-4933-B4DD-6E7A58F89031",
+   "F575F6EE-7D8C-495F-9C2C-5C4EB2AB7718",
+   "F151B12A-63EE-4ABA-A1A8-7901674D1E0A",
+   "05012EEA-875F-4E8A-97D9-C44DBC293AC7"
   ]
  },
  "template": {
-  "id": "DE52D912-25F7-49CD-86FF-53950252E2AE",
+  "id": "552C1F1B-0299-41F1-80EF-8AD1DD5128C5",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7301265790798417191",
@@ -100,10 +100,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "175090B5-200A-4C37-86F0-D2681E05162E",
-    "text_material_id": "952FEC64-43C2-42A4-92A3-CC49848B312B",
+    "id": "C54B0560-5007-415E-A8E4-A74053F84230",
+    "text_material_id": "BA945CDB-3B8C-48B3-B0DA-6842F1234387",
     "extra_material_refs": [
-     "458895EC-FC0A-48BB-9EF3-186579114D7C"
+     "4540CAD3-9BE6-4E95-8B1E-C824B58397AF"
     ],
     "clip_type": "",
     "capital": "",
@@ -135,10 +135,10 @@
     }
    },
    {
-    "id": "D859B6AD-B9D6-4D96-AEF4-A4202EE75992",
-    "text_material_id": "E2388DBC-9B61-41D5-AA8C-5795075B39DF",
+    "id": "B7112780-3E4F-4E16-9A33-AC35017778F1",
+    "text_material_id": "D1571DD6-14F6-45B3-A4D1-9411E371976B",
     "extra_material_refs": [
-     "EE67D847-BBA5-4599-B5FD-71202A0025EB"
+     "D028443E-C938-41F9-B62F-308353F0AF45"
     ],
     "clip_type": "",
     "capital": "",
@@ -187,7 +187,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "EE44EC50-F5AD-49C3-9174-1A46214D444E"
+     "4078A848-4B94-4933-B4DD-6E7A58F89031"
     ],
     "attach_info": {
      "start_time": 0,
@@ -221,7 +221,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "F4986F51-16D6-49E2-8FA4-8807085C8F80"
+     "F575F6EE-7D8C-495F-9C2C-5C4EB2AB7718"
     ],
     "attach_info": {
      "start_time": 0,
@@ -255,7 +255,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "A11BACF8-6939-4595-90A3-82F8ACC1A24E"
+     "F151B12A-63EE-4ABA-A1A8-7901674D1E0A"
     ],
     "attach_info": {
      "start_time": 0,
@@ -289,7 +289,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "75FEFE5E-ACD2-44BE-B063-F49CE51A4CFD"
+     "05012EEA-875F-4E8A-97D9-C44DBC293AC7"
     ],
     "attach_info": {
      "start_time": 0,
@@ -336,7 +336,7 @@
  },
  "texts": [
   {
-   "id": "952FEC64-43C2-42A4-92A3-CC49848B312B",
+   "id": "BA945CDB-3B8C-48B3-B0DA-6842F1234387",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 9.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.14118, 0.13333, 0.13333]}}}, \"font\": {\"id\": \"7265596846465094199\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7265596846465094199/6ae9ea8211a7b2df59519cc25bf0e4d3\"}}], \"text\": \"@你的用户名\"}",
    "font_size": 15,
@@ -373,7 +373,7 @@
    }
   },
   {
-   "id": "E2388DBC-9B61-41D5-AA8C-5795075B39DF",
+   "id": "D1571DD6-14F6-45B3-A4D1-9411E371976B",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 16.0, \"font\": {\"id\": \"7268259518427959866\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"财经辣评\"}",
    "font_size": 15,
@@ -413,7 +413,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "458895EC-FC0A-48BB-9EF3-186579114D7C",
+    "id": "4540CAD3-9BE6-4E95-8B1E-C824B58397AF",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -437,7 +437,7 @@
     ]
    },
    {
-    "id": "EE67D847-BBA5-4599-B5FD-71202A0025EB",
+    "id": "D028443E-C938-41F9-B62F-308353F0AF45",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -461,25 +461,25 @@
     ]
    },
    {
-    "id": "EE44EC50-F5AD-49C3-9174-1A46214D444E",
+    "id": "4078A848-4B94-4933-B4DD-6E7A58F89031",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "F4986F51-16D6-49E2-8FA4-8807085C8F80",
+    "id": "F575F6EE-7D8C-495F-9C2C-5C4EB2AB7718",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "A11BACF8-6939-4595-90A3-82F8ACC1A24E",
+    "id": "F151B12A-63EE-4ABA-A1A8-7901674D1E0A",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "75FEFE5E-ACD2-44BE-B063-F49CE51A4CFD",
+    "id": "05012EEA-875F-4E8A-97D9-C44DBC293AC7",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

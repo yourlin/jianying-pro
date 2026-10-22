@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "53781882-0A7D-494A-AA0B-E77DE847B414"
+   "56D8F0ED-259D-404E-9D88-DA5B2372E6EE"
   ]
  },
  "template": {
-  "id": "6607C4BC-B1AD-43B2-81D4-229893D03E58",
+  "id": "8C373F3F-8A7F-4473-9A72-945CEAED7796",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7667851484595244312",
@@ -48,7 +48,7 @@
     "panel": "text",
     "resource_id": "7369475018394178089",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7369475018394178089/0829876352571d043617fe27aaaa15e1"
    },
    {
     "panel": "system-fonts",
@@ -65,10 +65,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "A8509619-8204-496B-954E-1375A4D40065",
-    "text_material_id": "969DBF76-4C2F-4511-99C6-0DDFC1F6173D",
+    "id": "572A8116-B2A2-48C3-9FE9-1BFC74EF9830",
+    "text_material_id": "0BB99F2C-C0C4-416A-927A-2B444FF413AC",
     "extra_material_refs": [
-     "53781882-0A7D-494A-AA0B-E77DE847B414"
+     "56D8F0ED-259D-404E-9D88-DA5B2372E6EE"
     ],
     "clip_type": "",
     "capital": "",
@@ -129,9 +129,9 @@
  },
  "texts": [
   {
-   "id": "969DBF76-4C2F-4511-99C6-0DDFC1F6173D",
+   "id": "0BB99F2C-C0C4-416A-927A-2B444FF413AC",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7576595898222824754\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7576595898222824754/084bccc415737f6c5124697aba01224f\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7576595898222824754\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7576595898222824754/084bccc415737f6c5124697aba01224f\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -146,7 +146,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#000000ff",
    "name": "803D30F8-2A41-4b52-89EF-8249F22D2564",
    "use_effect_default_color": true,
@@ -169,20 +169,30 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0.5,
+   "background_width": 0.2448979616165161,
+   "background_height": 0.20000000298023224,
+   "background_horizontal_offset": -0.5265306234359741,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7667851484595244312/f2424717fce2ad12049eb0ca3e5e64ae/image/1785310198447.png\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1.006578947368421, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "53781882-0A7D-494A-AA0B-E77DE847B414",
+    "id": "56D8F0ED-259D-404E-9D88-DA5B2372E6EE",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
      {
       "type": "caption",
       "resource_id": "7369475018394178089",
-      "path": "",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7369475018394178089/0829876352571d043617fe27aaaa15e1",
       "material_type": "sticker",
       "start": 0,
       "duration": 1,

@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "E01CB8BC-D74D-404B-8162-5A76FE8C9BCF"
+   "B0D393FD-BBA1-4D21-9F74-A7EF7EA41A9C"
   ]
  },
  "template": {
-  "id": "D14CF8DB-2611-4065-A8C0-3BF19F12A9E6",
+  "id": "0597C9E8-C55A-45FF-B5D9-9D4C8B04D531",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7526029634534739225",
@@ -48,7 +48,7 @@
     "panel": "text",
     "resource_id": "7367227668309217855",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7367227668309217855/c23e1b377dd6da3b3daf65e907c660d0"
    },
    {
     "panel": "system-fonts",
@@ -60,15 +60,15 @@
     "panel": "fonts",
     "resource_id": "7316745679055884837",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7316745679055884837/b316a0c93d766f2bcefb9962ebb92f46"
    }
   ],
   "text_info_resources": [
    {
-    "id": "716DA27A-80A7-4225-852C-EE61ECB1B977",
-    "text_material_id": "A0FC46C7-EA8B-4C2D-AB51-19B89C6D8624",
+    "id": "0623E2E6-1CAB-4783-9FF8-75DFD6D6E01B",
+    "text_material_id": "C1BC564E-A082-481A-B732-B865DFC73879",
     "extra_material_refs": [
-     "E01CB8BC-D74D-404B-8162-5A76FE8C9BCF"
+     "B0D393FD-BBA1-4D21-9F74-A7EF7EA41A9C"
     ],
     "clip_type": "",
     "capital": "",
@@ -129,9 +129,9 @@
  },
  "texts": [
   {
-   "id": "A0FC46C7-EA8B-4C2D-AB51-19B89C6D8624",
+   "id": "C1BC564E-A082-481A-B732-B865DFC73879",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.07451, 0.07451, 0.07451]}}}, \"font\": {\"id\": \"7451897289527792178\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.07451, 0.07451, 0.07451]}}}, \"font\": {\"id\": \"7451897289527792178\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -146,7 +146,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#131313ff",
    "name": "9806E6E4-3EB0-4d3c-9031-6102C684264C",
    "use_effect_default_color": true,
@@ -169,20 +169,30 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FFBCDBFF",
+   "background_round_radius": 0.1864468902349472,
+   "background_width": 0.20000000298023224,
+   "background_height": 1.776356799695581e-17,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"solid\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.7372549176216125, 0.8588235378265381]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "E01CB8BC-D74D-404B-8162-5A76FE8C9BCF",
+    "id": "B0D393FD-BBA1-4D21-9F74-A7EF7EA41A9C",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
      {
       "type": "caption",
       "resource_id": "7367227668309217855",
-      "path": "",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7367227668309217855/c23e1b377dd6da3b3daf65e907c660d0",
       "material_type": "sticker",
       "start": 0,
       "duration": 1,

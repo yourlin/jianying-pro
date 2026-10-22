@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "11943752-435C-4445-AC7C-951560B8B367"
+   "7C6F59E0-B71A-4305-B92C-299E1A378A84"
   ]
  },
  "template": {
-  "id": "5F4E7065-A89E-4728-9200-0795BE037590",
+  "id": "1D8CA69A-993E-4516-817F-1E9ECF52B8A2",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7584487855557299480",
@@ -65,10 +65,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "65B0E5B9-D6AA-4E89-8B54-4D293E553E8B",
-    "text_material_id": "A141F024-6E95-47A5-A75E-C275E3FB8CE2",
+    "id": "5F5C3F87-3FA2-4110-9DC4-332BBB2B675D",
+    "text_material_id": "9716F850-EC38-47F9-835B-5E4E8E68F1E2",
     "extra_material_refs": [
-     "11943752-435C-4445-AC7C-951560B8B367"
+     "7C6F59E0-B71A-4305-B92C-299E1A378A84"
     ],
     "clip_type": "",
     "capital": "",
@@ -129,9 +129,9 @@
  },
  "texts": [
   {
-   "id": "A141F024-6E95-47A5-A75E-C275E3FB8CE2",
+   "id": "9716F850-EC38-47F9-835B-5E4E8E68F1E2",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"font\": {\"id\": \"7312719555653014053\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7312719555653014053/b978210e888a28fd7f6b1ac6e864cc03\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"font\": {\"id\": \"7312719555653014053\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7312719555653014053/b978210e888a28fd7f6b1ac6e864cc03\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"好运配送中\\n好运配送中\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -146,7 +146,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "4D9DD8A9-241A-405f-A390-51ECCCBE1260",
    "use_effect_default_color": true,
@@ -169,13 +169,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#60A0B1FF",
+   "background_round_radius": 1,
+   "background_width": 0.5090047121047974,
+   "background_height": 0.20000000298023224,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"solid\", \"solid\": {\"alpha\": 1, \"color\": [0.3764705955982208, 0.6274510025978088, 0.6941176652908325]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "11943752-435C-4445-AC7C-951560B8B367",
+    "id": "7C6F59E0-B71A-4305-B92C-299E1A378A84",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [

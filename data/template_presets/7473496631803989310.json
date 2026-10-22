@@ -26,16 +26,16 @@
    "value": 1
   },
   "extra_material_refs": [
-   "6DFA7D19-C5E9-4F10-AEA8-9FAF4C9DB622",
-   "F7AD4DCE-CB8C-4A81-993C-43A6EB812824",
-   "CABE1F24-0D28-4C89-80A1-20052AF5D45D",
-   "2C4D6C7D-2282-4EFB-8D3E-912C27F67137",
-   "2F81D46B-AD6F-4DD1-89E8-7AE7E224B700",
-   "A67ACB29-9519-42BC-B3E7-0AB1579D1C95"
+   "11B2D9B7-E24D-42CD-8252-ADAF53C2455B",
+   "978A5FAE-2A61-4D44-A2B5-967403597199",
+   "587A3A15-B0D4-44F3-B54A-D1ADF3B4E60F",
+   "EDEC865B-A253-4450-B5DC-F79633FA26B0",
+   "69C7CE17-9131-438E-A481-A8B958204781",
+   "215DDE76-2C75-41CA-9E54-85DDD8B2382C"
   ]
  },
  "template": {
-  "id": "989682AE-5C34-427E-A9E4-7274311BEA79",
+  "id": "BCCC279C-7323-4925-BF90-42F4498BD548",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7473496631803989310",
@@ -88,11 +88,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "A18E2DCE-E364-485B-8252-E2B480251515",
-    "text_material_id": "FC288B28-F722-41C6-8EE4-0AEEC2FD1D15",
+    "id": "B2D95C09-AAFD-4691-A9A4-89B6317F4CB9",
+    "text_material_id": "C68DFCAF-7480-4A01-BD1C-54769A5A13C8",
     "extra_material_refs": [
-     "6DFA7D19-C5E9-4F10-AEA8-9FAF4C9DB622",
-     "F7AD4DCE-CB8C-4A81-993C-43A6EB812824"
+     "11B2D9B7-E24D-42CD-8252-ADAF53C2455B",
+     "978A5FAE-2A61-4D44-A2B5-967403597199"
     ],
     "clip_type": "",
     "capital": "",
@@ -124,11 +124,11 @@
     }
    },
    {
-    "id": "D794A3A1-82CD-4304-9D5A-F1D6FD47281A",
-    "text_material_id": "BDE2E54E-CCAE-43EC-A910-699BEF2084C8",
+    "id": "E849E4A9-544D-495A-84E4-EC21FC63184C",
+    "text_material_id": "4EF94B0E-1180-4AB0-A6C1-8B49E2D14B7E",
     "extra_material_refs": [
-     "CABE1F24-0D28-4C89-80A1-20052AF5D45D",
-     "2C4D6C7D-2282-4EFB-8D3E-912C27F67137"
+     "587A3A15-B0D4-44F3-B54A-D1ADF3B4E60F",
+     "EDEC865B-A253-4450-B5DC-F79633FA26B0"
     ],
     "clip_type": "",
     "capital": "",
@@ -177,7 +177,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "2F81D46B-AD6F-4DD1-89E8-7AE7E224B700"
+     "69C7CE17-9131-438E-A481-A8B958204781"
     ],
     "attach_info": {
      "start_time": 0,
@@ -211,7 +211,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "A67ACB29-9519-42BC-B3E7-0AB1579D1C95"
+     "215DDE76-2C75-41CA-9E54-85DDD8B2382C"
     ],
     "attach_info": {
      "start_time": 0,
@@ -258,7 +258,7 @@
  },
  "texts": [
   {
-   "id": "FC288B28-F722-41C6-8EE4-0AEEC2FD1D15",
+   "id": "C68DFCAF-7480-4A01-BD1C-54769A5A13C8",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7473466498204552473\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7473466498204552473/d2c741946d9c8db190b45673e2591835\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.78431, 0.53333, 0.45098]}}}, \"font\": {\"id\": \"7290443923556667959\", \"path\": \"\"}}], \"text\": \"春渐浓\"}",
    "font_size": 15,
@@ -295,7 +295,7 @@
    }
   },
   {
-   "id": "BDE2E54E-CCAE-43EC-A910-699BEF2084C8",
+   "id": "4EF94B0E-1180-4AB0-A6C1-8B49E2D14B7E",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7473478830041337150\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7473478830041337150/2904270b6286b6f5177fa888b70e9e4a\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.36471, 0.69804, 0.34118]}}}, \"font\": {\"id\": \"7290443923556667959\", \"path\": \"\"}}], \"text\": \"雨水至\"}",
    "font_size": 15,
@@ -335,7 +335,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "F7AD4DCE-CB8C-4A81-993C-43A6EB812824",
+    "id": "978A5FAE-2A61-4D44-A2B5-967403597199",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -359,7 +359,7 @@
     ]
    },
    {
-    "id": "2C4D6C7D-2282-4EFB-8D3E-912C27F67137",
+    "id": "EDEC865B-A253-4450-B5DC-F79633FA26B0",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -383,7 +383,7 @@
     ]
    },
    {
-    "id": "2F81D46B-AD6F-4DD1-89E8-7AE7E224B700",
+    "id": "69C7CE17-9131-438E-A481-A8B958204781",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -407,7 +407,7 @@
     ]
    },
    {
-    "id": "A67ACB29-9519-42BC-B3E7-0AB1579D1C95",
+    "id": "215DDE76-2C75-41CA-9E54-85DDD8B2382C",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -433,7 +433,7 @@
   ],
   "effects": [
    {
-    "id": "6DFA7D19-C5E9-4F10-AEA8-9FAF4C9DB622",
+    "id": "11B2D9B7-E24D-42CD-8252-ADAF53C2455B",
     "type": "text_effect",
     "resource_id": "7473466498204552473",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7473466498204552473/d2c741946d9c8db190b45673e2591835",
@@ -445,7 +445,7 @@
     "visible": true
    },
    {
-    "id": "CABE1F24-0D28-4C89-80A1-20052AF5D45D",
+    "id": "587A3A15-B0D4-44F3-B54A-D1ADF3B4E60F",
     "type": "text_effect",
     "resource_id": "7473478830041337150",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7473478830041337150/2904270b6286b6f5177fa888b70e9e4a",

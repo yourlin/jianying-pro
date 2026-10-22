@@ -1,0 +1,234 @@
+{
+ "resource_id": "7674133938209672489",
+ "name": "日常记录-路边的银杏黄了",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "2C28ED14-B42D-4C40-B597-FDE3F18BBFA5",
+   "C56397FF-69AE-4C15-83E0-079CD0438429"
+  ]
+ },
+ "template": {
+  "id": "5EC9116B-959F-4871-99F4-A9F97013BC2E",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7674133938209672489",
+  "effect_id": "7674133938209672489",
+  "name": "日常记录-路边的银杏黄了",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7674133938209672489/13530e1f93dc352ce64217ae8921965a",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7672431609882217753",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672431609882217753/fa0bd5004f914ed669e4984b92f56399"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7290445024435638842",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6869302248103481869",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6869302248103481869/a6a9e77486fe911cfe9f270be3c3eab8"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "8769BA16-0CDD-4FB3-A8F2-7BF64F90BBE2",
+    "text_material_id": "ADADC68A-E555-417A-B03C-7BE4820EAD67",
+    "extra_material_refs": [
+     "2C28ED14-B42D-4C40-B597-FDE3F18BBFA5"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 490.00006103515625,
+     "original_size_height": 212.3333282470703,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8348922729492188,
+       "y": 0.8348925709724426
+      },
+      "transform": {
+       "x": 0,
+       "y": 14.315292358398438
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "E72AC388-5BF2-492e-BF3D-42A21C324B3F",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "C56397FF-69AE-4C15-83E0-079CD0438429"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 800,
+     "original_size_height": 538,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.9000015258789062,
+       "y": 0.9000009298324585
+      },
+      "transform": {
+       "x": 0,
+       "y": 3.3887939453125
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "ADADC68A-E555-417A-B03C-7BE4820EAD67",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 14.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.31373, 0.30588, 0.28627]}}}, \"font\": {\"id\": \"7290445024435638842\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69\"}}], \"text\": \"路边的银杏开始\\n黄了，阳光穿过叶\\n片洒下碎金.\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.11999999999999995,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#504e49ff",
+   "name": "693A1898-6255-4f9b-A9DC-A184BD6F3E88",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "2C28ED14-B42D-4C40-B597-FDE3F18BBFA5",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6869302248103481869",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6869302248103481869/a6a9e77486fe911cfe9f270be3c3eab8",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "C56397FF-69AE-4C15-83E0-079CD0438429",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

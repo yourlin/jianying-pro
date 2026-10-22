@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "556ABD87-6B33-4E34-96AE-E991EBC6424D"
+   "156578F4-ADFF-4B49-951B-2FA6ECB00D3A"
   ]
  },
  "template": {
-  "id": "1CD1AE1E-8BE1-4969-9BD8-24F60284B3D4",
+  "id": "C42315F6-EF5E-433E-A520-2C30AD5EEA65",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7476001387902553406",
@@ -59,10 +59,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "6C4F7C19-4049-4266-9175-0EDB5422BC7C",
-    "text_material_id": "C7F70EC2-2505-428F-AC63-684C8C43DDE2",
+    "id": "9B22DD97-6F69-4B02-A999-DA1717D00B13",
+    "text_material_id": "DA94E8EF-8DE3-4F46-A077-9B5764BD8831",
     "extra_material_refs": [
-     "556ABD87-6B33-4E34-96AE-E991EBC6424D"
+     "156578F4-ADFF-4B49-951B-2FA6ECB00D3A"
     ],
     "clip_type": "",
     "capital": "",
@@ -123,9 +123,9 @@
  },
  "texts": [
   {
-   "id": "C7F70EC2-2505-428F-AC63-684C8C43DDE2",
+   "id": "DA94E8EF-8DE3-4F46-A077-9B5764BD8831",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 10.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.27059, 0.27059, 0.27059]}}}, \"font\": {\"id\": \"7316821586038755877\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7316821586038755877/b504036de8a8db8ada2082bfaeb6b497\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 10.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.27059, 0.27059, 0.27059]}}}, \"font\": {\"id\": \"7316821586038755877\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7316821586038755877/b504036de8a8db8ada2082bfaeb6b497\"}}], \"text\": \"这只黄色的肿眼泡我也好喜欢\\n其实人家叫捏捏怪\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.45,
@@ -140,7 +140,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#454545ff",
    "name": "7CC50BAF-58FC-4A6A-9E87-4F6B868CEE1A",
    "use_effect_default_color": true,
@@ -163,13 +163,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 0.699999988079071,
+   "background_color": "#FFFFFFB2",
+   "background_round_radius": 0,
+   "background_width": 0.05986734852194786,
+   "background_height": 0.3339749574661255,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"solid\", \"solid\": {\"alpha\": 1, \"color\": [1, 1, 1]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "556ABD87-6B33-4E34-96AE-E991EBC6424D",
+    "id": "156578F4-ADFF-4B49-951B-2FA6ECB00D3A",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [

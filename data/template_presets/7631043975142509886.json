@@ -1,0 +1,328 @@
+{
+ "resource_id": "7631043975142509886",
+ "name": "便签拼贴手写长文字",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "618C0829-2807-444C-8432-EAA56E884212",
+   "4668A7FA-E41D-4139-ABFA-F3FA228A4106",
+   "94D73E43-1D95-4BFD-9971-1CB206154492",
+   "480AC405-5CC3-4D7E-8E73-28179A02F68B"
+  ]
+ },
+ "template": {
+  "id": "D16F7D32-064C-4A7E-91E7-C35C0D41A894",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7631043975142509886",
+  "effect_id": "7631043975142509886",
+  "name": "便签拼贴手写长文字",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7631043975142509886/90219e646ed7a3a7b60305e065df4a92",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7630039302319361305",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7630039302319361305/e49ad1c9c0c1d3caf5f9303cbe851d41"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7068530728467698213",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7068530728467698213/8842c4ca3fde9cefeaa17fa5bb99a77b"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7276407576625943100",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7631076908033215769",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7631076908033215769/086b189f6a8b15fb24e43b6e5a74ed65"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7629646652785282329",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7629646652785282329/598833d0feb0082a6312e8a05150bd59"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "A7C7E4C4-F10D-4F67-9A6B-F2A38EA1EB25",
+    "text_material_id": "940FB242-6787-4FC5-BE67-E761A63C15C7",
+    "extra_material_refs": [
+     "618C0829-2807-444C-8432-EAA56E884212"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 322.57501220703125,
+     "original_size_height": 155.4375,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.5706723928451538,
+       "y": 1.570671796798706
+      },
+      "transform": {
+       "x": 36.749053955078125,
+       "y": -6.0205230712890625
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "D2A76773-6F20-48d2-BB10-DA770CFEB220",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "4668A7FA-E41D-4139-ABFA-F3FA228A4106"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 785,
+     "original_size_height": 333,
+     "clip": {
+      "alpha": 1,
+      "rotation": -10,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.35179606080055237,
+       "y": 0.35179591178894043
+      },
+      "transform": {
+       "x": -3.0517578125e-05,
+       "y": 181.39410400390625
+      }
+     }
+    }
+   },
+   {
+    "name": "01FD37BE-3BEF-4a25-A069-3BA3AB18D786",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "94D73E43-1D95-4BFD-9971-1CB206154492"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 634,
+     "original_size_height": 470,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.08462957292795181,
+       "y": 0.0846295952796936
+      },
+      "transform": {
+       "x": 272.0076904296875,
+       "y": -172.9097137451172
+      }
+     }
+    }
+   },
+   {
+    "name": "C812C195-890A-44e0-B094-9106D93E5F65",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "480AC405-5CC3-4D7E-8E73-28179A02F68B"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 778,
+     "original_size_height": 443,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8577733635902405,
+       "y": 0.8996556997299194
+      },
+      "transform": {
+       "x": 0,
+       "y": -18.37213134765625
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "940FB242-6787-4FC5-BE67-E761A63C15C7",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 9.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7068530728467698213\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7068530728467698213/8842c4ca3fde9cefeaa17fa5bb99a77b\"}}], \"text\": \"其实，无聊就是\\n幸福呀！\\n你越无聊就越幸福。\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.36999999999999994,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#000000ff",
+   "name": "01990B31-6256-4abb-A459-9AEC630B2841",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "618C0829-2807-444C-8432-EAA56E884212",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7276407576625943100",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "4668A7FA-E41D-4139-ABFA-F3FA228A4106",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "94D73E43-1D95-4BFD-9971-1CB206154492",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "480AC405-5CC3-4D7E-8E73-28179A02F68B",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "7FFE0C90-AF94-4300-A45E-CCC9C000E576",
-   "16931EC7-6FF9-4B3B-811E-D87F381B1925"
+   "7F9A9E52-5C99-4693-8352-B96A4E005BCD",
+   "894E8AFE-DA8C-4495-939D-32DB095BA4DF"
   ]
  },
  "template": {
-  "id": "4922BBF3-C13A-4DE5-8DD7-EA0A2C5155D6",
+  "id": "04EF934F-BAEA-4CF5-9544-F00F2E69346A",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7496790101893090585",
@@ -66,11 +66,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "7075B911-B6DC-4CA4-AB0E-53F7D9CDE22F",
-    "text_material_id": "139B5FE1-C4A9-4864-8151-629AD37A224B",
+    "id": "8E58E1DE-6A86-452C-95C9-9B78CB4EB6C2",
+    "text_material_id": "E4E21878-168C-465F-BB5C-0C6FF54AFEE1",
     "extra_material_refs": [
-     "7FFE0C90-AF94-4300-A45E-CCC9C000E576",
-     "16931EC7-6FF9-4B3B-811E-D87F381B1925"
+     "7F9A9E52-5C99-4693-8352-B96A4E005BCD",
+     "894E8AFE-DA8C-4495-939D-32DB095BA4DF"
     ],
     "clip_type": "",
     "capital": "",
@@ -131,9 +131,9 @@
  },
  "texts": [
   {
-   "id": "139B5FE1-C4A9-4864-8151-629AD37A224B",
+   "id": "E4E21878-168C-465F-BB5C-0C6FF54AFEE1",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7496790131769118014\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7496790131769118014/3dc953b0ebce9eef4358ff74464cb848\"}, \"size\": 13.0, \"font\": {\"id\": \"7070430083919385119\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7496790131769118014\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7496790131769118014/3dc953b0ebce9eef4358ff74464cb848\"}, \"size\": 13.0, \"font\": {\"id\": \"7070430083919385119\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.3,
@@ -148,7 +148,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "B50DC60F-080F-418C-8D0E-587D5227F941",
    "use_effect_default_color": true,
@@ -171,13 +171,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 2,
+   "background_height": 0.4399999976158142,
+   "background_horizontal_offset": -0.41999998688697815,
+   "background_vertical_offset": 0.1599999964237213,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7496790101893090585/9449f0a852836aaa2291d9c46f672917/image/1745307739090.png\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "16931EC7-6FF9-4B3B-811E-D87F381B1925",
+    "id": "894E8AFE-DA8C-4495-939D-32DB095BA4DF",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
@@ -185,7 +195,7 @@
   ],
   "effects": [
    {
-    "id": "7FFE0C90-AF94-4300-A45E-CCC9C000E576",
+    "id": "7F9A9E52-5C99-4693-8352-B96A4E005BCD",
     "type": "text_effect",
     "resource_id": "7496790131769118014",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7496790131769118014/3dc953b0ebce9eef4358ff74464cb848",

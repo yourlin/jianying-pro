@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "C1B4488F-2717-4A5D-B542-6A27D999353F"
+   "1D4F4631-7A73-4F35-8A3B-7A9558558059"
   ]
  },
  "template": {
-  "id": "E3E2BF1E-4D01-49B2-8417-DCAD9DC59E5E",
+  "id": "09C30BE0-69EA-4F8E-903B-5113FF8C4B2C",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7655711146430729496",
@@ -53,10 +53,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "1E5A6166-FA7A-45DE-901B-2980AB62DA8F",
-    "text_material_id": "7B072960-CE9C-441A-B6AD-CAB30A006BBF",
+    "id": "E173CA77-949B-49D3-B22D-A3CB761023DA",
+    "text_material_id": "71C6D0FC-D6AF-4D63-8476-DA32886C39B9",
     "extra_material_refs": [
-     "C1B4488F-2717-4A5D-B542-6A27D999353F"
+     "1D4F4631-7A73-4F35-8A3B-7A9558558059"
     ],
     "clip_type": "",
     "capital": "",
@@ -117,9 +117,9 @@
  },
  "texts": [
   {
-   "id": "7B072960-CE9C-441A-B6AD-CAB30A006BBF",
+   "id": "71C6D0FC-D6AF-4D63-8476-DA32886C39B9",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 1.0, 1.0]}}}, \"size\": 13.0, \"font\": {\"id\": \"7524980286052896009\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7524980286052896009/c1818cadc558b544183f528634d1c285\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 1.0, 1.0]}}}, \"size\": 13.0, \"font\": {\"id\": \"7524980286052896009\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7524980286052896009/c1818cadc558b544183f528634d1c285\"}}], \"text\": \"input text...\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0,
@@ -134,7 +134,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "65A4939A-BD58-4026-B987-58E3E318E5CE",
    "use_effect_default_color": true,
@@ -157,13 +157,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 0.6,
+   "background_color": "#FFA5D699",
+   "background_round_radius": 0.2,
+   "background_width": 0.1,
+   "background_height": 0.1,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"render_type\": \"solid\", \"solid\": {\"alpha\": 0.6, \"color\": [1, 0.65, 0.84]}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "C1B4488F-2717-4A5D-B542-6A27D999353F",
+    "id": "1D4F4631-7A73-4F35-8A3B-7A9558558059",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [

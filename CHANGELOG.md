@@ -1,10 +1,13 @@
 # Changelog
 
 ## Unreleased
-- **Text templates from packages**: `warmup --kind text` and `sync_jy_templates.py --from-packages` now generate text-template presets as well (334 usable, 304 of them free). The generated presets include stickers (position/size/timing/animations), per-element timing, loop durations and default texts. Checked against 19 JianYing-applied presets, and 17 were verified in-app by screenshot against the panel covers. Sticker animations that cannot be downloaded are dropped, because JianYing hides the whole sticker otherwise. Templates with shape elements are skipped.
+- **Text templates from packages**: `warmup --kind text` and `sync_jy_templates.py --from-packages` now generate text-template presets as well (304 free). The generated presets include stickers (position/size/timing/animations), per-element timing, loop durations and default texts. Checked against 19 JianYing-applied presets, and 17 were verified in-app by screenshot against the panel covers. Sticker animations that cannot be downloaded are dropped, because JianYing hides the whole sticker otherwise. Templates with shape elements are skipped.
 - Multi-text templates: `add_text_template([...], template)` fills each text in order (`None` keeps the template text); `template_texts()` lists the defaults.
 - **Fully automatic warm-up** (`warmup --auto`, macOS): opens each warm-up draft in JianYing, waits, returns home, moves the used draft to the Trash, then generates presets. `--min-id` skips old templates.
 - `jy_preview`: verifies the playhead after seeking (reads the timecode via accessibility and corrects dropped keys), scrolls the home list to find drafts, and returns home through the menu.
+- **Text backgrounds** in package-generated presets (subtitle and text templates): `text_params.canvas*` maps to `background_*` (color, alpha, rounded corners, size, offset, texture fill from the package's `image/`), and `check_flag` bit 16 turns the background on (JianYing's own presets: 63 with a background, 47 without). Matches 25 of 26 JianYing-applied presets; verified in-app. All 3,855 package presets were regenerated.
+- VIP text templates: the newest 2,200 were warmed up automatically (1,964 usable in total).
+- `jy_preview`: picks whichever warm-up draft is visible first (drafts created in the same second have no stable order), retries a click that doesn't open the draft, waits before discarding a used draft (JianYing otherwise recreates an empty stub folder), and seeks twice for the first capture.
 - Harvest skips templates the skill itself wrote into a draft (unchanged material IDs), so generated presets are never re-imported as "real" ones.
 
 ## v0.1.0 - 2026-10-22

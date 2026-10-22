@@ -1,0 +1,234 @@
+{
+ "resource_id": "7659431032328080665",
+ "name": "吹着小风过夏天",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "6B761F00-E32C-4DC2-8C71-19BA41A8B199",
+   "D7229AFF-9108-41EC-A6FA-4E45B217BFDB"
+  ]
+ },
+ "template": {
+  "id": "70CEEB83-56FB-4D25-A894-56E018638378",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7659431032328080665",
+  "effect_id": "7659431032328080665",
+  "name": "吹着小风过夏天",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7659431032328080665/3421e60f0426ada6b9b5c3da14d330bb",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7301357674451471626",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7301357674451471626/8b28ea634038cb162208d41724045fa9"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7545008910319537434",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7545008910319537434/db572a8ece48a84c4459630427e1c245"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7123116334677758501",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7123116334677758501/baf388948005891621d464fa4d0c4408"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "03AACA87-4A84-4AEF-B512-AE6B89BC92A8",
+    "text_material_id": "126DEEC5-753E-4D60-B8C9-2248E0249575",
+    "extra_material_refs": [
+     "6B761F00-E32C-4DC2-8C71-19BA41A8B199"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 438.1875,
+     "original_size_height": 87.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.167701005935669,
+       "y": 1.167701244354248
+      },
+      "transform": {
+       "x": 33.06829833984375,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "ECBB5FDB-3E32-46e1-A6D4-3845EE06BBBF",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "D7229AFF-9108-41EC-A6FA-4E45B217BFDB"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 540,
+     "original_size_height": 540,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.2209099531173706,
+       "y": 1.220910906791687
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "126DEEC5-753E-4D60-B8C9-2248E0249575",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7545008910319537434\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7545008910319537434/db572a8ece48a84c4459630427e1c245\"}}], \"text\": \"吹着小风过夏天\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#000000ff",
+   "name": "AE533335-5F63-4a54-A14F-A243F41DC330",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "6B761F00-E32C-4DC2-8C71-19BA41A8B199",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7123116334677758501",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7123116334677758501/baf388948005891621d464fa4d0c4408",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "D7229AFF-9108-41EC-A6FA-4E45B217BFDB",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

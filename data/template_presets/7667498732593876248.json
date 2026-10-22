@@ -1,0 +1,244 @@
+{
+ "resource_id": "7667498732593876248",
+ "name": "标签语录-夏日不经意的心动",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "4D38C950-B30A-40DC-AC28-0071A0D00CC4",
+   "A2989616-C6D4-46D1-9022-09EF92C87FD4"
+  ]
+ },
+ "template": {
+  "id": "6C4CCAAB-DDC5-4590-B7CA-4CC96D247279",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7667498732593876248",
+  "effect_id": "7667498732593876248",
+  "name": "标签语录-夏日不经意的心动",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7667498732593876248/345097934096cf327f9af47bb6c805ae",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7554335846820842779",
+    "source_platform": 1,
+    "path": ""
+   },
+   {
+    "panel": "text",
+    "resource_id": "6790246693674684942",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7667518559316380990",
+    "source_platform": 1,
+    "path": ""
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "8B1D270B-8641-44EC-9DA8-3663AAE1DB49",
+    "text_material_id": "E865FE79-9981-4344-A52F-784B1EF682E5",
+    "extra_material_refs": [
+     "4D38C950-B30A-40DC-AC28-0071A0D00CC4"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 669.7005615234375,
+     "original_size_height": 101.42041015625,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.971421480178833,
+       "y": 1.0171513557434082
+      },
+      "transform": {
+       "x": 45,
+       "y": 3
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "AC2D183A-2928-449e-BB65-DEDB37C3B4A1",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "A2989616-C6D4-46D1-9022-09EF92C87FD4"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 68,
+     "original_size_height": 78,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.6931412816047668,
+       "y": 0.6931406855583191
+      },
+      "transform": {
+       "x": -226.61114501953125,
+       "y": 6.770965576171875
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "E865FE79-9981-4344-A52F-784B1EF682E5",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.2902, 0.18824, 0.15294]}}}, \"font\": {\"id\": \"7554335846820842779\", \"path\": \"\"}}], \"text\": \"夏日不经意的心动。\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.6200000000000001,
+   "letter_spacing": 0,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#4a3027ff",
+   "name": "6888E90C-1E3B-465f-9845-CD7304C7DC2B",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#D9E4F8FF",
+   "background_round_radius": 0.49806201457977295,
+   "background_width": 0.9972093105316162,
+   "background_height": 0.23627907037734985,
+   "background_horizontal_offset": -0.0742635652422905,
+   "background_vertical_offset": 0.04713178426027298,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [0.8509804010391235, 0.8941176533699036, 0.9725490212440491]}, \"texture\": {\"alpha\": 0.7049122807017534, \"angle\": 0, \"blend\": \"solid\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7667498732593876248/345097934096cf327f9af47bb6c805ae/image/1785319060391.PNG\", \"range\": 4, \"scale\": 2.999999999999991, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "4D38C950-B30A-40DC-AC28-0071A0D00CC4",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "6790246693674684942",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "A2989616-C6D4-46D1-9022-09EF92C87FD4",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "FAFB5D5F-A21A-4987-8D26-74E10D6F7CFA",
-   "2DB4A709-315F-46AF-A646-42A96E7995BB"
+   "19F0404A-2F64-4D32-A49E-E2D474AEB687",
+   "62B87061-9DDF-47AD-A692-438344B87F92"
   ]
  },
  "template": {
-  "id": "FD368E76-3074-45E0-880B-5A74E3DDBA85",
+  "id": "0C1C2EC3-C9D8-4F01-816F-F5EA2DFA4A8C",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7513381648088648985",
@@ -72,11 +72,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "B3408AF4-E5E0-41DD-80CF-25E440EF6DD7",
-    "text_material_id": "1617FB50-F616-460E-BD42-3A620BA741D6",
+    "id": "5FF48A32-3C1B-4A52-AB0D-255816AC63C5",
+    "text_material_id": "408C5902-2325-4A52-8589-DDD1E154B163",
     "extra_material_refs": [
-     "FAFB5D5F-A21A-4987-8D26-74E10D6F7CFA",
-     "2DB4A709-315F-46AF-A646-42A96E7995BB"
+     "19F0404A-2F64-4D32-A49E-E2D474AEB687",
+     "62B87061-9DDF-47AD-A692-438344B87F92"
     ],
     "clip_type": "",
     "capital": "",
@@ -137,9 +137,9 @@
  },
  "texts": [
   {
-   "id": "1617FB50-F616-460E-BD42-3A620BA741D6",
+   "id": "408C5902-2325-4A52-8589-DDD1E154B163",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"F6438D1F-33E1-4bf0-B789-6AA22AD97E8C\", \"path\": \"\"}, \"size\": 12.0, \"font\": {\"id\": \"7503472678259494207\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7503472678259494207/303636599930db92dddd4ee365fbdbc1\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"F6438D1F-33E1-4bf0-B789-6AA22AD97E8C\", \"path\": \"\"}, \"size\": 12.0, \"font\": {\"id\": \"7503472678259494207\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7503472678259494207/303636599930db92dddd4ee365fbdbc1\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"为梦想而战\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0,
@@ -154,7 +154,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "77AB6AAF-452B-48fc-9C06-66A8B97D5444",
    "use_effect_default_color": true,
@@ -177,13 +177,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.11145833134651184,
+   "background_height": 0,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": -0.2239583283662796,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7513381648088648985/2df79cea7baac28e05ebd84e0673d431/image/1749373037915.png\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "2DB4A709-315F-46AF-A646-42A96E7995BB",
+    "id": "62B87061-9DDF-47AD-A692-438344B87F92",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -209,7 +219,7 @@
   ],
   "effects": [
    {
-    "id": "FAFB5D5F-A21A-4987-8D26-74E10D6F7CFA",
+    "id": "19F0404A-2F64-4D32-A49E-E2D474AEB687",
     "type": "text_effect",
     "resource_id": "F6438D1F-33E1-4bf0-B789-6AA22AD97E8C",
     "path": "",

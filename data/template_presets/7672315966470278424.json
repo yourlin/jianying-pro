@@ -1,0 +1,234 @@
+{
+ "resource_id": "7672315966470278424",
+ "name": "咖啡拉花是一只小熊",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "112E64F5-76A3-4D65-9C65-173D512B03B8",
+   "32CC6E6D-7A07-49B5-9871-96DBFECEB593"
+  ]
+ },
+ "template": {
+  "id": "55BE39F1-7662-453F-AD17-A80CC3F31425",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7672315966470278424",
+  "effect_id": "7672315966470278424",
+  "name": "咖啡拉花是一只小熊",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672315966470278424/2ecfc92dbd6ee855b544fbd08ce6c909",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7672643795871092030",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672643795871092030/6a8a9d992c280057e2f01a546d142070"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7224042336223760954",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7224042336223760954/9d8f09292c3d223bc5a0ac05e373902a"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6790246693674684942",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "10C4A4C2-D520-4F63-8CE8-C12A7E8A2C56",
+    "text_material_id": "17D69310-3C99-4EE7-BE78-022773B17A7E",
+    "extra_material_refs": [
+     "112E64F5-76A3-4D65-9C65-173D512B03B8"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 154.375,
+     "original_size_height": 281.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.0876128673553467,
+       "y": 1.0876128673553467
+      },
+      "transform": {
+       "x": -17.78851318359375,
+       "y": 58.8577880859375
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "4E6E1442-019D-4212-9C7E-7C8D191591B4",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "32CC6E6D-7A07-49B5-9871-96DBFECEB593"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 800,
+     "original_size_height": 800,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.7571040391921997,
+       "y": 0.7698492407798767
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "17D69310-3C99-4EE7-BE78-022773B17A7E",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.31765, 0.31765, 0.3098]}}}, \"font\": {\"id\": \"7224042336223760954\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7224042336223760954/9d8f09292c3d223bc5a0ac05e373902a\"}}], \"text\": \"咖啡拉花\\n是一只小熊\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.06999999999999999,
+   "letter_spacing": 0.05,
+   "alignment": 1,
+   "typesetting": 1,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#51514fff",
+   "name": "284BC5C2-5672-457a-9C06-57A8548FBDF0",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "112E64F5-76A3-4D65-9C65-173D512B03B8",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "6790246693674684942",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "32CC6E6D-7A07-49B5-9871-96DBFECEB593",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

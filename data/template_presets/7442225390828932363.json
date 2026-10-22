@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "8130857F-9DCB-4F86-9B61-B8E44B45B262",
-   "41A63641-48BD-44FB-B13A-5E5D35B16407"
+   "B9A13A68-389B-4414-819F-DBEA9EC0DFA5",
+   "289B95D4-C183-4E36-805A-6575291CA2E5"
   ]
  },
  "template": {
-  "id": "3D2CBFE7-144C-4BBE-A67A-C9F0132759C5",
+  "id": "FF4F94B4-2700-48B6-80D9-43BFCABE3AC2",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7442225390828932363",
@@ -72,11 +72,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "3593EB3A-0CC1-4E4D-B79B-69166F70F903",
-    "text_material_id": "73BFD214-65D9-41F9-99A9-867808FF7DB6",
+    "id": "45972583-E7F9-467D-B5EE-23CA6455A02E",
+    "text_material_id": "163D3D32-9295-4430-9DFC-91D02ADBB6DE",
     "extra_material_refs": [
-     "8130857F-9DCB-4F86-9B61-B8E44B45B262",
-     "41A63641-48BD-44FB-B13A-5E5D35B16407"
+     "B9A13A68-389B-4414-819F-DBEA9EC0DFA5",
+     "289B95D4-C183-4E36-805A-6575291CA2E5"
     ],
     "clip_type": "",
     "capital": "",
@@ -137,9 +137,9 @@
  },
  "texts": [
   {
-   "id": "73BFD214-65D9-41F9-99A9-867808FF7DB6",
+   "id": "163D3D32-9295-4430-9DFC-91D02ADBB6DE",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7438909279014276367\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7438909279014276367/5a752fe66d0c472e250011531a4f8fd1\"}, \"size\": 13.0, \"font\": {\"id\": \"7070430083919385119\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7438909279014276367\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7438909279014276367/5a752fe66d0c472e250011531a4f8fd1\"}, \"size\": 13.0, \"font\": {\"id\": \"7070430083919385119\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.22954913482123035,
@@ -154,7 +154,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "64A26C85-CAA9-48CE-88B7-23E367105F9F",
    "use_effect_default_color": true,
@@ -177,13 +177,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0.5,
+   "background_width": 0,
+   "background_height": 1.8644466400146484,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0.0638810247182846,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": -2, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7442225390828932363/5f176ff90f0d93ef11d359a64049063f/image/1731658144961.png\", \"range\": 4, \"scale\": 0.9206190892269739, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "41A63641-48BD-44FB-B13A-5E5D35B16407",
+    "id": "289B95D4-C183-4E36-805A-6575291CA2E5",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -209,7 +219,7 @@
   ],
   "effects": [
    {
-    "id": "8130857F-9DCB-4F86-9B61-B8E44B45B262",
+    "id": "B9A13A68-389B-4414-819F-DBEA9EC0DFA5",
     "type": "text_effect",
     "resource_id": "7438909279014276367",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7438909279014276367/5a752fe66d0c472e250011531a4f8fd1",

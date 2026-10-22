@@ -1,0 +1,234 @@
+{
+ "resource_id": "7667479522492550425",
+ "name": "日常记录-星期三开始了",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "63E6BC61-3535-43AC-89A5-F298746A5278",
+   "63072DA1-53B8-48D0-83BA-51219A425FEC"
+  ]
+ },
+ "template": {
+  "id": "23F848FD-B3D7-48DF-A31A-0F6EBFA6E3F6",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7667479522492550425",
+  "effect_id": "7667479522492550425",
+  "name": "日常记录-星期三开始了",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7667479522492550425/5052ace98e775255a94d802cb536fb7b",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7667479510568144153",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7667479510568144153/dd2d4b6e4b1b4ab1b24e3c4faf912c7f"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7290445024435638842",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6887482184844710413",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6887482184844710413/a9546971769c9e299f116f5789f0f2e4"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "421C80D4-1ABB-4297-9601-3808E1A4EC6E",
+    "text_material_id": "D4F778E7-9B7F-42E5-AEED-7B48133BAC4D",
+    "extra_material_refs": [
+     "63E6BC61-3535-43AC-89A5-F298746A5278"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 525,
+     "original_size_height": 288.125,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8391016721725464,
+       "y": 0.8391013741493225
+      },
+      "transform": {
+       "x": 0,
+       "y": 14.399978637695312
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "71DB1F86-1D18-452a-B82E-B32635F29F53",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "63072DA1-53B8-48D0-83BA-51219A425FEC"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 800,
+     "original_size_height": 800,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8714954853057861,
+       "y": 0.8714951276779175
+      },
+      "transform": {
+       "x": 0,
+       "y": -3.0517578125e-05
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "D4F778E7-9B7F-42E5-AEED-7B48133BAC4D",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.31373, 0.30588, 0.28627]}}}, \"font\": {\"id\": \"7290445024435638842\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69\"}}], \"text\": \"空气里有种\\n被雨水泡涨的\\n植物气味，星期三\\n就这样开始了~\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.06999999999999999,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#504e49ff",
+   "name": "DC46AFD1-143F-4c8d-A024-F42CE33C8BC0",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "63E6BC61-3535-43AC-89A5-F298746A5278",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6887482184844710413",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6887482184844710413/a9546971769c9e299f116f5789f0f2e4",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "63072DA1-53B8-48D0-83BA-51219A425FEC",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

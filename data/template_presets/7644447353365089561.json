@@ -1,0 +1,323 @@
+{
+ "resource_id": "7644447353365089561",
+ "name": "真的要说再见了",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "16F50821-17A0-4FA6-9287-2E94FC6CF9A1",
+   "50ABABDC-921F-4849-8039-BE664FB837DC",
+   "F7AD9E9B-FB95-4A72-90B5-CC864B47A859"
+  ]
+ },
+ "template": {
+  "id": "CA82E683-AC68-44FE-BCD1-0B6F0864101F",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7644447353365089561",
+  "effect_id": "7644447353365089561",
+  "name": "真的要说再见了",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7644447353365089561/760463e1e66774609331b906ec20cfab",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7622314120909491480",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7622314120909491480/266a3a665a5b7e78e36d96d16fcd96f0"
+   },
+   {
+    "panel": "sticker",
+    "resource_id": "7426684759327165731",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7426684759327165731/d6da10e0b9cd467873cdeb17ae281ebf"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7490531314752295450",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7490531314752295450/7b5044afab06e051cc2d70a75988e18a"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7276407576625943100",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7622563547985530174",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7622563547985530174/f6d664e984e81f66a2ea6db5e00bbd22"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "82318DED-CBED-4723-9EAB-A5208174F5AC",
+    "text_material_id": "2315FF42-8E6D-400D-A00D-0EA197D4EB1A",
+    "extra_material_refs": [
+     "16F50821-17A0-4FA6-9287-2E94FC6CF9A1"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 602.1124877929688,
+     "original_size_height": 88.24113464355469,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1.0000017881393433
+      },
+      "transform": {
+       "x": -3,
+       "y": -5
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "078CBDF0-20F1-422E-9CE3-877F997B4BA6",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "50ABABDC-921F-4849-8039-BE664FB837DC"
+    ],
+    "attach_info": {
+     "start_time": 300000,
+     "duration": 2700000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.6191127300262451,
+       "y": 0.6191129684448242
+      },
+      "transform": {
+       "x": 222.46295166015625,
+       "y": 0
+      }
+     }
+    }
+   },
+   {
+    "name": "25F801D7-BC6A-450F-A35D-5D6C65823788",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "F7AD9E9B-FB95-4A72-90B5-CC864B47A859"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.624269425868988,
+       "y": 0.6242697834968567
+      },
+      "transform": {
+       "x": -223.3183135986328,
+       "y": -35.337493896484375
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "2315FF42-8E6D-400D-A00D-0EA197D4EB1A",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 14.053, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.98824, 0.6]}}}, \"font\": {\"id\": \"7490531314752295450\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7490531314752295450/7b5044afab06e051cc2d70a75988e18a\"}}], \"text\": \"Goodbye for real\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.21999999999999997,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#fffc99ff",
+   "name": "17AFE553-E5CC-444F-BB5A-C08E1828D861",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "16F50821-17A0-4FA6-9287-2E94FC6CF9A1",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7276407576625943100",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407576625943100/2d9cbdbb2ee5cab842cb4fb677afafbb",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "50ABABDC-921F-4849-8039-BE664FB837DC",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7426684759327165731",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7426684759327165731/d6da10e0b9cd467873cdeb17ae281ebf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "F7AD9E9B-FB95-4A72-90B5-CC864B47A859",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7426684759327165731",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7426684759327165731/d6da10e0b9cd467873cdeb17ae281ebf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": []
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "resource_id": "7690237185404177688",
+ "name": "黄色便签文字-猪八戒型人格",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "196DF241-A52D-419E-B620-5A5C0A04C029"
+  ]
+ },
+ "template": {
+  "id": "390ACFF2-5150-403B-9349-1A9ED4B62117",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7690237185404177688",
+  "effect_id": "7690237185404177688",
+  "name": "黄色便签文字-猪八戒型人格",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7690237185404177688/959ea4e38915c2e506e1d509ee13d68d",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7444913491762221577",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7444913491762221577/dff19164a0e4822b2320a900db9c1c2e"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6790246693674684942",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "61384C0C-C886-4773-87B8-B32FF94FCDE4",
+    "text_material_id": "4E8B6BF5-B50D-4E66-A90F-EF39A8A1E33B",
+    "extra_material_refs": [
+     "196DF241-A52D-419E-B620-5A5C0A04C029"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 726.1986083984375,
+     "original_size_height": 282.9794616699219,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.827124774260209,
+       "y": 0.827124774260209
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "4E8B6BF5-B50D-4E66-A90F-EF39A8A1E33B",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.031373, 0.52157, 0.56863]}}}, \"font\": {\"id\": \"7444913491762221577\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7444913491762221577/dff19164a0e4822b2320a900db9c1c2e\"}}], \"text\": \"猪八戒型人格\\n有一点风吹草动\\n就想分行李回我的高老庄\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.5199999999999999,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#088591ff",
+   "name": "6DB8A681-B1FF-4816-AABD-5CF240073803",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.3095890283584595,
+   "background_height": 0.24383561313152313,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7690237185404177688/959ea4e38915c2e506e1d509ee13d68d/image/1790562097842.png\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"stretch\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "196DF241-A52D-419E-B620-5A5C0A04C029",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "6790246693674684942",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6790246693674684942/a143b6f884c36e7e9922051c7297dbbf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 1833332,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": []
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "resource_id": "7668167285370047768",
+ "name": "标签文字-8月的日记",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "999DEFC7-B192-467B-9478-634468245DC4",
+   "1A9CA075-4CF4-40C6-9B3C-46ED1354AFB1"
+  ]
+ },
+ "template": {
+  "id": "7C4EBB33-F42B-426F-84C2-CE7439C96D9F",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7668167285370047768",
+  "effect_id": "7668167285370047768",
+  "name": "标签文字-8月的日记",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7668167285370047768/90b013e80cfa3c6758d492c7463f5531",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7530898734423592243",
+    "source_platform": 1,
+    "path": ""
+   },
+   {
+    "panel": "text",
+    "resource_id": "7212897307782550053",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7212897307782550053/1245916ef50e3d54612336611c6b2baf"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7667985583305854270",
+    "source_platform": 1,
+    "path": ""
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "AEE89807-E803-42AB-ACCE-27661341126D",
+    "text_material_id": "1AA91E3B-0A2E-4A67-B14C-AF99CD49F490",
+    "extra_material_refs": [
+     "999DEFC7-B192-467B-9478-634468245DC4"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 467.7123718261719,
+     "original_size_height": 93.06817626953125,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.331473708152771,
+       "y": 1.3941514492034912
+      },
+      "transform": {
+       "x": 46,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "7E71781D-55C7-4484-A3C6-64D254503323",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "1A9CA075-4CF4-40C6-9B3C-46ED1354AFB1"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 294,
+     "original_size_height": 314,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.27764570713043213,
+       "y": 0.2526262700557709
+      },
+      "transform": {
+       "x": -190.26124572753906,
+       "y": -6.103515625e-05
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "1AA91E3B-0A2E-4A67-B14C-AF99CD49F490",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.10588, 0.086275, 0.082353]}}}, \"font\": {\"id\": \"7530898734423592243\", \"path\": \"\"}}], \"text\": \"8月の日记\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.52,
+   "letter_spacing": -0.05,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#1b1615ff",
+   "name": "6888E90C-1E3B-465f-9845-CD7304C7DC2B",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FFE529FF",
+   "background_round_radius": 0,
+   "background_width": 1.089457392692566,
+   "background_height": 0.2331782877445221,
+   "background_horizontal_offset": -0.07751937955617905,
+   "background_vertical_offset": -0.007751937955617905,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.8980392217636108, 0.16078431904315948]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"solid\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7668167285370047768/90b013e80cfa3c6758d492c7463f5531/image/1785389915332.PNG\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "999DEFC7-B192-467B-9478-634468245DC4",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7212897307782550053",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7212897307782550053/1245916ef50e3d54612336611c6b2baf",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 966666,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "1A9CA075-4CF4-40C6-9B3C-46ED1354AFB1",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,15 +26,15 @@
    "value": 1
   },
   "extra_material_refs": [
-   "35D8B72D-95F9-4764-9D3C-5A54FE80834C",
-   "336C80B2-8AE0-461E-A44B-0E9AC1A0A7B0",
-   "D2B1119E-A950-4B3F-94E6-BDD1E4E7FAE1",
-   "192F2874-25C5-4674-B9F2-BEEE52DC885B",
-   "436A63DD-B000-4B60-8A4D-995633367FE1"
+   "8620C1AE-C27F-454B-9692-88079D4A8DF6",
+   "2BC8AF81-0B1A-4393-B3C5-63B57EED194E",
+   "DE0E5AD7-48F7-4C60-A769-12D560359FBB",
+   "B84D0EEF-8AF0-41F3-ABC6-D5DD4E74C00D",
+   "CD9451B2-D613-4A0D-8E8F-23AD27BD8DE2"
   ]
  },
  "template": {
-  "id": "1CC34F48-6AAE-4533-8FF6-7A36CF630F07",
+  "id": "5BBB3E95-E91E-40E1-A855-61E88684DB70",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7230794761806810423",
@@ -75,10 +75,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "5829452E-5C04-4E7A-975B-04CF7993D505",
-    "text_material_id": "70B227F0-2E43-4F7A-9A7E-0AAD03104843",
+    "id": "3816A077-CDAE-4EFB-A162-0BAEA2BFFB6E",
+    "text_material_id": "2E98FFA5-2906-4C4F-921A-BE6A867FE3FA",
     "extra_material_refs": [
-     "35D8B72D-95F9-4764-9D3C-5A54FE80834C"
+     "8620C1AE-C27F-454B-9692-88079D4A8DF6"
     ],
     "clip_type": "",
     "capital": "",
@@ -110,10 +110,10 @@
     }
    },
    {
-    "id": "CA828EF3-C74D-49D1-B66A-AF2CAAECF1E9",
-    "text_material_id": "CC994AB3-A16A-4409-9913-8126A79A2619",
+    "id": "BE9CB877-72D6-468D-9FBA-2149CBE55283",
+    "text_material_id": "87C5488A-CEEF-4131-A2C0-14C32745A067",
     "extra_material_refs": [
-     "336C80B2-8AE0-461E-A44B-0E9AC1A0A7B0"
+     "2BC8AF81-0B1A-4393-B3C5-63B57EED194E"
     ],
     "clip_type": "",
     "capital": "",
@@ -162,7 +162,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "D2B1119E-A950-4B3F-94E6-BDD1E4E7FAE1"
+     "DE0E5AD7-48F7-4C60-A769-12D560359FBB"
     ],
     "attach_info": {
      "start_time": 0,
@@ -196,7 +196,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "192F2874-25C5-4674-B9F2-BEEE52DC885B"
+     "B84D0EEF-8AF0-41F3-ABC6-D5DD4E74C00D"
     ],
     "attach_info": {
      "start_time": 0,
@@ -230,7 +230,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "436A63DD-B000-4B60-8A4D-995633367FE1"
+     "CD9451B2-D613-4A0D-8E8F-23AD27BD8DE2"
     ],
     "attach_info": {
      "start_time": 0,
@@ -277,7 +277,7 @@
  },
  "texts": [
   {
-   "id": "70B227F0-2E43-4F7A-9A7E-0AAD03104843",
+   "id": "2E98FFA5-2906-4C4F-921A-BE6A867FE3FA",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"7224023946608251429\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"21°C\"}",
    "font_size": 15,
@@ -314,7 +314,7 @@
    }
   },
   {
-   "id": "CC994AB3-A16A-4409-9913-8126A79A2619",
+   "id": "87C5488A-CEEF-4131-A2C0-14C32745A067",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.64706, 0.21569]}}}, \"font\": {\"id\": \"7224023946612445757\", \"path\": \"\"}}], \"text\": \"UV:25\"}",
    "font_size": 15,
@@ -354,31 +354,31 @@
  "extras": {
   "material_animations": [
    {
-    "id": "35D8B72D-95F9-4764-9D3C-5A54FE80834C",
+    "id": "8620C1AE-C27F-454B-9692-88079D4A8DF6",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "336C80B2-8AE0-461E-A44B-0E9AC1A0A7B0",
+    "id": "2BC8AF81-0B1A-4393-B3C5-63B57EED194E",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "D2B1119E-A950-4B3F-94E6-BDD1E4E7FAE1",
+    "id": "DE0E5AD7-48F7-4C60-A769-12D560359FBB",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "192F2874-25C5-4674-B9F2-BEEE52DC885B",
+    "id": "B84D0EEF-8AF0-41F3-ABC6-D5DD4E74C00D",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "436A63DD-B000-4B60-8A4D-995633367FE1",
+    "id": "CD9451B2-D613-4A0D-8E8F-23AD27BD8DE2",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

@@ -1,0 +1,207 @@
+{
+ "resource_id": "7679435252732824856",
+ "name": "风里有了秋天的味道",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "8A8FF924-1AAC-4BA2-A100-AFE5EA3CBFD3",
+   "7F7FB967-33DE-49E7-B8AD-B20DC91B84A3"
+  ]
+ },
+ "template": {
+  "id": "51FDD5F0-1F27-44E2-A728-14176404C08A",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7679435252732824856",
+  "effect_id": "7679435252732824856",
+  "name": "风里有了秋天的味道",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679435252732824856/8c18472ac6b1cc4ad46ace4944768c76",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7637814026398911786",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7637814026398911786/e6b6495d14ac5afb891f556f99baa654"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7276407256965452346",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407256965452346/f6c5b2c89ccdfa794e4917ce6f9e310d"
+   },
+   {
+    "panel": "flower",
+    "resource_id": "7679450737327246644",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679450737327246644/7a625fedfef61d6a610a47a70f0174fd"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "C8B5D589-CC96-45DD-94F0-88A58B78F4B0",
+    "text_material_id": "14973A29-F701-49F5-85C5-02C508915D95",
+    "extra_material_refs": [
+     "8A8FF924-1AAC-4BA2-A100-AFE5EA3CBFD3",
+     "7F7FB967-33DE-49E7-B8AD-B20DC91B84A3"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 349.8958435058594,
+     "original_size_height": 165.625,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.6867873191516416,
+       "y": 1.6867874560983547
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "14973A29-F701-49F5-85C5-02C508915D95",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7679450737327246644\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679450737327246644/7a625fedfef61d6a610a47a70f0174fd\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.10588, 0.039216, 0.019608]}}}, \"font\": {\"id\": \"7637814026398911786\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7637814026398911786/e6b6495d14ac5afb891f556f99baa654\"}}], \"text\": \"风里有了\\n秋天的味道\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.25,
+   "letter_spacing": 0.05,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#1b0a05ff",
+   "name": "1C95E6D7-BC1C-44da-A260-6D5DFCD10A84",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "7F7FB967-33DE-49E7-B8AD-B20DC91B84A3",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "loop",
+      "resource_id": "7276407256965452346",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7276407256965452346/f6c5b2c89ccdfa794e4917ce6f9e310d",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": [
+   {
+    "id": "8A8FF924-1AAC-4BA2-A100-AFE5EA3CBFD3",
+    "type": "text_effect",
+    "resource_id": "7679450737327246644",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679450737327246644/7a625fedfef61d6a610a47a70f0174fd",
+    "source_platform": 1,
+    "value": 0,
+    "apply_target_type": 0,
+    "sub_type": "none",
+    "platform": "all",
+    "visible": true
+   }
+  ]
+ }
+}

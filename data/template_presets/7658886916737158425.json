@@ -1,0 +1,234 @@
+{
+ "resource_id": "7658886916737158425",
+ "name": "其实都是骗你的，照片我没删掉",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "D5FA2197-962A-4219-BD08-4D9659137CFF",
+   "5D8A17F1-47E8-487C-8F59-4225B9DA5800"
+  ]
+ },
+ "template": {
+  "id": "0551BD00-38E7-4950-BC91-A320A12C80EC",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7658886916737158425",
+  "effect_id": "7658886916737158425",
+  "name": "其实都是骗你的，照片我没删掉",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7658886916737158425/cdd9c831f87d6a3c202b6afae930700a",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7658904184133225790",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7658904184133225790/d3ee84236e673a5f88f700c81bb8dea4"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7526838955434675507",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7526838955434675507/6f8c943a9e36650d9a8f37fb7e34cd4f"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7268152375536259639",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7268152375536259639/7110a5eb5f6db62d802b3d4590c692e1"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "BDAC6B56-4FA7-4122-BFC7-EC1813A033FD",
+    "text_material_id": "307E9753-8439-45E1-A730-B870A4C927CC",
+    "extra_material_refs": [
+     "D5FA2197-962A-4219-BD08-4D9659137CFF"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 430.0196533203125,
+     "original_size_height": 151.25,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.4794827699661255,
+       "y": 1.4794834852218628
+      },
+      "transform": {
+       "x": 0,
+       "y": -4.9403076171875
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "D7DC1EB6-06E1-4c76-A01F-D97099D52BD1",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "5D8A17F1-47E8-487C-8F59-4225B9DA5800"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 750,
+     "original_size_height": 750,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.1426756381988525,
+       "y": 1.1426745653152466
+      },
+      "transform": {
+       "x": 0,
+       "y": -30.488311767578125
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "307E9753-8439-45E1-A730-B870A4C927CC",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7526838955434675507\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7526838955434675507/6f8c943a9e36650d9a8f37fb7e34cd4f\"}}], \"text\": \"其实都是骗你的\\n照片我没删掉\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": -0.08661417322834826,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#000000ff",
+   "name": "1D8D43B1-85BD-4609-9B78-D14B66443AD1",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "D5FA2197-962A-4219-BD08-4D9659137CFF",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7268152375536259639",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7268152375536259639/7110a5eb5f6db62d802b3d4590c692e1",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 1133333,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "5D8A17F1-47E8-487C-8F59-4225B9DA5800",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

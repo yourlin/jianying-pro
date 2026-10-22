@@ -402,7 +402,7 @@ def _main(argv=None) -> int:
 
             from jy_preview import open_and_wait
 
-            open_and_wait(names, wait=args.wait, discard=True)
+            open_and_wait(list(reversed(names)), wait=args.wait, discard=True)  # 新生成的排在首页最前面
             subprocess.call([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                                           "sync_jy_templates.py"), "--from-packages"],
                             stdout=subprocess.DEVNULL)

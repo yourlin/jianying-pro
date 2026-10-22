@@ -1,0 +1,257 @@
+{
+ "resource_id": "7608933030908054846",
+ "name": "春天的浪漫",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "5BAEC004-C767-4D1A-98E9-E95EAF0FD258",
+   "06ACDB10-AD04-4A35-8D0A-AF886B35CAF0",
+   "21C25132-37E6-4F3A-A57E-C59AE8774CE4"
+  ]
+ },
+ "template": {
+  "id": "C6FC1C66-9D00-4E32-B4B5-CF6B2670AAB4",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7608933030908054846",
+  "effect_id": "7608933030908054846",
+  "name": "春天的浪漫",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7608933030908054846/3f1bf4f8320271fcb664ca40af8aa4e1",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7463380715107783206",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7463380715107783206/7b0e0b2d88a3e260cd7d1ff3c2cf737e"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7209148339990875448",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7209148339990875448/bb4ea3616536e3e125a305a14dfb4bc3"
+   },
+   {
+    "panel": "default",
+    "resource_id": "6943202704567143717",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6943202704567143717/9386e3e29c5991d9ae80d05923f31b52"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "940F2C90-4E60-466A-A2EF-A718A36908B0",
+    "text_material_id": "E4C2F781-4BE0-4CE1-988F-C5C179E9E752",
+    "extra_material_refs": [
+     "5BAEC004-C767-4D1A-98E9-E95EAF0FD258"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 549.3333740234375,
+     "original_size_height": 153.81333923339844,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.9999997615814209,
+       "y": 1
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "F2F0FC1A-EEE1-485D-9947-1A1B0EF575BB",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "06ACDB10-AD04-4A35-8D0A-AF886B35CAF0"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 271,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.5982739329338074,
+       "y": 0.5982739925384521
+      },
+      "transform": {
+       "x": -168.59080505371094,
+       "y": 17.688674926757812
+      }
+     }
+    }
+   },
+   {
+    "name": "73AAB0A4-F472-4CC9-B65F-D5A7AC849414",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "21C25132-37E6-4F3A-A57E-C59AE8774CE4"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 6.16038179397583,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.6797243356704712,
+       "y": 0.20100325345993042
+      },
+      "transform": {
+       "x": 164.26287841796875,
+       "y": -48.230918884277344
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "E4C2F781-4BE0-4CE1-988F-C5C179E9E752",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 26.368, \"font\": {\"id\": \"7463380715107783206\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7463380715107783206/7b0e0b2d88a3e260cd7d1ff3c2cf737e\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"春天的浪漫\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": -0.1,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "48C362D9-D638-497C-BEC7-75ED205C2C83",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "5BAEC004-C767-4D1A-98E9-E95EAF0FD258",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "06ACDB10-AD04-4A35-8D0A-AF886B35CAF0",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "21C25132-37E6-4F3A-A57E-C59AE8774CE4",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,14 +26,14 @@
    "value": 1
   },
   "extra_material_refs": [
-   "5F3F6EAB-B033-4DCA-94D5-9CBAE5B7D43F",
-   "CE48BCA0-D173-4E56-BF99-FA0ACC96399F",
-   "1E344910-B622-4619-95CE-75B96FD6A79F",
-   "C5A6C96B-FC8B-46AF-9EA7-6DA3C82A3B60"
+   "D662E3C8-4E3E-4574-AE39-4D24908488D4",
+   "07EAA821-2B05-48CA-823F-75EBF5DC0A6C",
+   "C8AF1149-30EE-4593-89F5-3BE33C034E44",
+   "4D7FEF0A-4D64-4C35-9F72-50EEC5C0F936"
   ]
  },
  "template": {
-  "id": "76F55F15-CEBB-49E0-9E81-C6F905872E93",
+  "id": "1A422237-5151-4DBB-96C2-87DA5C3868F2",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7227416929743555899",
@@ -62,10 +62,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "85633D30-23C7-4A12-B576-5BF0E8F2FAED",
-    "text_material_id": "67527AAA-FDDB-438A-A4DD-D754C499B6BA",
+    "id": "8E791280-1EBD-4DEA-B4A5-8612172D700D",
+    "text_material_id": "E779D5CB-D241-4551-B466-0A7B42C92BC3",
     "extra_material_refs": [
-     "5F3F6EAB-B033-4DCA-94D5-9CBAE5B7D43F"
+     "D662E3C8-4E3E-4574-AE39-4D24908488D4"
     ],
     "clip_type": "",
     "capital": "",
@@ -97,10 +97,10 @@
     }
    },
    {
-    "id": "758D32E4-FE1C-43C1-8B25-BF3AF20AD12D",
-    "text_material_id": "8F06A38F-102B-43FC-8D51-31D1ACBBABFC",
+    "id": "6ADE7FD2-0C27-42DA-88AA-F6455BF9FB67",
+    "text_material_id": "62A5CFF9-7F5F-4B6F-9867-E21C969DF415",
     "extra_material_refs": [
-     "CE48BCA0-D173-4E56-BF99-FA0ACC96399F"
+     "07EAA821-2B05-48CA-823F-75EBF5DC0A6C"
     ],
     "clip_type": "",
     "capital": "",
@@ -132,10 +132,10 @@
     }
    },
    {
-    "id": "00EAF583-A544-4A5D-942C-10287F94FF98",
-    "text_material_id": "C758FA87-0FA1-429E-841F-DE3CAB01A460",
+    "id": "35CFE50E-0894-4661-96E8-47A999F7CC6F",
+    "text_material_id": "5CEAAB3B-7809-46FD-8BEE-E1CA2D7B34B5",
     "extra_material_refs": [
-     "1E344910-B622-4619-95CE-75B96FD6A79F"
+     "C8AF1149-30EE-4593-89F5-3BE33C034E44"
     ],
     "clip_type": "",
     "capital": "",
@@ -184,7 +184,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "C5A6C96B-FC8B-46AF-9EA7-6DA3C82A3B60"
+     "4D7FEF0A-4D64-4C35-9F72-50EEC5C0F936"
     ],
     "attach_info": {
      "start_time": 0,
@@ -231,7 +231,7 @@
  },
  "texts": [
   {
-   "id": "67527AAA-FDDB-438A-A4DD-D754C499B6BA",
+   "id": "E779D5CB-D241-4551-B466-0A7B42C92BC3",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.64706, 0.21569]}}}, \"font\": {\"id\": \"7003588607231398430\", \"path\": \"\"}}], \"text\": \"05.20\"}",
    "font_size": 15,
@@ -268,7 +268,7 @@
    }
   },
   {
-   "id": "8F06A38F-102B-43FC-8D51-31D1ACBBABFC",
+   "id": "62A5CFF9-7F5F-4B6F-9867-E21C969DF415",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"7224023946612445757\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"·DATE·\"}",
    "font_size": 15,
@@ -305,7 +305,7 @@
    }
   },
   {
-   "id": "C758FA87-0FA1-429E-841F-DE3CAB01A460",
+   "id": "5CEAAB3B-7809-46FD-8BEE-E1CA2D7B34B5",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"font\": {\"id\": \"7224023946612445757\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"Wednesday\"}",
    "font_size": 15,
@@ -345,25 +345,25 @@
  "extras": {
   "material_animations": [
    {
-    "id": "5F3F6EAB-B033-4DCA-94D5-9CBAE5B7D43F",
+    "id": "D662E3C8-4E3E-4574-AE39-4D24908488D4",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "CE48BCA0-D173-4E56-BF99-FA0ACC96399F",
+    "id": "07EAA821-2B05-48CA-823F-75EBF5DC0A6C",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "1E344910-B622-4619-95CE-75B96FD6A79F",
+    "id": "C8AF1149-30EE-4593-89F5-3BE33C034E44",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "C5A6C96B-FC8B-46AF-9EA7-6DA3C82A3B60",
+    "id": "4D7FEF0A-4D64-4C35-9F72-50EEC5C0F936",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

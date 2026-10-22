@@ -26,15 +26,15 @@
    "value": 1
   },
   "extra_material_refs": [
-   "99D67E29-9696-4912-9A72-1287A6768838",
-   "04E8828D-DE7E-4EFA-94A9-3EFA26CF343F",
-   "910C5FA8-D594-4307-9C5F-B56AF23BDEFF",
-   "CC2916A6-165B-4050-AE60-F2FA47CB1253",
-   "00D64A5F-5538-471D-B985-4F053BEA31D2"
+   "B1B8A351-537A-4178-B453-EEB72DF97819",
+   "95B6E1B3-2386-483E-8FA9-EF74370773DA",
+   "DFB81C7F-592D-4208-8073-8754E93D6874",
+   "CF73502E-D04A-4EAA-A125-86C9177A4F3D",
+   "D48B0AF4-DC59-431D-B1B7-A6CEED85F13F"
   ]
  },
  "template": {
-  "id": "87EC9E0B-0F61-4249-BC13-1F0660369201",
+  "id": "41E30CFE-5D20-477E-8A37-0C92128720A5",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7304202356474809651",
@@ -93,10 +93,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "2D568B03-5BC7-445F-A2CB-59D02AFF86DB",
-    "text_material_id": "49F85C85-34FE-41D7-A909-8EC3885F1C90",
+    "id": "7476E388-4068-42E5-B490-6739268C5A5D",
+    "text_material_id": "1632E008-9527-4F04-A820-B2CAAC01833D",
     "extra_material_refs": [
-     "99D67E29-9696-4912-9A72-1287A6768838"
+     "B1B8A351-537A-4178-B453-EEB72DF97819"
     ],
     "clip_type": "",
     "capital": "",
@@ -128,10 +128,10 @@
     }
    },
    {
-    "id": "4685D051-21B5-4C1E-9737-AF66C6C466F1",
-    "text_material_id": "73AB6565-E96A-4D34-B957-088B77B01716",
+    "id": "FDD2C193-A080-4847-BE33-86E1449B5937",
+    "text_material_id": "22A11B81-603D-430F-B948-9BE9898E3142",
     "extra_material_refs": [
-     "04E8828D-DE7E-4EFA-94A9-3EFA26CF343F"
+     "95B6E1B3-2386-483E-8FA9-EF74370773DA"
     ],
     "clip_type": "",
     "capital": "",
@@ -180,7 +180,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "910C5FA8-D594-4307-9C5F-B56AF23BDEFF"
+     "DFB81C7F-592D-4208-8073-8754E93D6874"
     ],
     "attach_info": {
      "start_time": 0,
@@ -214,7 +214,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "CC2916A6-165B-4050-AE60-F2FA47CB1253"
+     "CF73502E-D04A-4EAA-A125-86C9177A4F3D"
     ],
     "attach_info": {
      "start_time": 0,
@@ -248,7 +248,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "00D64A5F-5538-471D-B985-4F053BEA31D2"
+     "D48B0AF4-DC59-431D-B1B7-A6CEED85F13F"
     ],
     "attach_info": {
      "start_time": 0,
@@ -295,7 +295,7 @@
  },
  "texts": [
   {
-   "id": "49F85C85-34FE-41D7-A909-8EC3885F1C90",
+   "id": "1632E008-9527-4F04-A820-B2CAAC01833D",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 6.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.20784, 0.31765, 0.36078]}}}, \"font\": {\"id\": \"7203638484756599357\", \"path\": \"\"}}], \"text\": \"陪伴你经历人生的每一个第一次\"}",
    "font_size": 15,
@@ -332,7 +332,7 @@
    }
   },
   {
-   "id": "73AB6565-E96A-4D34-B957-088B77B01716",
+   "id": "22A11B81-603D-430F-B948-9BE9898E3142",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.47451, 0.79216]}}}, \"font\": {\"id\": \"6934225430266253837\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6934225430266253837/aee9551fab5ef01c45dbe3335869db1d\"}}], \"text\": \"宝贝成长日记\"}",
    "font_size": 15,
@@ -372,7 +372,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "99D67E29-9696-4912-9A72-1287A6768838",
+    "id": "B1B8A351-537A-4178-B453-EEB72DF97819",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -396,7 +396,7 @@
     ]
    },
    {
-    "id": "04E8828D-DE7E-4EFA-94A9-3EFA26CF343F",
+    "id": "95B6E1B3-2386-483E-8FA9-EF74370773DA",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -420,19 +420,19 @@
     ]
    },
    {
-    "id": "910C5FA8-D594-4307-9C5F-B56AF23BDEFF",
+    "id": "DFB81C7F-592D-4208-8073-8754E93D6874",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "CC2916A6-165B-4050-AE60-F2FA47CB1253",
+    "id": "CF73502E-D04A-4EAA-A125-86C9177A4F3D",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "00D64A5F-5538-471D-B985-4F053BEA31D2",
+    "id": "D48B0AF4-DC59-431D-B1B7-A6CEED85F13F",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

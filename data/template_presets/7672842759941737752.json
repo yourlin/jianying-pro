@@ -1,0 +1,210 @@
+{
+ "resource_id": "7672842759941737752",
+ "name": "叶落知秋",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "F1D977C1-0BF5-4565-8763-97206EB6574F",
+   "017D3E51-F7F3-4D35-81C6-7511F5823726"
+  ]
+ },
+ "template": {
+  "id": "62EB3109-358E-496D-9CAE-49ADB88D7853",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7672842759941737752",
+  "effect_id": "7672842759941737752",
+  "name": "叶落知秋",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672842759941737752/07ccfbecf1e26981595ebfbcb87e82c6",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7015784999320440071",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7015784999320440071/a6d4dad8561d786f0f9413d54d631893"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7025886295524119053",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7025886295524119053/64b0eee1f99387b2d7a27f9c961e6bba"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "BC97FDAC-6A98-4B2E-83F1-C5469A8A45B0",
+    "text_material_id": "E0EE0988-1D7B-4D09-947A-D3BC6B3710E6",
+    "extra_material_refs": [
+     "F1D977C1-0BF5-4565-8763-97206EB6574F"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 274.9999694824219,
+     "original_size_height": 97.8125,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.8911086320877075,
+       "y": 1.8911080360412598
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "4E2BA381-9032-487c-B6A6-90257E9A2786",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "017D3E51-F7F3-4D35-81C6-7511F5823726"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.4365434646606445,
+       "y": 1.4365428686141968
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "E0EE0988-1D7B-4D09-947A-D3BC6B3710E6",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.61176, 0.12549]}}}, \"font\": {\"id\": \"7025886295524119053\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7025886295524119053/64b0eee1f99387b2d7a27f9c961e6bba\"}}], \"text\": \"叶落知秋\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0,
+   "letter_spacing": 0,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ff9c20ff",
+   "name": "378ABBC1-5A7B-4cb5-98FC-A164ACCFA14D",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "F1D977C1-0BF5-4565-8763-97206EB6574F",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "017D3E51-F7F3-4D35-81C6-7511F5823726",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

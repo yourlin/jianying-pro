@@ -1,0 +1,279 @@
+{
+ "resource_id": "7685647263762369817",
+ "name": "奶茶鼠秋日美食",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "0F3003D4-5A4D-4554-BF10-AD67317D4E8A",
+   "AB1CFF51-FAC9-4195-8544-BDDE11E0DF6C",
+   "DAC30BB0-C405-441C-BC03-1D9D9982E973"
+  ]
+ },
+ "template": {
+  "id": "DA0F44F1-02A2-4ABB-A865-41DFE19392AF",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7685647263762369817",
+  "effect_id": "7685647263762369817",
+  "name": "奶茶鼠秋日美食",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7685647263762369817/293332321f8a267ade5353f0235c0d27",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7685651310917520664",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7685651310917520664/3a32920f2bd1034e7db0c6f37f661ed6"
+   },
+   {
+    "panel": "sticker",
+    "resource_id": "7426687310445546786",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7426687310445546786/0533e3aeb2cda562cdd8a86693815443"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7451897289527792178",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac"
+   },
+   {
+    "panel": "text",
+    "resource_id": "7313890082040058406",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7313890082040058406/bf29786361cb5f119b93aad64f8447c7"
+   },
+   {
+    "panel": "flower",
+    "resource_id": "7685647581732687166",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7685647581732687166/b93554e9fa872f60183da38c8b89e30e"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "579CE2B3-1AA8-464B-B28F-554E63441D3F",
+    "text_material_id": "DDAD50A7-1BC2-4371-A7B7-C27584C50B44",
+    "extra_material_refs": [
+     "0F3003D4-5A4D-4554-BF10-AD67317D4E8A",
+     "AB1CFF51-FAC9-4195-8544-BDDE11E0DF6C"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 262.9375,
+     "original_size_height": 87.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 2.2381203174591064,
+       "y": 2.2381200790405273
+      },
+      "transform": {
+       "x": 0,
+       "y": -68
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "1A47382E-F376-46f0-ADC7-2CBBD6A2FCDB",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "DAC30BB0-C405-441C-BC03-1D9D9982E973"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 240,
+     "original_size_height": 226,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8192483186721802,
+       "y": 0.8192483186721802
+      },
+      "transform": {
+       "x": 0,
+       "y": 62.12068176269531
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "DDAD50A7-1BC2-4371-A7B7-C27584C50B44",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7685647581732687166\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7685647581732687166/b93554e9fa872f60183da38c8b89e30e\"}, \"size\": 15.0, \"font\": {\"id\": \"7451897289527792178\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"秋日美食\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#ffffffff",
+   "name": "6BF32593-A0AE-44f7-A901-1590DA150E68",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "AB1CFF51-FAC9-4195-8544-BDDE11E0DF6C",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7313890082040058406",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7313890082040058406/bf29786361cb5f119b93aad64f8447c7",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "DAC30BB0-C405-441C-BC03-1D9D9982E973",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "7426687310445546786",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7426687310445546786/0533e3aeb2cda562cdd8a86693815443",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   }
+  ],
+  "effects": [
+   {
+    "id": "0F3003D4-5A4D-4554-BF10-AD67317D4E8A",
+    "type": "text_effect",
+    "resource_id": "7685647581732687166",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7685647581732687166/b93554e9fa872f60183da38c8b89e30e",
+    "source_platform": 1,
+    "value": 0,
+    "apply_target_type": 0,
+    "sub_type": "none",
+    "platform": "all",
+    "visible": true
+   }
+  ]
+ }
+}

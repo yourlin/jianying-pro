@@ -1,0 +1,234 @@
+{
+ "resource_id": "7679282550841281854",
+ "name": "教师节-长文本 书本展开",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "203E82E8-1BAF-43A6-9A1D-7AF3686E52F3",
+   "F2FBD739-3BCF-46CF-9D79-55C27A9C3A22"
+  ]
+ },
+ "template": {
+  "id": "707A6E9B-75DE-426E-9238-98334F0421B5",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7679282550841281854",
+  "effect_id": "7679282550841281854",
+  "name": "教师节-长文本 书本展开",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679282550841281854/5f0ed2f2f8f3d6570836b0b9df5f30ee",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7679304255815240984",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7679304255815240984/731bc160ed6ac60771b6df7123bb454c"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "6894206029785993736",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6894206029785993736/4e3af7fa95351181ba26f1be246c4d43"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6774626192990409224",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6774626192990409224/7518229b35d7b11cc0b7d35e4428a0e9"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "A4D23B6E-1F2E-4124-99A7-2D95ED6A39E9",
+    "text_material_id": "AB786D8A-191D-46B1-A9F2-865516A111C6",
+    "extra_material_refs": [
+     "203E82E8-1BAF-43A6-9A1D-7AF3686E52F3"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 475.9804382324219,
+     "original_size_height": 231.25,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.9014508724212646,
+       "y": 0.9014506936073303
+      },
+      "transform": {
+       "x": 0,
+       "y": -5
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "84C9ED72-E746-4dae-8D60-394EAA0AB023",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "F2FBD739-3BCF-46CF-9D79-55C27A9C3A22"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 629,
+     "original_size_height": 475,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8872929811477661,
+       "y": 0.8131601810455322
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "AB786D8A-191D-46B1-A9F2-865516A111C6",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.1451, 0.10588, 0.094118]}}}, \"font\": {\"id\": \"6894206029785993736\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6894206029785993736/4e3af7fa95351181ba26f1be246c4d43\"}}], \"text\": \"人生没有标准答案\\n但庆幸您教过我\\n落笔的勇气\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.15,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#251b18ff",
+   "name": "AD698616-60C0-4b95-9DC6-6203F1658238",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "203E82E8-1BAF-43A6-9A1D-7AF3686E52F3",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6774626192990409224",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6774626192990409224/7518229b35d7b11cc0b7d35e4428a0e9",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 600000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "F2FBD739-3BCF-46CF-9D79-55C27A9C3A22",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

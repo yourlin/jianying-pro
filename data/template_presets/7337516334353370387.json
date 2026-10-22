@@ -26,15 +26,15 @@
    "value": 1
   },
   "extra_material_refs": [
-   "5F5173DF-F305-429B-9A73-8044D42DDE06",
-   "B06F79C2-EE08-4029-B5F6-D8C3E36729AC",
-   "43D08D22-C98A-413A-96D3-C64B01553DF6",
-   "55E1196A-C29C-49E6-827F-4152AF58A49E",
-   "DBC6CA10-5A6A-4A34-87DD-B4ED48F67883"
+   "96B71289-04CC-4A1B-ADEC-1A1A51BCB730",
+   "FBDC46BD-3DFA-4308-88A1-D57940100A12",
+   "C9A37DC7-4DB1-4C96-9E69-704D90E39C43",
+   "249EC44A-0C5F-4DA6-B1FA-EFC55472FDA0",
+   "D43B0655-4FF2-46F1-A7E1-E760F450264B"
   ]
  },
  "template": {
-  "id": "DC4716D2-3E72-4B60-8C13-F6979FF6AF29",
+  "id": "1149FD94-4C33-40C5-9AC8-4A2FDFC1ED7E",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7337516334353370387",
@@ -99,11 +99,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "DF5C2B7C-E167-492B-813F-D57AD5B2D841",
-    "text_material_id": "7C0346D3-1345-4453-8E72-3D3C56142314",
+    "id": "6CBF2D94-AE80-4287-AC31-513FA2338541",
+    "text_material_id": "54E25DC2-3B46-4EF1-BF6F-69129B91F83E",
     "extra_material_refs": [
-     "5F5173DF-F305-429B-9A73-8044D42DDE06",
-     "B06F79C2-EE08-4029-B5F6-D8C3E36729AC"
+     "96B71289-04CC-4A1B-ADEC-1A1A51BCB730",
+     "FBDC46BD-3DFA-4308-88A1-D57940100A12"
     ],
     "clip_type": "",
     "capital": "",
@@ -135,11 +135,11 @@
     }
    },
    {
-    "id": "BA954EA8-D99D-421C-AD30-A0A0BAD335E5",
-    "text_material_id": "5AEA100B-B9E5-4E13-96DF-C43D9DC9C2A1",
+    "id": "03B68192-85E9-418A-9099-012C1DEB1B83",
+    "text_material_id": "A5EE4F09-6967-4E3D-BDD7-9DF985431EA9",
     "extra_material_refs": [
-     "43D08D22-C98A-413A-96D3-C64B01553DF6",
-     "55E1196A-C29C-49E6-827F-4152AF58A49E"
+     "C9A37DC7-4DB1-4C96-9E69-704D90E39C43",
+     "249EC44A-0C5F-4DA6-B1FA-EFC55472FDA0"
     ],
     "clip_type": "",
     "capital": "",
@@ -188,7 +188,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "DBC6CA10-5A6A-4A34-87DD-B4ED48F67883"
+     "D43B0655-4FF2-46F1-A7E1-E760F450264B"
     ],
     "attach_info": {
      "start_time": 200000,
@@ -235,7 +235,7 @@
  },
  "texts": [
   {
-   "id": "7C0346D3-1345-4453-8E72-3D3C56142314",
+   "id": "54E25DC2-3B46-4EF1-BF6F-69129B91F83E",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7166445713029729568\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7166445713029729568/ddd984e1353cb5f7fb784e3b2941d420\"}, \"size\": 15.0, \"font\": {\"id\": \"7086699209738424840\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"捡到一束光\"}",
    "font_size": 15,
@@ -272,7 +272,7 @@
    }
   },
   {
-   "id": "5AEA100B-B9E5-4E13-96DF-C43D9DC9C2A1",
+   "id": "A5EE4F09-6967-4E3D-BDD7-9DF985431EA9",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"6896143862222359815\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6896143862222359815/fa3f986322d957a5368b50a179539c03\"}, \"size\": 15.0, \"font\": {\"id\": \"6807743703436759566\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"Picking\"}",
    "font_size": 15,
@@ -312,7 +312,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "B06F79C2-EE08-4029-B5F6-D8C3E36729AC",
+    "id": "FBDC46BD-3DFA-4308-88A1-D57940100A12",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -353,7 +353,7 @@
     ]
    },
    {
-    "id": "55E1196A-C29C-49E6-827F-4152AF58A49E",
+    "id": "249EC44A-0C5F-4DA6-B1FA-EFC55472FDA0",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -377,7 +377,7 @@
     ]
    },
    {
-    "id": "DBC6CA10-5A6A-4A34-87DD-B4ED48F67883",
+    "id": "D43B0655-4FF2-46F1-A7E1-E760F450264B",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -403,7 +403,7 @@
   ],
   "effects": [
    {
-    "id": "5F5173DF-F305-429B-9A73-8044D42DDE06",
+    "id": "96B71289-04CC-4A1B-ADEC-1A1A51BCB730",
     "type": "text_effect",
     "resource_id": "7166445713029729568",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7166445713029729568/ddd984e1353cb5f7fb784e3b2941d420",
@@ -415,7 +415,7 @@
     "visible": true
    },
    {
-    "id": "43D08D22-C98A-413A-96D3-C64B01553DF6",
+    "id": "C9A37DC7-4DB1-4C96-9E69-704D90E39C43",
     "type": "text_effect",
     "resource_id": "6896143862222359815",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6896143862222359815/fa3f986322d957a5368b50a179539c03",

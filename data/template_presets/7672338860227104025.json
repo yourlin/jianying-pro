@@ -1,0 +1,234 @@
+{
+ "resource_id": "7672338860227104025",
+ "name": "下班路上撞见了日落",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "271097AE-1F94-4543-AAE6-CE18DE34080B",
+   "FBBF15F1-37AA-4CBB-BAB2-C7335F413AF6"
+  ]
+ },
+ "template": {
+  "id": "9B8C1034-628E-431B-893C-DE3018187B9A",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7672338860227104025",
+  "effect_id": "7672338860227104025",
+  "name": "下班路上撞见了日落",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672338860227104025/fcc0911a1ca775cafc5cf08d4d459abd",
+  "resources": [
+   {
+    "panel": "default",
+    "resource_id": "7672373899308371224",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7672373899308371224/8e7becf2b66288f0e74dc476b2a4f36b"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7290445024435638842",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69"
+   },
+   {
+    "panel": "text",
+    "resource_id": "6869302248103481869",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6869302248103481869/a6a9e77486fe911cfe9f270be3c3eab8"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "8BD5D4C8-DB45-4259-BFFA-791EB22551E9",
+    "text_material_id": "F9402562-1EF6-4FFE-958E-E5CDBA749CBB",
+    "extra_material_refs": [
+     "271097AE-1F94-4543-AAE6-CE18DE34080B"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 563.3333129882812,
+     "original_size_height": 318.5,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.9276584982872009,
+       "y": 0.9276584982872009
+      },
+      "transform": {
+       "x": 0,
+       "y": 11.539276123046875
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "AB7B3AAA-6F10-4800-B141-F4EE9332646C",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "FBBF15F1-37AA-4CBB-BAB2-C7335F413AF6"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 800,
+     "original_size_height": 800,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8221731781959534,
+       "y": 0.8221728801727295
+      },
+      "transform": {
+       "x": 0,
+       "y": -0.000244140625
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "F9402562-1EF6-4FFE-958E-E5CDBA749CBB",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 13.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.31373, 0.30588, 0.28627]}}}, \"font\": {\"id\": \"7290445024435638842\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7290445024435638842/ed99664d2260c7ea5390f24d9f280a69\"}}], \"text\": \"下班路上撞见了日落，\\n橘红色的光铺满了整条\\n街，行人、车辆、路边\\n的猫，全都被染上了同\\n样的颜色。\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.11999999999999995,
+   "letter_spacing": 0,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 47,
+   "text_color": "#504e49ff",
+   "name": "693A1898-6255-4f9b-A9DC-A184BD6F3E88",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "271097AE-1F94-4543-AAE6-CE18DE34080B",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": [
+     {
+      "type": "in",
+      "resource_id": "6869302248103481869",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6869302248103481869/a6a9e77486fe911cfe9f270be3c3eab8",
+      "material_type": "sticker",
+      "start": 0,
+      "duration": 500000,
+      "source_platform": 1,
+      "platform": "all",
+      "name": "",
+      "id": "",
+      "panel": "",
+      "category_id": "",
+      "category_name": "",
+      "third_resource_id": "",
+      "request_id": ""
+     }
+    ]
+   },
+   {
+    "id": "FBBF15F1-37AA-4CBB-BAB2-C7335F413AF6",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

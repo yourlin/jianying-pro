@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "AF847660-EDB5-4B51-A473-87FB949AE248"
+   "FCC55C18-055E-4055-BB4E-1FBE57B382F0"
   ]
  },
  "template": {
-  "id": "2A36D43D-E227-4C74-AA15-ACD6D4D71063",
+  "id": "FB0773DA-90B5-49AE-98ED-BF071D975DCB",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7437594157901696292",
@@ -59,10 +59,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "8D0C26F2-5ABE-48A0-8541-B72D8274B146",
-    "text_material_id": "6DCC4475-7140-425E-9981-37C6D6282D52",
+    "id": "48EA7BC2-03AE-4AB9-A71A-591E6D724E95",
+    "text_material_id": "F94590AC-C40E-49BD-BFBC-3E02C4B352AC",
     "extra_material_refs": [
-     "AF847660-EDB5-4B51-A473-87FB949AE248"
+     "FCC55C18-055E-4055-BB4E-1FBE57B382F0"
     ],
     "clip_type": "",
     "capital": "",
@@ -123,9 +123,9 @@
  },
  "texts": [
   {
-   "id": "6DCC4475-7140-425E-9981-37C6D6282D52",
+   "id": "F94590AC-C40E-49BD-BFBC-3E02C4B352AC",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.12157, 0.12157, 0.12157]}}}, \"font\": {\"id\": \"7290455645264810555\", \"path\": \"\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.12157, 0.12157, 0.12157]}}}, \"font\": {\"id\": \"7290455645264810555\", \"path\": \"\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -140,7 +140,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#1f1f1fff",
    "name": "4453AB8B-3556-4616-8651-9534A9FB3908",
    "use_effect_default_color": true,
@@ -163,13 +163,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#0D4EFFFF",
+   "background_round_radius": 0.3696369528770447,
+   "background_width": 0.24402640759944916,
+   "background_height": 0,
+   "background_horizontal_offset": 0.006402640137821436,
+   "background_vertical_offset": -0.11551155149936676,
+   "inner_padding": -1,
+   "background_fill": ""
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "AF847660-EDB5-4B51-A473-87FB949AE248",
+    "id": "FCC55C18-055E-4055-BB4E-1FBE57B382F0",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

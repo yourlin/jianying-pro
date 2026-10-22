@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "E1E7C5FA-A2AE-401B-BE6B-B29350EEB8BE",
-   "6E8AE2DD-CF6C-4ED9-8E9F-DF3DC3646F4C"
+   "74C0A26A-FE0E-4288-BF02-656A698A0138",
+   "B5E1E441-FA03-42C5-BF0E-B888FBF3B4D2"
   ]
  },
  "template": {
-  "id": "759D9757-C786-4AE4-924B-8924ECDEB271",
+  "id": "E0568806-2FA5-4030-BD22-F15B16F2E87C",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7503384747742252313",
@@ -60,11 +60,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "89F2E0E4-CCD0-4F78-9F73-B0A2F23634EA",
-    "text_material_id": "D518DC91-4414-4857-9043-0EA4F17DBBAE",
+    "id": "3555F8F2-8222-4786-8301-454A842CC058",
+    "text_material_id": "3ACF006D-339F-4055-A604-DEB12364DD7F",
     "extra_material_refs": [
-     "E1E7C5FA-A2AE-401B-BE6B-B29350EEB8BE",
-     "6E8AE2DD-CF6C-4ED9-8E9F-DF3DC3646F4C"
+     "74C0A26A-FE0E-4288-BF02-656A698A0138",
+     "B5E1E441-FA03-42C5-BF0E-B888FBF3B4D2"
     ],
     "clip_type": "",
     "capital": "",
@@ -125,9 +125,9 @@
  },
  "texts": [
   {
-   "id": "D518DC91-4414-4857-9043-0EA4F17DBBAE",
+   "id": "3ACF006D-339F-4055-A604-DEB12364DD7F",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7503381619399609662\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7503381619399609662/15e83844bb577a9124b296819b167f7c\"}, \"size\": 12.0, \"font\": {\"id\": \"7035924520854622757\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7503381619399609662\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7503381619399609662/15e83844bb577a9124b296819b167f7c\"}, \"size\": 12.0, \"font\": {\"id\": \"7035924520854622757\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -142,7 +142,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#ffffffff",
    "name": "71AF3625-5A7E-401b-86E9-C07D1556ED25",
    "use_effect_default_color": true,
@@ -165,13 +165,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0.5,
+   "background_width": 0.20000000298023224,
+   "background_height": 0.20000000298023224,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7503384747742252313/a7a5c6563e171c41ffd5314c05f5a17d/image/1747037323824.png\", \"range\": 4, \"scale\": 0.999999999999997, \"stretchMode\": \"stretch\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "6E8AE2DD-CF6C-4ED9-8E9F-DF3DC3646F4C",
+    "id": "B5E1E441-FA03-42C5-BF0E-B888FBF3B4D2",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
@@ -179,7 +189,7 @@
   ],
   "effects": [
    {
-    "id": "E1E7C5FA-A2AE-401B-BE6B-B29350EEB8BE",
+    "id": "74C0A26A-FE0E-4288-BF02-656A698A0138",
     "type": "text_effect",
     "resource_id": "7503381619399609662",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7503381619399609662/15e83844bb577a9124b296819b167f7c",

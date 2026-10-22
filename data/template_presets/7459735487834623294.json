@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "706C7AB9-7FAF-4237-B203-92D67DC95C46"
+   "6A9D11FF-218A-4E61-B9E7-CAF370DDF950"
   ]
  },
  "template": {
-  "id": "E4AC9951-1791-46C8-A8D5-677E955CCFA7",
+  "id": "37A8C0E5-43E4-4166-A254-3F64980AC7D3",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7459735487834623294",
@@ -42,13 +42,13 @@
     "panel": "fonts",
     "resource_id": "7025895760583463438",
     "source_platform": 0,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7025895760583463438/dc99fbcf0d0a7c179313e6289d95ebaf"
    },
    {
     "panel": "text",
     "resource_id": "7418861059202617865",
     "source_platform": 0,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7418861059202617865/9aeeb068331101540ef9e9fea68ef506"
    },
    {
     "panel": "system-fonts",
@@ -59,10 +59,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "DF5E9448-2834-4549-BC74-D8637600C4BF",
-    "text_material_id": "B39B7834-3C62-4507-B271-DA9FEDDCC234",
+    "id": "6E8844B3-377F-4EB9-8D90-C66BAA16BBB1",
+    "text_material_id": "77326EA1-64BA-413D-B9B9-4DC63EB92F81",
     "extra_material_refs": [
-     "706C7AB9-7FAF-4237-B203-92D67DC95C46"
+     "6A9D11FF-218A-4E61-B9E7-CAF370DDF950"
     ],
     "clip_type": "",
     "capital": "",
@@ -123,9 +123,9 @@
  },
  "texts": [
   {
-   "id": "B39B7834-3C62-4507-B271-DA9FEDDCC234",
+   "id": "77326EA1-64BA-413D-B9B9-4DC63EB92F81",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 13.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7025895760583463438\", \"path\": \"\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 13.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7025895760583463438\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7025895760583463438/dc99fbcf0d0a7c179313e6289d95ebaf\"}}], \"text\": \"贺新年迎新春\\n字幕输入中\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.9269476198682586,
@@ -140,7 +140,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#000000ff",
    "name": "A610389D-0489-4FD3-948B-D0F7D2181E45",
    "use_effect_default_color": true,
@@ -163,20 +163,30 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 2,
+   "background_height": 0.5448201298713684,
+   "background_horizontal_offset": -0.008851942606270313,
+   "background_vertical_offset": -0.009349399246275425,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7459735487834623294/9b8b088b9a9443f57ff737db092997b4/image/1736484870685.png\", \"range\": 4, \"scale\": 1.0009058902138128, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "706C7AB9-7FAF-4237-B203-92D67DC95C46",
+    "id": "6A9D11FF-218A-4E61-B9E7-CAF370DDF950",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
      {
       "type": "caption",
       "resource_id": "7418861059202617865",
-      "path": "",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7418861059202617865/9aeeb068331101540ef9e9fea68ef506",
       "material_type": "sticker",
       "start": 0,
       "duration": 1,

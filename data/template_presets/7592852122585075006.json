@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "2A51BC9F-D3B7-4C56-AA7B-4CF8823BC1B2",
-   "436CE389-5806-4ACA-89C0-1C6DDA03F42E"
+   "79C820DB-439B-416D-B193-A10693C37780",
+   "BC2B8A85-F848-4A0E-A766-1D2CA6154FC2"
   ]
  },
  "template": {
-  "id": "31CD1456-415C-4580-99FB-3C8A8393D798",
+  "id": "086E83F1-AB73-4BAD-A2E8-D477657707D8",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7592852122585075006",
@@ -60,11 +60,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "8E80296D-50D2-4CA5-9AD5-2B422E865EF2",
-    "text_material_id": "5AEF6A71-E824-409E-83E4-016B8E140E17",
+    "id": "DF57CE87-5BD3-4247-A0D8-E4FB6564579A",
+    "text_material_id": "EFA6CEE2-0FCC-4C4C-97C9-5EAD3995049B",
     "extra_material_refs": [
-     "2A51BC9F-D3B7-4C56-AA7B-4CF8823BC1B2",
-     "436CE389-5806-4ACA-89C0-1C6DDA03F42E"
+     "79C820DB-439B-416D-B193-A10693C37780",
+     "BC2B8A85-F848-4A0E-A766-1D2CA6154FC2"
     ],
     "clip_type": "",
     "capital": "",
@@ -125,9 +125,9 @@
  },
  "texts": [
   {
-   "id": "5AEF6A71-E824-409E-83E4-016B8E140E17",
+   "id": "EFA6CEE2-0FCC-4C4C-97C9-5EAD3995049B",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7592909524764282137\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7592909524764282137/2e5c0085267a185deb0ae2a6cf3e674a\"}, \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.98824, 0.9451]}}}, \"font\": {\"id\": \"7451897289527792178\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7592909524764282137\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7592909524764282137/2e5c0085267a185deb0ae2a6cf3e674a\"}, \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 0.98824, 0.9451]}}}, \"font\": {\"id\": \"7451897289527792178\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7451897289527792178/e980f639178ccd7a5f84add383208aac\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -142,7 +142,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#fffcf1ff",
    "name": "7CFDBEC2-40F2-422c-9156-96436332D719",
    "use_effect_default_color": true,
@@ -165,13 +165,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.45843827724456787,
+   "background_height": 0.23022669553756714,
+   "background_horizontal_offset": -0.511335015296936,
+   "background_vertical_offset": -0.05037783458828926,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 4, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7592852122585075006/c04bc38a74f73513f01f6458d23b228c/image/1767934437698.png\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"border\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "436CE389-5806-4ACA-89C0-1C6DDA03F42E",
+    "id": "BC2B8A85-F848-4A0E-A766-1D2CA6154FC2",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
@@ -179,7 +189,7 @@
   ],
   "effects": [
    {
-    "id": "2A51BC9F-D3B7-4C56-AA7B-4CF8823BC1B2",
+    "id": "79C820DB-439B-416D-B193-A10693C37780",
     "type": "text_effect",
     "resource_id": "7592909524764282137",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7592909524764282137/2e5c0085267a185deb0ae2a6cf3e674a",

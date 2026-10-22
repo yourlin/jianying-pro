@@ -351,6 +351,33 @@ def _hex_rgba(rgb, a=1.0) -> str:
     return "#" + "".join(f"{max(0, min(255, round(float(v) * 255))):02x}" for v in list(rgb) + [a])
 
 
+def _text_background(tp: dict, package_dir: str) -> dict:
+    """
+    模板包文字的背景 (text_params.canvas*) -> 草稿的 background_* 字段。
+    对照 26 个剪映真实预设: 颜色 / 透明度 / 圆角 / 宽高 / 偏移逐项一致; 纹理图换成模板包 image/ 下的同名文件。
+    """
+    if not tp.get("canvas"):
+        return {}
+    r, g, b, a = (list(tp.get("canvasColor") or [1, 1, 1, 1]) + [1, 1, 1, 1])[:4]
+    w, h = (list(tp.get("canvasWHCustomized") or [0, 0]) + [0, 0])[:2]
+    ox, oy = (list(tp.get("canvasOffsetCustomized") or [0, 0]) + [0, 0])[:2]
+    fill = copy.deepcopy((tp.get("canvasAdvancedInfo") or {}).get("fill") or {})
+    tex = (fill.get("content") or {}).get("texture") if fill else None
+    if isinstance(tex, dict) and tex.get("path"):
+        name = _re.split(r"[\\/]", tex["path"])[-1]
+        local = os.path.join(package_dir, "image", name)
+        tex["path"] = local if os.path.exists(local) else ""
+    return {
+        # 剪映写法: 大写, 各通道 int(v*255) 截断
+        "background_style": 1, "background_alpha": a,
+        "background_color": "#" + "".join(f"{int(float(v) * 255 + 1e-6):02X}" for v in (r, g, b, a)),
+        "background_round_radius": tp.get("canvasRoundRadiusScale", 0) if tp.get("canvasRoundCorner") else 0,
+        "background_width": w, "background_height": h,
+        "background_horizontal_offset": ox, "background_vertical_offset": oy, "inner_padding": -1,
+        "background_fill": json.dumps(fill.get("content"), ensure_ascii=False) if fill.get("content") else "",
+    }
+
+
 def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_template") -> dict:
     """
     由已下载的模板包 (Cache/artistEffect/<id>/<md5>/) 生成预设, 结构与 extract_presets 采集到的相同。
@@ -426,9 +453,13 @@ def preset_from_package(row: dict, package_dir: str, kind: str = "subtitle_templ
             "words": {"text": ["A"], "start_time": [0], "end_time": [1000]},
             "current_words": {"text": [], "start_time": [], "end_time": []},
         })
+        bg = _text_background(tp, package_dir)
+        texts[-1].update(bg)
         if not subtitle:
             texts[-1].update(group_id="", force_apply_line_max_width=False, check_flag=47,
                              words={"text": [], "start_time": [], "end_time": []})
+        if bg:  # check_flag 第 16 位 = 显示文字背景 (剪映真实预设里带背景的都是 63, 不带的 47/15)
+            texts[-1]["check_flag"] = 63
         refs = []
         if style.get("effectStyle"):
             eid = _new_id()

@@ -26,15 +26,15 @@
    "value": 1
   },
   "extra_material_refs": [
-   "0B3AEB9A-23E9-44AA-9EAC-614AD7E9D8DC",
-   "E7B6FCE0-F35A-4EEB-A5A0-9993C2E4725E",
-   "CB9B05BA-25E3-483F-B498-FF015692FDA8",
-   "5221C896-8075-4EDE-914C-9321168F6C48",
-   "25A17AA2-AA5D-489B-80AD-66865407DBCA"
+   "9E94934F-8B93-46B2-BA65-B4041A6517F8",
+   "4882EEF9-5D89-4D19-B175-466475EC5CB7",
+   "617FCCB7-CF57-4AF9-B787-3731A84A04DA",
+   "57CCCC19-D916-4F47-9450-95F170BFC867",
+   "13BCDE37-4EF6-44EB-BAFD-486456D021DD"
   ]
  },
  "template": {
-  "id": "41E90018-16A7-4F0C-9370-3134A9DCA284",
+  "id": "EA2CADC9-2F69-4DF4-8B92-80DBEBB1C4B6",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7337885540164832553",
@@ -99,11 +99,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "5D24345C-2F80-4CC2-8274-5EDF1468BCF0",
-    "text_material_id": "42270312-4F94-4BD0-A2C6-970B72818AF2",
+    "id": "3C748BD1-E9A6-4446-9BDD-141C9C6CD5E3",
+    "text_material_id": "4AC28CB4-8085-4E3E-B670-2F84D0CAA821",
     "extra_material_refs": [
-     "0B3AEB9A-23E9-44AA-9EAC-614AD7E9D8DC",
-     "E7B6FCE0-F35A-4EEB-A5A0-9993C2E4725E"
+     "9E94934F-8B93-46B2-BA65-B4041A6517F8",
+     "4882EEF9-5D89-4D19-B175-466475EC5CB7"
     ],
     "clip_type": "",
     "capital": "",
@@ -135,11 +135,11 @@
     }
    },
    {
-    "id": "71A0D994-3DD5-47F7-BF0D-D3F701157A5E",
-    "text_material_id": "36125B11-A9A2-46E8-AA79-DF0AEED6C6BE",
+    "id": "1DF6A5B1-D836-43DB-B0A7-3362EADF6D69",
+    "text_material_id": "A83FCCD2-F9BE-456A-ADA7-C5018E17C3FD",
     "extra_material_refs": [
-     "CB9B05BA-25E3-483F-B498-FF015692FDA8",
-     "5221C896-8075-4EDE-914C-9321168F6C48"
+     "617FCCB7-CF57-4AF9-B787-3731A84A04DA",
+     "57CCCC19-D916-4F47-9450-95F170BFC867"
     ],
     "clip_type": "",
     "capital": "",
@@ -188,7 +188,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "25A17AA2-AA5D-489B-80AD-66865407DBCA"
+     "13BCDE37-4EF6-44EB-BAFD-486456D021DD"
     ],
     "attach_info": {
      "start_time": 0,
@@ -235,7 +235,7 @@
  },
  "texts": [
   {
-   "id": "42270312-4F94-4BD0-A2C6-970B72818AF2",
+   "id": "4AC28CB4-8085-4E3E-B670-2F84D0CAA821",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7166445713029729568\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7166445713029729568/ddd984e1353cb5f7fb784e3b2941d420\"}, \"size\": 15.0, \"font\": {\"id\": \"7086699209738424840\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"满怀\\n期待\"}",
    "font_size": 15,
@@ -272,7 +272,7 @@
    }
   },
   {
-   "id": "36125B11-A9A2-46E8-AA79-DF0AEED6C6BE",
+   "id": "A83FCCD2-F9BE-456A-ADA7-C5018E17C3FD",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"6896143862222359815\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6896143862222359815/fa3f986322d957a5368b50a179539c03\"}, \"size\": 15.0, \"font\": {\"id\": \"6807743703436759566\", \"path\": \"\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"Full of Expectations\"}",
    "font_size": 15,
@@ -312,7 +312,7 @@
  "extras": {
   "material_animations": [
    {
-    "id": "E7B6FCE0-F35A-4EEB-A5A0-9993C2E4725E",
+    "id": "4882EEF9-5D89-4D19-B175-466475EC5CB7",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -353,7 +353,7 @@
     ]
    },
    {
-    "id": "5221C896-8075-4EDE-914C-9321168F6C48",
+    "id": "57CCCC19-D916-4F47-9450-95F170BFC867",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -377,7 +377,7 @@
     ]
    },
    {
-    "id": "25A17AA2-AA5D-489B-80AD-66865407DBCA",
+    "id": "13BCDE37-4EF6-44EB-BAFD-486456D021DD",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -403,7 +403,7 @@
   ],
   "effects": [
    {
-    "id": "0B3AEB9A-23E9-44AA-9EAC-614AD7E9D8DC",
+    "id": "9E94934F-8B93-46B2-BA65-B4041A6517F8",
     "type": "text_effect",
     "resource_id": "7166445713029729568",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7166445713029729568/ddd984e1353cb5f7fb784e3b2941d420",
@@ -415,7 +415,7 @@
     "visible": true
    },
    {
-    "id": "CB9B05BA-25E3-483F-B498-FF015692FDA8",
+    "id": "617FCCB7-CF57-4AF9-B787-3731A84A04DA",
     "type": "text_effect",
     "resource_id": "6896143862222359815",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/6896143862222359815/fa3f986322d957a5368b50a179539c03",

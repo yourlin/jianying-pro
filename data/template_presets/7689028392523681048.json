@@ -1,0 +1,220 @@
+{
+ "resource_id": "7689028392523681048",
+ "name": "秋拼贴文字-祝我们好在秋天",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "6A39190A-EEAB-41E6-BA40-7BD9219F7927",
+   "44117A74-B0C4-4BE2-8865-A054D7B2E9C3"
+  ]
+ },
+ "template": {
+  "id": "303A867C-1D7A-42D6-B796-9436C09C5ACD",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7689028392523681048",
+  "effect_id": "7689028392523681048",
+  "name": "秋拼贴文字-祝我们好在秋天",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7689028392523681048/6fe31f54b4d7cb4fe7f23ff76d68f803",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7444913491762221577",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7444913491762221577/dff19164a0e4822b2320a900db9c1c2e"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7689033216526798142",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7689033216526798142/ac367b8d95566047ddf16de27d0e1b8e"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "792CD4C9-8912-43ED-8E9F-F1F7AFB4E300",
+    "text_material_id": "8C800E4E-0ED6-4B3B-B248-EC13C99391A0",
+    "extra_material_refs": [
+     "6A39190A-EEAB-41E6-BA40-7BD9219F7927"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 656.9695434570312,
+     "original_size_height": 176.25,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1.106859564781189,
+       "y": 1.106859803199768
+      },
+      "transform": {
+       "x": 33.21783447265625,
+       "y": -8.963348388671875
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "E11714DE-84D8-4860-875C-0B9430AB76C3",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "44117A74-B0C4-4BE2-8865-A054D7B2E9C3"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 365,
+     "original_size_height": 500,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.21838128566741943,
+       "y": 0.20671942830085754
+      },
+      "transform": {
+       "x": -289.94000244140625,
+       "y": 54.82551574707031
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "8C800E4E-0ED6-4B3B-B248-EC13C99391A0",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.38824, 0.18431, 0.066667]}}}, \"font\": {\"id\": \"7444913491762221577\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7444913491762221577/dff19164a0e4822b2320a900db9c1c2e\"}}], \"text\": \"夏事未愿，\\n祝我们好在秋天。\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.41999999999999993,
+   "letter_spacing": 0,
+   "alignment": 0,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#632f11ff",
+   "name": "E55D84BC-802F-4fff-A2F3-560102A473CF",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FFF8A8FF",
+   "background_round_radius": 0,
+   "background_width": 0.8136986494064331,
+   "background_height": 0.19863013923168182,
+   "background_horizontal_offset": -0.046027395874261856,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.9725490212440491, 0.658823549747467]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7689028392523681048/6fe31f54b4d7cb4fe7f23ff76d68f803/image/1790249532400.png\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"stretch\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "6A39190A-EEAB-41E6-BA40-7BD9219F7927",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "44117A74-B0C4-4BE2-8865-A054D7B2E9C3",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

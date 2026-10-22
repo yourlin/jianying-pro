@@ -1,0 +1,220 @@
+{
+ "resource_id": "7694985967710768409",
+ "name": "秋天是被宇宙咬碎的黄昏",
+ "kind": "text_template",
+ "source": "package",
+ "segment": {
+  "duration": 3000000,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "A1B2A09B-D1A1-4BF4-B637-25996D5DADC3",
+   "F69977EA-2836-4B25-B60E-33576F92E62C"
+  ]
+ },
+ "template": {
+  "id": "E25A2CFD-3A8C-4E6D-81FB-1021E153A066",
+  "type": "text_template",
+  "text_template_resource_type": "text_template",
+  "resource_id": "7694985967710768409",
+  "effect_id": "7694985967710768409",
+  "name": "秋天是被宇宙咬碎的黄昏",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7694985967710768409/b42cf3a297d4804260aeb3fbdbd8c8cd",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7086429206543864350",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7086429206543864350/2e70579a0538bde91edc1eaedc68c02f"
+   },
+   {
+    "panel": "default",
+    "resource_id": "7665696346388860222",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7665696346388860222/ec1c4b5f466ae921dc9dd10414697add"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "80E4D4A0-EDEC-405F-B59F-879A99D3FC6C",
+    "text_material_id": "7C032DAD-F435-4914-AEB8-9D8473981976",
+    "extra_material_refs": [
+     "A1B2A09B-D1A1-4BF4-B637-25996D5DADC3"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 0,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 742.0343017578125,
+     "original_size_height": 90.56372833251953,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.8358880281448364,
+       "y": 0.8663906455039978
+      },
+      "transform": {
+       "x": 18,
+       "y": -5
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "",
+  "category_id": "panel-text-template-template",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [
+   {
+    "name": "566B1B80-FFBE-4863-BE40-4D99B7DDAB33",
+    "type": "sticker",
+    "shape_param": {
+     "points": [],
+     "shape_type": 0
+    },
+    "extra_material_refs": [
+     "F69977EA-2836-4B25-B60E-33576F92E62C"
+    ],
+    "attach_info": {
+     "start_time": 0,
+     "duration": 3000000,
+     "original_size_width": 280,
+     "original_size_height": 280,
+     "clip": {
+      "alpha": 1,
+      "rotation": 155.647705078125,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 0.35591650009155273,
+       "y": 0.3559166491031647
+      },
+      "transform": {
+       "x": -294,
+       "y": 39.99995422363281
+      }
+     }
+    }
+   }
+  ],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "7C032DAD-F435-4914-AEB8-9D8473981976",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.61176, 0.18039, 0.031373]}}}, \"font\": {\"id\": \"7086429206543864350\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7086429206543864350/2e70579a0538bde91edc1eaedc68c02f\"}}], \"text\": \"秋天是被宇宙咬碎的黄昏\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.55,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": false,
+   "check_flag": 63,
+   "text_color": "#9c2e08ff",
+   "name": "FA03C93D-4BA7-4575-BDEC-14D47EB62F9B",
+   "use_effect_default_color": true,
+   "group_id": "",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FF8F14FF",
+   "background_round_radius": 0,
+   "background_width": 0.4362744987010956,
+   "background_height": 0.2245098054409027,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"texture\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.5607843399047852, 0.0784313753247261]}, \"texture\": {\"alpha\": 1, \"angle\": 0, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7694985967710768409/b42cf3a297d4804260aeb3fbdbd8c8cd/image/1791647321558.jpg\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "A1B2A09B-D1A1-4BF4-B637-25996D5DADC3",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   },
+   {
+    "id": "F69977EA-2836-4B25-B60E-33576F92E62C",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

@@ -26,11 +26,11 @@
    "value": 1
   },
   "extra_material_refs": [
-   "71894648-5886-49FA-97AC-48F0C402698F"
+   "61106613-6E7D-40B1-A2DE-66975654E907"
   ]
  },
  "template": {
-  "id": "95BF9336-1ACA-4127-B1C8-4445F25F5C6D",
+  "id": "8E08327C-FECE-4CD0-92CB-56837496AA92",
   "type": "text_template_subtitle",
   "text_template_resource_type": "subtitle_template",
   "resource_id": "7494121485536234776",
@@ -42,13 +42,13 @@
     "panel": "fonts",
     "resource_id": "7481618551309079077",
     "source_platform": 0,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7481618551309079077/59fd2562b626e15d617b9a7bdb7fcb6e"
    },
    {
     "panel": "text",
     "resource_id": "7368767625570030131",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7368767625570030131/f0f95977d50fa61cd6061dc978aa4591"
    },
    {
     "panel": "system-fonts",
@@ -60,15 +60,15 @@
     "panel": "text",
     "resource_id": "7407403207174918693",
     "source_platform": 1,
-    "path": ""
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7407403207174918693/76f0447828738dcc9f4d1a36854ddcc8"
    }
   ],
   "text_info_resources": [
    {
-    "id": "D840616F-DEDF-41DD-92F9-025B273D7086",
-    "text_material_id": "98FBC2FB-5441-4082-976F-4458BCCEFA0B",
+    "id": "C758959A-978C-4F6B-A93F-4BF8E42B4261",
+    "text_material_id": "FB4B151D-A55B-4300-8F18-80CD37D863EB",
     "extra_material_refs": [
-     "71894648-5886-49FA-97AC-48F0C402698F"
+     "61106613-6E7D-40B1-A2DE-66975654E907"
     ],
     "clip_type": "",
     "capital": "",
@@ -129,9 +129,9 @@
  },
  "texts": [
   {
-   "id": "98FBC2FB-5441-4082-976F-4458BCCEFA0B",
+   "id": "FB4B151D-A55B-4300-8F18-80CD37D863EB",
    "type": "text",
-   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.30196, 0.67843, 0.38824]}}}, \"font\": {\"id\": \"7481618551309079077\", \"path\": \"\"}}], \"text\": \"A\"}",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.30196, 0.67843, 0.38824]}}}, \"font\": {\"id\": \"7481618551309079077\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7481618551309079077/59fd2562b626e15d617b9a7bdb7fcb6e\"}}], \"text\": \"字幕输入中...\\n字幕输入中...\\n在工具内制作你的字幕模板，\\n定制文本样式和动画效果，\\n享受流畅的创作体验。\"}",
    "font_size": 15,
    "text_size": 30,
    "line_spacing": 0.02,
@@ -146,7 +146,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": true,
-   "check_flag": 15,
+   "check_flag": 63,
    "text_color": "#4dad63ff",
    "name": "3B11094C-FC34-4E6F-AC9A-DBD9F1640651",
    "use_effect_default_color": true,
@@ -169,20 +169,30 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FFF5B7FF",
+   "background_round_radius": 0,
+   "background_width": 0,
+   "background_height": 0,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"solid\", \"solid\": {\"alpha\": 1, \"color\": [1, 0.9607843160629272, 0.7176470756530762]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"\", \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "71894648-5886-49FA-97AC-48F0C402698F",
+    "id": "61106613-6E7D-40B1-A2DE-66975654E907",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
      {
       "type": "caption",
       "resource_id": "7368767625570030131",
-      "path": "",
+      "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7368767625570030131/f0f95977d50fa61cd6061dc978aa4591",
       "material_type": "sticker",
       "start": 0,
       "duration": 1,

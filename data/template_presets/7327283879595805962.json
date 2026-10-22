@@ -26,12 +26,12 @@
    "value": 1
   },
   "extra_material_refs": [
-   "17D9274B-367B-49B6-B08E-782AC5DFC492",
-   "5052605A-CD03-4820-AAE1-786608292795"
+   "BA5F0ACB-FC85-4CA0-884C-3F2DDC4EF1AD",
+   "54BB13BA-99DD-40A9-A35D-6EF47039288E"
   ]
  },
  "template": {
-  "id": "35DFA746-0662-4F69-8ADB-AB7CD8DE547C",
+  "id": "CA83910D-F3BD-43BA-9BAE-E674A466E962",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7327283879595805962",
@@ -54,10 +54,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "A85714B1-E542-426F-8050-8A1E24B67838",
-    "text_material_id": "AECDB470-5693-4226-9FC4-7A0941F6C627",
+    "id": "58CE078A-D53C-4F45-B2A0-29110B0857B6",
+    "text_material_id": "6D0FBF7C-8BE5-4F60-AD1A-A79E41BBB8C3",
     "extra_material_refs": [
-     "17D9274B-367B-49B6-B08E-782AC5DFC492"
+     "BA5F0ACB-FC85-4CA0-884C-3F2DDC4EF1AD"
     ],
     "clip_type": "",
     "capital": "",
@@ -106,7 +106,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "5052605A-CD03-4820-AAE1-786608292795"
+     "54BB13BA-99DD-40A9-A35D-6EF47039288E"
     ],
     "attach_info": {
      "start_time": 0,
@@ -153,7 +153,7 @@
  },
  "texts": [
   {
-   "id": "AECDB470-5693-4226-9FC4-7A0941F6C627",
+   "id": "6D0FBF7C-8BE5-4F60-AD1A-A79E41BBB8C3",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 25.727, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.70196, 0.70196, 0.44314]}}}, \"font\": {\"id\": \"7316817704143295003\", \"path\": \"\"}}], \"text\": \"冬日皂片\"}",
    "font_size": 15,
@@ -170,7 +170,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": false,
-   "check_flag": 47,
+   "check_flag": 63,
    "text_color": "#b3b371ff",
    "name": "B24BD153-D066-43a2-892D-2FC541774476",
    "use_effect_default_color": true,
@@ -187,19 +187,29 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#F4F5F3FF",
+   "background_round_radius": 0,
+   "background_width": 0.17302052676677704,
+   "background_height": 0.12023460119962692,
+   "background_horizontal_offset": -0.03519061580300331,
+   "background_vertical_offset": 0.08211144059896469,
+   "inner_padding": -1,
+   "background_fill": ""
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "17D9274B-367B-49B6-B08E-782AC5DFC492",
+    "id": "BA5F0ACB-FC85-4CA0-884C-3F2DDC4EF1AD",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []
    },
    {
-    "id": "5052605A-CD03-4820-AAE1-786608292795",
+    "id": "54BB13BA-99DD-40A9-A35D-6EF47039288E",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": []

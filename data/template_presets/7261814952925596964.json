@@ -26,14 +26,14 @@
    "value": 1
   },
   "extra_material_refs": [
-   "5691830D-FDA9-4223-8DE7-FB1D66DF8AC6",
-   "2F83EAF2-7BED-47A7-A126-145572F05740",
-   "8D01E1C9-727D-4B3C-BB40-38CB56678D8D",
-   "EE0193E9-8942-4D10-9376-512C37312D9F"
+   "499195F4-6B0B-43D0-964F-A5689E1E615C",
+   "82D9FAB4-C0E7-470A-9772-E9D411BB4AD5",
+   "0C0641F9-AE7C-4963-8077-762CBA5D14C6",
+   "7F3333CB-00A0-4C7B-867F-2C4D80A52230"
   ]
  },
  "template": {
-  "id": "0CC92AF8-71BB-46B2-B90E-9B4C70E3FD6A",
+  "id": "AB7A44A5-B31B-43B2-8350-66E26F6F23F9",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7261814952925596964",
@@ -86,11 +86,11 @@
   ],
   "text_info_resources": [
    {
-    "id": "97532BC7-A416-4EE7-AA2E-CF6B451481A4",
-    "text_material_id": "5EB50D9E-F69C-4C99-8BBE-3790D1DF2316",
+    "id": "73445CF9-8ACB-4E29-AA84-F77FCB8AD163",
+    "text_material_id": "C8D66BFF-2602-42B2-94D8-69617D35E7E2",
     "extra_material_refs": [
-     "5691830D-FDA9-4223-8DE7-FB1D66DF8AC6",
-     "2F83EAF2-7BED-47A7-A126-145572F05740"
+     "499195F4-6B0B-43D0-964F-A5689E1E615C",
+     "82D9FAB4-C0E7-470A-9772-E9D411BB4AD5"
     ],
     "clip_type": "",
     "capital": "",
@@ -122,11 +122,11 @@
     }
    },
    {
-    "id": "A705C22D-5F3D-4DAA-AB56-D7EF741CBBFB",
-    "text_material_id": "79F879E9-21E2-4236-B463-86AB1583CB30",
+    "id": "4466DC45-0F38-40CD-91D7-5B292FA983DA",
+    "text_material_id": "93ADD39C-EADE-40B0-97E8-4A9534797ADA",
     "extra_material_refs": [
-     "8D01E1C9-727D-4B3C-BB40-38CB56678D8D",
-     "EE0193E9-8942-4D10-9376-512C37312D9F"
+     "0C0641F9-AE7C-4963-8077-762CBA5D14C6",
+     "7F3333CB-00A0-4C7B-867F-2C4D80A52230"
     ],
     "clip_type": "",
     "capital": "",
@@ -187,7 +187,7 @@
  },
  "texts": [
   {
-   "id": "5EB50D9E-F69C-4C99-8BBE-3790D1DF2316",
+   "id": "C8D66BFF-2602-42B2-94D8-69617D35E7E2",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7261811703833283903\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7261811703833283903/aef020db50712079109a78cf47f804ba\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 1.0, 1.0]}}}, \"font\": {\"id\": \"6740435494053614093\", \"path\": \"\"}}], \"text\": \"·卫衣/Hoodies \\n\\n·短裙/skirt retro\\n\\n·鞋子/shoes\\n\\n·背包/bag\"}",
    "font_size": 15,
@@ -224,7 +224,7 @@
    }
   },
   {
-   "id": "79F879E9-21E2-4236-B463-86AB1583CB30",
+   "id": "93ADD39C-EADE-40B0-97E8-4A9534797ADA",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7261813421866224915\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7261813421866224915/7b3daedf393523b7c6475f283c299047\"}, \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1.0, 1.0, 1.0]}}}, \"font\": {\"id\": \"7234488383559438905\", \"path\": \"\"}}], \"text\": \"#LOOK 1\"}",
    "font_size": 15,
@@ -241,7 +241,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": false,
-   "check_flag": 47,
+   "check_flag": 63,
    "text_color": "#ffffff00",
    "name": "88E83D49-1814-47d1-948D-F0D1C5F294E5",
    "use_effect_default_color": true,
@@ -258,13 +258,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 0.9501466155052185,
+   "background_color": "#FFBAA4F2",
+   "background_round_radius": 0.48973608016967773,
+   "background_width": 0.1818181872367859,
+   "background_height": 0.04692082107067108,
+   "background_horizontal_offset": 0.005865102633833885,
+   "background_vertical_offset": -0.008797653950750828,
+   "inner_padding": -1,
+   "background_fill": ""
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "2F83EAF2-7BED-47A7-A126-145572F05740",
+    "id": "82D9FAB4-C0E7-470A-9772-E9D411BB4AD5",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -305,7 +315,7 @@
     ]
    },
    {
-    "id": "EE0193E9-8942-4D10-9376-512C37312D9F",
+    "id": "7F3333CB-00A0-4C7B-867F-2C4D80A52230",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -331,7 +341,7 @@
   ],
   "effects": [
    {
-    "id": "5691830D-FDA9-4223-8DE7-FB1D66DF8AC6",
+    "id": "499195F4-6B0B-43D0-964F-A5689E1E615C",
     "type": "text_effect",
     "resource_id": "7261811703833283903",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7261811703833283903/aef020db50712079109a78cf47f804ba",
@@ -343,7 +353,7 @@
     "visible": true
    },
    {
-    "id": "8D01E1C9-727D-4B3C-BB40-38CB56678D8D",
+    "id": "0C0641F9-AE7C-4963-8077-762CBA5D14C6",
     "type": "text_effect",
     "resource_id": "7261813421866224915",
     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7261813421866224915/7b3daedf393523b7c6475f283c299047",

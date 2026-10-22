@@ -26,13 +26,13 @@
    "value": 1
   },
   "extra_material_refs": [
-   "FB6137B1-45FA-43AF-AD6F-5EB989619E51",
-   "7B672B7B-F5A4-4BBC-AFF5-9F21B49F42ED",
-   "A84D70FF-ABC7-4DC2-A015-CE490D3CDBA8"
+   "BD548296-D580-4ED1-8E43-F74A2FF01BFE",
+   "7D91AC45-0AB2-4B37-AF21-AA978EA0F213",
+   "C4C6EFA7-E282-4113-952F-D07C38ADC201"
   ]
  },
  "template": {
-  "id": "E10DDCFD-8003-4470-B752-6183BCE33E3B",
+  "id": "CAAF01D0-B4E3-4DCF-A83F-9A65D165BEC7",
   "type": "text_template",
   "text_template_resource_type": "text_template",
   "resource_id": "7638264570641026328",
@@ -73,10 +73,10 @@
   ],
   "text_info_resources": [
    {
-    "id": "8B19F194-34AD-49F5-8F48-E8A6E01A5DC1",
-    "text_material_id": "03EDA726-1011-4F5D-B709-17498A1D4CDA",
+    "id": "71D1B4C3-0E9F-48A9-B4C2-C542CAB30F00",
+    "text_material_id": "C9F729CE-1FCA-4DAD-A6B6-4A479C87FDDA",
     "extra_material_refs": [
-     "FB6137B1-45FA-43AF-AD6F-5EB989619E51"
+     "BD548296-D580-4ED1-8E43-F74A2FF01BFE"
     ],
     "clip_type": "",
     "capital": "",
@@ -125,7 +125,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "7B672B7B-F5A4-4BBC-AFF5-9F21B49F42ED"
+     "7D91AC45-0AB2-4B37-AF21-AA978EA0F213"
     ],
     "attach_info": {
      "start_time": 0,
@@ -159,7 +159,7 @@
      "shape_type": 0
     },
     "extra_material_refs": [
-     "A84D70FF-ABC7-4DC2-A015-CE490D3CDBA8"
+     "C4C6EFA7-E282-4113-952F-D07C38ADC201"
     ],
     "attach_info": {
      "start_time": 0,
@@ -206,7 +206,7 @@
  },
  "texts": [
   {
-   "id": "03EDA726-1011-4F5D-B709-17498A1D4CDA",
+   "id": "C9F729CE-1FCA-4DAD-A6B6-4A479C87FDDA",
    "type": "text",
    "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 15.0, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [0.0, 0.0, 0.0]}}}, \"font\": {\"id\": \"7495683056359969306\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7495683056359969306/ea6e2bb9b97f11fb1688a135f9c07688\"}}], \"text\": \"夏日限定\"}",
    "font_size": 15,
@@ -223,7 +223,7 @@
    "line_max_width": 0.82,
    "line_feed": 1,
    "force_apply_line_max_width": false,
-   "check_flag": 47,
+   "check_flag": 63,
    "text_color": "#000000ff",
    "name": "B45E1E9A-EB42-4e72-B3FE-F23B4D2507A5",
    "use_effect_default_color": true,
@@ -240,13 +240,23 @@
     "text": [],
     "start_time": [],
     "end_time": []
-   }
+   },
+   "background_style": 1,
+   "background_alpha": 1,
+   "background_color": "#FAFD94FF",
+   "background_round_radius": 0,
+   "background_width": 0,
+   "background_height": 0,
+   "background_horizontal_offset": 0,
+   "background_vertical_offset": 0,
+   "inner_padding": -1,
+   "background_fill": "{\"gradient\": {\"alpha\": [1, 1], \"angle\": 90, \"color\": [[1, 1, 1], [0.686274528503418, 0.686274528503418, 0.686274528503418]], \"mode\": \"character\", \"percent\": [0, 1], \"style\": \"linear\"}, \"render_type\": \"solid\", \"solid\": {\"alpha\": 1, \"color\": [0.9803921580314636, 0.9921568632125854, 0.5803921818733215]}, \"texture\": {\"alpha\": 1, \"angle\": 90, \"blend\": \"no\", \"flip\": [false, false], \"path\": \"\", \"playSpeed\": 1, \"range\": 4, \"scale\": 1, \"stretchMode\": \"fit\", \"wrapMode\": \"repeat\"}}"
   }
  ],
  "extras": {
   "material_animations": [
    {
-    "id": "FB6137B1-45FA-43AF-AD6F-5EB989619E51",
+    "id": "BD548296-D580-4ED1-8E43-F74A2FF01BFE",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -270,7 +280,7 @@
     ]
    },
    {
-    "id": "7B672B7B-F5A4-4BBC-AFF5-9F21B49F42ED",
+    "id": "7D91AC45-0AB2-4B37-AF21-AA978EA0F213",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
@@ -294,7 +304,7 @@
     ]
    },
    {
-    "id": "A84D70FF-ABC7-4DC2-A015-CE490D3CDBA8",
+    "id": "C4C6EFA7-E282-4113-952F-D07C38ADC201",
     "type": "sticker_animation",
     "multi_language_current": "none",
     "animations": [
