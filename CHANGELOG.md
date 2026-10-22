@@ -6,6 +6,7 @@
   - `scripts/storyboard_builder.py`: deterministic assembler for storyboard v2 (`references/storyboard_schema.md`). Supports source-time cuts, transitions, grading, audio processing, camera moves (push / pull / punch / pan / tilt / shake / **pip**), cover-fit inserts, labels, texts and templates, stickers, effects, SFX, subtitles split from the transcript, BGM and background fill. It runs the reviewer afterwards, and with `--preview` captures each shot in JianYing.
   - Specs: 6 scenes (`references/scenes/`); 5 styles (`references/styles/`, new: tech / fresh / variety / business), whose whitelists were checked against the panel indexes; methodology (`references/methodology/`: hook, pacing, subtitles, inserts and face avoidance, camera, transitions and effects, audio, safe areas, shooting). The methodology draws on GitHub editing skills, film-editing references and Chinese creator articles.
 - Fixes:
+  - **Keyframes on trimmed segments**: JianYing measures keyframe `time_offset` from the start of the *material*, not the segment. `add_keyframes` now converts segment-relative times (source start + offset × speed), and the reviewer reads keyframes the same way. Found while capturing V5 in JianYing: the PiP keyframes were shifted by the trim offsets.
   - Images are no longer clamped to 0.04 s.
   - The video normalizer keeps portrait orientation; it used to force 1920x1080 with padding.
   - Keyframe easing now works on uniform scale.

@@ -320,6 +320,14 @@ python scripts/sync_jy_templates.py --from-packages                             
 5. 下载与版权：预热时由剪映自己下载、自己校验会员，skill 不在剪映外下载模板包（VIP 和免费都一样）。
 
 
+## 关键帧时间是「素材时间」
+
+剪映的关键帧 `time_offset` 从**素材开头**算，不是从片段在时间线上的开头算（2026-10-22 实测：从素材 27.55s 处截取的片段，`time_offset` = 1.85s 的关键帧根本不出现）。
+
+- `add_keyframes` 接收片段内的相对时间，写入时自动换算：素材时间 = 截取起点 + 相对时间 × 速度。
+- 审片器的伪渲染也按这条规则读关键帧。
+- 直接调用底层 `segment.add_keyframe` 时，要自己加上 `source_timerange.start`。
+
 ## 9. 在剪映里截图检查（macOS）
 
 ```bash

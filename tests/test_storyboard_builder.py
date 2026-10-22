@@ -38,3 +38,14 @@ def test_split_transcript_merges_fragments():
         {"w": " 人.", "s": 8.22, "e": 8.34}]}]
     lines = split_transcript(tr, max_chars=38)
     assert lines[-1]["text"].endswith("人.") and len(lines) == 1
+
+
+def test_keyframes_use_material_time_for_trimmed_segments():
+    """剪映的关键帧按素材时间算: 从素材 10s 处截取的片段, 片段内 2s 的关键帧要写成 12s"""
+    import types
+
+    from core.track_ops import TrackOpsMixin
+
+    seg = types.SimpleNamespace(source_timerange=types.SimpleNamespace(start=10_000_000),
+                                speed=types.SimpleNamespace(speed=1.0))
+    assert TrackOpsMixin._keyframe_base(seg) == (10_000_000, 1.0)

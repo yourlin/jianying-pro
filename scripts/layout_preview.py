@@ -126,6 +126,9 @@ def interp(points, t_us, default):
 
 def seg_props(segment, local_us):
     """返回该时刻的 (scale, x, y, alpha), 已合并关键帧"""
+    # 剪映的关键帧时间是素材时间 (截取起点 + 片段内时间 x 速度), 不是片段内时间
+    src = segment.get("source_timerange") or {}
+    local_us = (src.get("start") or 0) + local_us * float(segment.get("speed") or 1.0)
     clip = segment.get("clip") or {}
     tr = clip.get("transform") or {}
     sc = clip.get("scale") or {}

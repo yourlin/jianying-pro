@@ -255,11 +255,24 @@ class TrackOpsMixin:
         segment.add_mask(mask, **kwargs)
         return segment
 
+    @staticmethod
+    def _keyframe_base(segment) -> Tuple[int, float]:
+        """
+        剪映的关键帧时间是「素材时间」: 从素材开头算, 而不是从片段在时间线上的开头算 (11.7 实测:
+        从素材 27.55s 处截取的片段, time_offset=1.85s 的关键帧根本不出现)。add_keyframes 接收片段内的相对时间,
+        这里返回换算用的 (截取起点, 速度): 素材时间 = 截取起点 + 相对时间 x 速度。
+        """
+        src = getattr(segment, "source_timerange", None)
+        base = int(src.start) if src is not None else 0
+        spd = float(getattr(getattr(segment, "speed", None), "speed", 1.0) or 1.0)
+        return base, spd
+
     def add_keyframes(self, segment, prop: str, points: Iterable[Tuple[Union[str, int], float]],
                       curve_type: str = "Line", ease: Optional[str] = None):
         """
         批量添加关键帧。prop 支持 x/y/scale/rotation/alpha/brightness/contrast/saturation/volume
         (或中文: 位置x/缩放/旋转/不透明度/亮度/...)；points: [(时间偏移, 值), ...]
+        时间偏移是相对片段开头的时间 (成片时间), 写入草稿时自动换算成剪映要求的素材时间。
         例: project.add_keyframes(seg, "scale", [("0s", 1.0), ("2s", 1.3)], ease="三次方缓动")
         """
         key = KEYFRAME_ALIASES.get(str(prop).lower(), str(prop))
@@ -273,8 +286,9 @@ class TrackOpsMixin:
         kf_prop = getattr(draft.KeyframeProperty, key, None)
         if kf_prop is None or segment is None:
             raise ValueError(f"Unsupported keyframe property: {prop}")
+        base, spd = self._keyframe_base(segment)
         for offset, value in points:
-            segment.add_keyframe(kf_prop, safe_tim(offset), float(value), curve_type=curve_type)
+            segment.add_keyframe(kf_prop, base + int(safe_tim(offset) * spd), float(value), curve_type=curve_type)
         if ease:  # 剪映「关键帧曲线」预设, 如 "缓入" / "回弹离开"
             self.set_keyframe_ease(segment, prop, ease)
         return segment
