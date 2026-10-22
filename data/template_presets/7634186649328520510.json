@@ -1,0 +1,180 @@
+{
+ "resource_id": "7634186649328520510",
+ "name": "日常vlog-简约线条小熊变色",
+ "kind": "subtitle_template",
+ "source": "package",
+ "segment": {
+  "duration": 1,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": -0.73
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "ACE739FD-DF98-4B31-ADCB-5A0717B580B9"
+  ]
+ },
+ "template": {
+  "id": "212F2402-55F2-4393-A0B1-E414746CB9A2",
+  "type": "text_template_subtitle",
+  "text_template_resource_type": "subtitle_template",
+  "resource_id": "7634186649328520510",
+  "effect_id": "7634186649328520510",
+  "name": "日常vlog-简约线条小熊变色",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7634186649328520510/e9a33fd5779aa289bce8f7dba82dc5d9",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7576596474251775242",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7576596474251775242/89fd781cb946db9f390b8faf6f708f28"
+   },
+   {
+    "panel": "system-fonts",
+    "resource_id": "6935356483945107982",
+    "source_platform": 0,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6935356483945107982/91b5e71996deb67762ea07ff3007bbf9"
+   },
+   {
+    "panel": "fonts",
+    "resource_id": "7217732136894206501",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7217732136894206501/c3dc73e45b7b16cae8e867a0a73f35dd"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "188885A0-E610-412C-92FB-92FDF46B845C",
+    "text_material_id": "2FDD3B8B-16EA-4076-BFD2-7C9B0E8EE3F3",
+    "extra_material_refs": [
+     "ACE739FD-DF98-4B31-ADCB-5A0717B580B9"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 1,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 1,
+     "original_size_width": 305.71429443359375,
+     "original_size_height": 185.96043395996094,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "subtitle-templates",
+  "category_id": "",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "2FDD3B8B-16EA-4076-BFD2-7C9B0E8EE3F3",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"size\": 12.0, \"font\": {\"id\": \"7576596474251775242\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7576596474251775242/89fd781cb946db9f390b8faf6f708f28\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0.05,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": true,
+   "check_flag": 15,
+   "text_color": "#ffffffff",
+   "name": "934D3EA1-1C6E-4dff-950B-9D4A1079B594",
+   "use_effect_default_color": true,
+   "group_id": "caption_template_1",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [
+     "A"
+    ],
+    "start_time": [
+     0
+    ],
+    "end_time": [
+     1000
+    ]
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "ACE739FD-DF98-4B31-ADCB-5A0717B580B9",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": []
+ }
+}

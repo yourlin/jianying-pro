@@ -1,0 +1,185 @@
+{
+  "_说明": "分镜表 = 剪辑的唯一真相来源。先由导演 Agent 填写本表并通过评审，再由装配脚本确定性执行。禁止跳过本表直接写剪辑代码。",
+
+  "project": {
+    "name": "汉字古韵·人字篇",
+    "canvas": { "width": 1080, "height": 1920 },
+    "style_bible": "style_guofeng.md",
+    "source_video": "微信视频_202610210642_1.mp4",
+    "transcript": "transcript_auto.json",
+    "language_mode": "zh+en",
+    "allow_vip": true
+  },
+
+  "edit_decisions": [
+    {
+      "type": "cut",
+      "src_in": 37.55,
+      "src_out": 38.05,
+      "reason": "静音气口 0.5s，剪掉提节奏",
+      "cover_with": "水墨晕染转场 0.8s"
+    },
+    {
+      "type": "trim_tail",
+      "from": 86.4,
+      "reason": "片尾 2.2s 静音空白"
+    }
+  ],
+
+  "shots": [
+    {
+      "id": "S01",
+      "time": [0.0, 4.4],
+      "purpose": "hook",
+      "line_zh": "你觉得汉字很难记吗？",
+      "line_en": "Do you think Chinese characters are difficult to remember?",
+      "frame": {
+        "main": "真人全屏出镜（必须：开头出镜）",
+        "overlay": null,
+        "text": [
+          { "role": "title", "content": "一撇一捺 · 三千年", "y": 0.52, "size": 11.0, "font": "挥墨体", "flower": "书法墨环图案花字" }
+        ]
+      },
+      "fx": null,
+      "note": "设问起兴，不加任何插入物，让观众先看清人"
+    },
+    {
+      "id": "S02",
+      "time": [5.04, 8.55],
+      "purpose": "点题",
+      "line_zh": "我们从最简单的一个字开始——「人」",
+      "line_en": "Let's start with one simple character — 人",
+      "frame": {
+        "main": "真人全屏",
+        "overlay": null,
+        "text": [
+          { "role": "hero", "content": "人", "y": 0.34, "size": 24.0, "font": "挥墨体", "flower": "水墨红底白色花字" },
+          { "role": "sub_label", "content": "rén", "y": 0.08, "size": 8.0, "font": "启功行楷" }
+        ]
+      },
+      "fx": null,
+      "note": "主角登场：红墨大字压屏，不用任何横版素材"
+    },
+    {
+      "id": "S03",
+      "time": [9.5, 15.9],
+      "purpose": "论证-溯源",
+      "line_zh": "许多汉字最初都是图画",
+      "line_en": "Many Chinese characters started as pictures",
+      "frame": {
+        "main": "真人（下三分之一露脸）",
+        "overlay": {
+          "asset": "微信图片_202610210638_1.jpg",
+          "why_here": "图上正是「人形→剪影→人字」的水彩演变，与台词『始于图画』严格对应",
+          "y": 0.34,
+          "scale": [0.86, 0.92],
+          "motion": "上滑浮入 + 轻推镜 + 投影",
+          "mute": true
+        },
+        "text": [
+          { "role": "card_label", "content": "汉字，始于图画", "y": 0.74, "size": 9.0, "flower": "金箔描边书法水墨花字" }
+        ]
+      },
+      "fx": null,
+      "note": "插卡必须有标注说明它是什么，否则观众不知所云"
+    },
+    {
+      "id": "S04",
+      "time": [29.6, 37.3],
+      "purpose": "论证-字形",
+      "line_zh": "它就像一个站立的人，两腿分开",
+      "line_en": "it looks like a person standing, with two legs apart",
+      "frame": {
+        "main": "真人",
+        "overlay": {
+          "asset": "微信图片_202610210638_2.jpg",
+          "why_here": "图表展示甲骨文→金文→小篆→楷书四体，正对台词讲的早期字形",
+          "y": 0.34,
+          "scale": [0.86, 0.92],
+          "motion": "上滑浮入 + 轻推镜",
+          "mute": true
+        },
+        "text": [
+          { "role": "card_label", "content": "甲骨文里的「人」", "y": 0.74, "size": 9.0, "flower": "金箔描边书法水墨花字" }
+        ]
+      },
+      "fx": null,
+      "note": "本镜跨越剪点，插卡同时起到遮盖剪辑接缝的作用"
+    },
+    {
+      "id": "S05",
+      "time": [41.9, 49.1],
+      "purpose": "论证-今形",
+      "line_zh": "变成今天我们写的「人」，读作 rén",
+      "line_en": "into the character we use today — 人, pronounced rén",
+      "frame": {
+        "main": "真人",
+        "overlay": {
+          "asset": "微信图片_202610210638_3.jpg",
+          "why_here": "楷书大「人」字收束演变线索",
+          "y": 0.34,
+          "scale": [0.5, 0.55],
+          "motion": "上滑浮入 + 轻推镜",
+          "mute": true
+        },
+        "text": [
+          { "role": "card_label", "content": "今天的「人」", "y": 0.68, "size": 9.0, "flower": "金箔描边书法水墨花字" }
+        ]
+      },
+      "fx": null,
+      "note": "近方形图用更小 scale，避免过度压屏"
+    },
+    {
+      "id": "S06",
+      "time": [53.6, 68.0],
+      "purpose": "举一反三",
+      "line_zh": "男人 / 女人 / 中国人 / 美国人 / 英国人 / 西班牙人",
+      "line_en": "man / woman / Chinese / American / British / Spanish",
+      "frame": {
+        "main": "真人全屏（教学段让观众看口型）",
+        "overlay": null,
+        "text": [
+          { "role": "vocab", "content": "逐词卡点，6 张", "y": 0.30, "size": 11.5, "font": "启功行楷", "flower": "金箔描边书法水墨花字" }
+        ]
+      },
+      "fx": null,
+      "note": "卡点时间取 whisper 词级时间戳，不要平均分配"
+    },
+    {
+      "id": "S07",
+      "time": [73.5, 85.9],
+      "purpose": "CTA",
+      "line_zh": "你来自哪里？评论区用中文告诉我",
+      "line_en": "Where are you from? Tell me in the comments",
+      "frame": {
+        "main": "真人全屏",
+        "overlay": null,
+        "text": [
+          { "role": "title", "content": "你来自哪里？", "y": 0.60, "size": 12.0, "font": "挥墨体" },
+          { "role": "subtitle_cta", "content": "评论区用中文告诉我 · 一起学中文", "y": 0.47, "size": 8.5, "font": "启功行楷" }
+        ]
+      },
+      "fx": { "effect": "水墨竹叶", "duration": 6.9, "why": "收尾氛围，时长够长才有完整起落" },
+      "note": "特效必须有叙事功能；短于 3s 的氛围特效一律不用"
+    }
+  ],
+
+  "subtitles": {
+    "mode": "双语双轨",
+    "primary": { "track": "SubZH", "lang": "zh", "size": 9.5, "y": -0.44, "font": "启功行楷", "max_line_width": 0.7 },
+    "secondary": { "track": "SubEN", "lang": "en", "size": 6.8, "y": -0.58, "max_line_width": 0.7, "wrap_chars": 26 },
+    "timing_source": "whisper 词级时间戳，按句切分，结尾不超过下一句开始"
+  },
+
+  "audio": {
+    "narration": "保留原声",
+    "bgm": { "id": "7376298242855946291", "name": "春满长桥", "vip": false, "volume": 0.22, "fade_in": 1.2, "fade_out": 2.5 },
+    "broll_mute": "所有覆盖层素材 volume = 0"
+  },
+
+  "qa": {
+    "command": "python director-kit/layout_preview.py --draft \"<草稿名>\" --auto",
+    "must_pass": ["字号", "安全区", "平台UI", "重叠"],
+    "manual_check": ["花字实际渲染效果", "图卡与人脸的构图关系", "BGM 与旁白的音量平衡"]
+  }
+}

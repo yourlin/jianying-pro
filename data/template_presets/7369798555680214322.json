@@ -1,0 +1,147 @@
+{
+ "resource_id": "7369798555680214322",
+ "name": "创意粗体",
+ "kind": "subtitle_template",
+ "source": "OpenClaw成本优化",
+ "segment": {
+  "duration": 933334,
+  "clip": {
+   "transform": {
+    "y": -0.644141795386177,
+    "x": 0
+   },
+   "flip": {}
+  },
+  "uniform_scale": null,
+  "extra_material_refs": [
+   "226E7EE1-DB55-44EB-BA03-62A54B849B74"
+  ]
+ },
+ "template": {
+  "current_word_info": {},
+  "path": "/Users/linyesh/Library/Containers/com.lemon.lvpro/Data/Movies/JianyingPro/User Data/Cache/artistEffect/7369798555680214322/1e4e970fc244d323622015f814ce858b",
+  "effect_id": "7369798555680214322",
+  "id": "44A2C4FC-F40B-4660-A7CB-EB4BA825CE33",
+  "origin_word_info": {},
+  "version": "1.0.0",
+  "text_info_resources": [
+   {
+    "attach_info": {
+     "original_size_width": 305.0112609863281,
+     "duration": 933332,
+     "clip": {
+      "transform": {
+       "y": 0,
+       "x": 0
+      },
+      "flip": {}
+     },
+     "original_size_height": 64.16666412353516
+    },
+    "extra_material_refs": [
+     "226E7EE1-DB55-44EB-BA03-62A54B849B74"
+    ],
+    "text_material_id": "B2D94806-C968-48F9-BBB4-91A97F3CF962"
+   }
+  ],
+  "type": "text_template_subtitle",
+  "resource_id": "7369798555680214322",
+  "name": "创意粗体",
+  "third_resource_id": "0",
+  "text_template_resource_type": "subtitle_template",
+  "resources": [
+   {
+    "panel": "fonts",
+    "path": "/Users/linyesh/Library/Containers/com.lemon.lvpro/Data/Movies/JianyingPro/User Data/Cache/effect/9554613/fca68b5b94fa66afe5ca424cb5868011/MFBenHei_Noncommercial-Regular.ttf",
+    "resource_id": "7200743888816968247"
+   }
+  ],
+  "source_platform": 1,
+  "aigc_config": {
+   "font_item": {
+    "id": "2515A15A-E6AD-4ABA-87BC-398831D10747",
+    "path": "",
+    "resource_id": ""
+   }
+  }
+ },
+ "texts": [
+  {
+   "recognize_task_id": "69ae87bd47091f01c6034ef4_8_2",
+   "shadow_angle": -89.66400146484375,
+   "line_spacing": 0.22,
+   "text_color": "#fdfbfbff",
+   "initial_scale": 1,
+   "border_width": 0.044038001447916,
+   "name": "81416119-4264-4A0D-8256-783EB294D584",
+   "shadow_color": "#000000ff",
+   "content": "{\"styles\":[{\"fill\":{\"content\":{\"solid\":{\"color\":[0.99216002225875854,0.98430997133255,0.98430997133255]},\"render_type\":\"solid\"}},\"range\":[0,6],\"shadows\":[{\"thickness_projection_distance\":0,\"thickness_projection_angle\":-45,\"feather\":0,\"distance\":7.7544331550598145,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"},\"thickness_projection_enable\":false,\"angle\":-89.66400146484375}],\"strokes\":[{\"width\":0.044038001447916031,\"mode\":0,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"}}],\"size\":11,\"font\":{\"path\":\"/Users/linyesh/Library/Containers/com.lemon.lvpro/Data/Movies/JianyingPro/User Data/Cache/effect/9554613/fca68b5b94fa66afe5ca424cb5868011/MFBenHei_Noncommercial-Regular.ttf\",\"id\":\"7200743888816968247\"}}],\"text\":\"捂紧你的口袋\"}",
+   "lyrics_template": {
+    "resource_id": "",
+    "path": ""
+   },
+   "border_alpha": 0,
+   "shadow_point": {
+    "y": 0,
+    "x": 0
+   },
+   "force_apply_line_max_width": true,
+   "group_id": "Auto_1773045695106",
+   "combo_info": {},
+   "recognize_text": "捂紧你的口袋",
+   "add_type": 1,
+   "letter_spacing": 0.0509583279305,
+   "type": "text",
+   "words": {
+    "end_time": [
+     360,
+     480,
+     560,
+     1160
+    ],
+    "text": [
+     "捂紧",
+     "你",
+     "的",
+     "口袋"
+    ],
+    "start_time": [
+     0,
+     360,
+     480,
+     560
+    ]
+   },
+   "bold_width": 0.008,
+   "id": "B2D94806-C968-48F9-BBB4-91A97F3CF962",
+   "italic_degree": 10,
+   "border_color": "#000000ff",
+   "current_words": {},
+   "fonts": [
+    {
+     "id": "76E53360-9799-4B63-8DAF-18F2B037947B",
+     "path": "/Users/linyesh/Library/Containers/com.lemon.lvpro/Data/Movies/JianyingPro/User Data/Cache/effect/9554613/fca68b5b94fa66afe5ca424cb5868011/MFBenHei_Noncommercial-Regular.ttf",
+     "resource_id": "7200743888816968247"
+    }
+   ],
+   "check_flag": 47,
+   "recognize_model": "3.3b",
+   "shadow_distance": 7.754433155059814,
+   "shadow_alpha": 1,
+   "caption_template_info": {
+    "resource_id": "",
+    "path": ""
+   },
+   "layer_weight": 1,
+   "font_size": 11
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "226E7EE1-DB55-44EB-BA03-62A54B849B74",
+    "type": "sticker_animation"
+   }
+  ]
+ }
+}

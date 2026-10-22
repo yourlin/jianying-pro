@@ -1,0 +1,395 @@
+{
+ "resource_id": "7429668088976608564",
+ "name": "口播-PLOG手写体跳动字幕",
+ "kind": "subtitle_template",
+ "source": "JY_Template_Warmup_2",
+ "segment": {
+  "duration": 2000000,
+  "clip": {
+   "rotation": 0,
+   "transform": {
+    "y": -0.644141795386177,
+    "x": 0
+   },
+   "rotation3d": [],
+   "scale": {
+    "y": 1,
+    "x": 1
+   },
+   "alpha": 1,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "738F771B-808D-45DB-9B82-01BCD3C5C5B2"
+  ]
+ },
+ "template": {
+  "material_text_ranges": [],
+  "effect_id": "",
+  "aigc_type": "none",
+  "category_id": "",
+  "is_3d": false,
+  "non_text_info_resources": [],
+  "source_platform": 1,
+  "is_uneven_animation": false,
+  "sub_type": 0,
+  "origin_word_info": {
+   "end_time": 0,
+   "keyword_ranges": [],
+   "start_time": 0,
+   "words": [],
+   "text": ""
+  },
+  "preview_time": 0.1,
+  "third_resource_id": "",
+  "resource_id": "7429668088976608564",
+  "name": "",
+  "text_to_audio_ids": [],
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7429668088976608564/e9a9fb378b9979207df5316abaa5e1ab",
+  "merge_content": "",
+  "is_pre_rendered": false,
+  "ai_generate_task_info": {
+   "interaction_type": -1,
+   "resource_id": "",
+   "effect_id": "",
+   "bind_segment_id": "",
+   "path": "",
+   "request_id": ""
+  },
+  "is_lyric_effect": false,
+  "resources": [
+   {
+    "panel": "fonts",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/1589148/8842c4ca3fde9cefeaa17fa5bb99a77b/MFShuTiaoShaoNian-Regular.ttf",
+    "source_platform": 0,
+    "resource_id": "7068530728467698213"
+   },
+   {
+    "panel": "system-fonts",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6935356483945107982/91b5e71996deb67762ea07ff3007bbf9",
+    "source_platform": 0,
+    "resource_id": "6935356483945107982"
+   },
+   {
+    "panel": "fonts",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/85757850/96c278e361b5bf39d0e75f50b299bf1d/章鱼小丸子.ttf",
+    "source_platform": 0,
+    "resource_id": "7423616269254922762"
+   }
+  ],
+  "text_template_preset_resource_id": "",
+  "render_mode": 0,
+  "type": "text_template_subtitle",
+  "text_info_resources": [
+   {
+    "clip_type": "",
+    "id": "D7064D97-7F0E-47E2-8D6A-4B5EA86B0815",
+    "extra_material_refs": [
+     "738F771B-808D-45DB-9B82-01BCD3C5C5B2"
+    ],
+    "attach_info": {
+     "original_size_height": 58.33333587646485,
+     "original_size_width": 458.375,
+     "duration": 2000000,
+     "clip": {
+      "rotation": 0,
+      "transform": {
+       "y": 0,
+       "x": 0
+      },
+      "rotation3d": [],
+      "scale": {
+       "y": 1,
+       "x": 1
+      },
+      "alpha": 1,
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      }
+     },
+     "start_time": 0
+    },
+    "word_index": [],
+    "capital": "",
+    "text_material_id": "513147EC-EF46-4F3E-96C2-8F1433DC2B2C",
+    "lyric_keyframes": [],
+    "order_in_layer": 0
+   }
+  ],
+  "category_name": "",
+  "id": "DE926339-E670-44D4-AAA1-A15D43F60431",
+  "request_id": "",
+  "is_ai_emoji": false,
+  "is_dynamic_build": false,
+  "lyric_group_id": "",
+  "current_word_info": {
+   "end_time": 0,
+   "keyword_ranges": [],
+   "start_time": 0,
+   "words": [],
+   "text": ""
+  },
+  "text_template_resource_type": "text_template",
+  "formula_id": "",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "aigc_config": {
+   "font_item": {
+    "source_platform": 0,
+    "path": "",
+    "effect_id": "",
+    "id": "2AC4FFFA-3949-46B2-90B2-4A6A86C381E7",
+    "file_uri": "",
+    "category_id": "",
+    "third_resource_id": "",
+    "team_id": "",
+    "resource_id": "",
+    "title": "",
+    "request_id": "",
+    "category_name": ""
+   },
+   "prompt": "",
+   "model": "",
+   "seed": 0
+  }
+ },
+ "texts": [
+  {
+   "recognize_task_id": "",
+   "text_size": 30,
+   "use_effect_default_color": true,
+   "single_char_bg_color": "",
+   "operation_type": 0,
+   "single_char_bg_width": 0,
+   "font_resource_id": "",
+   "adjust_params": [],
+   "single_char_bg_horizontal_offset": 0,
+   "font_source_platform": 0,
+   "font_size": 15,
+   "text_loop_on_path": false,
+   "is_batch_replace": false,
+   "relevance_segment": [],
+   "line_spacing": 0.02,
+   "sub_type": 0,
+   "initial_scale": 1,
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "multi_language_current": "none",
+   "border_width": 0.015068000182509,
+   "is_rich_text": false,
+   "line_max_width": 0.82,
+   "background_color": "#00000005",
+   "shadow_color": "#0000000c",
+   "font_path": "",
+   "content": "{\"styles\":[{\"fill\":{\"content\":{\"solid\":{\"color\":[1,1,1]},\"render_type\":\"solid\"}},\"range\":[0,14],\"shadows\":[{\"thickness_projection_distance\":0,\"diffuse\":0.054223999381065369,\"angle\":0,\"thickness_projection_enable\":false,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"},\"distance\":0,\"thickness_projection_angle\":-45,\"alpha\":0.0486299991607666}],\"strokes\":[{\"width\":0.015068000182509422,\"mode\":0,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"},\"alpha\":0.0760269984602928}],\"size\":10,\"bold\":true,\"font\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/1589148/8842c4ca3fde9cefeaa17fa5bb99a77b/MFShuTiaoShaoNian-Regular.ttf\",\"id\":\"7068530728467698213\"}}],\"text\":\"口播-PLOG手写体跳动字幕\"}",
+   "is_words_linear": false,
+   "lyrics_template": {
+    "panel": "",
+    "resource_id": "",
+    "effect_id": "",
+    "request_id": "",
+    "category_name": "",
+    "path": "",
+    "category_id": "",
+    "resource_name": ""
+   },
+   "border_alpha": 0.076026998460293,
+   "recognize_type": 0,
+   "type": "text",
+   "ssml_content": "",
+   "line_feed": 1,
+   "italic_degree": 10,
+   "background_horizontal_offset": 0,
+   "source_from": "",
+   "font_third_resource_id": "",
+   "inner_padding": -1,
+   "subtitle_template_original_fontsize": 0,
+   "is_lyric_effect": false,
+   "font_name": "",
+   "letter_spacing": 0,
+   "fixed_height": -1,
+   "autoAdaptCanvasEnabled": false,
+   "words": {
+    "start_time": [
+     0,
+     142,
+     284,
+     426,
+     568,
+     710,
+     852,
+     994,
+     1136,
+     1278,
+     1420,
+     1562,
+     1704,
+     1846
+    ],
+    "text": [
+     "口",
+     "播",
+     "-",
+     "P",
+     "L",
+     "O",
+     "G",
+     "手",
+     "写",
+     "体",
+     "跳",
+     "动",
+     "字",
+     "幕"
+    ],
+    "end_time": [
+     142,
+     284,
+     426,
+     568,
+     710,
+     852,
+     994,
+     1136,
+     1278,
+     1420,
+     1562,
+     1704,
+     1846,
+     1988
+    ]
+   },
+   "oneline_cutoff": false,
+   "bold_width": 0.008,
+   "border_color": "#00000013",
+   "original_size": [],
+   "underline_offset": 0.22,
+   "current_words": {
+    "start_time": [],
+    "text": [],
+    "end_time": []
+   },
+   "fonts": [
+    {
+     "source_platform": 0,
+     "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/1589148/8842c4ca3fde9cefeaa17fa5bb99a77b/MFShuTiaoShaoNian-Regular.ttf",
+     "effect_id": "",
+     "id": "AC65642F-8450-4F20-9641-BAABFBE9E7E6",
+     "file_uri": "",
+     "category_id": "",
+     "third_resource_id": "",
+     "team_id": "",
+     "resource_id": "7068530728467698213",
+     "title": "",
+     "request_id": "",
+     "category_name": ""
+    }
+   ],
+   "single_char_bg_height": 0,
+   "background_vertical_offset": 0,
+   "preset_category": "",
+   "force_apply_line_max_width": false,
+   "font_url": "",
+   "shadow_alpha": 0.048629999160767,
+   "preset_has_set_alignment": false,
+   "font_team_id": "",
+   "background_style": 1,
+   "background_alpha": 0.021369863301516,
+   "preset_category_id": "",
+   "preset_name": "",
+   "underline": false,
+   "preset_id": "",
+   "group_id": "caption_template_1792595768654107",
+   "text_preset_resource_id": "",
+   "shadow_angle": 0,
+   "tts_auto_update": false,
+   "single_char_bg_vertical_offset": 0,
+   "shape_clip_x": false,
+   "language": "",
+   "global_alpha": 1,
+   "underline_width": 0.05,
+   "single_char_bg_alpha": 1,
+   "caption_template_info": {
+    "source_platform": 0,
+    "path": "",
+    "effect_id": "",
+    "category_id": "",
+    "third_resource_id": "",
+    "resource_id": "",
+    "category_name": "",
+    "is_new": false,
+    "request_id": "",
+    "resource_name": ""
+   },
+   "text_color": "#ffffffff",
+   "single_char_bg_enable": false,
+   "background_fill": "",
+   "style_name": "",
+   "font_category_id": "",
+   "background_height": 0,
+   "background_width": 0,
+   "name": "4BC36E1B-8F65-4d55-85A5-5943416B5475",
+   "enable_path_typesetting": false,
+   "background_round_radius": 1,
+   "offset_on_path": 0,
+   "preset_index": 0,
+   "add_type": 0,
+   "font_category_name": "",
+   "ktv_color": "",
+   "shadow_point": {
+    "y": 0,
+    "x": 0
+   },
+   "check_flag": 63,
+   "shadow_smoothing": 0.054223999381065,
+   "text_typesetting_paths_file": "",
+   "single_char_bg_round_radius": 0.3,
+   "font_id": "",
+   "translate_original_text": "",
+   "combo_info": {
+    "text_templates": []
+   },
+   "shadow_thickness_projection_angle": 0,
+   "recognize_text": "",
+   "shape_clip_y": false,
+   "shadow_thickness_projection_distance": 0,
+   "text_to_audio_ids": [],
+   "border_mode": 0,
+   "base_content": "",
+   "font_title": "none",
+   "text_typesetting_path_index": 0,
+   "text_exceeds_path_process_type": 0,
+   "id": "513147EC-EF46-4F3E-96C2-8F1433DC2B2C",
+   "typesetting": 0,
+   "shadow_thickness_projection_enable": false,
+   "alignment": 1,
+   "lyric_group_id": "",
+   "punc_model": "",
+   "recognize_model": "",
+   "shadow_distance": 0,
+   "cutoff_postfix": "",
+   "text_alpha": 1,
+   "layer_weight": 1,
+   "has_shadow": false
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "738F771B-808D-45DB-9B82-01BCD3C5C5B2",
+    "type": "sticker_animation",
+    "animations": [],
+    "multi_language_current": "none"
+   }
+  ]
+ }
+}

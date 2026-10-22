@@ -1,0 +1,195 @@
+{
+ "resource_id": "7604688605151513881",
+ "name": "口播-红蓝拼音逐字弹跳字幕模板",
+ "kind": "subtitle_template",
+ "source": "package",
+ "segment": {
+  "duration": 1,
+  "clip": {
+   "alpha": 1,
+   "rotation": 0,
+   "flip": {
+    "horizontal": false,
+    "vertical": false
+   },
+   "scale": {
+    "x": 1,
+    "y": 1
+   },
+   "transform": {
+    "x": 0,
+    "y": -0.73
+   }
+  },
+  "uniform_scale": {
+   "on": true,
+   "value": 1
+  },
+  "extra_material_refs": [
+   "9335BF63-2D2B-4372-A5D6-F31BAA90CB5E",
+   "D418271C-65DF-4959-B8B6-42FBBFFA7666"
+  ]
+ },
+ "template": {
+  "id": "07C7DD6D-150F-4011-A573-7AA5987A0236",
+  "type": "text_template_subtitle",
+  "text_template_resource_type": "subtitle_template",
+  "resource_id": "7604688605151513881",
+  "effect_id": "7604688605151513881",
+  "name": "口播-红蓝拼音逐字弹跳字幕模板",
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7604688605151513881/bf69a458a72aab0fe5e080f1acc75203",
+  "resources": [
+   {
+    "panel": "fonts",
+    "resource_id": "7070430470667768333",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7070430470667768333/d9bd33e2a246c62cfae5b75504c5d7c0"
+   },
+   {
+    "panel": "system-fonts",
+    "resource_id": "6935356483945107982",
+    "source_platform": 0,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/6935356483945107982/91b5e71996deb67762ea07ff3007bbf9"
+   },
+   {
+    "panel": "flower",
+    "resource_id": "7604520976050785560",
+    "source_platform": 1,
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7604520976050785560/8c5e3e3e5209913ee21c513e4d6a3d73"
+   }
+  ],
+  "text_info_resources": [
+   {
+    "id": "1344C898-10B1-4AA3-BEFC-26BF55E65B34",
+    "text_material_id": "100FD6E0-6DF0-4228-A42C-2A7ABBC16544",
+    "extra_material_refs": [
+     "9335BF63-2D2B-4372-A5D6-F31BAA90CB5E",
+     "D418271C-65DF-4959-B8B6-42FBBFFA7666"
+    ],
+    "clip_type": "",
+    "capital": "",
+    "word_index": [],
+    "lyric_keyframes": [],
+    "order_in_layer": 1,
+    "attach_info": {
+     "start_time": 0,
+     "duration": 1,
+     "original_size_width": 667.4707641601562,
+     "original_size_height": 280.6147766113281,
+     "clip": {
+      "alpha": 1,
+      "rotation": 0,
+      "rotation3d": [],
+      "flip": {
+       "horizontal": false,
+       "vertical": false
+      },
+      "scale": {
+       "x": 1,
+       "y": 1
+      },
+      "transform": {
+       "x": 0,
+       "y": 0
+      }
+     }
+    }
+   }
+  ],
+  "source_platform": 1,
+  "category_name": "subtitle-templates",
+  "category_id": "",
+  "check_flag": 7,
+  "platform": "all",
+  "version": "1.0.0",
+  "preview_time": 0.1,
+  "is_pre_rendered": false,
+  "non_text_info_resources": [],
+  "material_text_ranges": [],
+  "merge_content": "",
+  "text_to_audio_ids": [],
+  "origin_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  },
+  "current_word_info": {
+   "text": "",
+   "words": [],
+   "start_time": 0,
+   "end_time": 0,
+   "keyword_ranges": []
+  }
+ },
+ "texts": [
+  {
+   "id": "100FD6E0-6DF0-4228-A42C-2A7ABBC16544",
+   "type": "text",
+   "content": "{\"styles\": [{\"range\": [0, 1], \"effectStyle\": {\"id\": \"7604520976050785560\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7604520976050785560/8c5e3e3e5209913ee21c513e4d6a3d73\"}, \"size\": 12.0, \"font\": {\"id\": \"7070430470667768333\", \"path\": \"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/7070430470667768333/d9bd33e2a246c62cfae5b75504c5d7c0\"}, \"fill\": {\"content\": {\"render_type\": \"solid\", \"solid\": {\"color\": [1, 1, 1]}}}}], \"text\": \"A\"}",
+   "font_size": 15,
+   "text_size": 30,
+   "line_spacing": 0.02,
+   "letter_spacing": 0,
+   "alignment": 1,
+   "typesetting": 0,
+   "bold_width": 0.008,
+   "italic_degree": 10,
+   "underline_offset": 0.22,
+   "underline_width": 0.05,
+   "global_alpha": 1,
+   "line_max_width": 0.82,
+   "line_feed": 1,
+   "force_apply_line_max_width": true,
+   "check_flag": 15,
+   "text_color": "#ffffffff",
+   "name": "102E30C2-7418-43ca-9FB4-F682163F6AC3",
+   "use_effect_default_color": true,
+   "group_id": "caption_template_1",
+   "sub_template_id": -1,
+   "fixed_width": -1,
+   "fixed_height": -1,
+   "words": {
+    "text": [
+     "A"
+    ],
+    "start_time": [
+     0
+    ],
+    "end_time": [
+     1000
+    ]
+   },
+   "current_words": {
+    "text": [],
+    "start_time": [],
+    "end_time": []
+   }
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "D418271C-65DF-4959-B8B6-42FBBFFA7666",
+    "type": "sticker_animation",
+    "multi_language_current": "none",
+    "animations": []
+   }
+  ],
+  "effects": [
+   {
+    "id": "9335BF63-2D2B-4372-A5D6-F31BAA90CB5E",
+    "type": "text_effect",
+    "resource_id": "7604520976050785560",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7604520976050785560/8c5e3e3e5209913ee21c513e4d6a3d73",
+    "source_platform": 1,
+    "value": 0,
+    "apply_target_type": 0,
+    "sub_type": "none",
+    "platform": "all",
+    "visible": true
+   }
+  ]
+ }
+}

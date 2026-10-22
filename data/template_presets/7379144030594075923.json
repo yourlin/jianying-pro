@@ -1,0 +1,157 @@
+{
+ "resource_id": "7379144030594075923",
+ "name": "KkQ2-1-10",
+ "kind": "subtitle_template",
+ "source": "OpenClaw Skills排行榜",
+ "segment": {
+  "duration": 1866666,
+  "clip": {
+   "transform": {
+    "y": -0.745250778308974,
+    "x": 0
+   },
+   "flip": {}
+  },
+  "uniform_scale": null,
+  "extra_material_refs": [
+   "41CB22A3-8F52-4C2F-9B3C-320D7D78FF06"
+  ]
+ },
+ "template": {
+  "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/artistEffect/7379144030594075923/378b1b6ecb0a190f3abc1003c163b157",
+  "effect_id": "7379144030594075923",
+  "resources": [
+   {
+    "panel": "fonts",
+    "path": "/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/349309/71a73f7e297831936018c928d61ce2b8/新青年体-文跃新青年体.ttf",
+    "resource_id": "6740435892441190919"
+   }
+  ],
+  "source_platform": 1,
+  "type": "text_template_subtitle",
+  "id": "718F7140-3A66-453B-9ACE-D4936676F539",
+  "origin_word_info": {},
+  "version": "1.0.0",
+  "text_info_resources": [
+   {
+    "id": "47828F2C-B20E-4180-84BB-BC95143EC0C3",
+    "attach_info": {
+     "original_size_width": 356.5093994140625,
+     "duration": 1882541,
+     "clip": {
+      "transform": {
+       "y": 0,
+       "x": 0
+      },
+      "flip": {}
+     },
+     "original_size_height": 58.33333587646485
+    },
+    "extra_material_refs": [
+     "41CB22A3-8F52-4C2F-9B3C-320D7D78FF06"
+    ],
+    "text_material_id": "4EF8188B-EA92-4305-AB84-791565386C21"
+   }
+  ],
+  "current_word_info": {},
+  "text_template_resource_type": "subtitle_template",
+  "name": "KkQ2-1-10",
+  "third_resource_id": "0",
+  "text_to_audio_ids": [
+   "18760E04-AC42-421B-A56C-10DA84BB37FC"
+  ],
+  "ai_generate_task_info": {
+   "resource_id": "",
+   "path": ""
+  },
+  "resource_id": "7379144030594075923",
+  "aigc_config": {
+   "font_item": {
+    "id": "5A0EF54D-73F6-4A2E-80A8-0B1C9CCCE7D7",
+    "path": "",
+    "resource_id": ""
+   }
+  }
+ },
+ "texts": [
+  {
+   "recognize_task_id": "69ae5cd15c51a201cbd965f3_8_2",
+   "operation_type": 2,
+   "shadow_angle": -45,
+   "line_spacing": 0.357758437148086,
+   "text_color": "#ffffffff",
+   "initial_scale": 1,
+   "border_width": 0.035978000611067,
+   "tts_auto_update": true,
+   "name": "A4D92C1F-5A99-43F8-A02D-9C685C613A07",
+   "shadow_color": "#000000cc",
+   "content": "{\"styles\":[{\"fill\":{\"content\":{\"solid\":{\"color\":[1,1,1]},\"render_type\":\"solid\"}},\"italic\":true,\"range\":[0,8],\"shadows\":[{\"thickness_projection_distance\":0,\"diffuse\":0,\"angle\":-45,\"thickness_projection_enable\":false,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"},\"distance\":6.9187564849853516,\"thickness_projection_angle\":-45,\"alpha\":0.801479995250702}],\"strokes\":[{\"width\":0.035978000611066818,\"mode\":0,\"content\":{\"solid\":{\"color\":[0,0,0]},\"render_type\":\"solid\"}}],\"size\":10,\"font\":{\"path\":\"/Users/linyesh/Movies/JianyingPro/User Data/Cache/effect/349309/71a73f7e297831936018c928d61ce2b8/新青年体-文跃新青年体.ttf\",\"id\":\"6740435892441190919\"}}],\"text\":\"自媒体人必备排行\"}",
+   "lyrics_template": {
+    "resource_id": "",
+    "path": ""
+   },
+   "border_alpha": 0,
+   "shadow_point": {
+    "y": 0,
+    "x": 0
+   },
+   "italic_degree": 10,
+   "group_id": "Auto_1773034707304",
+   "combo_info": {},
+   "recognize_text": "关注我进入粉丝群领取",
+   "add_type": 1,
+   "letter_spacing": 0.16,
+   "type": "text",
+   "words": {
+    "end_time": [
+     280,
+     640,
+     800,
+     1212
+    ],
+    "text": [
+     "进入",
+     "粉丝",
+     "群",
+     "领取"
+    ],
+    "start_time": [
+     0,
+     280,
+     640,
+     800
+    ]
+   },
+   "bold_width": 0.008,
+   "id": "4EF8188B-EA92-4305-AB84-791565386C21",
+   "force_apply_line_max_width": true,
+   "border_color": "#000000ff",
+   "current_words": {},
+   "fonts": [
+    {
+     "id": "0B7078B9-A1DA-4F96-BC93-C1720DA58675",
+     "path": "/Users/linyesh/Library/Containers/com.lemon.lvpro/Data/Movies/JianyingPro/User Data/Cache/effect/349309/71a73f7e297831936018c928d61ce2b8/新青年体-文跃新青年体.ttf",
+     "resource_id": "6740435892441190919"
+    }
+   ],
+   "check_flag": 47,
+   "recognize_model": "3.3b",
+   "shadow_distance": 6.918756484985352,
+   "shadow_alpha": 0.801479995250702,
+   "caption_template_info": {
+    "resource_id": "",
+    "path": ""
+   },
+   "layer_weight": 1,
+   "font_size": 10
+  }
+ ],
+ "extras": {
+  "material_animations": [
+   {
+    "id": "41CB22A3-8F52-4C2F-9B3C-320D7D78FF06",
+    "type": "sticker_animation"
+   }
+  ]
+ }
+}
