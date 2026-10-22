@@ -1,7 +1,7 @@
 # Changelog
 
 ## v0.1.0 - 2026-10-22
-First release of **jianying-pro**. Earlier development releases (1.x) are listed under "Earlier releases" below.
+First release of **jianying-pro**, originally adapted from [luoluoluo22/jianying-editor-skill](https://github.com/luoluoluo22/jianying-editor-skill) (MIT) and since largely rewritten. Earlier development releases (1.x) are listed under "Earlier releases" below.
 - Renamed the skill, its directories and cache (`~/.cache/jianying-pro`).
 - **In-app preview capture** (macOS, `scripts/jy_preview.py`, `JyProject.preview(at=[...])`): opens the draft in JianYing through accessibility (clicks the draft cover on the home page and switches tabs to refresh the list), seeks with Home / Shift+→ / →, captures only the JianYing window (`screencapture -l`), crops it to the player canvas, then returns to the home page with Cmd+W. It refuses to run while the editor is open so JianYing cannot overwrite a freshly saved draft. A small Swift helper (`tools/macos/jy_macos.swift`) lists windows and sends CGEvent clicks/keys. Verified on JianYing 11.7.
 - Preset generation from packages scans the cache once per run instead of once per template (2,205 package dirs: minutes → about 1 s).
