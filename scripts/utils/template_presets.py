@@ -568,3 +568,23 @@ def presets_from_local_packages(kind: str = "subtitle_template", preset_dir: str
             if verbose:
                 print(f"✅ 由模板包生成预设: {row['name']} ({row['resource_id']})")
     return made
+
+
+def similar_templates(row: dict, kind: str = "text_template", limit: int = 5) -> List[dict]:
+    """
+    和 row 同分类、已经有预设的模板 (面板索引行), 用于模板不可用时推荐替代。
+    只按面板分类筛选 (分类重合越多越靠前, 免费优先, 新的优先), 不看样式; 最终选择要看封面对比图。
+    """
+    from utils.panel_assets import load_panel_rows
+
+    csv_name = "panel_subtitle_templates.csv" if kind == "subtitle_template" else "panel_text_templates.csv"
+    want = {c for c in (row.get("categories") or "").split("|") if c and c not in ("热门", "最新")}
+    scored = []
+    for r in load_panel_rows(csv_name):
+        if r["resource_id"] == row["resource_id"] or not os.path.exists(os.path.join(PRESET_DIR, f"{r['resource_id']}.json")):
+            continue
+        cats = {c for c in (r.get("categories") or "").split("|") if c}
+        overlap = len(want & cats)
+        if overlap or not want:
+            scored.append((-overlap, r.get("is_vip") == "1", -int(r["resource_id"]), r["resource_id"], r))
+    return [x[4] for x in sorted(scored, key=lambda x: x[:4])[:limit]]

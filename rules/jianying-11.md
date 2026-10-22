@@ -289,6 +289,8 @@ python scripts/sync_jy_templates.py --from-packages                             
   - 文字背景：`text_params.canvas*` 对应 `background_*`（颜色、透明度、圆角、宽高、偏移，纹理图用模板包 `image/` 下的同名文件），并且**要打开文字 `check_flag` 的第 16 位**（剪映真实预设里带背景的都是 63，不带的是 47），否则不显示。字幕模板同样适用。
   - 含形状元素（`shape`）的文字模板暂不支持，没有真实预设可以对照。
   - 多段文字：`add_text_template(["2025", None, ...], 模板)` 按顺序填写，`None` 保留原文字。用 `p.template_texts(模板)` 查看各段的默认文字。
+- **按需预热**（macOS，默认开启）：`add_subtitle_template` / `add_text_template` 用到还没有预设的模板时，会自动在剪映里预热这一个：生成只含它的预热草稿 → 打开 → 等模板包下载完（最多 45 秒）→ 回首页 → 生成预设 → 继续。实测约 30 秒，只下载这一个模板。前提：剪映开着并停在首页，有屏幕录制 + 辅助功能权限。`JyProject.auto_warmup = False` 可关闭。
+  - 预热后还是没有模板包（老模板多半如此），会报 `PanelAssetUnavailable`，并列出同分类、已有预设的候选，同时给出看它们封面的命令。候选只按面板分类筛选，不看样式，最终要看封面对比图再选（见 `docs/agent-playbook.md` 第 7 节）。
 - **全自动预热**（macOS）：`warmup --auto [--wait 60]` 生成预热草稿后，用 `jy_preview.py` 的方式逐个打开，等待后回首页，把用完的预热草稿移到废纸篓，最后运行 `--from-packages`。需要屏幕录制 + 辅助功能权限，运行期间不要操作电脑。
   - 同一秒生成的草稿在首页的顺序不固定，所以先打开当前看得到的，没打开的下一轮重试（最多 3 轮）。
   - 回首页后要等几秒再移走草稿，否则剪映还在保存，会在原处重建一个打不开的空目录（只有 `common_attachment`、`deepagent` 等，没有 `draft_info.json`）。

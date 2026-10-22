@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- **On-demand warm-up** (macOS, on by default): when `add_subtitle_template` / `add_text_template` meets a template with no preset, the skill warms up just that one in JianYing (about 30 s), generates the preset and continues. If the template can no longer be downloaded, it raises `PanelAssetUnavailable` with same-category candidates that have presets, plus the `preview_assets.py` command to compare their covers (candidates are picked by category only). Turn it off with `JyProject.auto_warmup = False`.
 - **Text templates from packages**: `warmup --kind text` and `sync_jy_templates.py --from-packages` now generate text-template presets as well (304 free). The generated presets include stickers (position/size/timing/animations), per-element timing, loop durations and default texts. Checked against 19 JianYing-applied presets, and 17 were verified in-app by screenshot against the panel covers. Sticker animations that cannot be downloaded are dropped, because JianYing hides the whole sticker otherwise. Templates with shape elements are skipped.
 - Multi-text templates: `add_text_template([...], template)` fills each text in order (`None` keeps the template text); `template_texts()` lists the defaults.
 - **Fully automatic warm-up** (`warmup --auto`, macOS): opens each warm-up draft in JianYing, waits, returns home, moves the used draft to the Trash, then generates presets. `--min-id` skips old templates.

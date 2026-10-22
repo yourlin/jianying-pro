@@ -79,3 +79,22 @@ def test_parse_rich_text_from_package():
                          '</color></size></effectStyle>')
     assert st["size"] == 12.0 and st["effectStyle"]["id"] == "111" and st["font"]["id"] == "222"
     assert st["fill"]["content"]["solid"]["color"] == [1.0, 0.9, 0.2]
+
+
+def test_similar_templates_prefers_category_overlap_and_free(tmp_path, monkeypatch):
+    import utils.panel_assets as pa
+    import utils.template_presets as tp
+
+    rows = [
+        {"name": "目标", "resource_id": "1", "categories": "季节|热门", "is_vip": "1"},
+        {"name": "同类VIP", "resource_id": "3", "categories": "季节", "is_vip": "1"},
+        {"name": "同类免费", "resource_id": "2", "categories": "季节|最新", "is_vip": "0"},
+        {"name": "无预设", "resource_id": "4", "categories": "季节", "is_vip": "0"},
+        {"name": "别的类", "resource_id": "5", "categories": "科技感", "is_vip": "0"},
+    ]
+    monkeypatch.setattr(pa, "load_panel_rows", lambda name: rows)
+    monkeypatch.setattr(tp, "PRESET_DIR", str(tmp_path))
+    for rid in ("2", "3", "5"):
+        (tmp_path / f"{rid}.json").write_text("{}")
+    names = [r["name"] for r in tp.similar_templates(rows[0], "text_template")]
+    assert names == ["同类免费", "同类VIP"]

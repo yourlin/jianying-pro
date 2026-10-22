@@ -259,6 +259,46 @@ def export_srt(name: str, output: str = None, drafts_root: str = None) -> str:
     return output
 
 
+def _warmup_donor(kind: str = "subtitle") -> dict:
+    """预热草稿用的骨架预设 (同类模板, 去掉样式后只留 ID)。"""
+    from utils.template_presets import find_preset
+
+    names = ("Thanks You", "穿搭-强烈安利") if kind == "text" else ("创意粗体", "KkQ1-4", "向下弹出-方块粗体黄")
+    donor = next((find_preset(n) for n in names if find_preset(n)), None)
+    if donor is None:
+        raise RuntimeError("需要至少一个同类模板预设作骨架: 先在剪映里套用任意模板并运行 sync_jy_templates.py")
+    return donor
+
+
+def warmup_one(row: dict, kind: str = "subtitle", timeout: float = 45) -> Optional[dict]:
+    """
+    按需预热单个模板 (macOS): 生成只含这一个模板的预热草稿, 在剪映里自动打开, 等模板包下载完 (最多 timeout 秒)
+    回到首页, 由模板包生成预设。返回预设; 模板包下载不到时返回 None。剪映需要开着并停在首页。
+    """
+    import time as _time
+
+    from jy_preview import go_home, open_draft, _discard_draft
+    from utils.panel_assets import get_jianying_user_data_dirs
+    from utils.template_presets import PRESET_DIR, find_preset, presets_from_local_packages
+
+    pkg_kind = "text_template" if kind == "text" else "subtitle_template"
+    name = f"JY_Warmup_OnDemand_{row['resource_id']}"
+    pkgs = [os.path.join(ud, "Cache", "artistEffect", row["resource_id"], row.get("md5", ""), "content.json")
+            for ud in get_jianying_user_data_dirs()]
+    if not any(os.path.exists(p) for p in pkgs):
+        _warmup_draft([row], _warmup_donor(kind), name, quiet=True)
+        print(f"🔥 按需预热模板「{row['name']}」: 正在剪映里打开预热草稿, 请不要操作电脑", flush=True)
+        open_draft(name)
+        end = _time.time() + timeout
+        while _time.time() < end and not any(os.path.exists(p) for p in pkgs):
+            _time.sleep(1)
+        _time.sleep(3)  # 依赖资源 (字体 / 贴纸 / 动画) 晚一点下完
+        go_home()
+        _discard_draft(name)
+    presets_from_local_packages(pkg_kind, verbose=False)
+    return find_preset(row["resource_id"]) if os.path.exists(os.path.join(PRESET_DIR, f"{row['resource_id']}.json")) else None
+
+
 def warmup_templates(limit: int = 50, free_only: bool = False, category: str = "", name: str = "JY_Template_Warmup",
                      drafts_root: str = None, batches: int = 1, vip_only: bool = False, kind: str = "subtitle",
                      min_id: int = 0):
@@ -274,10 +314,7 @@ def warmup_templates(limit: int = 50, free_only: bool = False, category: str = "
     from utils.template_presets import PRESET_DIR, find_preset
 
     text = kind == "text"
-    donor_names = ("Thanks You", "穿搭-强烈安利") if text else ("创意粗体", "KkQ1-4", "向下弹出-方块粗体黄")
-    donor = next((find_preset(n) for n in donor_names if find_preset(n)), None)
-    if donor is None:
-        raise RuntimeError("需要至少一个同类模板预设作骨架: 先在剪映里套用任意模板并运行 sync_jy_templates.py")
+    donor = _warmup_donor(kind)
     roots = [os.path.join(ud, "Cache", "artistEffect") for ud in get_jianying_user_data_dirs()]
     rows = []
     for r in load_panel_rows("panel_text_templates.csv" if text else "panel_subtitle_templates.csv"):
@@ -306,7 +343,7 @@ def warmup_templates(limit: int = 50, free_only: bool = False, category: str = "
     return names
 
 
-def _warmup_draft(rows, donor, name: str, drafts_root: str = None) -> str:
+def _warmup_draft(rows, donor, name: str, drafts_root: str = None, quiet: bool = False) -> str:
     import copy as _copy
 
     from core.template_ops import TemplateTextSegment, _clip_from_json
@@ -329,6 +366,13 @@ def _warmup_draft(rows, donor, name: str, drafts_root: str = None) -> str:
         seg = TemplateTextSegment(r["name"], draft.Timerange((i // 10) * dur, dur), inst,
                                   clip_settings=_clip_from_json(inst["clip"]))
         p.script.add_segment(seg, track)
+    if quiet:
+        import contextlib
+        import io
+
+        with contextlib.redirect_stdout(io.StringIO()):
+            p.save()
+        return name
     p.save()
     print(f"🔥 预热草稿「{name}」: {len(rows)} 个模板。在剪映里打开它, 等 1 分钟左右后回到首页, 再运行 "
           f"sync_jy_templates.py --from-packages")

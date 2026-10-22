@@ -3,7 +3,8 @@ from typing import List, Optional, Sequence, Union
 import pyJianYingDraft as draft
 from utils.formatters import safe_tim
 from utils.panel_assets import PanelAssetUnavailable, find_panel_asset
-from utils.template_presets import find_preset, harvest_presets, instantiate_preset, template_texts
+from utils.template_presets import (find_preset, harvest_presets, instantiate_preset, similar_templates,
+                                    template_texts)
 
 
 class TemplateTextSegment(draft.TextSegment):
@@ -31,7 +32,8 @@ def _clip_from_json(clip: Optional[dict]) -> draft.ClipSettings:
 class TemplateOpsMixin:
     """
     JyProject 的字幕模板 / 文字模板 Mixin (剪映 11.x)。
-    模板需在剪映里套用过一次 (任一草稿), 由 sync_jy_templates.py 或首次使用时自动采集为预设。
+    模板需要有预设 (data/template_presets/)。用到还没有预设的模板时, macOS 上会自动在剪映里预热这一个
+    (约 30 秒, 剪映需停在首页); JyProject.auto_warmup = False 可关闭。
     """
 
     def _load_template_preset(self, template: str, kind: str):
@@ -41,17 +43,41 @@ class TemplateOpsMixin:
             preset = find_preset(template)
         csv = "panel_subtitle_templates.csv" if kind == "subtitle_template" else "panel_text_templates.csv"
         row = find_panel_asset(csv, str(template))
+        if preset is None and row and getattr(self, "auto_warmup", True):
+            preset = self._warmup_on_demand(row, kind)
         if preset is None:
             name = row["name"] if row else template
+            if not row:
+                raise PanelAssetUnavailable(f"没找到模板「{template}」(面板索引中也没有该名称, 请先运行 sync_jy_panel.py)")
+            similar = similar_templates(row, kind)
+            csv = "panel_subtitle_templates" if kind == "subtitle_template" else "panel_text_templates"
+            hint = ""
+            if similar:
+                ids = " ".join(r["resource_id"] for r in similar)
+                hint = (f" 同分类、可以直接用的候选 (只按面板分类筛选, 请看封面再选): "
+                        f"{'、'.join(r['name'] for r in similar)}。看封面: "
+                        f"python scripts/preview_assets.py -c {csv} --ids {ids}")
             raise PanelAssetUnavailable(
-                f"模板「{name}」还没有预设: 请在剪映里任选一个草稿, 给一段文字套用一次该模板 "
-                f"(稍等剪映自动保存), 再重试。"
-                + ("" if row else " (面板索引中也没找到该名称, 请先运行 sync_jy_panel.py)")
+                f"模板「{name}」还没有预设, 按需预热也没成功 (剪映已下载不到这个模板, 或剪映没停在首页)。" + hint
             )
         is_vip = (row or {}).get("is_vip") == "1"
         if is_vip and not getattr(self, "allow_vip", True):
             raise PanelAssetUnavailable(f"⛔ 模板「{preset['name']}」为 VIP 素材, 已按 allow_vip=False 拒绝")
         return preset
+
+    def _warmup_on_demand(self, row: dict, kind: str):
+        """用到还没有预设的模板时, 自动在剪映里预热这一个 (macOS)。auto_warmup=False 可关闭。"""
+        import sys
+
+        if sys.platform != "darwin":
+            return None
+        try:
+            from jy_wrapper import warmup_one
+
+            return warmup_one(row, "text" if kind == "text_template" else "subtitle")
+        except Exception as e:  # 权限 / 剪映不在首页等: 退回到报错提示
+            print(f"ℹ️ 按需预热「{row['name']}」没成功: {e}")
+            return None
 
     def _add_template_text(self, kind: str, text: Union[str, Sequence[Optional[str]]], template: str,
                            start_time: Union[str, int, None], duration: Union[str, int],

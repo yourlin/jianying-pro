@@ -183,7 +183,11 @@ def open_draft(name: str, timeout: float = 40, settle: float = 3, close_editor: 
     box = _center(title)
     if box is None:
         refresh_home()
-        box = _center(title)
+        for _ in range(10):  # 刷新后列表要一会儿才加载完
+            box = _center(title)
+            if box:
+                break
+            time.sleep(0.5)
     scrolled = 0
     while box is None and scrolled < 40:  # 不在第一屏: 在草稿列表上往下滚动查找
         anchor = _first_title_box()
