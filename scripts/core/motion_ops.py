@@ -88,13 +88,14 @@ class MotionOpsMixin:
             raise ValueError(f"关键帧曲线「{row['name']}」数据异常")
         (c1x, c1y), (c2x, c2y) = (graph[1]["x"], graph[1]["y"]), (graph[2]["x"], graph[2]["y"])
         key = KEYFRAME_ALIASES.get(str(prop).lower(), str(prop))
-        kf_prop = getattr(draft.KeyframeProperty, key, None)
-        lists = [k for k in getattr(segment, "common_keyframes", []) if k.keyframe_property == kf_prop]
-        if not lists or len(lists[0].keyframes) < 2:
+        # 统一缩放在底层存成 scale_x / scale_y 两组关键帧
+        names = ("scale_x", "scale_y") if key == "uniform_scale" else (key,)
+        props = {getattr(draft.KeyframeProperty, n, None) for n in names}
+        lists = [k for k in getattr(segment, "common_keyframes", []) if k.keyframe_property in props]
+        if not lists or any(len(k.keyframes) < 2 for k in lists):
             raise ValueError(f"片段的「{prop}」至少需要 2 个关键帧, 先调用 add_keyframes")
-        kfs = lists[0].keyframes
         linear = row["name"] == "线性"
-        for a, b in zip(kfs, kfs[1:]):
+        for a, b in ((a, b) for kl in lists for a, b in zip(kl.keyframes, kl.keyframes[1:])):
             dt, dv = b.time_offset - a.time_offset, b.values[0] - a.values[0]
             a.curve_type = b.curve_type = "Line" if linear else "FreeCurveInOut"
             a.right_control = (0.0, 0.0) if linear else (round(c1x * dt), c1y * dv)  # x 为微秒

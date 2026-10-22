@@ -68,7 +68,8 @@ def normalize_video_for_jianying(input_path: str, force: bool = False) -> Option
     Output profile:
     - Video: H.264 (libx264), yuv420p
     - Audio: AAC (optional if source has audio)
-    - Geometry: 1920x1080 with padding when needed
+    - Geometry: keeps the source orientation and aspect ratio (portrait stays portrait), long side capped
+      at 1920, even dimensions, no padding
     """
     src = os.path.abspath(input_path)
     if not os.path.exists(src):
@@ -93,8 +94,9 @@ def normalize_video_for_jianying(input_path: str, force: bool = False) -> Option
         "-map",
         "0:a?",
         "-vf",
-        "scale=1920:1080:force_original_aspect_ratio=decrease,"
-        "pad=1920:1080:(ow-iw)/2:(oh-ih)/2",
+        # 保持原方向和比例 (旧版硬转 1920x1080 + 黑边, 会把竖屏变成横屏)
+        "scale='if(gte(iw,ih),min(1920,iw),-2)':'if(gte(iw,ih),-2,min(1920,ih))',"
+        "scale=trunc(iw/2)*2:trunc(ih/2)*2",
         "-r",
         "30",
         "-c:v",

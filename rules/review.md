@@ -50,9 +50,9 @@ python <SKILL_ROOT>/scripts/layout_preview.py --draft "<草稿名>" --auto --rep
 | `[重叠]` | 两条文字轨在画面上打架 |
 | `[插卡]` | 横版素材放进竖屏后宽度占比过小 |
 
-## 已知的两个静默 bug（审片器就是为抓它们而写的）
+## 已知的两个静默 bug（审片器就是为抓它们而写的；2026-10-22 已在 skill 里修复，审片器仍会检查）
 
-1. **图片片段被 clamp 成 0.04s**：图片素材的物理时长只有 40000us，而 `_calculate_duration`
+1. **图片片段被 clamp 成 0.04s**（已修复：图片按请求时长放置）：图片素材的物理时长只有 40000us，而 `_calculate_duration`
    取 `min(请求时长, 物理时长)`，所以 `add_media_safe` / `add_overlay` 传 `duration="6s"`
    的图片会变成 1 帧闪过。时间线上看着正常，成片里图片根本看不见。加完图片片段后强制写回：
 
@@ -67,7 +67,7 @@ python <SKILL_ROOT>/scripts/layout_preview.py --draft "<草稿名>" --auto --rep
            mat.duration = d
    ```
 
-2. **竖屏视频被转成横屏**：`utils/media_normalizer.py` 以 `width % 16 != 0` 作触发条件
+2. **竖屏视频被转成横屏**（已修复：标准化转码保持原方向和比例）：`utils/media_normalizer.py` 以 `width % 16 != 0` 作触发条件
    （1080 宽的竖屏必中），而输出 profile 硬编码 `scale=1920:1080 + pad`，把 1080×1920
    转成横屏加黑边。绕过办法：先自行转码一份规范竖屏文件放到
    `<源目录>/__jycache__/<文件名>.__jy_norm__.mp4`（mtime 要新于源文件），标准化器会直接复用缓存。

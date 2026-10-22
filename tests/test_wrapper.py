@@ -321,3 +321,20 @@ class TestJyWrapper(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_normalizer_keeps_portrait_orientation(monkeypatch, tmp_path):
+    """竖屏素材转码后仍是竖屏 (旧版硬转 1920x1080 + 黑边)"""
+    import subprocess
+
+    import utils.media_normalizer as mn
+
+    src = tmp_path / "v.mp4"
+    src.write_bytes(b"x")
+    calls = []
+    monkeypatch.setattr(mn, "should_normalize_video_for_jianying", lambda p: True)
+    monkeypatch.setattr(mn, "_is_cache_fresh", lambda a, b: False)
+    monkeypatch.setattr(subprocess, "run", lambda cmd, **kw: calls.append(cmd) or subprocess.CompletedProcess(cmd, 1, "", "x"))
+    mn.normalize_video_for_jianying(str(src))
+    vf = calls[0][calls[0].index("-vf") + 1]
+    assert "pad=1920:1080" not in vf and "gte(iw,ih)" in vf

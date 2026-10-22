@@ -1,6 +1,15 @@
 # Changelog
 
 ## Unreleased
+- **Guided mode** (`rules/guided.md`): asks the user, through multiple-choice questions, to choose the scene, style, platform, subtitles, pacing and assets, then writes a storyboard for confirmation, assembles it, and reviews the result with them.
+  - `scripts/analyze_footage.py`: footage analysis — geometry, silences, scene cuts, faster-whisper transcript with word timestamps, **face position plus free zones for inserts** (OpenCV), and asset orientation.
+  - `scripts/storyboard_builder.py`: deterministic assembler for storyboard v2 (`references/storyboard_schema.md`). Supports source-time cuts, transitions, grading, audio processing, camera moves (push / pull / punch / pan / tilt / shake / **pip**), cover-fit inserts, labels, texts and templates, stickers, effects, SFX, subtitles split from the transcript, BGM and background fill. It runs the reviewer afterwards, and with `--preview` captures each shot in JianYing.
+  - Specs: 6 scenes (`references/scenes/`); 5 styles (`references/styles/`, new: tech / fresh / variety / business), whose whitelists were checked against the panel indexes; methodology (`references/methodology/`: hook, pacing, subtitles, inserts and face avoidance, camera, transitions and effects, audio, safe areas, shooting). The methodology draws on GitHub editing skills, film-editing references and Chinese creator articles.
+- Fixes:
+  - Images are no longer clamped to 0.04 s.
+  - The video normalizer keeps portrait orientation; it used to force 1920x1080 with padding.
+  - Keyframe easing now works on uniform scale.
+  - The `TextStyle` default left alignment is avoided in the builder.
 - **On-demand warm-up** (macOS, on by default): when `add_subtitle_template` / `add_text_template` meets a template with no preset, the skill warms up just that one in JianYing (about 30 s), generates the preset and continues. If the template can no longer be downloaded, it raises `PanelAssetUnavailable` with same-category candidates that have presets, plus the `preview_assets.py` command to compare their covers (candidates are picked by category only). Turn it off with `JyProject.auto_warmup = False`.
 - **Text templates from packages**: `warmup --kind text` and `sync_jy_templates.py --from-packages` now generate text-template presets as well (304 free). The generated presets include stickers (position/size/timing/animations), per-element timing, loop durations and default texts. Checked against 19 JianYing-applied presets, and 17 were verified in-app by screenshot against the panel covers. Sticker animations that cannot be downloaded are dropped, because JianYing hides the whole sticker otherwise. Templates with shape elements are skipped.
 - Multi-text templates: `add_text_template([...], template)` fills each text in order (`None` keeps the template text); `template_texts()` lists the defaults.

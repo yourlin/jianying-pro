@@ -40,7 +40,8 @@ Read the individual rule files for specific tasks and constraints:
 - [rules/setup.md](rules/setup.md) - **Mandatory** initialization code for all scripts.
 - [rules/core.md](rules/core.md) - Core operations: Saving, Exporting, and Draft management.
 - [rules/cli.md](rules/cli.md) - CLI contracts and machine-readable output conventions.
-- [rules/review.md](rules/review.md) - **Mandatory**: 审片与版式自检 (安全区/字号/闪帧/声音冲突)，含两个静默 bug 的绕过方法。
+- [rules/review.md](rules/review.md) - **Mandatory**: 审片与版式自检 (安全区/字号/闪帧/声音冲突)。
+- [rules/guided.md](rules/guided.md) - **引导模式**: 用选择题引导用户定场景、风格、平台、字幕、节奏和素材，再出分镜、装配、审片。
 - [rules/media.md](rules/media.md) - Importing assets & **AI Video Analysis Optimization (30m/360p)**.
 - [rules/text.md](rules/text.md) - Adding Subtitles, Text, and Captions.
 - [rules/keyframes.md](rules/keyframes.md) - **Advanced**: Adding Keyframe animations.
@@ -54,7 +55,7 @@ Read the individual rule files for specific tasks and constraints:
 ## 🎯 Agent Quick Routing
 
 - **审片 / 版式自检（生成草稿后必做）**：`rules/review.md` -> `scripts/layout_preview.py --draft "<草稿名>" --auto`，然后 Read 对比图
-- **口播成片编排 / 分镜 / 风格**（用户说"要有编排感""帮我导演""古韵风格"等）：先按 `references/storyboard_template.json` 规划镜头，按 `references/styles/guofeng.md` 的硬约束选素材，装配后走 `rules/review.md` 审片
+- **引导模式 / 导演流程**（用户说"引导模式""帮我规划怎么剪""不知道剪成什么样""这个剪辑有问题帮我重做""要有编排感""帮我导演"，或给了素材但没说清要什么时）：**读 `rules/guided.md` 并照做**。流程：`scripts/analyze_footage.py` 读素材 → AskUserQuestion 引导用户选场景（`references/scenes/`）、风格（`references/styles/`）、平台、字幕、节奏 → 出封面对比图让用户挑素材 → 按 `references/storyboard_schema.md` 写分镜表并给用户确认 → `scripts/storyboard_builder.py` 装配 → 审片 + 剪映截图给用户确认。通用剪辑方法论在 `references/methodology/`
 - 云端视频 + 云端音乐：`rules/media.md` + `rules/audio-voice.md` -> `examples/cloud_video_music_tts_demo.py`
 - 智能配音与字幕 (Script-to-Video)：`rules/text.md` + `rules/audio-voice.md` -> 核心 API `add_narrated_subtitles`
 - 旁白与字幕对齐：`rules/text.md` + `rules/audio-voice.md` -> `examples/cloud_video_music_tts_demo.py`

@@ -190,7 +190,13 @@ class MediaOpsMixin:
 
         start_us = safe_tim(start_time)
         src_start_us = safe_tim(source_start)
-        actual_duration = self._calculate_duration(duration, phys_duration - src_start_us)
+        if getattr(mat, "material_type", "") == "photo" and duration:
+            # 图片没有物理时长 (素材时长只有 0.04s), 按请求时长放, 否则会被 clamp 成 1 帧闪过
+            actual_duration = safe_tim(duration)
+            src_start_us = 0
+            mat.duration = max(mat.duration or 0, actual_duration)
+        else:
+            actual_duration = self._calculate_duration(duration, phys_duration - src_start_us)
 
         seg = draft.VideoSegment(
             mat,
