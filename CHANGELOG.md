@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+- **Methodology from four film / editing books** supplied by the user: 《镜头的语法》 (excerpt), 《电影语言的语法》, 《剪辑的语法》 and 《剪映视频剪辑从小白到大师》.
+  - New `shot_grammar.md`, `staging.md`, `edit_grammar.md`, `jianying_recipes.md` (asset names checked against 11.x) and `review_rules.md` (rules marked implemented / guaranteed by the compiler / planned).
+  - Scene and style JSON updated: talking-head pause thresholds, drama staging rules and `keep_pauses`, punch-in amounts.
+- Reviewer: new editing checks — tiny jump (1.03–1.15x zoom across a same-source cut), dissolve / wipe durations, transition count, first-frame picture, title dwell time (CJK chars and English words as reading units).
+- Compiler: the jump-cut cover is now 1.25x (was 1.12x, which the reviewer now flags).
 - **Circle-speaker layout** (`insert_mode: "circle"`): insert / hero / end-card pages put a full-screen card background (paper or solid colour, generated automatically) over the main video. On top go the image, sized to the safe-area width, and a synced, muted copy of the speaker with a circular mask (centred on the detected face) plus a stroke in the style colour. The label is printed beside the circle in ink colour.
   - New `end_card` element: series tag, title, word cards, call to action, speaker circle and ending effect.
   - Formats gain `circle_layout` and `subtitle_layout`; styles gain `card_background` / `stroke_color` / `card_roles`.

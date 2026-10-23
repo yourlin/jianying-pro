@@ -17,6 +17,7 @@ import argparse
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -366,7 +367,71 @@ def audit_timeline(draft):
                 if os.path.splitext(name)[1].lower() in (".mp4", ".mov", ".m4v"):
                     out.append(f"[声音冲突] {tname} 轨「{name}」未静音，"
                                f"自带声音会和旁白/BGM 打架 (建议 volume=0)")
+    out += audit_editing(draft)
     return sorted(set(out))
+
+
+def audit_editing(draft):
+    """
+    剪辑语法检查 (references/methodology/review_rules.md, 来源《剪辑的语法》《电影语言的语法》等):
+    剪气口后的「小跳」、转场时长 / 数量、首帧有无画面、标题停留时长。
+    """
+    out = []
+    mats = draft.get("materials", {})
+    trans = {m["id"]: m for m in mats.get("transitions", [])}
+    texts = {m["id"]: m for m in mats.get("texts", [])}
+    total_us = draft.get("duration", 0) or 1
+    vtracks = [t for t in draft["tracks"] if t.get("type") == "video"]
+    if vtracks:
+        segs = sorted(vtracks[0].get("segments", []), key=lambda s: s["target_timerange"]["start"])
+        if segs and segs[0]["target_timerange"]["start"] > 40_000:
+            out.append(f"[首帧] 主轨从 {segs[0]['target_timerange']['start'] / 1e6:.2f}s 才有画面, 短视频第 0 帧必须有画面")
+        vids = {m["id"]: m for m in mats.get("videos", [])}
+        for a, b in zip(segs, segs[1:]):
+            pa = vids.get(a.get("material_id"), {}).get("path")
+            if not pa or pa != vids.get(b.get("material_id"), {}).get("path"):  # 同一素材文件 = 同一机位
+                continue
+            if any(r in trans for r in a.get("extra_material_refs", [])):
+                continue
+            sa = seg_props(a, a["target_timerange"]["duration"] - 1)[0]
+            sb = seg_props(b, 0)[0]
+            r = max(sa, sb) / max(1e-6, min(sa, sb))
+            if 1.03 <= r < 1.15:
+                out.append(f"[小跳] 主轨 {b['target_timerange']['start'] / 1e6:.2f}s 剪点前后缩放只差 {r:.2f}x, "
+                           f"同机位剪接要么不变 (明确的跳切), 要么差 ≥ 1.25x, 1.03–1.15x 最难看")
+    n_trans = 0
+    for t in draft["tracks"]:
+        for sg in t.get("segments", []):
+            for ref in sg.get("extra_material_refs", []):
+                m = trans.get(ref)
+                if not m:
+                    continue
+                n_trans += 1
+                d, nm = m.get("duration", 0) / 1e6, m.get("name", "")
+                at = (sg["target_timerange"]["start"] + sg["target_timerange"]["duration"]) / 1e6
+                if "叠化" in nm and not 0.3 <= d <= 2.5:
+                    out.append(f"[转场] {at:.2f}s 叠化 {d:.2f}s, 建议 0.4–2.0s (<0.3s 像闪帧, >2.5s 成叠印)")
+                if "擦除" in nm and d > 0.8:
+                    out.append(f"[转场] {at:.2f}s 擦除 {d:.2f}s, 擦除要快 (≤ 0.8s)")
+    minutes = total_us / 60e6
+    if n_trans > max(5, round(2 * minutes)):
+        out.append(f"[转场] 全片 {n_trans} 个非硬切转场, 偏多 (建议 ≤ max(5, 每分钟 2 个)); 同一场景内只用硬切")
+    for t in draft["tracks"]:
+        name = t.get("name") or ""
+        if t.get("type") != "text" or not any(k in name for k in ("Title", "Label", "CTA", "End", "Hero")):
+            continue
+        for sg in t.get("segments", []):
+            parsed = text_of(texts.get(sg.get("material_id"), {}))
+            raw = (parsed[0] if parsed else "")
+            content = raw.replace(" ", "").replace("\n", "")
+            # 阅读单位: 汉字按字, 英文 / 拼音按词
+            units = sum(1 for ch in raw if "\u4e00" <= ch <= "\u9fff") + len(re.findall(r"[A-Za-zÀ-ɏ]+", raw))
+            need = min(10.0, max(2.0, units * 0.4))
+            dur = sg["target_timerange"]["duration"] / 1e6
+            if content and dur + 0.05 < need:
+                out.append(f"[停留过短] {name} 轨 {sg['target_timerange']['start'] / 1e6:.2f}s「{content[:10]}」"
+                           f"只停 {dur:.1f}s, 至少 {need:.1f}s (≥ max(2s, 字数 × 0.4s))")
+    return out
 
 
 def auto_times(draft):
@@ -459,7 +524,7 @@ def main():
         for f in timeline_issues:
             print(f"   • {f}")
     else:
-        print("✅ 无闪帧 / 越界 / 未静音覆盖层")
+        print("✅ 无闪帧 / 越界 / 未静音覆盖层 / 小跳 / 转场问题 / 标题停留过短")
 
     print("\n===== 版式审片报告 =====")
     if not all_findings:

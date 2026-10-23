@@ -13,8 +13,8 @@
  },
  "pacing": {
   "compact": 0.45,
-  "natural": 0.8,
-  "keep_breath": 0.25,
+  "natural": 0.6,
+  "keep_breath": 0.2,
   "avg_shot": [
    3,
    6
@@ -23,7 +23,8 @@
    2,
    3
   ],
-  "visual_change_max_gap_s": 30
+  "visual_change_max_gap_s": 30,
+  "_note": "句间保留 0.15–0.3s 呼吸, >0.6s 的静默剪掉 (剪辑的语法); 同机位跳点: 不变或差 ≥1.25x"
  },
  "beats": [
   {
@@ -157,7 +158,8 @@
    "pip"
   ],
   "cut_cover": "pull_out",
-  "min_gap_s": 3.0
+  "min_gap_s": 3.0,
+  "cut_cover_amount": 0.25
  },
  "subtitles": {
   "default": true,
@@ -223,7 +225,10 @@
   "插卡不压人脸 (card_zones / pip / cover)",
   "教学段不加插卡",
   "CTA ≥ 3s",
-  "每 30 秒至少一次画面变化（插卡 / 文字 / 运镜）"
+  "每 30 秒至少一次画面变化（插卡 / 文字 / 运镜）",
+  "剪点前后缩放差不在 1.03–1.15x (小跳)",
+  "连续近景 ≤ 6 个后给一次宽景",
+  "句与句之间只用硬切, 章节之间 0.3–0.5s 叠化 / 擦除"
  ],
  "chapter_transition": {
   "type": "black_card",

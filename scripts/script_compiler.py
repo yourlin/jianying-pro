@@ -447,8 +447,8 @@ class Compiler:
         if not self.style.get("cut_transition") and self.scene.get("camera", {}).get("cut_cover") == "pull_out":
             for a, _b in keep[1:]:
                 if not self._overlaps_pip(a, a + 1.5):
-                    self.camera.append({"at": a, "dur": 1.5, "move": "pull_out", "amount": 0.12,
-                                        "note": "剪点后由 112% 拉回, 假景别遮跳剪"})
+                    self.camera.append({"at": a, "dur": 1.5, "move": "pull_out", "amount": 0.25,
+                                        "note": "剪点后由 125% 拉回, 假景别遮跳剪 (差 ≥ 1.25x; 1.03–1.15x 的小跳最难看)"})
         self.camera.sort(key=lambda c: c["at"])
         return self._storyboard(shots, keep)
 

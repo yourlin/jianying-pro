@@ -112,6 +112,26 @@ def find_local_effect_resource(md5: str, user_data_dirs: Optional[Iterable[str]]
     return None
 
 
+def find_local_resource_by_id(resource_id: str, user_data_dirs: Optional[Iterable[str]] = None):
+    """
+    按资源 ID 在 Cache/effect 与 Cache/artistEffect 下找最新下载的版本, 返回 (effect_id, 目录路径) 或 None。
+    面板索引里的 md5 过期时用 (剪映更新了资源, 例如 2026-10-23 的「圆形」蒙版下载到了 artistEffect、md5 也变了)。
+    """
+    best = None
+    for ud in user_data_dirs or get_jianying_user_data_dirs():
+        for sub in ("effect", "artistEffect"):
+            d = os.path.join(ud, "Cache", sub, str(resource_id))
+            if not os.path.isdir(d):
+                continue
+            for m in os.listdir(d):
+                path = os.path.join(d, m)
+                if len(m) == 32 and os.path.isdir(path):
+                    mt = os.path.getmtime(path)
+                    if best is None or mt > best[0]:
+                        best = (mt, str(resource_id), path)
+    return best[1:] if best else None
+
+
 _LOCAL_MD5_INDEX: Dict[str, str] = {}
 
 
@@ -717,12 +737,22 @@ def _row_to_meta(enum_cls, row: dict, draft):
             raise PanelAssetUnavailable(
                 f"蒙版「{row['name']}」需要手绘路径或文字内容，暂不支持自动添加，请在剪映中手动设置。"
             )
-        local = find_local_effect_resource(md5)
+        local = find_local_effect_resource(md5) or find_local_resource_by_id(rid)
         if not local:
             raise PanelAssetUnavailable(
                 f"蒙版「{row['name']}」的资源还没下载到本地。请在剪映的蒙版面板中点一次「{row['name']}」，然后重试。"
             )
-        meta = MaskMeta(row["name"], row.get("sub_type") or "heterosexual", rid, local[0], md5,
+        md5 = os.path.basename(local[1].rstrip("/")) or md5  # 用实际下载到的版本
+        # 蒙版类型: 索引里同一个资源可能有一条 sub_type 为空的记录 (如「圆形」), 不能当成异形 (heterosexual),
+        # 否则剪映不认 (2026-10-23 实测圆形蒙版不生效); 取同 ID 记录或内置同名蒙版的类型
+        rtype = row.get("sub_type") or ""
+        if not rtype:
+            rtype = next((r.get("sub_type") for r in load_panel_rows("panel_masks.csv")
+                          if r["resource_id"] == rid and r.get("sub_type")), "")
+        if not rtype:
+            builtin = draft.MaskType.__members__.get(row["name"]) if draft is not None else None
+            rtype = builtin.value.resource_type if builtin is not None else "heterosexual"
+        meta = MaskMeta(row["name"], rtype, rid, local[0], md5,
                         _svg_aspect_ratio(local[1]) or 1.0)
         meta.path = local[1].rstrip("/") + "/"
         meta.is_old_version = False
