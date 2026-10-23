@@ -120,7 +120,12 @@ def test_video_algorithms_stack_and_relight_flag(project):
     project.set_motion_blur(seg, blur=0.5)
     project.set_motion_blur(seg)  # 同类算法替换, 不重复
     project.set_denoise(seg, enable=False)
-    project.set_smart_relight(seg)
+    from utils.panel_assets import PanelAssetUnavailable
+
+    try:
+        project.set_smart_relight(seg)
+    except PanelAssetUnavailable:  # 预设要在剪映里点过才有本地资源 (CI 机器上没有剪映)
+        pytest.skip("本机剪映缓存里没有「氛围暖光」预设")
     c = _content(project)
     s, = [x for t in c["tracks"] for x in t["segments"] if x["id"] == seg.segment_id]
     mat = next(m for m in c["materials"]["videos"] if m["id"] == s["material_id"])
