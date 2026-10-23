@@ -737,7 +737,12 @@ def _row_to_meta(enum_cls, row: dict, draft):
             raise PanelAssetUnavailable(
                 f"蒙版「{row['name']}」需要手绘路径或文字内容，暂不支持自动添加，请在剪映中手动设置。"
             )
-        local = find_local_effect_resource(md5) or find_local_resource_by_id(rid)
+        # 同一个资源在索引里可能有多条记录 (md5 不同): 先试所有记录的 md5 (Cache/effect/<效果号>/<md5>),
+        # 都没有再按资源 ID 找。直接按 ID 找可能找到 artistEffect 下同 ID 的别的资源 (2026-10-23 圆形蒙版就踩了这个坑)
+        md5s = [md5] + [r.get("md5", "") for r in load_panel_rows("panel_masks.csv")
+                        if r["resource_id"] == rid and r.get("md5") and r.get("md5") != md5]
+        local = next((hit for m in md5s for hit in [find_local_effect_resource(m)] if hit), None) \
+            or find_local_resource_by_id(rid)
         if not local:
             raise PanelAssetUnavailable(
                 f"蒙版「{row['name']}」的资源还没下载到本地。请在剪映的蒙版面板中点一次「{row['name']}」，然后重试。"

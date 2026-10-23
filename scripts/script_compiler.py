@@ -293,11 +293,13 @@ class Compiler:
 
     def text(self, el: dict, kind: str, beat_t: Tuple[float, float], shot: dict, track: str):
         s, e = resolve_time(el.get("time"), self.tr, beat_t[0], beat_t)
+        lims = self.scene.get("elements", {}).get(kind, {})
         if el.get("time") is None:
             s += 0.3
-            lim = self.scene.get("elements", {}).get(kind, {}).get("max_dur")
-            if lim:
-                e = min(e, s + lim)
+            if lims.get("max_dur"):
+                e = min(e, s + lims["max_dur"])
+        if lims.get("min_dur") and e - s < lims["min_dur"]:  # 停留太短看不完 (剪辑的语法: ≥ max(2s, 字数 × 0.4s))
+            e = s + lims["min_dur"]
         t = self.role(kind, content=el["text"], start=round(s, 3), dur=round(e - s, 3), track=track)
         shot.setdefault("texts", []).append(self._on_bright(t))
         if el.get("sub"):
@@ -335,7 +337,8 @@ class Compiler:
                                         dur=round(e - s - 0.6 - 0.25 * r_i, 3), x=0, y=y, track=f"EndWords{r_i}"))
         if el.get("sub"):
             texts.append(self.card_role("end_sub", content=el["sub"], start=round(s + 1.0, 3), dur=round(e - s - 1.0, 3),
-                                        x=ec["sub"]["x"], y=ec["sub"]["y"], max_line_width=0.5, track="EndSub"))
+                                        x=ec["sub"]["x"], y=ec["sub"]["y"],
+                                        max_line_width=ec["sub"].get("max_line_width", 0.5), track="EndSub"))
         eff = self.style.get("ending_effect")
         if eff:
             d = max(float(eff.get("min_dur", 3.0)), e - s)

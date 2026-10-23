@@ -355,6 +355,10 @@ class StoryboardBuilder:
     def _text(self, t: dict, default_track: str):
         draft = self.draft
         start, dur = self.tl.span(float(t["start"]), float(t["dur"]))
+        floor = getattr(self, "_track_end", {}).get(t.get("track", default_track))
+        if floor is not None and start < floor:  # 跨剪点换算后可能和同轨上一段重叠: 往后让
+            dur -= floor - start
+            start = floor
         if dur <= 0:  # 整段落在剪掉的部分里 (比如片尾被裁掉), 不出现
             return None
         if dur < 0.4:
@@ -386,7 +390,11 @@ class StoryboardBuilder:
             if t.get(k):
                 kw[k] = t[k]
         content = wrap_text(t["content"], int(t.get("wrap_chars", 0)))
-        return self.p.add_text_simple(content, _sec(start), _sec(dur), track_name=track, **kw)
+        seg = self.p.add_text_simple(content, _sec(start), _sec(dur), track_name=track, **kw)
+        if not hasattr(self, "_track_end"):
+            self._track_end = {}
+        self._track_end[track] = round(start + dur + 0.001, 6)
+        return seg
 
     def _overlay(self, o: dict):
         start, dur = self.tl.span(float(o["start"]), float(o["dur"]))

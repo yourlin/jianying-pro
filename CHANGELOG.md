@@ -1,6 +1,10 @@
 # Changelog
 
 ## Unreleased
+- **Panel masks resolved correctly**: the index has duplicate rows for the same mask. One row has an empty `sub_type` (written as `heterosexual`, so JianYing ignored it) and a stale md5 (the fallback then picked an unrelated `artistEffect` resource with the same ID). The resolver now takes the type from sibling rows or the builtin enum, and tries every row's md5 under `Cache/effect` before falling back to an ID lookup. Verified in JianYing 11.7: the circle speaker with a gold stroke now renders.
+- Builder: texts on the same track can no longer overlap after source-to-output mapping across cuts. Compiler: titles respect the scene's `min_dur`.
+- Vertical circle layout tuned from JianYing screenshots: the speaker circle sits higher so two-line subtitles clear it, labels move right, the end-card CTA wraps to stay out of the right button zone, and the guofeng end tag is plain vermilion text.
+- `cloud_manager.download_asset` uses a previously downloaded file before hitting the network, so builds still work when the CDN throttles or the network is down.
 - **Methodology from four film / editing books** supplied by the user: 《镜头的语法》 (excerpt), 《电影语言的语法》, 《剪辑的语法》 and 《剪映视频剪辑从小白到大师》.
   - New `shot_grammar.md`, `staging.md`, `edit_grammar.md`, `jianying_recipes.md` (asset names checked against 11.x) and `review_rules.md` (rules marked implemented / guaranteed by the compiler / planned).
   - Scene and style JSON updated: talking-head pause thresholds, drama staging rules and `keep_pauses`, punch-in amounts.

@@ -281,6 +281,13 @@ class CloudManager:
         eid = asset["id"]
         safe_name = "".join([c for c in asset["name"] if c.isalnum() or c in (" ", "_")]).strip()
 
+        if not force:  # 本地已下载过就直接用, 不再联网取地址 (CDN 限流 / 断网时也能用)
+            import glob as _glob
+
+            cached = [p for p in _glob.glob(os.path.join(CACHE_DIR, f"{eid}_*")) if os.path.getsize(p) > 0]
+            if cached:
+                return max(cached, key=os.path.getmtime)
+
         resolved_fresh = False
         url = asset.get("url")
         if (not url) or force:
