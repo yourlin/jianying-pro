@@ -48,17 +48,28 @@ def _tool(*args) -> str:
     return subprocess.run([_helper(), *map(str, args)], capture_output=True, text=True, check=True).stdout
 
 
-def _osa(script: str) -> str:
-    r = subprocess.run(["osascript", "-e", script], capture_output=True, text=True)
+def jianying_running() -> bool:
+    """剪映主程序在不在 (只剩托盘进程 VideoFusion-macOSTrayHelper 时, AppleScript 会一直超时)。"""
+    r = subprocess.run(["pgrep", "-f", "MacOS/VideoFusion-macOS$"], capture_output=True, text=True)
+    return r.returncode == 0
+
+
+def _osa(script: str, timeout: Optional[float] = 120) -> str:
+    try:
+        r = subprocess.run(["osascript", "-e", script], capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        raise PreviewError(f"AppleScript {timeout:.0f}s 没有响应 (剪映卡住或系统负载太高)")
     if r.returncode != 0:
+        if "-1712" in r.stderr and not jianying_running():
+            raise PreviewError("剪映主程序没有运行 (只剩托盘进程): 打开剪映并停在首页后重试")
         if "辅助访问" in r.stderr or "assistive" in r.stderr.lower():
             raise PreviewError("需要辅助功能权限: 系统设置 → 隐私与安全性 → 辅助功能, 勾选运行脚本的终端/应用")
         raise PreviewError(f"AppleScript 失败: {r.stderr.strip()}")
     return r.stdout.strip()
 
 
-def _tell(body: str) -> str:
-    return _osa(f'tell application "System Events" to tell process "{PROCESS}"\n{body}\nend tell')
+def _tell(body: str, timeout: Optional[float] = 120) -> str:
+    return _osa(f'tell application "System Events" to tell process "{PROCESS}"\n{body}\nend tell', timeout)
 
 
 # ---------- 窗口 ----------
@@ -95,7 +106,7 @@ def snapshot(out: Optional[str] = None) -> str:
 WIN = 'first window whose name is "剪映专业版"'
 
 
-def _center(name: str) -> Optional[Tuple[int, int, int, int]]:
+def _center(name: str, timeout: Optional[float] = 120) -> Optional[Tuple[int, int, int, int]]:
     """主窗口中名为 name 的 static text 的 (x, y, w, h) (屏幕坐标, 点); 不存在返回 None。"""
     out = _tell(f'''try
 set e to static text "{name}" of ({WIN})
@@ -117,7 +128,7 @@ set {{sx, sy}} to size of e
 return (px as text) & "," & (py as text) & "," & (sx as text) & "," & (sy as text)
 on error
 return ""
-end try''')
+end try''', timeout)
     return tuple(int(float(v)) for v in out.split(",")) if out else None
 
 

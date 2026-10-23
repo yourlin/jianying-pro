@@ -28,6 +28,7 @@ For generic editing requests, always follow the "Quick Edit Runtime Template" an
     并**用 Read 查看输出的对比图**。轨道数/片段数这类结构校验**不能**替代审片——
     它们全部通过时画面仍可能是错的（图卡 1 帧闪过、字幕超出安全区、竖屏被转横屏）。
     退出码 1 就改参数重新生成，不要直接交付。详见 [rules/review.md](rules/review.md)。
+    **审片器通过不代表画面正确**：插卡页、结束卡、新字体 / 花字 / 蒙版的镜头，交付前必须在剪映里截图核对（重新生成前先关掉剪映编辑器，否则剪映关闭时会用旧版覆盖草稿）。版面规则见 `references/methodology/layout.md`。
     macOS 上还可以用 `python <SKILL_ROOT>/scripts/jy_preview.py "<草稿名>" --at <秒>`（或 `p.preview(at=[...])`）在剪映里打开草稿并截取播放器画面，查看剪映的实际渲染效果（剪映需停在首页；见 `rules/jianying-11.md` 第 9 节）。
 5.  **配乐选择**：
     - **简单演示使用默认音乐**。实际项目，应优先检索并推荐 `data/cloud_music_library.csv` 中的相关曲目，或根据视频主题（如“科技”、“温暖”）进行关键词过滤。

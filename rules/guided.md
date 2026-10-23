@@ -73,6 +73,7 @@ python <SKILL_ROOT>/scripts/preview_assets.py "<关键词>" -c panel_transitions
 写剧本时遵守：
 - 场景规范 `beats` 里的结构：每段的用途、时长占比、必须有 / 不能有的元素；
 - `references/methodology/` 的通用规则：钩子、节奏、字幕断句、插卡、运镜、音频；
+- 版面：插卡页 / 结束卡按 `layout.md`，元素只放进画幅规范的区域，不写坐标；
 - 镜头语言、调度和剪辑原则（`shot_grammar.md`、`staging.md`、`edit_grammar.md`）：景别、头顶空间、轴线、正反打、动作中切、转场的含义和时长、跳切、J/L cut；
 - 想用特效、合成、卡点类效果时，先查 `jianying_recipes.md` 里有没有现成的配方；
 - 每段写 `purpose`；插卡要和台词对应；**没有叙事作用的特效不加**。
@@ -97,8 +98,8 @@ python <SKILL_ROOT>/scripts/script_compiler.py script.json -o storyboard.json --
 
 ## ⑥ 审片（用户确认后才算完成）
 
-1. Read 审片器的 `sheet.jpg` 和报告，`[字号]` `[安全区]` `[平台UI]` `[重叠]` `[闪帧]` 必须清零，回到 ④ 改分镜重跑。
-2. Read 剪映截图，看花字 / 模板的真实效果、插卡和人脸的关系。
+1. Read 审片器的 `sheet.jpg` 和报告，`[字号]` `[安全区]` `[平台UI]` `[重叠]` `[蒙版]` `[对比度]` `[字体]` `[闪帧]` 必须清零，回到 ④ 改分镜重跑。
+2. Read 剪映截图（必做，审片器通过不代表画面正确），看花字 / 模板的真实效果、插卡和人脸的关系、文字清不清楚。
 3. 把截图和"改了什么、为什么"给用户看；提醒用户在剪映里听一遍音量平衡（BGM 和人声）。
 4. 用户提意见 → 改剧本（内容）或改规范（呈现方式，对所有项目生效）→ 重新编译、装配。
 5. 写剧本前，可以按 `methodology/edit_grammar.md` 末尾的「剪辑师常见错误」自查一遍。

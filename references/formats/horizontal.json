@@ -80,18 +80,12 @@
   "min_size2": 5.0
  },
  "circle_layout": {
-  "card_area": {
-   "center": [
-    0.22,
-    0.1
-   ],
-   "width": 0.62,
-   "max_half_height": 0.62
-  },
+  "_说明": "见 vertical.json 的 circle_layout 说明",
+  "gutter": 0.03,
   "speaker": {
    "center": [
     -0.66,
-    -0.3
+    -0.12
    ],
    "diameter_px": 360,
    "stroke": {
@@ -99,23 +93,46 @@
     "size": 30
    }
   },
-  "label": {
-   "x": -0.66,
-   "y": 0.4,
-   "max_line_width": 0.3
-  },
-  "end_card": {
-   "tag_y": 0.72,
-   "title_y": 0.45,
-   "words_y": [
-    0.12,
-    -0.12
+  "regions": {
+   "media": [
+    -0.38,
+    -0.4,
+    0.88,
+    0.78
    ],
-   "sub": {
-    "x": -0.66,
-    "y": 0.12
-   }
-  }
+   "label": [
+    -0.88,
+    0.3,
+    -0.44,
+    0.78
+   ],
+   "subtitle": [
+    -0.8,
+    -0.82,
+    0.8,
+    -0.52
+   ],
+   "end_tag": [
+    -0.38,
+    0.62,
+    0.88,
+    0.78
+   ],
+   "end_title": [
+    -0.38,
+    0.3,
+    0.88,
+    0.58
+   ],
+   "end_words": [
+    -0.38,
+    -0.4,
+    0.88,
+    0.26
+   ]
+  },
+  "region_align": {},
+  "_note": "横屏: 圆形讲解人在左侧中部, 标注在它上方, 图片占右侧; 字幕贴底"
  },
  "subtitle_layout": {
   "anchor_bottom": -0.88,

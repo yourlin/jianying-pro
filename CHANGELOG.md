@@ -1,6 +1,16 @@
 # Changelog
 
 ## Unreleased
+- **Layout grid with real font metrics** (`references/methodology/layout.md`). Insert, hero and end-card pages now place text into non-overlapping regions defined per format (`circle_layout.regions`) instead of hand-tuned coordinates.
+  - New `utils/text_metrics.py` measures text with the font files in JianYing's cache (size 1 ≈ 6.4 px, calibrated from screenshots). It tries one line at up to 88% size, then two balanced lines (breaking at punctuation, spaces, `·` or before an opening bracket), then shrinks; the compiler warns when text still does not fit.
+  - Line breaks are written into the content, because JianYing's max line width often does not wrap English.
+  - Subtitles wrap by real width inside the subtitle band (at most 2 lines). Vocab card rows are spaced by real line heights.
+  - The compiler checks that elements shown at the same time do not overlap.
+- Circle mask diameter is capped at 94% of the material's short side, with the centre kept inside, so the circle is no longer flattened on the left and right.
+- Card roles set `"border": false`; the builder honours it (`add_text_simple` adds a black stroke by default, which made ink and vermilion text on paper muddy). Guofeng end title, words and labels use solid 思源粗宋 instead of dry-brush 挥墨体, gold-foil flower text or thin 启功行楷 Latin.
+- Reviewer: renders with real fonts, colours and strokes. New checks: `[重叠]` text over the circle speaker or an insert, `[蒙版]` mask outside the material, `[对比度]` contrast < 3:1, `[字体]` dry-brush font below size 12.
+- `storyboard_builder` refuses to rebuild while JianYing is in the editor (closing the editor writes JianYing's old copy back over the new draft; set `JY_SKIP_EDITOR_CHECK=1` to override). `jy_preview` reports when only the tray helper is running instead of timing out.
+- Rules: `review.md`, `guided.md` and `SKILL.md` now say a reviewer pass is not enough — card pages and end cards must be checked in JianYing screenshots before delivery.
 - **Panel masks resolved correctly**: the index has duplicate rows for the same mask. One row has an empty `sub_type` (written as `heterosexual`, so JianYing ignored it) and a stale md5 (the fallback then picked an unrelated `artistEffect` resource with the same ID). The resolver now takes the type from sibling rows or the builtin enum, and tries every row's md5 under `Cache/effect` before falling back to an ID lookup. Verified in JianYing 11.7: the circle speaker with a gold stroke now renders.
 - Builder: texts on the same track can no longer overlap after source-to-output mapping across cuts. Compiler: titles respect the scene's `min_dur`.
 - Vertical circle layout tuned from JianYing screenshots: the speaker circle sits higher so two-line subtitles clear it, labels move right, the end-card CTA wraps to stay out of the right button zone, and the guofeng end tag is plain vermilion text.

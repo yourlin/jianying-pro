@@ -386,6 +386,8 @@ class StoryboardBuilder:
             b = t["border"] if isinstance(t["border"], dict) else {}
             kw["border"] = draft.TextBorder(color=_rgb(b.get("color", "#000000")), width=float(b.get("width", 40)),
                                             alpha=float(b.get("alpha", 1)))
+        elif t.get("border") is False:  # 明确不要描边 (浅底卡片上的实心字; 不写时 add_text_simple 默认加黑描边)
+            kw["border"] = None
         for k in ("anim_in", "anim_out", "anim_loop", "bubble"):
             if t.get(k):
                 kw[k] = t[k]
@@ -506,10 +508,18 @@ class StoryboardBuilder:
             for text, style in ((ln.get("text"), primary), (ln.get("text2"), secondary)):
                 if text:
                     st = dict(style)
+                    ch = float((self.sb.get("project", {}).get("canvas") or {}).get("height", 1920))
+                    if st.get("box_width_px"):  # 字幕带: 按真实字宽折行, 超过 max_lines 行就缩字号
+                        from utils.text_metrics import fit, LINE_HEIGHT, PX_PER_SIZE
+
+                        text, size, w, _h = fit(text, st.get("font"), float(st.get("size", 9.5)), float(st["box_width_px"]),
+                                                1e9, max_lines=int(st.get("max_lines", 2)), canvas_h=ch)
+                        cw = float((self.sb.get("project", {}).get("canvas") or {}).get("width", 1080))
+                        st.update(size=size, max_line_width=round(min(1.0, w / cw + 0.04), 3), wrap_chars=0,
+                                  px_per_size=PX_PER_SIZE * LINE_HEIGHT / 1.35)
                     if st.get("anchor_bottom") is not None:  # 底边贴着安全区下沿, 按行数往上排
                         lines_n = wrap_text(text, int(st.get("wrap_chars", 0))).count("\n") + 1
-                        line_h = float(st.get("size", 9.5)) * float(st.get("px_per_size", 6.0)) * 1.35 / (
-                            float((self.sb.get("project", {}).get("canvas") or {}).get("height", 1920)) / 2)
+                        line_h = float(st.get("size", 9.5)) * float(st.get("px_per_size", 6.0)) * 1.35 / (ch / 2)
                         st["y"] = round(float(st["anchor_bottom"]) + lines_n * line_h / 2, 4)
                     if self._text({**st, "content": text, "start": s, "dur": max(0.0, e - s)}, st["track"]):
                         n += 1
@@ -529,9 +539,31 @@ class StoryboardBuilder:
                               fade_in=_sec(bgm.get("fade_in", 1.2)), fade_out=_sec(bgm.get("fade_out", 2.5)))
 
 
+def _guard_editor(name: str):
+    """
+    剪映编辑页开着时不重新生成: 关闭编辑器时剪映会把内存里的旧版本写回草稿, 刚生成的新版被覆盖
+    (2026-10-23 V7 实测)。只在 macOS 上能检测; 检测超时则只提醒。
+    """
+    if sys.platform != "darwin" or os.environ.get("JY_SKIP_EDITOR_CHECK"):
+        return
+    try:
+        import jy_preview
+
+        if not jy_preview.jianying_running():
+            return
+        if jy_preview._center("currentProgress", timeout=20) is not None:
+            raise SystemExit(f"❌ 剪映停在编辑页: 先回到首页 (关闭编辑器) 再生成「{name}」, 否则关闭时剪映会用旧版本覆盖它。"
+                             f"确认编辑页打开的不是这个草稿时, 设置 JY_SKIP_EDITOR_CHECK=1 跳过")
+    except SystemExit:
+        raise
+    except Exception as e:  # 辅助功能权限 / 超时: 不阻塞生成, 只提醒
+        print(f"ℹ️ 没能确认剪映是否停在编辑页 ({e}); 如果编辑器开着这个草稿, 先关掉再生成")
+
+
 def build(storyboard_path: str, review: bool = True, preview: bool = False) -> dict:
     with open(storyboard_path, "r", encoding="utf-8") as f:
         sb = json.load(f)
+    _guard_editor(sb["project"]["name"])
     b = StoryboardBuilder(sb, os.path.dirname(os.path.abspath(storyboard_path)))
     res = b.build()
     name = sb["project"]["name"]

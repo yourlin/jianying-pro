@@ -12,6 +12,7 @@
 | [transitions_fx.md](transitions_fx.md) | 转场、特效、贴纸、音效 |
 | [audio.md](audio.md) | 人声、配乐、响度 |
 | [safe_area.md](safe_area.md) | 各平台安全区 |
+| [layout.md](layout.md) | 版面网格、真实字宽排版、圆形蒙版、浅底文字可读性 |
 | [shooting.md](shooting.md) | 各场景怎么拍（拍摄前给用户的建议） |
 | [grading.md](grading.md) | 调色：调节顺序和默认值、滤镜强度、常用配方 |
 | [shot_grammar.md](shot_grammar.md) | 镜头语言：景别、构图（头顶空间 / 视线空间）、横屏进竖屏、角度、焦点、光线、拍摄覆盖 |

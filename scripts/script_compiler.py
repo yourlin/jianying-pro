@@ -124,6 +124,7 @@ class Compiler:
         self.pip_ranges: List[Tuple[float, float]] = []
         self.no_sub: List[Tuple[float, float]] = list(map(tuple, (script.get("subtitles") or {}).get("exclude", [])))
         self.insert_mode = script.get("insert_mode") or self.scene.get("inserts", {}).get("default", "pip")
+        self.boxes: List[Tuple[float, float, str, Tuple[float, float, float, float]]] = []  # 版面占用 (时间, 名称, 区域)
 
     def _load_analysis(self) -> dict:
         p = self.sc.get("analysis")
@@ -221,12 +222,15 @@ class Compiler:
         cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
         box = self.faces.get("box") or [0.3, 0.3, 0.7, 0.6]
         fx, fy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
-        mask_size = min(0.62, max(0.35, (box[3] - box[1]) * 1.6))  # 圆的直径 (占素材高度): 头 + 肩
+        # 圆的直径 (占素材高度): 头 + 肩, 但不能超过素材的宽 / 高 (超出部分没有画面, 圆的左右会被截平)
+        d_px = min(max(0.35, (box[3] - box[1]) * 1.6) * mh, 0.94 * min(mw, mh))
+        mask_size = d_px / mh
         fit = min(cw / mw, ch / mh)  # 剪映 scale 1 = 素材适应画布
         sp = lay["speaker"]
         scale = sp["diameter_px"] / (mask_size * mh * fit)
-        off_x = (fx - 0.5) * mw  # 蒙版圆心相对素材中心的偏移 (素材像素, 右 / 上为正)
-        off_y = (0.5 - fy) * mh
+        r = d_px / 2  # 圆心离素材边至少 r, 整个圆都落在画面内
+        off_x = max(-(mw / 2 - r), min(mw / 2 - r, (fx - 0.5) * mw))  # 蒙版圆心相对素材中心的偏移 (素材像素, 右 / 上为正)
+        off_y = max(-(mh / 2 - r), min(mh / 2 - r, (0.5 - fy) * mh))
         cx, cy = sp["center"]
         pos = [round(cx - off_x * fit * scale / (cw / 2), 4), round(cy - off_y * fit * scale / (ch / 2), 4)]
         shot["overlays"].append({
@@ -235,19 +239,73 @@ class Compiler:
             "mask": {"name": "圆形", "size": round(mask_size, 3), "center_x": round(off_x, 1), "center_y": round(off_y, 1)},
             "mask_stroke": {"style": sp.get("stroke", {}).get("style", "单层"), "color": self.style.get("stroke_color", "#FFFFFF"),
                             "size": sp.get("stroke", {}).get("size", 30)}})
+        rx, ry = (sp["diameter_px"] / 2 + 8) / (cw / 2), (sp["diameter_px"] / 2 + 8) / (ch / 2)  # 含描边
+        self.occupy(s, e, "圆形讲解人", (cx - rx, cy - ry, cx + rx, cy + ry))
         shot["note"] = (shot.get("note", "") + f"; {note}").strip("; ")
 
+    # -- 版面网格 --
+    def region(self, name: str) -> Tuple[float, float, float, float]:
+        return tuple(self.circle_spec["regions"][name])
+
+    @property
+    def circle_spec(self) -> dict:
+        return self.circle or self.fmt.get("circle_layout") or {}
+
+    def occupy(self, s: float, e: float, what: str, box):
+        self.boxes.append((s, e, what, tuple(round(v, 4) for v in box)))
+
+    def place(self, t: dict, region, *, align: Optional[str] = None, max_lines: int = 2) -> dict:
+        """
+        把文字放进版面区域: 按真实字体量宽, 折行 / 缩字号塞进区域, 再按对齐方式定位。
+        region: 区域名 (circle_layout.regions) 或 [x0, y0, x1, y1]。放不下时记警告。
+        """
+        from utils.text_metrics import fit
+
+        name = region if isinstance(region, str) else t.get("track", "text")
+        x0, y0, x1, y1 = self.region(region) if isinstance(region, str) else region
+        align = align or (self.circle_spec.get("region_align") or {}).get(name, "center")
+        cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
+        bw, bh = (x1 - x0) * cw / 2, (y1 - y0) * ch / 2
+        k = float(t.get("scale", 1))
+        content, size, w, h = fit(t["content"], t.get("font"), float(t.get("size", 8)) * k, bw, bh,
+                                  max_lines=max_lines, canvas_h=ch)
+        if w > bw + 1 or h > bh + 1:
+            self.notes.append(f"⚠️ 「{t['content'][:12]}」放不进区域 {name} (需要 {w:.0f}x{h:.0f}px, 区域 {bw:.0f}x{bh:.0f}px)")
+        t.update(content=content, size=round(size / k, 2), max_line_width=round(min(1.0, w / cw + 0.04), 3),
+                 wrap_chars=0, y=round((y0 + y1) / 2, 4))
+        hw, hh = w / cw, h / ch  # 半宽 / 半高 (transform 单位)
+        if align == "left":
+            t.update(x=round(x0 + hw, 4), align=0)
+        elif align == "right":
+            t.update(x=round(x1 - hw, 4), align=2)
+        else:
+            t["x"] = round((x0 + x1) / 2, 4)
+        self.occupy(float(t["start"]), float(t["start"]) + float(t["dur"]), f"文字「{t['content'][:8]}」",
+                    (t["x"] - hw, t["y"] - hh, t["x"] + hw, t["y"] + hh))
+        return t
+
+    def check_layout(self):
+        """同一时刻出现的元素, 版面区域不能重叠 (底卡、字幕带之外)。"""
+        bs = self.boxes
+        seen = set()
+        for i in range(len(bs)):
+            for j in range(i + 1, len(bs)):
+                a, b = bs[i], bs[j]
+                if a[0] < b[1] - 0.05 and b[0] < a[1] - 0.05:
+                    A, B = a[3], b[3]
+                    if A[0] < B[2] and B[0] < A[2] and A[1] < B[3] and B[1] < A[3]:
+                        key = (a[2], b[2])
+                        if key not in seen:
+                            seen.add(key)
+                            self.notes.append(f"⚠️ 版面重叠: {a[2]} 和 {b[2]} ({max(a[0], b[0]):.1f}s)")
+
     def card_scale(self, info: dict) -> float:
-        """插卡按宽度铺满 card_area, 高度不超过 max_half_height。"""
-        area = self.circle["card_area"]
+        """插卡在 media 区域里尽量放大 (contain: 宽或高贴满区域)。"""
+        x0, y0, x1, y1 = self.region("media")
         cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
         iw, ih = float(info.get("width") or 16), float(info.get("height") or 9)
-        fit = min(cw / iw, ch / ih)
-        sc = area["width"] * cw / (iw * fit)
-        half_h = ih * fit * sc / ch  # 半高 (transform 单位)
-        if half_h > area["max_half_height"]:
-            sc *= area["max_half_height"] / half_h
-        return round(sc, 4)
+        fit = min(cw / iw, ch / ih)  # 剪映 scale 1 = 素材适应画布
+        return round(min((x1 - x0) * cw / 2 / (iw * fit), (y1 - y0) * ch / 2 / (ih * fit)), 4)
 
     # -- 元素 --
     def card(self, el: dict, beat_t: Tuple[float, float], shot: dict):
@@ -265,13 +323,19 @@ class Compiler:
             ov["shadow"] = {"alpha": 30, "blur": 16, "distance": 6, "angle": 90}  # 底卡上只要一点点投影
             self.page(s - 0.15, e, shot, f"插卡页「{el.get('label', src)}」: 底卡 + 图片铺满安全区 + 圆形讲解人")
             sc = self.card_scale(info)
-            ov.update(pos=list(self.circle["card_area"]["center"]), scale=[sc, round(sc * 1.03, 4)])
+            x0, y0, x1, y1 = self.region("media")
+            ov.update(pos=[round((x0 + x1) / 2, 4), round((y0 + y1) / 2, 4)], scale=[round(sc / 1.03, 4), sc])  # 缓推到贴满
             shot["overlays"].append(ov)
+            cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
+            iw, ih = float(info.get("width") or 16), float(info.get("height") or 9)
+            f = min(cw / iw, ch / ih) * sc
+            hw, hh = iw * f / cw, ih * f / ch
+            self.occupy(s, e, f"插卡「{el.get('label', src)}」", (ov["pos"][0] - hw, ov["pos"][1] - hh,
+                                                              ov["pos"][0] + hw, ov["pos"][1] + hh))
             if el.get("label"):
-                lab = self.circle["label"]
-                shot.setdefault("texts", []).append(self.card_role(
+                shot.setdefault("texts", []).append(self.place(self.card_role(
                     "card_label", content=el["label"], start=round(s + 0.25, 3), dur=round(e - s - 0.4, 3),
-                    x=lab["x"], y=lab["y"], max_line_width=lab["max_line_width"], track="CardLabel"))
+                    track="CardLabel"), "label"))
             sfx = (self.style.get("sfx") or {}).get("card")
             if sfx and el.get("sfx", True):
                 shot.setdefault("sfx", []).append({"name": sfx, "at": round(s, 3), "volume": self.style["sfx"].get("volume", 0.35)})
@@ -315,30 +379,33 @@ class Compiler:
         """
         last = float(el.get("last", 6.0))
         s, e = max(beat_t[0], beat_t[1] - last), beat_t[1]
-        lay = self.circle or self.fmt.get("circle_layout")
         if self.circle:
             self.page(s, e, shot, "结束卡: 底卡 + 系列标签 + 标题 + 词卡 + 圆形讲解人")
         else:
             shot.setdefault("overlays", []).append({"source": self.style.get("card_background", "paper:#F5F1E8"),
                                                     "start": round(s, 3), "dur": round(e - s, 3), "fit": "cover",
                                                     "scale": [1, 1], "motion": "fade", "track": "CardBG"})
-        ec = lay["end_card"]
         texts = shot.setdefault("texts", [])
         if el.get("tag"):
-            texts.append(self.card_role("end_tag", content=el["tag"], start=round(s + 0.2, 3), dur=round(e - s - 0.2, 3),
-                                        x=0, y=ec["tag_y"], track="EndTag"))
+            texts.append(self.place(self.card_role("end_tag", content=el["tag"], start=round(s + 0.2, 3),
+                                                   dur=round(e - s - 0.2, 3), track="EndTag"), "end_tag", max_lines=1))
         if el.get("title"):
-            texts.append(self.card_role("end_title", content=el["title"], start=round(s + 0.35, 3),
-                                        dur=round(e - s - 0.35, 3), x=0, y=ec["title_y"], track="EndTitle"))
+            texts.append(self.place(self.card_role("end_title", content=el["title"], start=round(s + 0.35, 3),
+                                                   dur=round(e - s - 0.35, 3), track="EndTitle"), "end_title"))
         words = list(el.get("words") or [])
-        rows = [words[i:i + 2] for i in range(0, len(words), 2)][:len(ec["words_y"])]
-        for r_i, (row, y) in enumerate(zip(rows, ec["words_y"])):
-            texts.append(self.card_role("end_word", content="  ·  ".join(row), start=round(s + 0.6 + 0.25 * r_i, 3),
-                                        dur=round(e - s - 0.6 - 0.25 * r_i, 3), x=0, y=y, track=f"EndWords{r_i}"))
+        if words:  # 词卡区按行均分, 每行两个词, 逐行出现
+            rows = [words[i:i + 2] for i in range(0, len(words), 2)]
+            x0, y0, x1, y1 = self.region("end_words")
+            rh = (y1 - y0) / len(rows)
+            for r_i, row in enumerate(rows):
+                box = (x0, y1 - rh * (r_i + 1), x1, y1 - rh * r_i)
+                texts.append(self.place(self.card_role("end_word", content="  ·  ".join(row),
+                                                       start=round(s + 0.6 + 0.25 * r_i, 3),
+                                                       dur=round(e - s - 0.6 - 0.25 * r_i, 3), track=f"EndWords{r_i}"),
+                                        box, max_lines=1))
         if el.get("sub"):
-            texts.append(self.card_role("end_sub", content=el["sub"], start=round(s + 1.0, 3), dur=round(e - s - 1.0, 3),
-                                        x=ec["sub"]["x"], y=ec["sub"]["y"],
-                                        max_line_width=ec["sub"].get("max_line_width", 0.5), track="EndSub"))
+            texts.append(self.place(self.card_role("end_sub", content=el["sub"], start=round(s + 1.0, 3),
+                                                   dur=round(e - s - 1.0, 3), track="EndSub"), "label"))
         eff = self.style.get("ending_effect")
         if eff:
             d = max(float(eff.get("min_dur", 3.0)), e - s)
@@ -355,25 +422,35 @@ class Compiler:
                 raise ScriptError(f"词卡「{it['main']}」在转写里找不到")
             times.append(hit)
             cursor = hit[1]
+        # 三行的间距按字高算 (真实字体): 上下行中心离主行 = 两行半高之和 + 间隙
+        from utils.text_metrics import block_size
+
+        ch = float(self.fmt["canvas"]["height"])
+        half = lambda role, txt: block_size(txt, self.style["roles"].get(role, {}).get("font"),
+                                            float(self.style["roles"].get(role, {}).get("size", 9)), ch)[1] / ch
+        gap = 12 / (ch / 2)
+        h_main = max(half("vocab", it["main"]) for it in items)
+        up = h_main + max([half("vocab_top", it["top"]) for it in items if it.get("top")] or [0]) + gap
+        down = h_main + max([half("vocab_bottom", it["bottom"]) for it in items if it.get("bottom")] or [0]) + gap
         chin = self.faces.get("chin_y")
         main_y = self.fmt["slots"]["lower_zone"]["y"]
         if chin is not None:
-            main_y = min(main_y, chin - 0.11)
+            main_y = min(main_y, chin - h_main - gap)
         bottom_safe = self.fmt["safe"]["bottom"]
-        if main_y - 0.10 < bottom_safe - 0.03:
-            main_y = bottom_safe - 0.03 + 0.10
+        if main_y - down < bottom_safe - 0.03:
+            main_y = bottom_safe - 0.03 + down
         for i, (it, (s, _e)) in enumerate(zip(items, times)):
             st = max(beat_t[0], s - 0.12)
             en = (times[i + 1][0] - 0.12 - 0.01) if i + 1 < len(times) else beat_t[1]  # 相邻词卡留 10ms, 避免精度误差重叠
             d = round(en - st, 3)
             if it.get("top"):
                 shot.setdefault("texts", []).append(self.role("vocab_top", content=it["top"], start=round(st, 3), dur=d,
-                                                              x=0, y=round(main_y + 0.10, 3), track="VocabTop"))
+                                                              x=0, y=round(main_y + up, 3), track="VocabTop"))
             shot.setdefault("texts", []).append(self.role("vocab", content=it["main"], start=round(st, 3), dur=d,
                                                           y=round(main_y, 3), track="Vocab"))
             if it.get("bottom"):
                 shot["texts"].append(self.role("vocab_bottom", content=it["bottom"], start=round(st, 3), dur=d,
-                                               x=0, y=round(main_y - 0.10, 3), track="VocabBottom"))
+                                               x=0, y=round(main_y - down, 3), track="VocabBottom"))
         if self.scene.get("elements", {}).get("vocab", {}).get("hide_subtitles", True):
             self.no_sub.append((round(times[0][0] - 0.15, 3), round(beat_t[1], 3)))
 
@@ -400,13 +477,13 @@ class Compiler:
                 elif kind == "hero" and self.circle:
                     s_, e_ = resolve_time(el.get("time"), self.tr, bt[0], bt)
                     self.page(s_, e_, shot, "点题页: 底卡 + 大字 + 圆形讲解人")
-                    area = self.circle["card_area"]["center"]
-                    shot.setdefault("texts", []).append(self.role("hero", content=el["text"], start=round(s_ + 0.2, 3),
-                                                                  dur=round(e_ - s_ - 0.2, 3), x=area[0], y=area[1], track="Hero"))
+                    shot.setdefault("texts", []).append(self.place(self.role(
+                        "hero", content=el["text"], start=round(s_ + 0.2, 3), dur=round(e_ - s_ - 0.2, 3), track="Hero"),
+                        "media"))
                     if el.get("sub"):
-                        lab = self.circle["label"]
-                        shot["texts"].append(self.card_role("card_label", content=el["sub"], start=round(s_ + 0.4, 3),
-                                                            dur=round(e_ - s_ - 0.4, 3), x=lab["x"], y=lab["y"], track="CardLabel"))
+                        shot["texts"].append(self.place(self.card_role(
+                            "card_label", content=el["sub"], start=round(s_ + 0.4, 3), dur=round(e_ - s_ - 0.4, 3),
+                            track="CardLabel"), "label"))
                 elif kind == "end_card":
                     self.end_card(el, bt, shot)
                 elif kind in ("title", "hero", "keyword", "label", "cta"):
@@ -453,7 +530,9 @@ class Compiler:
                     self.camera.append({"at": a, "dur": 1.5, "move": "pull_out", "amount": 0.25,
                                         "note": "剪点后由 125% 拉回, 假景别遮跳剪 (差 ≥ 1.25x; 1.03–1.15x 的小跳最难看)"})
         self.camera.sort(key=lambda c: c["at"])
-        return self._storyboard(shots, keep)
+        sb = self._storyboard(shots, keep)
+        self.check_layout()
+        return sb
 
     def _subtitles(self) -> Optional[dict]:
         cfg = self.sc.get("subtitles") or {}
@@ -492,6 +571,11 @@ class Compiler:
                         size=max(prim["size"], lay["size"]))
             if lang != "zh":
                 prim["wrap_chars"] = lay["wrap_chars_en"]
+            reg = (self.circle_spec.get("regions") or {}).get("subtitle")
+            if reg:  # 字幕带: 水平居中于字幕区, 按真实字宽折行, 最多 max_lines 行 (装配器里折)
+                cw = float(self.fmt["canvas"]["width"])
+                prim.update(x=round((reg[0] + reg[2]) / 2, 4), box_width_px=round((reg[2] - reg[0]) * cw / 2),
+                            max_lines=lay.get("max_lines", 2), wrap_chars=0)
         if cfg.get("y") is not None:
             prim["y"] = cfg["y"]
             prim.pop("anchor_bottom", None)

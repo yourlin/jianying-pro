@@ -22,8 +22,11 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from utils.text_metrics import PX_PER_SIZE, contrast, font_file, font_name_by_id  # noqa: E402
+
 try:
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw, ImageFont, ImageStat
     HAS_PIL = True
 except ImportError:          # 缺 Pillow 时仍可做时间线结构检查
     HAS_PIL = False
@@ -41,7 +44,7 @@ CJK_FONTS = [
 ]
 
 # 字号换算: 剪映 size 单位 -> 画布像素 (经实测校准, 可用 --px-per-size 覆盖)
-PX_PER_SIZE_AT_1920 = 6.0
+PX_PER_SIZE_AT_1920 = PX_PER_SIZE  # 6.4, 2026-10-23 用剪映截图 + 真实字体校准
 
 # 短视频可读下限 (1080x1920 画布, 单位 px 字高)
 MIN_PRIMARY_PX = 48
@@ -53,6 +56,11 @@ UI_ZONES = {
     "底部文案区": (0.0, 0.84, 1.0, 1.0),
     "右侧按钮区": (0.86, 0.30, 1.0, 0.84),
 }
+# 枯笔 / 飞白类书法字体: 笔画有缝, 小字号下糊成一片
+DRY_BRUSH_FONTS = {"挥墨体", "汉仪高进飞白体"}
+DRY_BRUSH_MIN_SIZE = 12.0
+MIN_CONTRAST = 3.0  # 大字 (≥ 24px 粗体) 的 WCAG 下限; 正文是 4.5
+
 # 标题安全区: 四边留白
 SAFE_MARGIN = {"x": 0.06, "top": 0.10, "bottom": 0.16}
 
@@ -176,7 +184,7 @@ def contain_fit(img_w, img_h, canvas_w, canvas_h):
 
 
 def text_of(material):
-    """解析文字素材, 返回 (文本, 字号, 描边宽, 对齐, 最大行宽)"""
+    """解析文字素材, 返回 (文本, 字号, 描边宽, 对齐, 最大行宽)。字体 / 颜色用 text_style()。"""
     try:
         content = json.loads(material.get("content") or "{}")
     except json.JSONDecodeError:
@@ -188,6 +196,20 @@ def text_of(material):
     if styles and styles[0].get("strokes"):
         stroke = styles[0]["strokes"][0].get("width", 0.0)
     return text, size, stroke, material.get("alignment", 1), material.get("line_max_width", 0.82)
+
+
+def text_style(material):
+    """文字的 (字体名, 填充色 0-255, 描边色 0-255 或 None)。"""
+    try:
+        st = (json.loads(material.get("content") or "{}").get("styles") or [{}])[0]
+    except (json.JSONDecodeError, IndexError):
+        return None, (255, 255, 255), (0, 0, 0)
+    font = font_name_by_id(str((st.get("font") or {}).get("id", "")))
+    fill = ((st.get("fill") or {}).get("content") or {}).get("solid", {}).get("color") or [1, 1, 1]
+    strokes = [x for x in st.get("strokes") or [] if x.get("width", 0) > 0.01]
+    stroke = (strokes[0].get("content") or {}).get("solid", {}).get("color") if strokes else None
+    to255 = lambda c: tuple(int(round(v * 255)) for v in c[:3])
+    return font, to255(fill), (to255(stroke) if stroke else None)
 
 
 def wrap_text(draw, text, font, max_px):
@@ -213,6 +235,7 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
     vids = {m["id"]: m for m in mats.get("videos", [])}
     texts = {m["id"]: m for m in mats.get("texts", [])}
     masks = {m["id"]: m for m in mats.get("common_mask", []) + mats.get("masks", [])}
+    effect_ids = {m["id"] for m in mats.get("effects", []) if m.get("type") == "text_effect"}
 
     base = Image.new("RGBA", (W, H), (18, 18, 18, 255))
     findings = []
@@ -247,6 +270,10 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
             shape = ImageDraw.Draw(m).ellipse if mask["resource_type"] == "circle" else ImageDraw.Draw(m).rectangle
             shape((mcx - rx, mcy - ry, mcx + rx, mcy + ry), fill=255)
             frame.putalpha(Image.composite(frame.getchannel("A"), Image.new("L", (fw, fh), 0), m))
+            if mcx - rx < -2 or mcy - ry < -2 or mcx + rx > fw + 2 or mcy + ry > fh + 2:
+                findings.append(f"[蒙版] {track.get('name')} 的{'圆形' if mask['resource_type'] == 'circle' else '矩形'}"
+                                f"蒙版超出素材边缘, 超出部分没有画面 (圆会被截平); 缩小蒙版或把圆心移向素材中心")
+            mask_box = (mcx - rx, mcy - ry, mcx + rx, mcy + ry)
         if alpha < 1.0:
             a = frame.getchannel("A").point(lambda v: int(v * alpha))
             frame.putalpha(a)
@@ -254,8 +281,13 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
         pos = (int(cx - fw / 2), int(cy - fh / 2))
         base.alpha_composite(frame, pos)
         if idx > 0 and alpha > 0.35:
-            boxes.append(("插卡", track.get("name") or f"video{idx}",
-                          (pos[0], pos[1], pos[0] + fw, pos[1] + fh)))
+            if mask and mask.get("resource_type") in ("circle", "rectangle"):
+                mb = mask_box
+                boxes.append(("圆形" if mask["resource_type"] == "circle" else "插卡", track.get("name") or f"video{idx}",
+                              (pos[0] + mb[0], pos[1] + mb[1], pos[0] + mb[2], pos[1] + mb[3])))
+            elif not (fw >= W * 0.98 and fh >= H * 0.98):  # 铺满的底卡不算
+                boxes.append(("插卡", track.get("name") or f"video{idx}",
+                              (pos[0], pos[1], pos[0] + fw, pos[1] + fh)))
             if fw / W < 0.45 and not mask:  # 带蒙版的小窗 (如圆形讲解人) 本来就小
                 findings.append(f"[插卡] {track.get('name')} 宽度仅占画面 {fw/W:.0%}，竖屏里偏小")
 
@@ -273,21 +305,36 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
         if alpha < 0.2 or not text.strip():
             continue
         px = size * scale * px_per_size * (H / 1920)
-        font = pick_font(px)
+        mat = texts.get(seg.get("material_id"), {})
+        font_name, fill, stroke = text_style(mat)
+        font = pick_font(px, font_file(font_name) if font_name else None)
+        flower = any(r in effect_ids for r in seg.get("extra_material_refs", []))
         lines = wrap_text(draw, text, font, max_lw * W)
         lh = px * 1.28
         block_h = lh * len(lines)
         cx, cy = W / 2 + x * (W / 2), H / 2 - y * (H / 2)
         top = cy - block_h / 2
         widest = max(draw.textlength(ln, font=font) for ln in lines) if lines else 0
-        sw = max(0, int(stroke_w * px * 0.6))
+        bbox = (int(cx - widest / 2), int(top), int(cx + widest / 2), int(top + block_h))
+        name = track.get("name") or "text"
+        if not flower and bbox[2] > bbox[0] and bbox[3] > bbox[1]:  # 对比度: 字色 (和描边) 对它下面的画面
+            crop = base.crop(tuple(max(0, v) for v in bbox)).convert("RGB")
+            if crop.width and crop.height:
+                bg = tuple(ImageStat.Stat(crop).mean)
+                c = contrast(fill, bg)
+                if stroke and stroke_w >= 0.04:
+                    c = max(c, min(contrast(stroke, bg), contrast(fill, stroke)))
+                if c < MIN_CONTRAST:
+                    findings.append(f"[对比度] {name} 字色和背景对比度 {c:.1f}:1 (< {MIN_CONTRAST}): 「{text[:12]}」")
+        if font_name in DRY_BRUSH_FONTS and size * scale < DRY_BRUSH_MIN_SIZE:
+            findings.append(f"[字体] {name} 用枯笔书法字体「{font_name}」但字号只有 {size * scale:.1f} "
+                            f"(< {DRY_BRUSH_MIN_SIZE}), 笔画会糊; 换实心字体或放大")
+        sw = max(0, int(stroke_w * px * 0.6)) if stroke else 0
         for i, ln in enumerate(lines):
             lw = draw.textlength(ln, font=font)
             draw.text((cx - lw / 2, top + i * lh), ln, font=font,
-                      fill=(255, 255, 255, int(255 * alpha)),
-                      stroke_width=sw, stroke_fill=(0, 0, 0, int(255 * alpha)))
-        bbox = (int(cx - widest / 2), int(top), int(cx + widest / 2), int(top + block_h))
-        name = track.get("name") or "text"
+                      fill=(*fill, int(255 * alpha)),
+                      stroke_width=sw, stroke_fill=(*(stroke or (0, 0, 0)), int(255 * alpha)))
         boxes.append(("文字", name, bbox))
 
         # --- 审查 ---
@@ -306,6 +353,14 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
             z = (zx0 * W, zy0 * H, zx1 * W, zy1 * H)
             if bbox[0] < z[2] and bbox[2] > z[0] and bbox[1] < z[3] and bbox[3] > z[1]:
                 findings.append(f"[平台UI] {name} 进入{zone}: 「{text[:16]}」")
+
+    # 文字压到圆形讲解人 / 插卡 (重叠面积超过文字的 15%)
+    for kind, oname, ob in [b for b in boxes if b[0] in ("圆形", "插卡")]:
+        for _k, tname, tb in [b for b in boxes if b[0] == "文字"]:
+            ix = max(0, min(ob[2], tb[2]) - max(ob[0], tb[0])) * max(0, min(ob[3], tb[3]) - max(ob[1], tb[1]))
+            area = max(1, (tb[2] - tb[0]) * (tb[3] - tb[1]))
+            if ix / area > 0.15:
+                findings.append(f"[重叠] 文字轨「{tname}」压到{'圆形讲解人' if kind == '圆形' else '插卡'}「{oname}」")
 
     # 文字之间重叠
     txt_boxes = [b for b in boxes if b[0] == "文字"]

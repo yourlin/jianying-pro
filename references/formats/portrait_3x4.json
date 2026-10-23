@@ -75,14 +75,8 @@
   "min_size2": 6.0
  },
  "circle_layout": {
-  "card_area": {
-   "center": [
-    0,
-    0.34
-   ],
-   "width": 0.9,
-   "max_half_height": 0.38
-  },
+  "_说明": "见 vertical.json 的 circle_layout 说明",
+  "gutter": 0.03,
   "speaker": {
    "center": [
     -0.56,
@@ -94,23 +88,48 @@
     "size": 30
    }
   },
-  "label": {
-   "x": 0.18,
-   "y": -0.22,
-   "max_line_width": 0.5
-  },
-  "end_card": {
-   "tag_y": 0.76,
-   "title_y": 0.58,
-   "words_y": [
-    0.36,
-    0.16
+  "regions": {
+   "media": [
+    -0.88,
+    0.04,
+    0.88,
+    0.8
    ],
-   "sub": {
-    "x": 0.18,
-    "y": -0.22
-   }
-  }
+   "label": [
+    -0.24,
+    -0.42,
+    0.78,
+    -0.02
+   ],
+   "subtitle": [
+    -0.8,
+    -0.7,
+    0.7,
+    -0.46
+   ],
+   "end_tag": [
+    -0.8,
+    0.7,
+    0.8,
+    0.8
+   ],
+   "end_title": [
+    -0.8,
+    0.48,
+    0.8,
+    0.68
+   ],
+   "end_words": [
+    -0.8,
+    0.04,
+    0.8,
+    0.46
+   ]
+  },
+  "region_align": {
+   "label": "left"
+  },
+  "_note": "小红书 3:4"
  },
  "subtitle_layout": {
   "anchor_bottom": -0.68,

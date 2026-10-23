@@ -6,7 +6,7 @@
   "title": {
    "font": "挥墨体",
    "flower": "书法墨环图案花字",
-   "size": 11.5,
+   "size": 13.0,
    "slot": "top_band",
    "anim_in": "渐显",
    "anim_out": "渐隐"
@@ -61,7 +61,7 @@
   "cta": {
    "font": "挥墨体",
    "flower": "金箔描边书法水墨花字",
-   "size": 11.0,
+   "size": 12.0,
    "slot": "main_zone",
    "anim_in": "渐显"
   },
@@ -117,35 +117,55 @@
  "ink": "#1A1A1A",
  "card_roles": {
   "card_label": {
-   "font": "启功行楷",
-   "size": 10.5,
+   "font": "思源粗宋",
+   "size": 12.5,
    "color": "#1A1A1A",
-   "anim_in": "渐显"
+   "anim_in": "渐显",
+   "_note": "2026-10-23 剪映截图: 启功行楷的英文 / 拼音笔画太细, 加黑描边后更糊; 浅底标注用实心粗宋, 字号 ≥ 字幕",
+   "border": false
   },
   "end_tag": {
    "font": "挥墨体",
-   "size": 10.0,
+   "size": 12.0,
    "color": "#C8372D",
    "anim_in": "渐显",
-   "_note": "红底水墨花字 + 小字号太花看不清, 改朱红纯文字"
+   "_note": "系列标签: 朱红书法字, 只有几个字、字号够大, 枯笔质感能看清",
+   "border": false
   },
   "end_title": {
-   "font": "挥墨体",
+   "font": "思源粗宋",
    "size": 17.0,
    "color": "#1A1A1A",
-   "anim_in": "渐显"
+   "anim_in": "渐显",
+   "_note": "2026-10-23 剪映截图: 挥墨体枯笔 + 浅底, 笔画发灰糊在一起; 浅底黑字一律用实心粗宋",
+   "border": false
   },
   "end_word": {
-   "font": "挥墨体",
-   "flower": "金箔描边书法水墨花字",
-   "size": 12.0,
-   "anim_in": "渐显"
+   "font": "思源粗宋",
+   "size": 13.0,
+   "color": "#1A1A1A",
+   "anim_in": "渐显",
+   "_note": "金箔水墨花字的灰描边在浅底上糊成一片, 去掉花字, 实心墨色",
+   "border": false
   },
   "end_sub": {
-   "font": "启功行楷",
-   "size": 9.5,
+   "font": "思源粗宋",
+   "size": 11.0,
    "color": "#C8372D",
-   "anim_in": "渐显"
+   "anim_in": "渐显",
+   "border": false
   }
+ },
+ "legibility": {
+  "_说明": "浅底 (宣纸底卡) 上的文字规则, 审片器的 [对比度] 检查按这里",
+  "dry_brush_fonts": [
+   "挥墨体"
+  ],
+  "dry_brush_min_size": 12,
+  "dry_brush_max_chars": 8,
+  "on_paper": "实心墨色 #1A1A1A 或朱红 #C8372D, 不加花字、不加灰色描边; 对比度 ≥ 4.5:1; 含英文 / 拼音的标注不用行楷类字体 (拉丁字母笔画太细)",
+  "thin_script_fonts": [
+   "启功行楷"
+  ]
  }
 }
