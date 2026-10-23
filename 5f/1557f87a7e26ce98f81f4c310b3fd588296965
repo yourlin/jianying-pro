@@ -1,0 +1,76 @@
+references/methodology/review_rules.md
+  s_a85957e9883ca0::t_33d31389327a79 13-22
+SKILL.md
+  s_a85957e9883ca0::t_33d31389327a79 31
+scripts/layout_preview.py
+  s_a85957e9883ca0::t_1a20f82e54db39 25-27,29,47,59-63,187,201-214,238,273-276,284-290,308-311,318-332,336-337,357-363
+  s_a85957e9883ca0::t_40f0882ad8839d 364
+scripts/storyboard_builder.py
+  s_a85957e9883ca0::t_5326f01122579f 389-390
+  s_a85957e9883ca0::t_c302294cec5694 511-519,522
+  s_a85957e9883ca0::t_52ac1b3eba669b 542-553,555-562,566
+  s_a85957e9883ca0::t_e3aef4675b6c05 554
+CHANGELOG.md
+  s_a85957e9883ca0::t_c0346a290f52d9 4-13
+references/formats/vertical.json
+  s_a85957e9883ca0::t_f3b47832800e85 88-89,93,99-100,102-113,115-122,124-128,130,132-141,143,150-151
+  s_a85957e9883ca0::t_affac819d42637 123,129,131
+references/styles/fresh.json
+  s_a85957e9883ca0::t_5326f01122579f 136-137,142-143,148-149,154-155,160-161
+references/formats/horizontal.json
+  s_a85957e9883ca0::t_0164b1fe0bf14c 83-84,88,96-101,103-135
+references/methodology/layout.md
+  s_a85957e9883ca0::t_8bbefa6487ff2e 1-32
+scripts/utils/text_metrics.py
+  s_a85957e9883ca0::t_c7697ee596d395 139
+  s_a85957e9883ca0::t_0c0491d31b1d85 1-32,36-95,97,100-104,106-129,131,133,135-136,138,142-151,156-157,159-163
+  s_a85957e9883ca0::t_1a20f82e54db39 164-183
+  s_a85957e9883ca0::t_f3975602620b48 130,132,134,137,158
+  s_a85957e9883ca0::t_4759e18049c8f3 33-35,96,98-99,105,140-141,152-155
+rules/review.md
+  s_a85957e9883ca0::t_33d31389327a79 50,52-64
+references/styles/variety.json
+  s_a85957e9883ca0::t_5326f01122579f 132-133,138-139,154-155
+scripts/script_compiler.py
+  s_a85957e9883ca0::t_67795320540989 425-434,438,440-441,448,453
+  s_a85957e9883ca0::t_ee97d0ffa873bf 127,225-227,231-233,242-243,246-301,303-304,307-308,326-327,329-334,336,338,390-391,393-394,396-405,407-408,480-482,484-486,533-535,574-578
+references/styles/tech.json
+  s_a85957e9883ca0::t_5326f01122579f 136-137,142-143,159-160
+references/formats/square.json
+  s_a85957e9883ca0::t_0164b1fe0bf14c 79-80,83-84,92-97,99-133
+references/formats/portrait_3x4.json
+  s_a85957e9883ca0::t_0164b1fe0bf14c 78-79,91-96,98-132
+references/methodology/README.md
+  s_a85957e9883ca0::t_2f5ee5d38b900a 15
+scripts/jy_preview.py
+  s_a85957e9883ca0::t_52ac1b3eba669b 51-61,63-64
+  s_a85957e9883ca0::t_e3aef4675b6c05 71-72,109,131
+references/styles/business.json
+  s_a85957e9883ca0::t_5326f01122579f 134-135,140-141,146-147,152-153,158-159
+rules/guided.md
+  s_a85957e9883ca0::t_33d31389327a79 76,101-102
+references/styles/guofeng.json
+  s_a85957e9883ca0::t_97ebdcbb2233dd 64
+  s_a85957e9883ca0::t_67795320540989 9
+  s_a85957e9883ca0::t_6e8eb8d7abce53 120,123,129,136,139,144-147,158-165
+  s_a85957e9883ca0::t_5326f01122579f 125,132-133,140-141,148-149,152-153,155-156
+  s_a85957e9883ca0::t_4d187f8ee65f08 121,124,166-169
+tests/test_text_metrics.py
+  s_a85957e9883ca0::t_7ed80a67f9e7fd 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5f1557f87a7e26ce98f81f4c310b3fd588296965",
+  "prompts": {},
+  "sessions": {
+    "s_a85957e9883ca0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae765109-8704-4d73-8b90-df1d598ed42f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "MasterLin <6930286+yourlin@users.noreply.github.com>"
+    }
+  }
+}
