@@ -1,0 +1,161 @@
+{
+ "id": "vlog",
+ "name": "Vlog",
+ "doc": "vlog.md",
+ "detect": {
+  "shots_per_min_min": 4
+ },
+ "duration": {
+  "min": 30,
+  "max": 180,
+  "ideal": 60
+ },
+ "pacing": {
+  "compact": 0.6,
+  "natural": 1.0,
+  "keep_breath": 0.3,
+  "avg_shot": [
+   2,
+   4
+  ],
+  "pattern": "两短一长 (特写 1–1.5s ×2 + 全景 ~3s)"
+ },
+ "beats": [
+  {
+   "name": "开场",
+   "ratio": 0.07,
+   "purpose": "最好看的镜头 + 地点 / 主题",
+   "required": [
+    "title"
+   ],
+   "allowed": [
+    "effect"
+   ],
+   "forbidden": [
+    "card"
+   ],
+   "camera": "push_in",
+   "note": "冷开场：高光片段 2s"
+  },
+  {
+   "name": "段落",
+   "ratio": 0.86,
+   "purpose": "按时间 / 地点 / 事件分 2–4 段",
+   "required": [],
+   "allowed": [
+    "label",
+    "keyword",
+    "sticker",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "pan_left",
+   "note": "每段：建立镜头（远景）→ 细节特写；段间转场，段内硬切；时间 / 地点标签"
+  },
+  {
+   "name": "收尾",
+   "ratio": 0.07,
+   "purpose": "情绪收束、下期预告",
+   "required": [],
+   "allowed": [
+    "title",
+    "effect"
+   ],
+   "forbidden": [],
+   "camera": "pull_out",
+   "note": "拉镜或背影远景"
+  }
+ ],
+ "elements": {
+  "label": {
+   "min_dur": 2.0,
+   "max_dur": 4.0,
+   "note": "时间 / 地点标签"
+  },
+  "title": {
+   "min_dur": 2.0,
+   "max_dur": 4.0
+  }
+ },
+ "inserts": {
+  "default": "cover",
+  "no_insert_first_s": 0.0
+ },
+ "camera": {
+  "per_minute": [
+   6,
+   12
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out",
+   "pan_left",
+   "pan_right",
+   "tilt_up",
+   "tilt_down"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 2.0
+ },
+ "subtitles": {
+  "default": "labels",
+  "max_chars_zh": 15,
+  "max_chars_en": 38,
+  "max_dur": 3.2,
+  "lead": 0.2
+ },
+ "audio": {
+  "bgm_volume": 0.5,
+  "bgm_volume_under_voice": 0.25,
+  "loudness_lufs": -14,
+  "sfx_max": 6,
+  "music_leads_cut_s": 0.5
+ },
+ "effects": {
+  "max": 3,
+  "min_dur": 3.0,
+  "only_for": [
+   "opening",
+   "chapter",
+   "ending"
+  ]
+ },
+ "questions": {
+  "mood": {
+   "question": "情绪基调？",
+   "options": [
+    "治愈慢节奏",
+    "轻快",
+    "热血燃"
+   ]
+  },
+  "sections": {
+   "question": "怎么分段？",
+   "options": [
+    "按时间",
+    "按地点",
+    "按事件"
+   ]
+  },
+  "voice": {
+   "question": "口播段落？",
+   "options": [
+    "保留原声",
+    "只用音乐",
+    "配旁白（TTS）"
+   ]
+  },
+  "subtitles": {
+   "question": "字幕？",
+   "options": [
+    "只有地点 / 时间标签",
+    "全程字幕"
+   ]
+  }
+ },
+ "checks": [
+  "每段有建立镜头",
+  "全片统一滤镜",
+  "段落切换卡在小节线"
+ ]
+}

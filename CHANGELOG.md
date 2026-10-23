@@ -1,6 +1,10 @@
 # Changelog
 
 ## Unreleased
+- **Scripts and three-layer specs**: each project now has a content-only script (`script.json`, `references/script_schema.md`). `scripts/script_compiler.py` compiles it, together with the specs and the footage analysis, into a storyboard.
+  - Machine-readable specs: scenes (`references/scenes/*.json`: beats, pacing, element limits, insert policy, camera whitelist, subtitle/audio defaults, guided questions, checks), styles (`references/styles/*.json`: per-role font/flower/size/animation, transitions, ending effect, grade, PiP background, BGM, SFX, camera amounts) and formats (`references/formats/*.json`: vertical / horizontal / 3:4 / square canvas, safe areas, slots, PiP, card sizes, subtitle sizes).
+  - Times are anchored to transcript phrases; vocab cards sync to word timestamps and avoid the chin; cuts come from the scene's pacing threshold; jump cuts are covered by a fake shot-size change.
+  - The same script can be recompiled with `--format` / `--style`. Verified by rebuilding V5 from a script as V6 (same structure; the reviewer passes).
 - **Guided mode** (`rules/guided.md`): asks the user, through multiple-choice questions, to choose the scene, style, platform, subtitles, pacing and assets, then writes a storyboard for confirmation, assembles it, and reviews the result with them.
   - `scripts/analyze_footage.py`: footage analysis — geometry, silences, scene cuts, faster-whisper transcript with word timestamps, **face position plus free zones for inserts** (OpenCV), and asset orientation.
   - `scripts/storyboard_builder.py`: deterministic assembler for storyboard v2 (`references/storyboard_schema.md`). Supports source-time cuts, transitions, grading, audio processing, camera moves (push / pull / punch / pan / tilt / shake / **pip**), cover-fit inserts, labels, texts and templates, stickers, effects, SFX, subtitles split from the transcript, BGM and background fill. It runs the reviewer afterwards, and with `--preview` captures each shot in JianYing.

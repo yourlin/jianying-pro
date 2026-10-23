@@ -1,0 +1,26 @@
+{
+ "id": "tech", "name": "科技", "doc": "tech.md",
+ "roles": {
+  "title":    {"font": "未来黑", "flower": "潮酷蓝色霓虹灯发光花字", "size": 11.0, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero":     {"font": "特黑体", "flower": "潮酷蓝色发光镂空花字", "size": 24.0, "slot": "main_zone", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero_sub": {"font": "台北黑体-Regular", "size": 8.5, "slot": "center"},
+  "label":    {"font": "台北黑体-Bold", "size": 9.5, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "keyword":  {"font": "台北黑体-Bold", "size": 9.5, "color": "#2BD9FE", "border": true, "slot": "top_band", "anim_in": "渐显"},
+  "vocab":    {"font": "特黑体", "flower": "清新蓝色发光花字", "size": 15.0, "slot": "lower_zone", "anim_in": "渐显"},
+  "vocab_top":{"font": "RedHatMono-Medium", "size": 8.5, "border": true},
+  "vocab_bottom": {"font": "台北黑体-Regular", "size": 8.5, "border": true},
+  "cta":      {"font": "未来黑", "flower": "潮酷蓝色霓虹灯发光花字", "size": 11.0, "slot": "main_zone", "anim_in": "渐显"},
+  "cta_sub":  {"font": "台北黑体-Regular", "size": 8.0, "border": true, "slot": "center"},
+  "subtitle": {"font": "台北黑体-Regular", "size": 9.0, "border": true},
+  "subtitle2":{"font": "台北黑体-Regular", "size": 6.8, "border": true}
+ },
+ "flower_on_bright_background": true,
+ "cut_transition": {"name": "推近", "duration": 0.3},
+ "chapter_transition": {"name": "故障", "duration": 0.4},
+ "ending_effect": {"name": "扫描光条", "min_dur": 3.0},
+ "grade": {"filter": {"name": "冷蓝", "intensity": 60}, "adjust": {"色温": -12, "对比度": 8, "饱和度": -5}},
+ "pip_background": {"type": "color", "color": "#0D1117"},
+ "bgm": {"id": "6835071483849476098", "name": "Illuminate", "volume": 0.2, "fade_in": 1.0, "fade_out": 2.0},
+ "sfx": {"card": "叮呤提示声", "accent": "叮呤提示声", "volume": 0.3},
+ "camera": {"amount": 0.08, "punch": 0.15}
+}

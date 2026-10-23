@@ -1,0 +1,152 @@
+{
+ "id": "beat_montage",
+ "name": "卡点混剪",
+ "doc": "beat_montage.md",
+ "detect": {
+  "talk_ratio_max": 0.2,
+  "shots_per_min_min": 8
+ },
+ "duration": {
+  "min": 10,
+  "max": 30,
+  "ideal": 20
+ },
+ "pacing": {
+  "compact": 0.0,
+  "natural": 0.0,
+  "keep_breath": 0.0,
+  "avg_shot": [
+   0.3,
+   1.0
+  ],
+  "cut_every_beats": {
+   "舒缓": 4,
+   "标准": 2,
+   "快闪": 1
+  }
+ },
+ "beats": [
+  {
+   "name": "前奏",
+   "ratio": 0.2,
+   "purpose": "铺垫情绪",
+   "required": [],
+   "allowed": [
+    "title"
+   ],
+   "forbidden": [],
+   "camera": "push_in",
+   "note": "每 4 拍切"
+  },
+  {
+   "name": "主歌",
+   "ratio": 0.3,
+   "purpose": "展开",
+   "required": [],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "每 2 拍切"
+  },
+  {
+   "name": "高潮",
+   "ratio": 0.35,
+   "purpose": "爆发",
+   "required": [],
+   "allowed": [
+    "effect"
+   ],
+   "forbidden": [],
+   "camera": "punch_in",
+   "note": "每拍切，强拍加推近 / 闪白"
+  },
+  {
+   "name": "尾声",
+   "ratio": 0.15,
+   "purpose": "收束",
+   "required": [],
+   "allowed": [
+    "title"
+   ],
+   "forbidden": [],
+   "camera": "pull_out",
+   "note": "拉镜或定格，跟音乐结尾对齐"
+  }
+ ],
+ "elements": {
+  "title": {
+   "min_dur": 1.5,
+   "max_dur": 3.0
+  }
+ },
+ "inserts": {
+  "default": "cover"
+ },
+ "camera": {
+  "per_minute": [
+   20,
+   60
+  ],
+  "allowed": [
+   "punch_in",
+   "push_in",
+   "pull_out",
+   "shake"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 0.5
+ },
+ "subtitles": {
+  "default": false
+ },
+ "audio": {
+  "bgm_volume": 0.9,
+  "loudness_lufs": -14,
+  "sfx_max": 4,
+  "mute_footage": true
+ },
+ "effects": {
+  "max": 4,
+  "min_dur": 0.2,
+  "only_for": [
+   "beat_accent",
+   "ending"
+  ]
+ },
+ "questions": {
+  "music": {
+   "question": "音乐？",
+   "options": [
+    "我提供",
+    "从曲库推荐（按情绪）"
+   ]
+  },
+  "density": {
+   "question": "切点密度？",
+   "options": [
+    "舒缓（4 拍）",
+    "标准（2 拍）",
+    "快闪（每拍）"
+   ]
+  },
+  "ending": {
+   "question": "结尾？",
+   "options": [
+    "定格 + 文字",
+    "拉镜淡出"
+   ]
+  },
+  "title": {
+   "question": "要不要标题文字？",
+   "options": [
+    "要",
+    "不要"
+   ]
+  }
+ },
+ "checks": [
+  "切点落在节拍上（误差 ≤ 2 帧）",
+  "不要每拍都加特效",
+  "素材原声静音"
+ ]
+}

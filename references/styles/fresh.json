@@ -1,0 +1,26 @@
+{
+ "id": "fresh", "name": "清新文艺", "doc": "fresh.md",
+ "roles": {
+  "title":    {"font": "烟波宋", "flower": "小清新 白色", "size": 10.0, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero":     {"font": "今宋体", "flower": "清新白色立体花字，vlog/plog适用", "size": 22.0, "slot": "main_zone", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero_sub": {"font": "兰亭圆", "size": 8.5, "slot": "center"},
+  "label":    {"font": "兰亭圆", "size": 9.0, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "keyword":  {"font": "兰亭圆", "size": 9.0, "border": true, "slot": "top_band", "anim_in": "渐显"},
+  "vocab":    {"font": "今宋体", "flower": "清新渐变蓝色花字", "size": 15.0, "slot": "lower_zone", "anim_in": "渐显"},
+  "vocab_top":{"font": "兰亭圆", "size": 8.5, "border": true},
+  "vocab_bottom": {"font": "兰亭圆", "size": 8.5, "border": true},
+  "cta":      {"font": "烟波宋", "flower": "小清新 白色", "size": 10.5, "slot": "main_zone", "anim_in": "渐显"},
+  "cta_sub":  {"font": "兰亭圆", "size": 8.0, "border": true, "slot": "center"},
+  "subtitle": {"font": "兰亭圆", "size": 9.0, "border": true},
+  "subtitle2":{"font": "兰亭圆", "size": 6.8, "border": true}
+ },
+ "flower_on_bright_background": true,
+ "cut_transition": {"name": "叠化", "duration": 0.6},
+ "chapter_transition": {"name": "渐变擦除", "duration": 0.8},
+ "ending_effect": {"name": "光斑虚化", "min_dur": 3.0},
+ "grade": {"filter": {"name": "日系奶油", "intensity": 50}, "adjust": {"亮度": 5, "对比度": -8, "饱和度": -5, "褪色": 10}},
+ "pip_background": {"type": "color", "color": "#F7F3EC"},
+ "bgm": {"id": "7491915172098590729", "name": "抒情 轻音乐 优美 旋律 舒缓", "volume": 0.2, "fade_in": 1.5, "fade_out": 2.5},
+ "sfx": {"card": "翻书声", "accent": "叮呤提示声", "volume": 0.3},
+ "camera": {"amount": 0.05, "punch": 0.08}
+}

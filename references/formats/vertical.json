@@ -1,0 +1,19 @@
+{
+ "_说明": "竖屏 9:16 (抖音 / 视频号 / 快手 / TikTok / YouTube Shorts)。坐标是剪映 transform (中心为 0, 右 / 上为正, 半个画布为 1)。安全区取国内外平台的保守并集, 见 methodology/safe_area.md",
+ "id": "vertical", "name": "竖屏 9:16", "canvas": {"width": 1080, "height": 1920},
+ "platforms": ["douyin", "shipinhao", "kuaishou", "tiktok", "shorts"],
+ "safe": {"top": 0.72, "bottom": -0.48, "left": -0.88, "right": 0.64, "_note": "上 14% / 下 26% / 右侧按钮区 x > 0.64 / 左 6%"},
+ "px_per_size": 6.0,
+ "slots": {
+  "top_band":   {"x": 0, "y": 0.70, "max_line_width": 0.70, "_note": "标题 / 章节 / 标注, 头顶上方"},
+  "main_zone":  {"x": 0, "y": 0.36, "_note": "插卡 / 点题大字的默认中心 (人脸不在这里时)"},
+  "center":     {"x": 0, "y": 0.0},
+  "lower_zone": {"x": 0, "y": -0.30, "_note": "下巴下方 (词卡 / 关键词), 人脸偏上时用"},
+  "subtitle":   {"x": 0, "y": -0.44, "max_line_width": 0.70},
+  "subtitle2":  {"x": 0, "y": -0.58, "max_line_width": 0.70},
+  "lower_third":{"x": -0.40, "y": -0.30, "max_line_width": 0.50, "_note": "人物条"}
+ },
+ "pip": {"scale": 0.22, "pos": [-0.62, -0.16], "_note": "真人小窗: 左侧中部, 在插卡下方、字幕上方, 避开右侧按钮区"},
+ "card": {"pos": [0, 0.36], "scale_landscape": 0.78, "scale_square": 0.50, "scale_portrait": 0.45},
+ "subtitle": {"size": 9.5, "size2": 6.8, "wrap_chars_en": 26, "max_chars_zh": 15, "min_size": 8.0, "min_size2": 6.3}
+}

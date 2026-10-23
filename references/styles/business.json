@@ -1,0 +1,26 @@
+{
+ "id": "business", "name": "商务简约", "doc": "business.md",
+ "roles": {
+  "title":    {"font": "台北黑体-Bold", "size": 11.0, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero":     {"font": "特黑体", "size": 22.0, "color": "#FFFFFF", "border": true, "slot": "main_zone", "anim_in": "渐显", "anim_out": "渐隐"},
+  "hero_sub": {"font": "台北黑体-Light", "size": 8.5, "border": true, "slot": "center"},
+  "label":    {"font": "台北黑体-Regular", "size": 9.0, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
+  "keyword":  {"font": "台北黑体-Bold", "size": 9.5, "color": "#7FB3FF", "border": true, "slot": "top_band", "anim_in": "渐显"},
+  "vocab":    {"font": "特黑体", "size": 15.0, "border": true, "slot": "lower_zone", "anim_in": "渐显"},
+  "vocab_top":{"font": "台北黑体-Light", "size": 8.5, "border": true},
+  "vocab_bottom": {"font": "台北黑体-Regular", "size": 8.5, "border": true},
+  "cta":      {"font": "台北黑体-Bold", "size": 11.0, "border": true, "slot": "main_zone", "anim_in": "渐显"},
+  "cta_sub":  {"font": "台北黑体-Regular", "size": 8.0, "border": true, "slot": "center"},
+  "subtitle": {"font": "台北黑体-Regular", "size": 9.0, "border": true},
+  "subtitle2":{"font": "台北黑体-Light", "size": 6.8, "border": true}
+ },
+ "flower_on_bright_background": true,
+ "cut_transition": {"name": "叠化", "duration": 0.4},
+ "chapter_transition": {"name": "推近", "duration": 0.5},
+ "ending_effect": null,
+ "grade": {"filter": {"name": "质感暗调", "intensity": 40}, "adjust": {"对比度": 5, "饱和度": -10, "锐化": 10}},
+ "pip_background": {"type": "color", "color": "#111111"},
+ "bgm": {"id": "7543280491318020142", "name": "轻快积极励志-阳光未来", "volume": 0.15, "fade_in": 1.0, "fade_out": 2.0},
+ "sfx": {"card": null, "accent": null, "volume": 0.3},
+ "camera": {"amount": 0.05, "punch": 0.0}
+}

@@ -1,0 +1,19 @@
+{
+ "_说明": "方形 1:1 (朋友圈 / 部分信息流广告)",
+ "id": "square", "name": "方形 1:1", "canvas": {"width": 1080, "height": 1080},
+ "platforms": ["moments", "feed"],
+ "safe": {"top": 0.85, "bottom": -0.80, "left": -0.88, "right": 0.88},
+ "px_per_size": 3.4,
+ "slots": {
+  "top_band":   {"x": 0, "y": 0.76, "max_line_width": 0.80},
+  "main_zone":  {"x": 0, "y": 0.25},
+  "center":     {"x": 0, "y": 0.0},
+  "lower_zone": {"x": 0, "y": -0.40},
+  "subtitle":   {"x": 0, "y": -0.70, "max_line_width": 0.84},
+  "subtitle2":  {"x": 0, "y": -0.84, "max_line_width": 0.84},
+  "lower_third":{"x": -0.45, "y": -0.50, "max_line_width": 0.45}
+ },
+ "pip": {"scale": 0.30, "pos": [-0.60, -0.40]},
+ "card": {"pos": [0, 0.20], "scale_landscape": 0.70, "scale_square": 0.55, "scale_portrait": 0.50},
+ "subtitle": {"size": 7.0, "size2": 5.5, "wrap_chars_en": 36, "max_chars_zh": 18, "min_size": 6.0, "min_size2": 5.0}
+}

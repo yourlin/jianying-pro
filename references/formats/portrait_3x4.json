@@ -1,0 +1,19 @@
+{
+ "_说明": "竖版 3:4 (小红书)。上下 UI 少, 主体放在中间 80%; 封面会被裁成 3:4",
+ "id": "portrait_3x4", "name": "小红书 3:4", "canvas": {"width": 1080, "height": 1440},
+ "platforms": ["xiaohongshu"],
+ "safe": {"top": 0.82, "bottom": -0.70, "left": -0.88, "right": 0.80},
+ "px_per_size": 4.5,
+ "slots": {
+  "top_band":   {"x": 0, "y": 0.74, "max_line_width": 0.75},
+  "main_zone":  {"x": 0, "y": 0.30},
+  "center":     {"x": 0, "y": 0.0},
+  "lower_zone": {"x": 0, "y": -0.35},
+  "subtitle":   {"x": 0, "y": -0.55, "max_line_width": 0.78},
+  "subtitle2":  {"x": 0, "y": -0.66, "max_line_width": 0.78},
+  "lower_third":{"x": -0.40, "y": -0.40, "max_line_width": 0.50}
+ },
+ "pip": {"scale": 0.28, "pos": [-0.58, -0.20]},
+ "card": {"pos": [0, 0.32], "scale_landscape": 0.82, "scale_square": 0.55, "scale_portrait": 0.50},
+ "subtitle": {"size": 8.5, "size2": 6.3, "wrap_chars_en": 30, "max_chars_zh": 16, "min_size": 7.5, "min_size2": 6.0}
+}

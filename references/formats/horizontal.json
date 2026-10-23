@@ -1,0 +1,19 @@
+{
+ "_说明": "横屏 16:9 (B 站 / YouTube / 西瓜)。字幕在底部 12% 处, 右上角留给弹幕和水印",
+ "id": "horizontal", "name": "横屏 16:9", "canvas": {"width": 1920, "height": 1080},
+ "platforms": ["bilibili", "youtube", "xigua"],
+ "safe": {"top": 0.80, "bottom": -0.82, "left": -0.90, "right": 0.90},
+ "px_per_size": 3.4,
+ "slots": {
+  "top_band":   {"x": -0.55, "y": 0.72, "max_line_width": 0.45, "_note": "左上角标题 (右上留给弹幕 / 水印)"},
+  "main_zone":  {"x": 0.42, "y": 0.10, "_note": "插卡放画面右侧, 人物在左时"},
+  "center":     {"x": 0, "y": 0.0},
+  "lower_zone": {"x": 0, "y": -0.55},
+  "subtitle":   {"x": 0, "y": -0.78, "max_line_width": 0.80},
+  "subtitle2":  {"x": 0, "y": -0.90, "max_line_width": 0.80},
+  "lower_third":{"x": -0.55, "y": -0.55, "max_line_width": 0.40}
+ },
+ "pip": {"scale": 0.30, "pos": [-0.62, -0.30], "_note": "真人小窗放左下, 插卡占右侧和中间"},
+ "card": {"pos": [0.30, 0.10], "scale_landscape": 0.62, "scale_square": 0.62, "scale_portrait": 0.80},
+ "subtitle": {"size": 7.0, "size2": 5.5, "wrap_chars_en": 48, "max_chars_zh": 24, "min_size": 6.0, "min_size2": 5.0}
+}

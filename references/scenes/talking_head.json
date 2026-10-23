@@ -1,0 +1,226 @@
+{
+ "id": "talking_head",
+ "name": "口播知识",
+ "doc": "talking_head.md",
+ "detect": {
+  "talk_ratio_min": 0.6,
+  "shots_per_min_max": 4
+ },
+ "duration": {
+  "min": 30,
+  "max": 90,
+  "ideal": 60
+ },
+ "pacing": {
+  "compact": 0.45,
+  "natural": 0.8,
+  "keep_breath": 0.25,
+  "avg_shot": [
+   3,
+   6
+  ],
+  "scale_change_every_sentences": [
+   2,
+   3
+  ]
+ },
+ "beats": [
+  {
+   "name": "钩子",
+   "ratio": 0.05,
+   "purpose": "问题 / 反差 / 结论先行，3 秒内交代主题",
+   "required": [
+    "title"
+   ],
+   "allowed": [
+    "keyword"
+   ],
+   "forbidden": [
+    "card",
+    "effect"
+   ],
+   "camera": "push_in",
+   "note": "开头 3 秒真人出镜不加插卡；第一个字 0.3s 内出现"
+  },
+  {
+   "name": "点题",
+   "ratio": 0.08,
+   "purpose": "今天讲什么、为什么值得看",
+   "required": [],
+   "allowed": [
+    "hero",
+    "title",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "点题大字可配真人小窗"
+  },
+  {
+   "name": "干货",
+   "ratio": 0.7,
+   "purpose": "每个要点 10–20s：观点 → 证据 / 例子",
+   "required": [],
+   "allowed": [
+    "card",
+    "label",
+    "keyword",
+    "vocab",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "push_in",
+   "note": "插卡与台词关键词严格对应；每 2–3 句一次景别变化"
+  },
+  {
+   "name": "总结",
+   "ratio": 0.08,
+   "purpose": "一句话收束",
+   "required": [],
+   "allowed": [
+    "title",
+    "keyword",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "punch_in",
+   "note": "金句强调推近"
+  },
+  {
+   "name": "CTA",
+   "ratio": 0.09,
+   "purpose": "评论区提问 / 关注",
+   "required": [
+    "cta"
+   ],
+   "allowed": [
+    "title",
+    "effect"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "CTA 停留 ≥ 3s；结尾氛围特效 ≥ 3s（可选）"
+  }
+ ],
+ "elements": {
+  "card": {
+   "min_dur": 3.0,
+   "ideal_dur": [
+    6,
+    8
+   ],
+   "max_dur": 10.0,
+   "max_per_minute": 4,
+   "needs_label": true
+  },
+  "keyword": {
+   "min_dur": 2.0,
+   "max_dur": 6.0
+  },
+  "title": {
+   "min_dur": 2.5,
+   "max_dur": 5.0
+  },
+  "hero": {
+   "min_dur": 2.0,
+   "max_dur": 4.0
+  },
+  "vocab": {
+   "sync": "word",
+   "hide_subtitles": true,
+   "note": "教学跟读段保留真人全屏看口型"
+  },
+  "cta": {
+   "min_dur": 3.0
+  }
+ },
+ "inserts": {
+  "default": "pip",
+  "when_face_fills": [
+   "pip",
+   "cover",
+   "gap"
+  ],
+  "no_insert_first_s": 3.0,
+  "teaching_segments": "full_face"
+ },
+ "camera": {
+  "per_minute": [
+   4,
+   8
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out",
+   "punch_in",
+   "pip"
+  ],
+  "cut_cover": "pull_out",
+  "min_gap_s": 3.0
+ },
+ "subtitles": {
+  "default": true,
+  "max_chars_zh": 15,
+  "max_chars_en": 38,
+  "max_dur": 3.2,
+  "lead": 0.15
+ },
+ "audio": {
+  "bgm_volume": 0.2,
+  "loudness_lufs": -14,
+  "sfx_max": 8,
+  "voice": "denoise_if_noisy"
+ },
+ "effects": {
+  "max": 3,
+  "min_dur": 3.0,
+  "only_for": [
+   "ending",
+   "chapter",
+   "cut_cover"
+  ]
+ },
+ "questions": {
+  "subtitles": {
+   "question": "字幕怎么加？",
+   "options": [
+    "中文",
+    "双语（中 + 英）",
+    "外语为主 + 中文 / 拼音单独突出",
+    "只有关键词花字",
+    "不加"
+   ]
+  },
+  "pacing": {
+   "question": "节奏怎么剪？",
+   "options": [
+    "紧凑（剪掉所有气口）",
+    "自然（只剪长停顿）",
+    "不剪"
+   ]
+  },
+  "packaging": {
+   "question": "包装强度？",
+   "options": [
+    "克制",
+    "适中",
+    "丰富"
+   ]
+  },
+  "inserts": {
+   "question": "人脸占满画面时插卡怎么放？",
+   "options": [
+    "真人小窗 + 图片放大",
+    "整屏切到图片",
+    "间隙短暂压屏"
+   ]
+  }
+ },
+ "checks": [
+  "开头 3 秒没有插卡",
+  "每张插卡都有标注",
+  "插卡不压人脸 (card_zones / pip / cover)",
+  "教学段不加插卡",
+  "CTA ≥ 3s"
+ ]
+}

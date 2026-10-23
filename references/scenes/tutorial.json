@@ -1,0 +1,168 @@
+{
+ "id": "tutorial",
+ "name": "教程录屏",
+ "doc": "tutorial.md",
+ "detect": {
+  "screen_recording": true
+ },
+ "duration": {
+  "min": 60,
+  "max": 300,
+  "ideal": 120
+ },
+ "pacing": {
+  "compact": 0.6,
+  "natural": 1.2,
+  "keep_breath": 0.3,
+  "avg_shot": [
+   5,
+   10
+  ],
+  "wait_segments": "cut_or_speedup"
+ },
+ "beats": [
+  {
+   "name": "结果先行",
+   "ratio": 0.05,
+   "purpose": "先展示做完的效果",
+   "required": [
+    "title"
+   ],
+   "allowed": [
+    "keyword"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "钩子"
+  },
+  {
+   "name": "步骤",
+   "ratio": 0.85,
+   "purpose": "一步一段，每段开头步骤标题",
+   "required": [
+    "label"
+   ],
+   "allowed": [
+    "keyword",
+    "card",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "punch_in",
+   "note": "点击处局部放大 1.75x / 1.2s / 0.16s 淡入淡出（rules/recording.md 智能变焦）"
+  },
+  {
+   "name": "总结",
+   "ratio": 0.07,
+   "purpose": "要点回顾 / 常见问题",
+   "required": [],
+   "allowed": [
+    "card",
+    "title"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": ""
+  },
+  {
+   "name": "CTA",
+   "ratio": 0.03,
+   "purpose": "关注 / 下期",
+   "required": [
+    "cta"
+   ],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": ""
+  }
+ ],
+ "elements": {
+  "label": {
+   "min_dur": 2.5,
+   "max_dur": 5.0,
+   "note": "步骤编号标题"
+  },
+  "card": {
+   "min_dur": 3.0,
+   "max_dur": 8.0
+  }
+ },
+ "inserts": {
+  "default": "overlay",
+  "presenter_window": {
+   "scale": 0.3,
+   "corner": "bottom_left"
+  }
+ },
+ "camera": {
+  "per_minute": [
+   2,
+   6
+  ],
+  "allowed": [
+   "punch_in",
+   "push_in"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 3.0
+ },
+ "subtitles": {
+  "default": true,
+  "max_chars_zh": 18,
+  "max_chars_en": 42,
+  "max_dur": 3.5,
+  "lead": 0.1,
+  "note": "教程观众常静音看，字幕要完整"
+ },
+ "audio": {
+  "bgm_volume": 0.12,
+  "loudness_lufs": -14,
+  "sfx_max": 10
+ },
+ "effects": {
+  "max": 1,
+  "min_dur": 3.0,
+  "only_for": [
+   "opening"
+  ]
+ },
+ "questions": {
+  "presenter": {
+   "question": "有没有人像出镜？",
+   "options": [
+    "无",
+    "角落小窗",
+    "开头结尾出镜"
+   ]
+  },
+  "zoom": {
+   "question": "怎么放大？",
+   "options": [
+    "按点击自动放大",
+    "手动指定位置",
+    "不放大"
+   ]
+  },
+  "waits": {
+   "question": "等待段？",
+   "options": [
+    "剪掉",
+    "加速",
+    "保留"
+   ]
+  },
+  "subtitles": {
+   "question": "字幕？",
+   "options": [
+    "全程字幕",
+    "只有步骤标题"
+   ]
+  }
+ },
+ "checks": [
+  "每一步有步骤标题",
+  "人像小窗不挡操作区",
+  "无长时间无操作的等待"
+ ]
+}

@@ -55,7 +55,7 @@ Read the individual rule files for specific tasks and constraints:
 ## 🎯 Agent Quick Routing
 
 - **审片 / 版式自检（生成草稿后必做）**：`rules/review.md` -> `scripts/layout_preview.py --draft "<草稿名>" --auto`，然后 Read 对比图
-- **引导模式 / 导演流程**（用户说"引导模式""帮我规划怎么剪""不知道剪成什么样""这个剪辑有问题帮我重做""要有编排感""帮我导演"，或给了素材但没说清要什么时）：**读 `rules/guided.md` 并照做**。流程：`scripts/analyze_footage.py` 读素材 → AskUserQuestion 引导用户选场景（`references/scenes/`）、风格（`references/styles/`）、平台、字幕、节奏 → 出封面对比图让用户挑素材 → 按 `references/storyboard_schema.md` 写分镜表并给用户确认 → `scripts/storyboard_builder.py` 装配 → 审片 + 剪映截图给用户确认。通用剪辑方法论在 `references/methodology/`
+- **引导模式 / 导演流程**（用户说"引导模式""帮我规划怎么剪""不知道剪成什么样""这个剪辑有问题帮我重做""要有编排感""帮我导演"，或给了素材但没说清要什么时）：**读 `rules/guided.md` 并照做**。流程：`scripts/analyze_footage.py` 读素材 → AskUserQuestion 引导用户选场景（`references/scenes/`）、风格（`references/styles/`）、平台、字幕、节奏 → 出封面对比图让用户挑素材 → 按 `references/script_schema.md` 写剧本（只写内容），用 `scripts/script_compiler.py` 结合场景 / 风格 / 画幅规范（`references/scenes|styles|formats/*.json`）编译成分镜表并给用户确认 → 装配 → 审片 + 剪映截图给用户确认。通用剪辑方法论在 `references/methodology/`
 - 云端视频 + 云端音乐：`rules/media.md` + `rules/audio-voice.md` -> `examples/cloud_video_music_tts_demo.py`
 - 智能配音与字幕 (Script-to-Video)：`rules/text.md` + `rules/audio-voice.md` -> 核心 API `add_narrated_subtitles`
 - 旁白与字幕对齐：`rules/text.md` + `rules/audio-voice.md` -> `examples/cloud_video_music_tts_demo.py`

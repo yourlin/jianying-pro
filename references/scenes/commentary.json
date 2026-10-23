@@ -1,0 +1,170 @@
+{
+ "id": "commentary",
+ "name": "影视解说",
+ "doc": "commentary.md",
+ "detect": {},
+ "duration": {
+  "min": 60,
+  "max": 300,
+  "ideal": 120
+ },
+ "pacing": {
+  "compact": 0.4,
+  "natural": 0.7,
+  "keep_breath": 0.2,
+  "avg_shot": [
+   2,
+   4
+  ],
+  "narration_wpm": [
+   220,
+   260
+  ]
+ },
+ "beats": [
+  {
+   "name": "冷开场",
+   "ratio": 0.06,
+   "purpose": "最有冲突的一幕 + 悬念旁白",
+   "required": [
+    "title"
+   ],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "原片高光 + 片名卡"
+  },
+  {
+   "name": "交代",
+   "ratio": 0.14,
+   "purpose": "人物、背景",
+   "required": [
+    "label"
+   ],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "人物名字条（lower_third）"
+  },
+  {
+   "name": "推进",
+   "ratio": 0.6,
+   "purpose": "一句旁白一个镜头",
+   "required": [],
+   "allowed": [
+    "keyword"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "不在原片转场中间再切一刀"
+  },
+  {
+   "name": "高潮",
+   "ratio": 0.1,
+   "purpose": "情绪顶点",
+   "required": [],
+   "allowed": [],
+   "forbidden": [
+    "keyword"
+   ],
+   "camera": null,
+   "note": "原声主导，旁白退后，BGM 压低"
+  },
+  {
+   "name": "结尾",
+   "ratio": 0.1,
+   "purpose": "观点 / 下期预告",
+   "required": [
+    "cta"
+   ],
+   "allowed": [
+    "title"
+   ],
+   "forbidden": [],
+   "camera": "pull_out",
+   "note": "定格 + 金句"
+  }
+ ],
+ "elements": {
+  "label": {
+   "min_dur": 2.5,
+   "max_dur": 5.0,
+   "note": "人物名字条"
+  },
+  "cta": {
+   "min_dur": 3.0
+  }
+ },
+ "inserts": {
+  "default": "cover",
+  "vertical_from_landscape": "blur_background"
+ },
+ "camera": {
+  "per_minute": [
+   4,
+   10
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 3.0
+ },
+ "subtitles": {
+  "default": true,
+  "max_chars_zh": 15,
+  "max_chars_en": 38,
+  "max_dur": 3.2,
+  "lead": 0.1
+ },
+ "audio": {
+  "bgm_volume": 0.18,
+  "loudness_lufs": -14,
+  "sfx_max": 6,
+  "voice_lead": "每段先定由谁主导声音: 原声 / 动作声 / 沉默 / 旁白"
+ },
+ "effects": {
+  "max": 2,
+  "min_dur": 3.0,
+  "only_for": [
+   "opening",
+   "ending"
+  ]
+ },
+ "questions": {
+  "narration": {
+   "question": "旁白来源？",
+   "options": [
+    "自己录",
+    "TTS 配音"
+   ]
+  },
+  "frame": {
+   "question": "画幅？",
+   "options": [
+    "竖屏（原片居中 + 背景虚化）",
+    "横屏"
+   ]
+  },
+  "tone": {
+   "question": "风格？",
+   "options": [
+    "悬疑紧张",
+    "温情",
+    "吐槽搞笑"
+   ]
+  },
+  "subtitles": {
+   "question": "字幕？",
+   "options": [
+    "旁白字幕",
+    "旁白 + 原片台词字幕"
+   ]
+  }
+ },
+ "checks": [
+  "单段原片不过长（合理使用）",
+  "高潮段原声主导"
+ ]
+}

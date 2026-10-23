@@ -1,0 +1,165 @@
+{
+ "id": "product",
+ "name": "带货种草",
+ "doc": "product.md",
+ "detect": {},
+ "duration": {
+  "min": 15,
+  "max": 45,
+  "ideal": 30
+ },
+ "pacing": {
+  "compact": 0.35,
+  "natural": 0.6,
+  "keep_breath": 0.15,
+  "avg_shot": [
+   1.5,
+   3
+  ]
+ },
+ "beats": [
+  {
+   "name": "钩子",
+   "ratio": 0.1,
+   "purpose": "痛点 / 效果对比 / 价格反差",
+   "required": [
+    "title"
+   ],
+   "allowed": [
+    "hero",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "punch_in",
+   "note": "3 秒内给结果"
+  },
+  {
+   "name": "产品亮相",
+   "ratio": 0.3,
+   "purpose": "是什么、长什么样",
+   "required": [],
+   "allowed": [
+    "card",
+    "label"
+   ],
+   "forbidden": [],
+   "camera": "push_in",
+   "note": "产品特写轮播、质感微距"
+  },
+  {
+   "name": "卖点",
+   "ratio": 0.4,
+   "purpose": "一个卖点一个画面，每个约 4s，最多 3 个",
+   "required": [
+    "keyword"
+   ],
+   "allowed": [
+    "card",
+    "sticker",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": "punch_in",
+   "note": "卖点大字 ≤ 12 字 + 音效"
+  },
+  {
+   "name": "证明+CTA",
+   "ratio": 0.2,
+   "purpose": "效果证明、价格、下单引导",
+   "required": [
+    "cta"
+   ],
+   "allowed": [
+    "card",
+    "keyword"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "CTA ≥ 3s，价格和 CTA 不与字幕共用基线"
+  }
+ ],
+ "elements": {
+  "keyword": {
+   "min_dur": 1.5,
+   "max_dur": 4.0,
+   "max_chars": 12
+  },
+  "card": {
+   "min_dur": 2.0,
+   "max_dur": 5.0
+  },
+  "cta": {
+   "min_dur": 3.0
+  }
+ },
+ "inserts": {
+  "default": "cover"
+ },
+ "camera": {
+  "per_minute": [
+   10,
+   20
+  ],
+  "allowed": [
+   "punch_in",
+   "push_in",
+   "shake"
+  ],
+  "cut_cover": "punch_in",
+  "min_gap_s": 1.5
+ },
+ "subtitles": {
+  "default": true,
+  "max_chars_zh": 12,
+  "max_chars_en": 30,
+  "max_dur": 2.0,
+  "lead": 0.1
+ },
+ "audio": {
+  "bgm_volume": 0.3,
+  "loudness_lufs": -14,
+  "sfx_max": 10
+ },
+ "effects": {
+  "max": 3,
+  "min_dur": 2.0,
+  "only_for": [
+   "opening",
+   "accent"
+  ]
+ },
+ "questions": {
+  "selling_points": {
+   "question": "主打哪几个卖点（最多 3 个）？",
+   "options": []
+  },
+  "tone": {
+   "question": "风格？",
+   "options": [
+    "真实测评",
+    "精致种草",
+    "促销冲量"
+   ]
+  },
+  "price": {
+   "question": "有没有价格 / 优惠信息？",
+   "options": [
+    "有",
+    "没有"
+   ]
+  },
+  "bgm": {
+   "question": "配乐？",
+   "options": [
+    "轻快流行",
+    "高级感纯音乐",
+    "动感电子"
+   ]
+  }
+ },
+ "checks": [
+  "卖点 ≤ 3 个",
+  "不用绝对化用语（最好 / 第一 / 100%）",
+  "CTA ≥ 3s"
+ ]
+}
