@@ -1,0 +1,50 @@
+scripts/core/track_ops.py
+  s_a85957e9883ca0::t_993d3f00345493 245-249
+references/formats/vertical.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 3-22,25-124,126-133
+references/styles/guofeng.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 2-4,6-8,10-81,85-92,94-126,128-131,133-149
+  s_a85957e9883ca0::t_993d3f00345493 9,127,132
+references/formats/portrait_3x4.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 3-17,20-113,115-121
+references/styles/business.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 2-4,6-84,87-94,96-157
+references/styles/fresh.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 2-4,6-81,84-158
+references/styles/tech.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 2-4,6-82,85-159
+references/formats/square.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 3-18,21-114,116-122
+scripts/storyboard_builder.py
+  s_a85957e9883ca0::t_993d3f00345493 247-249
+  s_a85957e9883ca0::t_8f12f768594578 183-208,210-211,409-411,413,428-433,500-506
+references/styles/variety.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 2-4,6-81,85-154
+references/formats/horizontal.json
+  s_a85957e9883ca0::t_dfb763f34e80ad 3-19,22-118,120-126
+scripts/script_compiler.py
+  s_a85957e9883ca0::t_993d3f00345493 265
+  s_a85957e9883ca0::t_3476585d193651 203-251,264,266-278,309-343,397-408,463-465,486-491,494
+scripts/layout_preview.py
+  s_a85957e9883ca0::t_647f8795f3a1e7 214,239-248,258
+scripts/jy_preview.py
+  s_a85957e9883ca0::t_993d3f00345493 243-255,270-272
+CHANGELOG.md
+  s_a85957e9883ca0::t_3b4478414be725 4-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "eb100862c780c399f8bb37edc5372b7382fcd0ec",
+  "prompts": {},
+  "sessions": {
+    "s_a85957e9883ca0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae765109-8704-4d73-8b90-df1d598ed42f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "MasterLin <6930286+yourlin@users.noreply.github.com>"
+    }
+  }
+}
