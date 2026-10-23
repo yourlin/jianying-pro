@@ -1,0 +1,33 @@
+tools/validate_data_schema.py
+  s_a85957e9883ca0::t_dfd447cad35d1f 27-44
+scripts/utils/__init__.py
+  s_a85957e9883ca0::t_5c09d7192567b9 1-19
+.github/workflows/ci.yml
+  s_a85957e9883ca0::t_5c09d7192567b9 24,45
+scripts/universal_tts.py
+  s_a85957e9883ca0::t_dfd447cad35d1f 22-30,177-179,183-186
+scripts/utils/media_normalizer.py
+  s_a85957e9883ca0::t_9a75acf93a4f25 38-41
+scripts/asset_search.py
+  s_a85957e9883ca0::t_dfd447cad35d1f 64-67,95-97,151,155-157,169-175,228-230
+scripts/cloud_manager.py
+  s_a85957e9883ca0::t_dfd447cad35d1f 278-280,289-291,360-362
+tests/test_wrapper.py
+  s_a85957e9883ca0::t_dfd447cad35d1f 250,296-298,337-341
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "58ad790989cfb8e2788b1f4dab7d8819d436d5b1",
+  "prompts": {},
+  "sessions": {
+    "s_a85957e9883ca0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae765109-8704-4d73-8b90-df1d598ed42f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "MasterLin <6930286+yourlin@users.noreply.github.com>"
+    }
+  }
+}
