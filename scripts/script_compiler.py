@@ -200,6 +200,55 @@ class Compiler:
     def _overlaps_pip(self, s: float, e: float) -> bool:
         return any(s < b and e > a for a, b in self.pip_ranges)
 
+    # -- 圆形讲解人版式 (insert_mode = "circle") --
+    @property
+    def circle(self) -> Optional[dict]:
+        return self.fmt.get("circle_layout") if self.insert_mode == "circle" else None
+
+    def card_role(self, name: str, **override) -> dict:
+        r = dict((self.style.get("card_roles") or {}).get(name) or self.style["roles"].get("label") or {})
+        r.pop("slot", None)
+        return {"role": "label", **r, **override}
+
+    def page(self, s: float, e: float, shot: dict, note: str):
+        """插卡页: 底卡铺满 (盖住主画面) + 和主视频同步的圆形讲解人 (圆形蒙版 + 描边, 静音)。"""
+        lay = self.circle
+        shot.setdefault("overlays", []).append({"source": self.style.get("card_background", "paper:#F5F1E8"),
+                                                "start": round(s, 3), "dur": round(e - s, 3), "fit": "cover",
+                                                "scale": [1, 1], "motion": "fade", "track": "CardBG"})
+        v = self.analysis.get("video") or {}
+        mw, mh = float(v.get("width") or 1080), float(v.get("height") or 1920)
+        cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
+        box = self.faces.get("box") or [0.3, 0.3, 0.7, 0.6]
+        fx, fy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
+        mask_size = min(0.62, max(0.35, (box[3] - box[1]) * 1.6))  # 圆的直径 (占素材高度): 头 + 肩
+        fit = min(cw / mw, ch / mh)  # 剪映 scale 1 = 素材适应画布
+        sp = lay["speaker"]
+        scale = sp["diameter_px"] / (mask_size * mh * fit)
+        off_x = (fx - 0.5) * mw  # 蒙版圆心相对素材中心的偏移 (素材像素, 右 / 上为正)
+        off_y = (0.5 - fy) * mh
+        cx, cy = sp["center"]
+        pos = [round(cx - off_x * fit * scale / (cw / 2), 4), round(cy - off_y * fit * scale / (ch / 2), 4)]
+        shot["overlays"].append({
+            "source": "main", "source_in": round(s, 3), "start": round(s, 3), "dur": round(e - s, 3),
+            "pos": pos, "scale": [round(scale, 4), round(scale, 4)], "motion": "fade", "mute": True, "track": "Speaker",
+            "mask": {"name": "圆形", "size": round(mask_size, 3), "center_x": round(off_x, 1), "center_y": round(off_y, 1)},
+            "mask_stroke": {"style": sp.get("stroke", {}).get("style", "单层"), "color": self.style.get("stroke_color", "#FFFFFF"),
+                            "size": sp.get("stroke", {}).get("size", 30)}})
+        shot["note"] = (shot.get("note", "") + f"; {note}").strip("; ")
+
+    def card_scale(self, info: dict) -> float:
+        """插卡按宽度铺满 card_area, 高度不超过 max_half_height。"""
+        area = self.circle["card_area"]
+        cw, ch = float(self.fmt["canvas"]["width"]), float(self.fmt["canvas"]["height"])
+        iw, ih = float(info.get("width") or 16), float(info.get("height") or 9)
+        fit = min(cw / iw, ch / ih)
+        sc = area["width"] * cw / (iw * fit)
+        half_h = ih * fit * sc / ch  # 半高 (transform 单位)
+        if half_h > area["max_half_height"]:
+            sc *= area["max_half_height"] / half_h
+        return round(sc, 4)
+
     # -- 元素 --
     def card(self, el: dict, beat_t: Tuple[float, float], shot: dict):
         src = el["asset"]
@@ -212,6 +261,21 @@ class Compiler:
         mode = el.get("mode", self.insert_mode)
         ov = {"source": src, "start": round(s, 3), "dur": round(e - s, 3), "pos": list(self.fmt["card"]["pos"]),
               "scale": [sc, round(sc * 1.05, 3)], "motion": "float_in", "shadow": True}
+        if mode == "circle" and self.circle:
+            ov["shadow"] = {"alpha": 30, "blur": 16, "distance": 6, "angle": 90}  # 底卡上只要一点点投影
+            self.page(s - 0.15, e, shot, f"插卡页「{el.get('label', src)}」: 底卡 + 图片铺满安全区 + 圆形讲解人")
+            sc = self.card_scale(info)
+            ov.update(pos=list(self.circle["card_area"]["center"]), scale=[sc, round(sc * 1.03, 4)])
+            shot["overlays"].append(ov)
+            if el.get("label"):
+                lab = self.circle["label"]
+                shot.setdefault("texts", []).append(self.card_role(
+                    "card_label", content=el["label"], start=round(s + 0.25, 3), dur=round(e - s - 0.4, 3),
+                    x=lab["x"], y=lab["y"], max_line_width=lab["max_line_width"], track="CardLabel"))
+            sfx = (self.style.get("sfx") or {}).get("card")
+            if sfx and el.get("sfx", True):
+                shot.setdefault("sfx", []).append({"name": sfx, "at": round(s, 3), "volume": self.style["sfx"].get("volume", 0.35)})
+            return
         if mode == "cover":
             ov.update(fit="cover", scale=[1.0, 1.06], motion="push")
         elif mode == "pip":
@@ -241,6 +305,41 @@ class Compiler:
             shot["texts"].append(self.role(sub_role, content=el["sub"], start=round(s + 0.3, 3),
                                            dur=round(e - s - 0.3, 3), track=track + "Sub"))
         return s, e
+
+    def end_card(self, el: dict, beat_t: Tuple[float, float], shot: dict):
+        """
+        结束卡 (记忆点): 底卡 + 系列标签 + 大标题 + 词卡 + 互动引导 + 圆形讲解人 + 风格的结尾特效。
+        el: {tag, title, words: [...], sub, last: 秒}
+        """
+        last = float(el.get("last", 6.0))
+        s, e = max(beat_t[0], beat_t[1] - last), beat_t[1]
+        lay = self.circle or self.fmt.get("circle_layout")
+        if self.circle:
+            self.page(s, e, shot, "结束卡: 底卡 + 系列标签 + 标题 + 词卡 + 圆形讲解人")
+        else:
+            shot.setdefault("overlays", []).append({"source": self.style.get("card_background", "paper:#F5F1E8"),
+                                                    "start": round(s, 3), "dur": round(e - s, 3), "fit": "cover",
+                                                    "scale": [1, 1], "motion": "fade", "track": "CardBG"})
+        ec = lay["end_card"]
+        texts = shot.setdefault("texts", [])
+        if el.get("tag"):
+            texts.append(self.card_role("end_tag", content=el["tag"], start=round(s + 0.2, 3), dur=round(e - s - 0.2, 3),
+                                        x=0, y=ec["tag_y"], track="EndTag"))
+        if el.get("title"):
+            texts.append(self.card_role("end_title", content=el["title"], start=round(s + 0.35, 3),
+                                        dur=round(e - s - 0.35, 3), x=0, y=ec["title_y"], track="EndTitle"))
+        words = list(el.get("words") or [])
+        rows = [words[i:i + 2] for i in range(0, len(words), 2)][:len(ec["words_y"])]
+        for r_i, (row, y) in enumerate(zip(rows, ec["words_y"])):
+            texts.append(self.card_role("end_word", content="  ·  ".join(row), start=round(s + 0.6 + 0.25 * r_i, 3),
+                                        dur=round(e - s - 0.6 - 0.25 * r_i, 3), x=0, y=y, track=f"EndWords{r_i}"))
+        if el.get("sub"):
+            texts.append(self.card_role("end_sub", content=el["sub"], start=round(s + 1.0, 3), dur=round(e - s - 1.0, 3),
+                                        x=ec["sub"]["x"], y=ec["sub"]["y"], max_line_width=0.5, track="EndSub"))
+        eff = self.style.get("ending_effect")
+        if eff:
+            d = max(float(eff.get("min_dur", 3.0)), e - s)
+            shot.setdefault("effects", []).append({"name": eff["name"], "start": round(e - d, 3), "dur": round(d, 3)})
 
     def vocab(self, el: dict, beat_t: Tuple[float, float], shot: dict):
         """词卡: 每个词按词级时间戳卡点, 上 / 中 / 下三行 (如 拼音 / 汉字 / 英文), 放在下巴下方。"""
@@ -295,6 +394,18 @@ class Compiler:
                     self.card(el, bt, shot)
                 elif kind == "vocab":
                     self.vocab(el, bt, shot)
+                elif kind == "hero" and self.circle:
+                    s_, e_ = resolve_time(el.get("time"), self.tr, bt[0], bt)
+                    self.page(s_, e_, shot, "点题页: 底卡 + 大字 + 圆形讲解人")
+                    area = self.circle["card_area"]["center"]
+                    shot.setdefault("texts", []).append(self.role("hero", content=el["text"], start=round(s_ + 0.2, 3),
+                                                                  dur=round(e_ - s_ - 0.2, 3), x=area[0], y=area[1], track="Hero"))
+                    if el.get("sub"):
+                        lab = self.circle["label"]
+                        shot["texts"].append(self.card_role("card_label", content=el["sub"], start=round(s_ + 0.4, 3),
+                                                            dur=round(e_ - s_ - 0.4, 3), x=lab["x"], y=lab["y"], track="CardLabel"))
+                elif kind == "end_card":
+                    self.end_card(el, bt, shot)
                 elif kind in ("title", "hero", "keyword", "label", "cta"):
                     track = {"title": "Title", "hero": "Hero", "keyword": "CardLabel", "label": "CardLabel",
                              "cta": "CTA"}[kind]
@@ -349,7 +460,9 @@ class Compiler:
 
         lang = cfg.get("lang", "zh")
         sub_cfg = self.scene.get("subtitles", {})
-        max_chars = int(cfg.get("max_chars") or sub_cfg.get("max_chars_en" if lang != "zh" else "max_chars_zh", 15))
+        lay = self.fmt.get("subtitle_layout") or {}
+        max_chars = int(cfg.get("max_chars") or (lay.get("wrap_chars_en", 26) * 1.6 if lang != "zh" and lay else 0)
+                        or sub_cfg.get("max_chars_en" if lang != "zh" else "max_chars_zh", 15))
         lines = split_transcript(self.tr.segments, max_chars, float(sub_cfg.get("max_dur", 3.2)), 0.28)
         fixes = cfg.get("fixes") or {}
         out = []
@@ -370,8 +483,15 @@ class Compiler:
         prim.pop("role", None)
         if lang == "zh" and self.style["roles"]["subtitle"].get("font_zh"):
             prim["font"] = self.style["roles"]["subtitle"]["font_zh"]
+        lay = self.fmt.get("subtitle_layout")
+        if lay and cfg.get("anchor", "bottom") == "bottom":
+            prim.update(anchor_bottom=lay["anchor_bottom"], px_per_size=self.fmt.get("px_per_size", 6.0),
+                        size=max(prim["size"], lay["size"]))
+            if lang != "zh":
+                prim["wrap_chars"] = lay["wrap_chars_en"]
         if cfg.get("y") is not None:
             prim["y"] = cfg["y"]
+            prim.pop("anchor_bottom", None)
         return {"lines": out, "lead": float(sub_cfg.get("lead", 0.15)), "primary": prim}
 
     def _storyboard(self, shots: List[dict], keep: List[List[float]]) -> dict:

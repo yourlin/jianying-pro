@@ -1,26 +1,149 @@
 {
- "id": "guofeng", "name": "国风古韵", "doc": "guofeng.md",
+ "id": "guofeng",
+ "name": "国风古韵",
+ "doc": "guofeng.md",
  "roles": {
-  "title":    {"font": "挥墨体", "flower": "书法墨环图案花字", "size": 10.0, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
-  "hero":     {"font": "挥墨体", "flower": "水墨红底白色花字", "size": 30.0, "scale": 1.5, "slot": "main_zone", "anim_in": "渐显", "anim_out": "渐隐"},
-  "hero_sub": {"font": "启功行楷", "size": 8.5, "slot": "center", "anim_in": "渐显"},
-  "label":    {"font": "启功行楷", "size": 9.5, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
-  "keyword":  {"font": "启功行楷", "size": 9.5, "border": true, "slot": "top_band", "anim_in": "渐显", "anim_out": "渐隐"},
-  "vocab":    {"font": "挥墨体", "flower": "金箔描边书法水墨花字", "size": 16.0, "slot": "lower_zone", "anim_in": "渐显"},
-  "vocab_top":{"font": "启功行楷", "size": 9.0, "border": true},
-  "vocab_bottom": {"size": 9.0, "border": true},
-  "cta":      {"font": "挥墨体", "flower": "金箔描边书法水墨花字", "size": 11.0, "slot": "main_zone", "anim_in": "渐显"},
-  "cta_sub":  {"size": 8.0, "border": true, "slot": "center"},
-  "subtitle": {"size": 9.5, "border": true, "font_zh": "启功行楷"},
-  "subtitle2":{"size": 6.8, "border": true}
+  "title": {
+   "font": "挥墨体",
+   "flower": "书法墨环图案花字",
+   "size": 11.5,
+   "slot": "top_band",
+   "anim_in": "渐显",
+   "anim_out": "渐隐"
+  },
+  "hero": {
+   "font": "挥墨体",
+   "flower": "水墨红底白色花字",
+   "size": 30.0,
+   "scale": 1.5,
+   "slot": "main_zone",
+   "anim_in": "渐显",
+   "anim_out": "渐隐"
+  },
+  "hero_sub": {
+   "font": "启功行楷",
+   "size": 8.5,
+   "slot": "center",
+   "anim_in": "渐显"
+  },
+  "label": {
+   "font": "启功行楷",
+   "size": 9.5,
+   "border": true,
+   "slot": "top_band",
+   "anim_in": "渐显",
+   "anim_out": "渐隐"
+  },
+  "keyword": {
+   "font": "启功行楷",
+   "size": 9.5,
+   "border": true,
+   "slot": "top_band",
+   "anim_in": "渐显",
+   "anim_out": "渐隐"
+  },
+  "vocab": {
+   "font": "挥墨体",
+   "flower": "金箔描边书法水墨花字",
+   "size": 16.0,
+   "slot": "lower_zone",
+   "anim_in": "渐显"
+  },
+  "vocab_top": {
+   "font": "启功行楷",
+   "size": 9.0,
+   "border": true
+  },
+  "vocab_bottom": {
+   "size": 9.0,
+   "border": true
+  },
+  "cta": {
+   "font": "挥墨体",
+   "flower": "金箔描边书法水墨花字",
+   "size": 11.0,
+   "slot": "main_zone",
+   "anim_in": "渐显"
+  },
+  "cta_sub": {
+   "size": 8.0,
+   "border": true,
+   "slot": "center"
+  },
+  "subtitle": {
+   "size": 9.5,
+   "border": true,
+   "font_zh": "启功行楷"
+  },
+  "subtitle2": {
+   "size": 6.8,
+   "border": true
+  }
  },
  "flower_on_bright_background": false,
  "cut_transition": null,
- "chapter_transition": {"name": "水墨", "duration": 0.6},
- "ending_effect": {"name": "水墨竹叶", "min_dur": 5.0},
+ "chapter_transition": {
+  "name": "水墨",
+  "duration": 0.6
+ },
+ "ending_effect": {
+  "name": "水墨竹叶",
+  "min_dur": 5.0
+ },
  "grade": null,
- "pip_background": {"type": "blur", "blur": 0.75},
- "bgm": {"id": "7376298242855946291", "name": "春满长桥", "volume": 0.2, "fade_in": 1.2, "fade_out": 2.5},
- "sfx": {"card": "翻书声", "accent": "叮呤提示声", "volume": 0.35},
- "camera": {"amount": 0.06, "punch": 0.12}
+ "pip_background": {
+  "type": "blur",
+  "blur": 0.75
+ },
+ "bgm": {
+  "id": "7376298242855946291",
+  "name": "春满长桥",
+  "volume": 0.2,
+  "fade_in": 1.2,
+  "fade_out": 2.5
+ },
+ "sfx": {
+  "card": "翻书声",
+  "accent": "叮呤提示声",
+  "volume": 0.35
+ },
+ "camera": {
+  "amount": 0.06,
+  "punch": 0.12
+ },
+ "card_background": "paper:#F5F1E8",
+ "stroke_color": "#C9A84C",
+ "ink": "#1A1A1A",
+ "card_roles": {
+  "card_label": {
+   "font": "启功行楷",
+   "size": 10.5,
+   "color": "#1A1A1A",
+   "anim_in": "渐显"
+  },
+  "end_tag": {
+   "font": "挥墨体",
+   "flower": "水墨红底白色花字",
+   "size": 11.0,
+   "anim_in": "渐显"
+  },
+  "end_title": {
+   "font": "挥墨体",
+   "size": 17.0,
+   "color": "#1A1A1A",
+   "anim_in": "渐显"
+  },
+  "end_word": {
+   "font": "挥墨体",
+   "flower": "金箔描边书法水墨花字",
+   "size": 12.0,
+   "anim_in": "渐显"
+  },
+  "end_sub": {
+   "font": "启功行楷",
+   "size": 9.5,
+   "color": "#C8372D",
+   "anim_in": "渐显"
+  }
+ }
 }

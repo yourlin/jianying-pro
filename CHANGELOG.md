@@ -1,6 +1,14 @@
 # Changelog
 
 ## Unreleased
+- **Circle-speaker layout** (`insert_mode: "circle"`): insert / hero / end-card pages put a full-screen card background (paper or solid colour, generated automatically) over the main video. On top go the image, sized to the safe-area width, and a synced, muted copy of the speaker with a circular mask (centred on the detected face) plus a stroke in the style colour. The label is printed beside the circle in ink colour.
+  - New `end_card` element: series tag, title, word cards, call to action, speaker circle and ending effect.
+  - Formats gain `circle_layout` and `subtitle_layout`; styles gain `card_background` / `stroke_color` / `card_roles`.
+  - Subtitles now sit on the bottom safe edge (`anchor_bottom`, y computed from the line count) at size 11 in vertical.
+  - Builder: `color:` / `paper:` card sources, `source_in` for synced video overlays, overlay masks and mask strokes.
+  - The reviewer renders circle and rectangle masks and no longer flags masked windows as small inserts.
+- `add_mask_simple` warns loudly, and the warning reaches the build report, when only the legacy mask is available: JianYing 11.7 does not render legacy masks.
+- `jy_preview.seek` stays 0.5 s before the end, because stepping past the end wraps to the start.
 - Methodology from the Zhihu handbook 《剪映从入门到精通：全民视频剪辑实用手册》:
   - new `methodology/grading.md` (adjust order and defaults, filter strengths by genre, teal-orange / HSL / wheel recipes, mood-based grading);
   - audio golden ratios, text settings, transition / effect / sticker / mask counts and durations, keyframe and speed tips, the pacing of 5 worked cases, and shooting rules.

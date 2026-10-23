@@ -1,26 +1,154 @@
 {
- "id": "variety", "name": "综艺活泼", "doc": "variety.md",
+ "id": "variety",
+ "name": "综艺活泼",
+ "doc": "variety.md",
  "roles": {
-  "title":    {"font": "快乐体", "flower": "卡通动漫黄色花字", "size": 12.0, "slot": "top_band", "anim_in": "弹入", "anim_out": "渐隐"},
-  "hero":     {"font": "综艺体", "flower": "土酷黄色花字", "size": 24.0, "slot": "main_zone", "anim_in": "弹入", "anim_out": "渐隐"},
-  "hero_sub": {"font": "简中圆", "size": 9.0, "border": true, "slot": "center"},
-  "label":    {"font": "简中圆", "size": 10.0, "border": true, "slot": "top_band", "anim_in": "弹入"},
-  "keyword":  {"font": "快乐体", "flower": "土酷红黄色花字", "size": 13.0, "slot": "top_band", "anim_in": "弹入"},
-  "vocab":    {"font": "综艺体", "flower": "可爱蓝黄色立体花字", "size": 16.0, "slot": "lower_zone", "anim_in": "弹入"},
-  "vocab_top":{"font": "简中圆", "size": 9.0, "border": true},
-  "vocab_bottom": {"font": "简中圆", "size": 9.0, "border": true},
-  "cta":      {"font": "快乐体", "flower": "卡通动漫黄色花字", "size": 12.0, "slot": "main_zone", "anim_in": "弹入"},
-  "cta_sub":  {"font": "简中圆", "size": 8.5, "border": true, "slot": "center"},
-  "subtitle": {"font": "简中圆", "size": 10.0, "border": true},
-  "subtitle2":{"font": "简中圆", "size": 7.0, "border": true}
+  "title": {
+   "font": "快乐体",
+   "flower": "卡通动漫黄色花字",
+   "size": 12.0,
+   "slot": "top_band",
+   "anim_in": "弹入",
+   "anim_out": "渐隐"
+  },
+  "hero": {
+   "font": "综艺体",
+   "flower": "土酷黄色花字",
+   "size": 24.0,
+   "slot": "main_zone",
+   "anim_in": "弹入",
+   "anim_out": "渐隐"
+  },
+  "hero_sub": {
+   "font": "简中圆",
+   "size": 9.0,
+   "border": true,
+   "slot": "center"
+  },
+  "label": {
+   "font": "简中圆",
+   "size": 10.0,
+   "border": true,
+   "slot": "top_band",
+   "anim_in": "弹入"
+  },
+  "keyword": {
+   "font": "快乐体",
+   "flower": "土酷红黄色花字",
+   "size": 13.0,
+   "slot": "top_band",
+   "anim_in": "弹入"
+  },
+  "vocab": {
+   "font": "综艺体",
+   "flower": "可爱蓝黄色立体花字",
+   "size": 16.0,
+   "slot": "lower_zone",
+   "anim_in": "弹入"
+  },
+  "vocab_top": {
+   "font": "简中圆",
+   "size": 9.0,
+   "border": true
+  },
+  "vocab_bottom": {
+   "font": "简中圆",
+   "size": 9.0,
+   "border": true
+  },
+  "cta": {
+   "font": "快乐体",
+   "flower": "卡通动漫黄色花字",
+   "size": 12.0,
+   "slot": "main_zone",
+   "anim_in": "弹入"
+  },
+  "cta_sub": {
+   "font": "简中圆",
+   "size": 8.5,
+   "border": true,
+   "slot": "center"
+  },
+  "subtitle": {
+   "font": "简中圆",
+   "size": 10.0,
+   "border": true
+  },
+  "subtitle2": {
+   "font": "简中圆",
+   "size": 7.0,
+   "border": true
+  }
  },
  "flower_on_bright_background": true,
  "cut_transition": null,
- "chapter_transition": {"name": "闪白", "duration": 0.25},
- "ending_effect": {"name": "撒星星", "min_dur": 3.0},
- "grade": {"filter": {"name": "高饱和", "intensity": 50}, "adjust": {"饱和度": 15, "对比度": 10, "亮度": 5}},
- "pip_background": {"type": "blur", "blur": 0.75},
- "bgm": {"id": "7390279383657859073", "name": "亿点点偷感（可爱无厘头bgm）", "volume": 0.25, "fade_in": 0.5, "fade_out": 1.5},
- "sfx": {"card": "综艺叮声", "accent": "综艺叮声", "volume": 0.4},
- "camera": {"amount": 0.08, "punch": 0.18}
+ "chapter_transition": {
+  "name": "闪白",
+  "duration": 0.25
+ },
+ "ending_effect": {
+  "name": "撒星星",
+  "min_dur": 3.0
+ },
+ "grade": {
+  "filter": {
+   "name": "高饱和",
+   "intensity": 50
+  },
+  "adjust": {
+   "饱和度": 15,
+   "对比度": 10,
+   "亮度": 5
+  }
+ },
+ "pip_background": {
+  "type": "blur",
+  "blur": 0.75
+ },
+ "bgm": {
+  "id": "7390279383657859073",
+  "name": "亿点点偷感（可爱无厘头bgm）",
+  "volume": 0.25,
+  "fade_in": 0.5,
+  "fade_out": 1.5
+ },
+ "sfx": {
+  "card": "综艺叮声",
+  "accent": "综艺叮声",
+  "volume": 0.4
+ },
+ "camera": {
+  "amount": 0.08,
+  "punch": 0.18
+ },
+ "card_background": "color:#FFF4C2",
+ "stroke_color": "#1B2A6B",
+ "ink": "#1B2A6B",
+ "card_roles": {
+  "card_label": {
+   "font": "简中圆",
+   "size": 11.0,
+   "color": "#1B2A6B"
+  },
+  "end_tag": {
+   "font": "快乐体",
+   "size": 9.5,
+   "color": "#FF5FA2"
+  },
+  "end_title": {
+   "font": "快乐体",
+   "flower": "卡通动漫黄色花字",
+   "size": 15.0
+  },
+  "end_word": {
+   "font": "综艺体",
+   "flower": "可爱蓝黄色立体花字",
+   "size": 12.0
+  },
+  "end_sub": {
+   "font": "简中圆",
+   "size": 10.0,
+   "color": "#FF5FA2"
+  }
+ }
 }

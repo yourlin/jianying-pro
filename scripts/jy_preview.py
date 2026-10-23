@@ -240,6 +240,19 @@ def current_frame(fps: float = 30.0) -> Optional[int]:
     return int(round((h * 3600 + m * 60 + sec) * fps)) + ff
 
 
+def _total_frames(fps: float = 30.0) -> Optional[int]:
+    """草稿总时长 (帧), 读自播放器的 totalProgress。"""
+    try:
+        desc = _tell(f'return description of static text "totalProgress" of ({WIN})')
+    except PreviewError:
+        return None
+    parts = desc.split("|")[-1].strip().split(":")
+    if len(parts) != 4 or not all(p.isdigit() for p in parts):
+        return None
+    h, m, sec, ff = map(int, parts)
+    return int(round((h * 3600 + m * 60 + sec) * fps)) + ff
+
+
 def _step(frames: int):
     """按帧移动播放头: Shift+←/→ 每次 10 帧, ←/→ 每次 1 帧。"""
     code = KEY_RIGHT if frames > 0 else KEY_LEFT
@@ -254,6 +267,9 @@ def seek(seconds: float, fps: float = 30.0, settle: float = 1.0, retries: int = 
     剪映忙 (刚打开草稿、加载素材) 时会丢按键, 所以按完读时间码校验, 不对就补按差值。
     """
     target = max(0, int(round(seconds * fps)))
+    total = _total_frames(fps)
+    if total:  # 在片尾附近按 → 会越过结尾跳回开头, 留 0.5s 余量
+        target = min(target, max(0, total - int(fps * 0.5)))
     _activate()
     _key(KEY_HOME)
     time.sleep(0.2)

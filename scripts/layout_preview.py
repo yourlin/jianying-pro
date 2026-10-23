@@ -211,6 +211,7 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
     mats = draft.get("materials", {})
     vids = {m["id"]: m for m in mats.get("videos", [])}
     texts = {m["id"]: m for m in mats.get("texts", [])}
+    masks = {m["id"]: m for m in mats.get("common_mask", []) + mats.get("masks", [])}
 
     base = Image.new("RGBA", (W, H), (18, 18, 18, 255))
     findings = []
@@ -235,6 +236,16 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
         fw, fh = contain_fit(frame.width, frame.height, W, H)
         fw, fh = max(1, int(fw * scale)), max(1, int(fh * scale))
         frame = frame.resize((fw, fh), Image.LANCZOS)
+        mask = next((masks[r] for r in seg.get("extra_material_refs", []) if r in masks), None)
+        if mask and mask.get("resource_type") in ("circle", "rectangle"):
+            # 圆形 / 矩形蒙版: 只保留蒙版内 (config: centerX/Y 为半宽 / 半高单位, 上为正; width/height 为素材比例)
+            cfg = mask.get("config") or {}
+            mcx, mcy = fw / 2 + cfg.get("centerX", 0) * fw / 2, fh / 2 - cfg.get("centerY", 0) * fh / 2
+            rx, ry = cfg.get("width", 1) * fw / 2, cfg.get("height", 1) * fh / 2
+            m = Image.new("L", (fw, fh), 0)
+            shape = ImageDraw.Draw(m).ellipse if mask["resource_type"] == "circle" else ImageDraw.Draw(m).rectangle
+            shape((mcx - rx, mcy - ry, mcx + rx, mcy + ry), fill=255)
+            frame.putalpha(Image.composite(frame.getchannel("A"), Image.new("L", (fw, fh), 0), m))
         if alpha < 1.0:
             a = frame.getchannel("A").point(lambda v: int(v * alpha))
             frame.putalpha(a)
@@ -244,7 +255,7 @@ def build_frame(draft, t_s, px_per_size, show_guides=True):
         if idx > 0 and alpha > 0.35:
             boxes.append(("插卡", track.get("name") or f"video{idx}",
                           (pos[0], pos[1], pos[0] + fw, pos[1] + fh)))
-            if fw / W < 0.45:
+            if fw / W < 0.45 and not mask:  # 带蒙版的小窗 (如圆形讲解人) 本来就小
                 findings.append(f"[插卡] {track.get('name')} 宽度仅占画面 {fw/W:.0%}，竖屏里偏小")
 
     draw = ImageDraw.Draw(base)

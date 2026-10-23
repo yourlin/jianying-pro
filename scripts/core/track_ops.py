@@ -242,8 +242,11 @@ class TrackOpsMixin:
             builtin = draft.MaskType.__members__.get(str(mask_name))
             if builtin is not None:
                 mask = builtin
-                if builtin is draft.MaskType.爱心:
-                    print("⚠️ 旧版「爱心」蒙版在剪映 11.x 中可能不生效。请在剪映蒙版面板中点一次「爱心」以下载新版资源后重试。")
+                # 2026-10-23 实测: 剪映 11.7 不渲染旧版蒙版 (圆形 / 爱心都是), 片段会以原形状显示
+                msg = (f"旧版「{mask_name}」蒙版在剪映 11.x 中不生效 (新版资源没下载到本地)。请在剪映的蒙版面板中"
+                       f"点一次「{mask_name}」下载资源, 然后重新生成草稿。")
+                print(f"⚠️ {msg}")
+                self.warnings = getattr(self, "warnings", []) + [msg]
             elif unavailable is not None:
                 print(f"⚠️ {unavailable}")
                 return None

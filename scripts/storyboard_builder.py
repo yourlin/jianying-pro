@@ -180,7 +180,35 @@ class StoryboardBuilder:
         self.report: Dict[str, list] = {"shots": []}
 
     # -- helpers --
+    def color_card(self, spec: str) -> str:
+        """"color:#RRGGBB" / "paper:#RRGGBB" -> 画布大小的纯色 / 宣纸纹理图片 (缓存), 用作插卡页的底。"""
+        import hashlib
+
+        from PIL import Image, ImageFilter
+
+        kind, _, color = spec.partition(":")
+        c = self.sb.get("project", {}).get("canvas") or {}
+        w, h = int(c.get("width", 1080)), int(c.get("height", 1920))
+        key = hashlib.md5(f"{spec}{w}x{h}".encode()).hexdigest()[:12]
+        out = os.path.join(os.path.expanduser("~/.cache/jianying-pro/cards"), f"{kind}_{key}.png")
+        if not os.path.exists(out):
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            rgb = tuple(int(color.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
+            img = Image.new("RGB", (w, h), rgb)
+            if kind == "paper":  # 宣纸: 低对比的纤维噪点
+                import random
+
+                rnd = random.Random(7)
+                noise = Image.new("L", (w // 4, h // 4))
+                noise.putdata([rnd.randint(118, 138) for _ in range((w // 4) * (h // 4))])
+                noise = noise.resize((w, h)).filter(ImageFilter.GaussianBlur(1.2))
+                img = Image.blend(img, Image.merge("RGB", [noise] * 3), 0.06)
+            img.save(out)
+        return out
+
     def path(self, ref: str) -> str:
+        if isinstance(ref, str) and ref.split(":", 1)[0] in ("color", "paper") and ":#" in ref:
+            return self.color_card(ref)
         srcs = self.sb.get("sources") or {}
         p = srcs.get(ref, ref)
         p = p if os.path.isabs(p) else os.path.join(self.base, p)
@@ -216,6 +244,9 @@ class StoryboardBuilder:
             self._shot(shot)
         self._subtitles()
         self._audio()
+        for w in getattr(self.p, "warnings", []) or []:  # API 层的警告 (如蒙版资源未下载) 也进装配报告
+            if w not in self.warnings:
+                self.warnings.append(w)
         result = self.p.save()
         self.report["total"] = round(self.tl.total, 3)
         self.report["warnings"] = self.warnings
@@ -375,8 +406,11 @@ class StoryboardBuilder:
                 grow = s1 / s0 if s0 else 1.0
                 s0, s1 = cover, cover * grow
                 x, y = 0.0, 0.0
+        kw = {}
+        if o.get("source_in") is not None:  # 视频叠加层从源视频的这个时间开始播放 (如和主视频同步的讲解人小窗)
+            kw["source_start"] = _sec(o["source_in"])
         seg = self.p.add_overlay(self.path(o["source"]), _sec(start), _sec(dur), track_name=o.get("track", "Cards"),
-                                 position=(float(x), float(y)), scale=float(s0))
+                                 position=(float(x), float(y)), scale=float(s0), **kw)
         if seg is None:
             self.warn(f"插卡导入失败: {o.get('source')}")
             return None
@@ -391,6 +425,12 @@ class StoryboardBuilder:
             self.p.add_keyframes(seg, "alpha", [(0, 0.0), (fade, 1.0), (d - fade, 1.0), (d, 0.0)])
         if motion == "float_in":
             self.p.add_keyframes(seg, "y", [(0, float(y) - 0.05), (fade, float(y)), (d, float(y))], ease="缓出")
+        if o.get("mask"):
+            m = dict(o["mask"])
+            self.p.add_mask_simple(seg, m.pop("name", "圆形"), **m)
+            if o.get("mask_stroke"):
+                st = dict(o["mask_stroke"])
+                self.p.add_mask_stroke(seg, st.pop("style", "单层"), st.pop("color", "#FFFFFF"), **st)
         if o.get("shadow"):
             sh = o["shadow"] if isinstance(o["shadow"], dict) else {}
             self.p.add_video_shadow(seg, alpha=sh.get("alpha", 55), blur=sh.get("blur", 28),
@@ -457,7 +497,13 @@ class StoryboardBuilder:
                 e = min(e, float(lines[i + 1]["start"]) - lead)  # 结尾不超过下一句开始
             for text, style in ((ln.get("text"), primary), (ln.get("text2"), secondary)):
                 if text:
-                    if self._text({**style, "content": text, "start": s, "dur": max(0.0, e - s)}, style["track"]):
+                    st = dict(style)
+                    if st.get("anchor_bottom") is not None:  # 底边贴着安全区下沿, 按行数往上排
+                        lines_n = wrap_text(text, int(st.get("wrap_chars", 0))).count("\n") + 1
+                        line_h = float(st.get("size", 9.5)) * float(st.get("px_per_size", 6.0)) * 1.35 / (
+                            float((self.sb.get("project", {}).get("canvas") or {}).get("height", 1920)) / 2)
+                        st["y"] = round(float(st["anchor_bottom"]) + lines_n * line_h / 2, 4)
+                    if self._text({**st, "content": text, "start": s, "dur": max(0.0, e - s)}, st["track"]):
                         n += 1
         self.report["subtitles"] = n
 
