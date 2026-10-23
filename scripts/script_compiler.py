@@ -381,7 +381,15 @@ class Compiler:
                 "camera": self.camera}
         if self.style.get("grade"):
             main["grade"] = self.style["grade"]
-        if self.pip_ranges and self.style.get("pip_background"):
+        v = self.analysis.get("video") or {}
+        canvas = self.fmt["canvas"]
+        src_portrait = v.get("orientation") == "portrait"
+        fmt_portrait = canvas["height"] > canvas["width"]
+        if v and src_portrait != fmt_portrait:
+            # 素材方向和画幅不一致 (如竖屏素材出横屏版): 两侧 / 上下会露边, 全程用画面自身的模糊垫底
+            main["background"] = {"type": "blur", "blur": 1.0}
+            self.notes.append(f"素材是{'竖' if src_portrait else '横'}屏, 画幅是{self.fmt['name']}: 全程用模糊背景填充")
+        elif self.pip_ranges and self.style.get("pip_background"):
             main["background"] = self.style["pip_background"]
         bgm = dict(sc.get("bgm") or self.style.get("bgm") or {})
         if bgm and "volume" not in (sc.get("bgm") or {}):
