@@ -19,8 +19,15 @@ def get_jy_local_config() -> Tuple[str, str]:
         home = os.path.expanduser("~")
         candidates = [
             os.path.join(
-                home, "Library", "Containers", "com.lemon.lvpro", "Data",
-                "Library", "Application Support", "JianyingPro", "User Data",
+                home,
+                "Library",
+                "Containers",
+                "com.lemon.lvpro",
+                "Data",
+                "Library",
+                "Application Support",
+                "JianyingPro",
+                "User Data",
             ),
             os.path.join(home, "Library", "Application Support", "JianyingPro", "User Data"),
         ]
@@ -167,11 +174,16 @@ async def _run_edge_tts(text: str, output_file: str, voice: str = "zh-CN-YunxiNe
 def _curated_speakers() -> set:
     import csv
 
-    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "tts_speakers.csv")
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "tts_speakers.csv"
+    )
     if not os.path.exists(path):
         return set()
     with open(path, "r", encoding="utf-8", newline="") as f:
-        return {r.get("speaker_id", "") for r in csv.DictReader(line for line in f if not line.startswith("#"))}
+        return {
+            r.get("speaker_id", "")
+            for r in csv.DictReader(line for line in f if not line.startswith("#"))
+        }
 
 
 def speaker_vip_state(speaker: str) -> str:

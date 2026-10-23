@@ -275,7 +275,9 @@ class CloudManager:
             return None
         if asset.get("is_vip") == "1":
             # 会员素材只在剪映内使用, 由剪映校验会员与版权; 不在剪映外下载
-            logger.warning("Cloud Asset '%s' is a JianYing VIP asset; skipped download.", asset.get("name"))
+            logger.warning(
+                "Cloud Asset '%s' is a JianYing VIP asset; skipped download.", asset.get("name")
+            )
             return None
 
         eid = asset["id"]
@@ -284,7 +286,9 @@ class CloudManager:
         if not force:  # 本地已下载过就直接用, 不再联网取地址 (CDN 限流 / 断网时也能用)
             import glob as _glob
 
-            cached = [p for p in _glob.glob(os.path.join(CACHE_DIR, f"{eid}_*")) if os.path.getsize(p) > 0]
+            cached = [
+                p for p in _glob.glob(os.path.join(CACHE_DIR, f"{eid}_*")) if os.path.getsize(p) > 0
+            ]
             if cached:
                 return max(cached, key=os.path.getmtime)
 
@@ -353,7 +357,9 @@ class CloudManager:
                             continue
                         total += len(chunk)
                         if total > MAX_DOWNLOAD_BYTES:
-                            raise ValueError(f"Download exceeds size limit: {MAX_DOWNLOAD_BYTES} bytes")
+                            raise ValueError(
+                                f"Download exceeds size limit: {MAX_DOWNLOAD_BYTES} bytes"
+                            )
                         f.write(chunk)
                 os.replace(tmp_path, local_path)
                 logger.info("Download finished: %s", local_path)

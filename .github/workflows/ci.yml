@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install ruff black
+          pip install ruff black pytest
 
       - name: Lint
         run: |
@@ -42,8 +42,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          python -m unittest -v
-        working-directory: tests
+          python -m pytest -q tests
 
       - name: Format check
         run: |

@@ -24,10 +24,24 @@ SCHEMA: Dict[str, List[Tuple[str, ...]]] = {
 OPTIONAL_SCHEMA: Dict[str, List[Tuple[str, ...]]] = {
     name: [("name",), ("resource_id",), ("is_vip",)]
     for name in (
-        "panel_transitions.csv", "panel_filters.csv", "panel_video_effects.csv", "panel_character_effects.csv", "panel_video_animations.csv",
-        "panel_text_animations.csv", "panel_fonts.csv", "panel_tts_voices.csv",
-        "panel_audio_effects.csv", "panel_flower_texts.csv", "panel_text_templates.csv", "panel_subtitle_templates.csv",
-        "panel_stickers.csv", "panel_stock_videos.csv", "panel_stock_images.csv", "panel_sound_effects.csv", "panel_masks.csv", "panel_mask_strokes.csv",
+        "panel_transitions.csv",
+        "panel_filters.csv",
+        "panel_video_effects.csv",
+        "panel_character_effects.csv",
+        "panel_video_animations.csv",
+        "panel_text_animations.csv",
+        "panel_fonts.csv",
+        "panel_tts_voices.csv",
+        "panel_audio_effects.csv",
+        "panel_flower_texts.csv",
+        "panel_text_templates.csv",
+        "panel_subtitle_templates.csv",
+        "panel_stickers.csv",
+        "panel_stock_videos.csv",
+        "panel_stock_images.csv",
+        "panel_sound_effects.csv",
+        "panel_masks.csv",
+        "panel_mask_strokes.csv",
         "panel_blend_modes.csv",
     )
 }

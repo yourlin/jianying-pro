@@ -35,7 +35,10 @@ def _probe_video(input_path: str) -> dict:
         "json",
         input_path,
     ]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    try:
+        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    except OSError:  # 没装 ffmpeg / ffprobe: 不做转码检查, 按原文件导入
+        return {}
     if proc.returncode != 0:
         return {}
     try:

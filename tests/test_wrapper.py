@@ -247,9 +247,7 @@ class TestJyWrapper(unittest.TestCase):
         with patch("cloud_manager.requests.post", return_value=Resp()) as mocked_post:
             url = cm._resolve_url_by_id(asset)
 
-        self.assertEqual(
-            url, "https://v26-jianying.vlabvod.com/test/audio?mime_type=audio_mp4"
-        )
+        self.assertEqual(url, "https://v26-jianying.vlabvod.com/test/audio?mime_type=audio_mp4")
         self.assertEqual(asset["url"], url)
         mocked_post.assert_called()
 
@@ -295,7 +293,9 @@ class TestJyWrapper(unittest.TestCase):
         seg = p.add_media_safe(real_video)
         self.assertIsNotNone(seg)
         # 路径应被暂存至 materials 目录
-        self.assertTrue(seg.material_instance.path.startswith(os.path.join(p.draft_dir, "materials")))
+        self.assertTrue(
+            seg.material_instance.path.startswith(os.path.join(p.draft_dir, "materials"))
+        )
         # local_material_id 必须非空且等于文件名 stem
         expected_stem = os.path.splitext(os.path.basename(seg.material_instance.path))[0]
         self.assertEqual(seg.material_instance.local_material_id, expected_stem)
@@ -334,7 +334,11 @@ def test_normalizer_keeps_portrait_orientation(monkeypatch, tmp_path):
     calls = []
     monkeypatch.setattr(mn, "should_normalize_video_for_jianying", lambda p: True)
     monkeypatch.setattr(mn, "_is_cache_fresh", lambda a, b: False)
-    monkeypatch.setattr(subprocess, "run", lambda cmd, **kw: calls.append(cmd) or subprocess.CompletedProcess(cmd, 1, "", "x"))
+    monkeypatch.setattr(
+        subprocess,
+        "run",
+        lambda cmd, **kw: calls.append(cmd) or subprocess.CompletedProcess(cmd, 1, "", "x"),
+    )
     mn.normalize_video_for_jianying(str(src))
     vf = calls[0][calls[0].index("-vf") + 1]
     assert "pad=1920:1080" not in vf and "gte(iw,ih)" in vf

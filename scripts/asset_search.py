@@ -61,7 +61,10 @@ def row_is_vip(row: Dict[str, str]) -> bool:
 
 
 def search_assets(
-    query: str, category: str = None, limit: int = 20, vip_filter: str = "all",
+    query: str,
+    category: str = None,
+    limit: int = 20,
+    vip_filter: str = "all",
     ready_only: bool = False,
 ) -> List[Dict[str, str]]:
     """vip_filter: all | free | vip; ready_only: 只返回已可直接使用的字幕/文字模板"""
@@ -89,7 +92,9 @@ def search_assets(
     else:
         files_to_search = [f for f in os.listdir(DATA_DIR) if f.endswith(".csv")]
     if ready_only:
-        files_to_search = [f for f in files_to_search if f in TEMPLATE_FILES] or list(TEMPLATE_FILES)
+        files_to_search = [f for f in files_to_search if f in TEMPLATE_FILES] or list(
+            TEMPLATE_FILES
+        )
 
     for filename in files_to_search:
         filepath = os.path.join(DATA_DIR, filename)
@@ -143,13 +148,13 @@ def format_results(results: List[Dict[str, str]]) -> str:
     if not results:
         return "❌ 未找到匹配项。尝试更简单的关键词或切换分类。"
 
-    header = (
-        f"{'Identifier':<25} | {'Category':<15} | {'API Key (Use This)':<20} | {'VIP':<4} | {'Source'}"
-    )
+    header = f"{'Identifier':<25} | {'Category':<15} | {'API Key (Use This)':<20} | {'VIP':<4} | {'Source'}"
     output = [header, "-" * len(header)]
 
     for r in results:
-        ident = r.get("identifier") or r.get("title") or r.get("name") or r.get("name_hint") or "N/A"
+        ident = (
+            r.get("identifier") or r.get("title") or r.get("name") or r.get("name_hint") or "N/A"
+        )
         display_ident = ident if len(ident) <= 23 else ident[:20] + "..."
         cat = (r.get("sub_type") or r.get("category") or r.get("categories") or "N/A")[:15]
         src = r.get("source_file", "").replace(".csv", "")
@@ -161,8 +166,13 @@ def format_results(results: List[Dict[str, str]]) -> str:
             # 面板素材: 直接用名称调用 (tts 用 voice_type)
             enum_key = r.get("voice_type") or r.get("name") or ident
         else:
-            enum_key = (r.get("music_id") or r.get("speaker_id") or r.get("effect_id")
-                        or get_enum_key_from_ident(ident) or ident)
+            enum_key = (
+                r.get("music_id")
+                or r.get("speaker_id")
+                or r.get("effect_id")
+                or get_enum_key_from_ident(ident)
+                or ident
+            )
         vip = "VIP" if row_is_vip(r) else ""
         output.append(f"{display_ident:<25} | {cat:<15} | {enum_key:<20} | {vip:<4} | {src}")
 
@@ -215,7 +225,9 @@ def main() -> int:
         ensure_panel_fresh()
     logger.info("Searching '%s'...", args.query)
     try:
-        search_results = search_assets(args.query or "", args.category, args.limit, vip_filter, args.ready)
+        search_results = search_assets(
+            args.query or "", args.category, args.limit, vip_filter, args.ready
+        )
         if args.json:
             emit_result(
                 make_result(
