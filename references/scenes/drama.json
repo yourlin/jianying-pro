@@ -1,0 +1,197 @@
+{
+ "id": "drama",
+ "name": "剧情短片",
+ "doc": "drama.md",
+ "detect": {
+  "multi_speaker": true
+ },
+ "duration": {
+  "min": 60,
+  "max": 300,
+  "ideal": 180
+ },
+ "pacing": {
+  "compact": 0.5,
+  "natural": 0.9,
+  "keep_breath": 0.3,
+  "avg_shot": [
+   2,
+   5
+  ],
+  "scene_len": [
+   30,
+   60
+  ]
+ },
+ "beats": [
+  {
+   "name": "开场",
+   "ratio": 0.1,
+   "purpose": "交代人物或抛出冲突",
+   "required": [
+    "title"
+   ],
+   "allowed": [
+    "label"
+   ],
+   "forbidden": [],
+   "camera": "push_in",
+   "note": "建立镜头 + 人物特写，片名卡"
+  },
+  {
+   "name": "发展",
+   "ratio": 0.35,
+   "purpose": "关系和事件推进",
+   "required": [],
+   "allowed": [
+    "label",
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "note": "对话正反打，每个场景 30–60s"
+  },
+  {
+   "name": "转折",
+   "ratio": 0.2,
+   "purpose": "冲突、分离",
+   "required": [],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "冷色调、节奏放慢"
+  },
+  {
+   "name": "高潮",
+   "ratio": 0.25,
+   "purpose": "情绪顶点",
+   "required": [],
+   "allowed": [
+    "effect"
+   ],
+   "forbidden": [
+    "keyword"
+   ],
+   "camera": "push_in",
+   "note": "原声主导，BGM 渐强"
+  },
+  {
+   "name": "结尾",
+   "ratio": 0.1,
+   "purpose": "余韵",
+   "required": [],
+   "allowed": [
+    "title",
+    "cta"
+   ],
+   "forbidden": [],
+   "camera": "pull_out",
+   "note": "拉镜或定格 + 字幕"
+  }
+ ],
+ "elements": {
+  "title": {
+   "min_dur": 2.5,
+   "max_dur": 5.0
+  },
+  "label": {
+   "min_dur": 2.5,
+   "max_dur": 5.0,
+   "note": "人物名字条 / 时间地点"
+  }
+ },
+ "inserts": {
+  "default": "cover"
+ },
+ "camera": {
+  "per_minute": [
+   3,
+   8
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out",
+   "pan_left",
+   "pan_right"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 4.0
+ },
+ "subtitles": {
+  "default": true,
+  "max_chars_zh": 15,
+  "max_chars_en": 38,
+  "max_dur": 3.2,
+  "lead": 0.1,
+  "speaker_colors": true
+ },
+ "audio": {
+  "bgm_volume": 0.25,
+  "loudness_lufs": -14,
+  "sfx_max": 8,
+  "dialogue_volume": 0.8
+ },
+ "effects": {
+  "max": 2,
+  "min_dur": 3.0,
+  "only_for": [
+   "opening",
+   "ending"
+  ]
+ },
+ "grade_by_mood": {
+  "回忆": {
+   "色温": 10
+  },
+  "伤感": {
+   "色温": -10,
+   "饱和度": -10
+  },
+  "温暖": {
+   "对比度": 15
+  }
+ },
+ "scene_transition": {
+  "type": "linear_mask",
+  "feather": 10,
+  "note": "全片统一一种场景转场"
+ },
+ "questions": {
+  "mood": {
+   "question": "情绪基调？",
+   "options": [
+    "温情",
+    "悬疑",
+    "喜剧",
+    "伤感"
+   ]
+  },
+  "dialogue": {
+   "question": "对话字幕？",
+   "options": [
+    "按角色分颜色",
+    "统一样式"
+   ]
+  },
+  "transition": {
+   "question": "场景转场？",
+   "options": [
+    "统一蒙版渐变",
+    "硬切",
+    "叠化"
+   ]
+  },
+  "titles": {
+   "question": "片名和片尾？",
+   "options": [
+    "要",
+    "不要"
+   ]
+  }
+ },
+ "checks": [
+  "场景转场全片统一",
+  "对话段原声清楚（对话 80%、BGM ≤ 30%）",
+  "每个场景 30–60s"
+ ]
+}

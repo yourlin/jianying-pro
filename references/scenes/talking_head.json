@@ -22,7 +22,8 @@
   "scale_change_every_sentences": [
    2,
    3
-  ]
+  ],
+  "visual_change_max_gap_s": 30
  },
  "beats": [
   {
@@ -221,6 +222,12 @@
   "每张插卡都有标注",
   "插卡不压人脸 (card_zones / pip / cover)",
   "教学段不加插卡",
-  "CTA ≥ 3s"
- ]
+  "CTA ≥ 3s",
+  "每 30 秒至少一次画面变化（插卡 / 文字 / 运镜）"
+ ],
+ "chapter_transition": {
+  "type": "black_card",
+  "dur": 1.0,
+  "note": "章节之间 1s 黑屏 + 文字过渡（如「方法一 → 方法二」），横屏长口播更常用"
+ }
 }

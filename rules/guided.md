@@ -30,7 +30,7 @@ python <SKILL_ROOT>/scripts/analyze_footage.py <主视频> [--assets <素材目�
 
 | 问题 | 选项来源 |
 |---|---|
-| 场景 | `references/scenes/`：口播知识 / Vlog / 教程录屏 / 带货种草 / 影视解说 / 卡点混剪。推荐 = `analysis.json` 的 `scene_guess` |
+| 场景 | `references/scenes/`：口播知识 / Vlog / 教程录屏 / 带货种草 / 影视解说 / 卡点混剪 / 剧情短片。推荐 = `analysis.json` 的 `scene_guess` |
 | 风格 | `references/styles/`：国风古韵 / 科技 / 清新文艺 / 综艺活泼 / 商务简约。推荐按内容主题（如讲汉字 → 国风） |
 | 平台与画幅 | 抖音 / 视频号竖屏 9:16、小红书 3:4、B 站横屏 16:9。推荐 = 素材方向 |
 | 成片时长 | 场景文件里的建议时长；素材本身较短时推荐"保留全部内容，只剪气口" |

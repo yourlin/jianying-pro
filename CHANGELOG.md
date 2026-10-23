@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+- Methodology from the Zhihu handbook 《剪映从入门到精通：全民视频剪辑实用手册》:
+  - new `methodology/grading.md` (adjust order and defaults, filter strengths by genre, teal-orange / HSL / wheel recipes, mood-based grading);
+  - audio golden ratios, text settings, transition / effect / sticker / mask counts and durations, keyframe and speed tips, the pacing of 5 worked cases, and shooting rules.
+  - New scene **剧情短片** (`scenes/drama.md` / `drama.json`).
+  - The talking-head scene gains "a visual change at least every 30 s" and "1 s black card between chapters".
 - **Scripts and three-layer specs**: each project now has a content-only script (`script.json`, `references/script_schema.md`). `scripts/script_compiler.py` compiles it, together with the specs and the footage analysis, into a storyboard.
   - Machine-readable specs: scenes (`references/scenes/*.json`: beats, pacing, element limits, insert policy, camera whitelist, subtitle/audio defaults, guided questions, checks), styles (`references/styles/*.json`: per-role font/flower/size/animation, transitions, ending effect, grade, PiP background, BGM, SFX, camera amounts) and formats (`references/formats/*.json`: vertical / horizontal / 3:4 / square canvas, safe areas, slots, PiP, card sizes, subtitle sizes).
   - Times are anchored to transcript phrases; vocab cards sync to word timestamps and avoid the chin; cuts come from the scene's pacing threshold; jump cuts are covered by a fake shot-size change.

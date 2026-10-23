@@ -10,5 +10,6 @@
 | 带货种草 | [product.md](product.md) | 产品特写、使用效果、口播卖点 |
 | 影视解说 | [commentary.md](commentary.md) | 影视原片 + 旁白 |
 | 卡点混剪 | [beat_montage.md](beat_montage.md) | 多段素材 + 节奏感强的音乐 |
+| 剧情短片 | [drama.md](drama.md) | 多场景、有人物对话的故事 |
 
 通用规则见 `../methodology/`，视觉规范见 `../styles/`。

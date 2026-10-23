@@ -13,6 +13,7 @@
 | [audio.md](audio.md) | 人声、配乐、响度 |
 | [safe_area.md](safe_area.md) | 各平台安全区 |
 | [shooting.md](shooting.md) | 各场景怎么拍（拍摄前给用户的建议） |
+| [grading.md](grading.md) | 调色：调节顺序和默认值、滤镜强度、常用配方 |
 
 ## 来源
 
@@ -39,3 +40,4 @@
   - TikTok Ads 创意最佳实践
   - CapCut 帮助中心
 - **国内创作者经验**：databrush、adsturbo、echohives、cardcrafter、新浪、diantuoyi、绘声绘影、来画、易媒助手、135 编辑器、aimusic-tools、7kamao、太平洋电脑网、B 站专栏 cv17927684 等 19 个公开来源（知乎、抖音创作者中心、剪映学院原文未能读取），见各文件「国内经验」部分。
+- **剪映手册**：知乎专栏《剪映从入门到精通：全民视频剪辑实用手册》（用户 2026-10-23 下载的网页）。补充了音量比例、文字设置、转场 / 特效 / 贴纸 / 蒙版数量和时长、关键帧、变速、调色配方、5 个实战案例的节奏、拍摄要求，见各文件「剪映手册」部分和 `grading.md`。文中推荐的书只有一本：《电影剪辑的语法》（*Grammar of the Edit*，Roy Thompson、Christopher J. Bowen 著）。

@@ -23,7 +23,7 @@ STYLE_ALIASES = {"国风": "guofeng", "国风古韵": "guofeng", "科技": "tech
                  "综艺": "variety", "综艺活泼": "variety", "商务": "business", "商务简约": "business"}
 SCENE_ALIASES = {"口播": "talking_head", "口播知识": "talking_head", "vlog": "vlog", "Vlog": "vlog", "教程": "tutorial",
                  "教程录屏": "tutorial", "带货": "product", "带货种草": "product", "解说": "commentary",
-                 "影视解说": "commentary", "卡点": "beat_montage", "卡点混剪": "beat_montage"}
+                 "影视解说": "commentary", "卡点": "beat_montage", "卡点混剪": "beat_montage", "剧情": "drama", "剧情短片": "drama"}
 
 
 class ScriptError(ValueError):
