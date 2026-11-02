@@ -1,0 +1,23 @@
+scripts/retention_feedback.py
+  s_213c661e8f1862::t_b0e660fb531398 332
+tests/test_best_take.py
+  s_213c661e8f1862::t_b0e660fb531398 253-254,256
+tests/test_user_prefs.py
+  s_213c661e8f1862::t_b0e660fb531398 149
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f9aa282ee3f93f08cd96c634f49752abc9859c9e",
+  "prompts": {},
+  "sessions": {
+    "s_213c661e8f1862": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b691418-4641-406d-894c-99f4e9662f47",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "MasterLin <6930286+yourlin@users.noreply.github.com>"
+    }
+  }
+}
