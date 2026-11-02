@@ -329,7 +329,7 @@ def attribute(drop, ctx, report) -> list:
 def quote_rule(fname: str, pattern: str, root: str = METHODOLOGY):
     """在方法论文件里找现有条文, 返回 {file, line, text}; 找不到返回只有 file 的 dict。"""
     path = os.path.join(root, fname)
-    rel = os.path.relpath(path, SKILL_ROOT)
+    rel = os.path.relpath(path, SKILL_ROOT).replace(os.sep, "/")
     if not os.path.exists(path):
         return {"file": rel}
     with open(path, "r", encoding="utf-8") as f:

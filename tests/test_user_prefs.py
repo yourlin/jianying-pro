@@ -146,6 +146,7 @@ def test_env_path_override(tmp_path, monkeypatch):
 def test_default_path_without_env(monkeypatch, tmp_path):
     monkeypatch.delenv(user_prefs.ENV_VAR, raising=False)
     monkeypatch.setenv("HOME", str(tmp_path))
+    monkeypatch.setenv("USERPROFILE", str(tmp_path))  # Windows 的 expanduser 读 USERPROFILE
     assert prefs_path() == str(tmp_path / ".config" / "jianying-pro" / "style_overrides.json")
     scene, style, fmt = _profiles()
     assert apply_user_prefs(scene, style, fmt)[3] == []  # tmp HOME 下没有覆盖文件

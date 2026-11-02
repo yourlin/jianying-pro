@@ -250,9 +250,10 @@ def test_multi_source_groups_across_files():
         {"analysis": {"transcript": a, "source": "/tmp/camA.mp4"}},
     ]
     sel = bt.select_takes(srcs, visual=False)
-    assert sel["plan"] is None and set(sel["plans"]) == {"/tmp/camA.mp4", "/tmp/camB.mp4"}
+    cam_a, cam_b = os.path.abspath("/tmp/camA.mp4"), os.path.abspath("/tmp/camB.mp4")
+    assert sel["plan"] is None and set(sel["plans"]) == {cam_a, cam_b}
     g = sel["groups"][0]
-    assert g["takes"][g["best"] - 1]["source"] == "/tmp/camA.mp4"
+    assert g["takes"][g["best"] - 1]["source"] == cam_a
     assert [s["source"] for s in sel["sequence"]] == ["/tmp/camA.mp4", "/tmp/camA.mp4"]
     assert sel["plans"]["/tmp/camB.mp4"]["keep"] == []
 
