@@ -34,6 +34,12 @@ from core.quality_ops import QualityOpsMixin
 from core.production_ops import ProductionOpsMixin
 from core.motion_ops import MotionOpsMixin
 from core.audio_ops import AudioOpsMixin
+from core.speech_cut_ops import SpeechCutOpsMixin
+from core.beat_ops import BeatOpsMixin
+from core.mix_ops import MixOpsMixin
+from core.color_match_ops import ColorMatchOpsMixin
+from core.motion_graphics_ops import MotionGraphicsOpsMixin
+from core.take_ops import BestTakeOpsMixin
 from utils.draft_store import write_skill_copy
 from utils.panel_assets import (
     collect_vip_usage, fill_local_resource_paths, is_vip_member, member_display_name,
@@ -49,7 +55,8 @@ except ImportError:
 class JyProject(
     JyProjectBase, MediaOpsMixin, TextOpsMixin, VfxOpsMixin, TrackOpsMixin, AiOpsMixin, TemplateOpsMixin,
     PictureOpsMixin, AdjustOpsMixin, QualityOpsMixin, ProductionOpsMixin, MotionOpsMixin, AudioOpsMixin,
-    MockingOpsMixin,
+    MockingOpsMixin, SpeechCutOpsMixin, BeatOpsMixin, MixOpsMixin, ColorMatchOpsMixin,
+    MotionGraphicsOpsMixin, BestTakeOpsMixin,
 ):
     """
     高层封装工程类。通过多重继承 Mixins 实现功能解耦。

@@ -10,6 +10,10 @@
 | 带货种草 | [product.md](product.md) | 产品特写、使用效果、口播卖点 |
 | 影视解说 | [commentary.md](commentary.md) | 影视原片 + 旁白 |
 | 卡点混剪 | [beat_montage.md](beat_montage.md) | 多段素材 + 节奏感强的音乐 |
+| 宣传片 | [promo.md](promo.md) | 游戏 / 产品实机画面 + BGM，没有旁白（横屏） |
+| 音乐视频（MV） | [music_video.md](music_video.md) | 一首歌 + 演唱 / 乐队 / 产品画面，按歌词行切 |
 | 剧情短片 | [drama.md](drama.md) | 多场景、有人物对话的故事 |
 
 通用规则见 `../methodology/`，视觉规范见 `../styles/`。
+
+宣传片、MV、卡点混剪这类「多段素材 + 音乐」的片子，剧本用混剪模式（`montage` 字段，见 `../script_schema.md`）：编译器调用 `scripts/beat_snap.py` 按拍或按歌词行规划镜头。

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG line_chart</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/* 折线图增长: data = {labels:[...], series:[{name,values,color}], title, unit, min, max, decimals, show_values} */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, pad = MG.pad, th = MG.theme;
+  var labels = d.labels, series = d.series, n = labels.length;
+  var top = pad + MG.title(d.title);
+  var legendH = series.length > 1 ? 56 * U : 0;
+  var all = [];
+  series.forEach(function (s) { all = all.concat(s.values); });
+  var vmin = d.min != null ? d.min : Math.min(0, Math.min.apply(null, all));
+  var vmax = d.max != null ? d.max : Math.max.apply(null, all);
+  if (vmax <= vmin) vmax = vmin + 1;
+  var axisFs = Math.round(30 * U), valueFs = Math.round(36 * U);
+  var unit = d.unit || "";
+  var x0 = pad + axisFs * 3.2, x1 = W - pad - valueFs * 2.5;
+  var y0 = top + legendH + valueFs * 1.2, y1 = H - pad - axisFs * 1.8;
+  var X = function (i) { return n > 1 ? x0 + ((x1 - x0) * i) / (n - 1) : (x0 + x1) / 2; };
+  var Y = function (v) { return y1 - ((y1 - y0) * (v - vmin)) / (vmax - vmin); };
+
+  /* 网格与坐标 */
+  var grid = MG.el("g", { opacity: 0 });
+  for (var g = 0; g <= 4; g++) {
+    var gv = vmin + ((vmax - vmin) * g) / 4, gy = Y(gv);
+    MG.el("line", { x1: x0, x2: x1, y1: gy, y2: gy, stroke: th.muted, "stroke-width": (g === 0 ? 3 : 1.5) * U, "stroke-opacity": g === 0 ? 1 : 0.5 }, grid);
+    MG.text(MG.fmt(gv, d.decimals), { x: x0 - 16 * U, y: gy, "font-size": axisFs, "text-anchor": "end", fill: th.muted, "font-weight": 500 }, grid);
+  }
+  var step = Math.max(1, Math.ceil(n / (MG.portrait ? 5 : 10)));
+  labels.forEach(function (lb, i) {
+    if (i % step === 0 || i === n - 1) {
+      var t = MG.text(lb, { x: X(i), y: y1 + axisFs * 1.1, "font-size": axisFs, "text-anchor": "middle", fill: th.muted, "font-weight": 500 }, grid);
+      MG.fit(t, ((x1 - x0) / Math.max(1, n - 1)) * step * 0.95);
+    }
+  });
+  if (series.length > 1) {
+    var lx = x0;
+    series.forEach(function (s, si) {
+      var c = MG.color(si, s.color);
+      MG.el("rect", { x: lx, y: top + 6 * U, width: 28 * U, height: 28 * U, rx: 6 * U, fill: c }, grid);
+      var t = MG.text(s.name, { x: lx + 40 * U, y: top + 20 * U, "font-size": axisFs, "text-anchor": "start" }, grid);
+      lx += 40 * U + t.getComputedTextLength() + 40 * U;
+    });
+  }
+
+  /* 曲线: 用 clipPath 矩形从左往右揭开, 点和数值跟着出现 */
+  var clipId = "mg-line-clip";
+  var clip = MG.el("clipPath", { id: clipId }, MG.defs);
+  var clipRect = MG.el("rect", { x: x0 - 20 * U, y: 0, width: 0, height: H }, clip);
+  var layer = MG.el("g", { "clip-path": "url(#" + clipId + ")" });
+  var lines = series.map(function (s, si) {
+    var c = MG.color(si, s.color);
+    var pts = s.values.map(function (v, i) { return [X(i), Y(v)]; });
+    var dPath = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    if (series.length === 1) {
+      var gid = "mg-area-grad";
+      var grad = MG.el("linearGradient", { id: gid, x1: 0, y1: 0, x2: 0, y2: 1 }, MG.defs);
+      MG.el("stop", { offset: "0", "stop-color": c, "stop-opacity": 0.35 }, grad);
+      MG.el("stop", { offset: "1", "stop-color": c, "stop-opacity": 0 }, grad);
+      MG.el("path", { d: dPath + " L" + pts[n - 1][0] + " " + y1 + " L" + pts[0][0] + " " + y1 + " Z", fill: "url(#" + gid + ")" }, layer);
+    }
+    MG.el("path", { d: dPath, fill: "none", stroke: c, "stroke-width": 7 * U, "stroke-linejoin": "round", "stroke-linecap": "round" }, layer);
+    var dots = pts.map(function (p) {
+      return MG.el("circle", { cx: p[0], cy: p[1], r: 0, fill: th.bg_solid || "#ffffff", stroke: c, "stroke-width": 5 * U });
+    });
+    var last = pts[n - 1];
+    var endVal = MG.text("", { x: last[0] + 18 * U, y: last[1], "font-size": valueFs, "text-anchor": "start", "font-weight": 800, fill: c });
+    return { pts: pts, dots: dots, s: s, endVal: endVal };
+  });
+
+  var drawStart = 0.5, drawDur = MG.A * 0.7;
+  /* 揭开位置到达第 i 个点的时刻 (反解缓动) */
+  var reach = labels.map(function (_, i) {
+    var at = n > 1 ? i / (n - 1) : 0, lo = 0, hi = 1;
+    for (var it = 0; it < 30; it++) {
+      var mid = (lo + hi) / 2;
+      if (MG.ease.inOutCubic(mid) < at) lo = mid; else hi = mid;
+    }
+    return drawStart + drawDur * hi - 0.05;
+  });
+  return function (t) {
+    grid.setAttribute("opacity", MG.prog(t, 0.1, 0.4));
+    var k = MG.prog(t, drawStart, drawDur, MG.ease.inOutCubic);
+    var xr = x0 + (x1 - x0) * k;
+    clipRect.setAttribute("width", Math.max(0, xr - (x0 - 20 * U) + 12 * U));
+    lines.forEach(function (ln) {
+      ln.dots.forEach(function (dot, i) {
+        var r = MG.prog(t, reach[i], 0.25, MG.ease.outBack);
+        dot.setAttribute("r", Math.max(0, 7 * U * r));
+      });
+      /* 末端数值: 跟随揭开位置插值 */
+      var fi = k * (n - 1), i0 = Math.floor(fi), i1 = Math.min(n - 1, i0 + 1), f = fi - i0;
+      var v = ln.s.values[i0] + (ln.s.values[i1] - ln.s.values[i0]) * f;
+      var px = ln.pts[i0][0] + (ln.pts[i1][0] - ln.pts[i0][0]) * f;
+      var py = ln.pts[i0][1] + (ln.pts[i1][1] - ln.pts[i0][1]) * f;
+      if (d.show_values !== false) {
+        ln.endVal.textContent = MG.fmt(v, d.decimals) + unit;
+        ln.endVal.setAttribute("x", px + 18 * U);
+        ln.endVal.setAttribute("y", py - valueFs * 0.6);
+        ln.endVal.setAttribute("opacity", MG.prog(t, drawStart, 0.3));
+      }
+    });
+  };
+});
+</script>
+</body>
+</html>

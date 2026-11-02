@@ -1,0 +1,29 @@
+{
+ "title": "示例产品歌曲",
+ "name": "示例产品歌曲MV",
+ "scene": "MV",
+ "style": "tech",
+ "format": "横屏",
+ "montage": {
+  "music": "song.mp3",
+  "beats": "beats_mv.json",
+  "lyrics": "lyrics_mv.json",
+  "clips": [
+   {"path": "clips/band_wide.mp4", "duration": 10},
+   {"path": "clips/singer_a.mp4", "duration": 12, "score": 80},
+   {"path": "clips/singer_b.mp4", "duration": 12, "score": 78},
+   {"path": "clips/choir.mp4", "duration": 10, "score": 60},
+   {"path": "clips/drums.mp4", "duration": 6, "score": 50},
+   {"path": "clips/sax.mp4", "duration": 6, "score": 50},
+   {"path": "clips/product_ui.mp4", "duration": 8, "score": 40}
+  ]
+ },
+ "beats": [
+  {"id": "S01", "purpose": "片名", "time": [0, 3.3], "clips": ["clips/band_wide.mp4"],
+   "elements": [{"kind": "hero", "text": "就是这么快"}]},
+  {"id": "S02", "purpose": "主歌", "time": {"from": "清晨第一杯咖啡", "to": "数据自己排好队"}},
+  {"id": "S03", "purpose": "副歌", "time": [20.0, 24.7], "ui_insert": true, "clips": ["clips/product_ui.mp4"]},
+  {"id": "S04", "purpose": "高潮", "time": [24.7, 37.6]},
+  {"id": "S05", "purpose": "尾声", "time": [37.6, 40.0]}
+ ]
+}

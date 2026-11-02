@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG callout</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/*
+ * 箭头 / 圈注标注: data = {marks:[{type, x, y, r, w, h, from:[x,y], text, color, at}], title}
+ * 坐标为画面比例 0~1 (x 向右, y 向下)。circle: 圆心 (x, y) 半径 r (短边比例);
+ * box: 中心 (x, y) 宽高 w/h (画面比例); arrow: 从 from 指向 (x, y); underline: 中心 (x, y) 宽 w。
+ */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, th = MG.theme;
+  MG.title(d.title);
+  var S = Math.min(W, H);
+  var drawDur = 0.6;
+  var fs = Math.round(44 * U), sw = 8 * U;
+  var marks = d.marks.map(function (m, i) {
+    var c = m.color || th.accent;
+    var cx = m.x * W, cy = m.y * H;
+    var g = MG.el("g", {});
+    var path, labelAt;
+    if (m.type === "circle") {
+      var r = m.r * S, rx = r * 1.08, ry = r * 0.96;
+      /* 手绘感: 起止点错开一点, 多绕 10% */
+      var dd = "M" + (cx + rx) + " " + (cy - ry * 0.12);
+      var steps = 40;
+      for (var s = 1; s <= steps; s++) {
+        var a = -0.12 + (Math.PI * 2 * 1.1 * s) / steps;
+        var wob = 1 + 0.03 * Math.sin(a * 3);
+        dd += " L" + (cx + Math.cos(a) * rx * wob).toFixed(1) + " " + (cy - Math.sin(a) * ry * wob).toFixed(1);
+      }
+      path = MG.el("path", { d: dd, fill: "none", stroke: c, "stroke-width": sw, "stroke-linecap": "round", "stroke-linejoin": "round", pathLength: 1 }, g);
+      labelAt = [cx, cy - ry - fs * 1.1];
+      if (labelAt[1] < fs) labelAt = [cx, cy + ry + fs * 1.1];
+    } else if (m.type === "box") {
+      var bw = m.w * W, bh = m.h * H;
+      path = MG.el("rect", { x: cx - bw / 2, y: cy - bh / 2, width: bw, height: bh, rx: 12 * U, fill: "none", stroke: c, "stroke-width": sw, pathLength: 1 }, g);
+      labelAt = [cx, cy - bh / 2 - fs * 1.0];
+      if (labelAt[1] < fs) labelAt = [cx, cy + bh / 2 + fs * 1.0];
+    } else if (m.type === "underline") {
+      var uw = m.w * W;
+      path = MG.el("path", { d: "M" + (cx - uw / 2) + " " + cy + " Q" + cx + " " + (cy + 10 * U) + " " + (cx + uw / 2) + " " + (cy - 4 * U), fill: "none", stroke: c, "stroke-width": sw * 1.2, "stroke-linecap": "round", pathLength: 1 }, g);
+      labelAt = [cx, cy + fs * 1.2];
+    } else {
+      /* arrow: 二次曲线, 箭头在终点 */
+      var fx = m.from[0] * W, fy = m.from[1] * H;
+      var mx = (fx + cx) / 2, my = (fy + cy) / 2;
+      var nx = -(cy - fy), ny = cx - fx, nl = Math.sqrt(nx * nx + ny * ny) || 1;
+      var bend = 0.18 * nl;
+      var qx = mx + (nx / nl) * bend, qy = my + (ny / nl) * bend;
+      /* 终点前缩一点, 避免箭头压住目标 */
+      var ex = cx - (cx - qx) * 0.06, ey = cy - (cy - qy) * 0.06;
+      path = MG.el("path", { d: "M" + fx + " " + fy + " Q" + qx + " " + qy + " " + ex + " " + ey, fill: "none", stroke: c, "stroke-width": sw, "stroke-linecap": "round", pathLength: 1 }, g);
+      var ang = Math.atan2(ey - qy, ex - qx), hl = 34 * U;
+      var head = MG.el("path", {
+        d: "M" + (ex - hl * Math.cos(ang - 0.45)) + " " + (ey - hl * Math.sin(ang - 0.45)) + " L" + ex + " " + ey + " L" + (ex - hl * Math.cos(ang + 0.45)) + " " + (ey - hl * Math.sin(ang + 0.45)),
+        fill: "none", stroke: c, "stroke-width": sw, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: 0,
+      }, g);
+      labelAt = [fx, fy + (fy > cy ? fs * 1.0 : -fs * 1.0)];
+      var markA = { head: head };
+    }
+    path.setAttribute("stroke-dasharray", "1 1");
+    path.setAttribute("stroke-dashoffset", "1");
+    var lbl = null;
+    if (m.text) {
+      lbl = MG.pill(m.text, MG.clamp(labelAt[0], fs * 3, W - fs * 3), MG.clamp(labelAt[1], fs, H - fs), fs, { parent: g, color: th.text });
+      lbl.g.setAttribute("opacity", 0);
+    }
+    var at = m.at != null ? m.at : 0.3 + i * Math.min(0.8, (MG.A * 0.6) / Math.max(1, d.marks.length));
+    return { path: path, head: markA ? markA.head : null, lbl: lbl, at: at };
+  });
+
+  return function (t) {
+    marks.forEach(function (m) {
+      var k = MG.prog(t, m.at, drawDur, MG.ease.inOutCubic);
+      m.path.setAttribute("stroke-dashoffset", (1 - k).toFixed(4));
+      m.path.setAttribute("opacity", k > 0 ? 1 : 0);
+      if (m.head) m.head.setAttribute("opacity", MG.prog(t, m.at + drawDur * 0.85, 0.15));
+      if (m.lbl) m.lbl.g.setAttribute("opacity", MG.prog(t, m.at + drawDur * 0.6, 0.3));
+    });
+  };
+});
+</script>
+</body>
+</html>

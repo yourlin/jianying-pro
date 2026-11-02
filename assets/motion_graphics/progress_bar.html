@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG progress_bar</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/* 进度条 / 环形进度: data = {items:[{label, value(0~100), color}], style: "bar"|"ring", show_percent, title} */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, pad = MG.pad, th = MG.theme;
+  var items = d.items, n = items.length;
+  var top = pad + MG.title(d.title);
+  var fillDur = MG.A * 0.65;
+  var stagger = n > 1 ? Math.min(0.25, (MG.A * 0.3) / (n - 1)) : 0;
+  var rows = [];
+
+  if (d.style === "ring") {
+    var cols = MG.portrait ? 1 : n, rowsN = MG.portrait ? n : 1;
+    var cw = (W - 2 * pad) / cols, ch = (H - top - pad) / rowsN;
+    var r = Math.min(cw, ch) * 0.34, sw = r * 0.2;
+    items.forEach(function (it, i) {
+      var cx = pad + cw * ((MG.portrait ? 0 : i) + 0.5), cy = top + ch * ((MG.portrait ? i : 0) + 0.5) - (it.label ? r * 0.15 : 0);
+      var c = MG.color(i, it.color);
+      MG.el("circle", { cx: cx, cy: cy, r: r, fill: "none", stroke: th.track, "stroke-width": sw });
+      var arc = MG.el("circle", {
+        cx: cx, cy: cy, r: r, fill: "none", stroke: c, "stroke-width": sw, "stroke-linecap": "round",
+        pathLength: 100, "stroke-dasharray": "0 100", transform: "rotate(-90 " + cx + " " + cy + ")",
+      });
+      var pct = MG.text("", { x: cx, y: cy, "font-size": Math.round(r * 0.5), "text-anchor": "middle", "font-weight": 900 });
+      var lab = it.label ? MG.text(it.label, { x: cx, y: cy + r + sw + 40 * U, "font-size": Math.round(40 * U), "text-anchor": "middle" }) : null;
+      if (lab) MG.fit(lab, cw * 0.9);
+      rows.push({ it: it, i: i, arc: arc, pct: pct, lab: lab });
+    });
+  } else {
+    var bh = Math.round(Math.min(48 * U, ((H - top - pad) / n) * 0.3));
+    var labFs = Math.round(40 * U);
+    var rowH = Math.min((H - top - pad) / n, bh + labFs * 3);
+    var y = top + ((H - top - pad) - rowH * n) / 2;
+    var x0 = pad, x1 = W - pad;
+    items.forEach(function (it, i) {
+      var cy = y + rowH * i + labFs * 1.2 + bh / 2;
+      var c = MG.color(i, it.color);
+      var lab = it.label ? MG.text(it.label, { x: x0, y: cy - bh / 2 - labFs * 0.8, "font-size": labFs, "text-anchor": "start" }) : null;
+      if (lab) MG.fit(lab, (x1 - x0) * 0.75);
+      MG.el("rect", { x: x0, y: cy - bh / 2, width: x1 - x0, height: bh, rx: bh / 2, fill: th.track });
+      var bar = MG.el("rect", { x: x0, y: cy - bh / 2, width: 0, height: bh, rx: bh / 2, fill: c });
+      var pct = MG.text("", { x: x1, y: cy - bh / 2 - labFs * 0.8, "font-size": labFs, "text-anchor": "end", "font-weight": 800, fill: c });
+      rows.push({ it: it, i: i, bar: bar, pct: pct, lab: lab, w: x1 - x0, h: bh });
+    });
+  }
+
+  return function (t) {
+    rows.forEach(function (r) {
+      var start = 0.3 + r.i * stagger;
+      var k = MG.prog(t, start, fillDur, MG.ease.inOutCubic);
+      var v = r.it.value * k;
+      var show = MG.prog(t, start - 0.2, 0.3);
+      if (r.arc) {
+        r.arc.setAttribute("stroke-dasharray", v.toFixed(3) + " 100");
+        r.arc.setAttribute("opacity", v > 0.05 ? 1 : 0);
+      } else {
+        r.bar.setAttribute("width", Math.max(v > 0.05 ? r.h : 0, (r.w * v) / 100));
+      }
+      if (d.show_percent !== false) r.pct.textContent = Math.round(v) + "%";
+      r.pct.setAttribute("opacity", show);
+      if (r.lab) r.lab.setAttribute("opacity", show);
+    });
+  };
+});
+</script>
+</body>
+</html>

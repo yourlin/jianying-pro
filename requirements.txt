@@ -3,7 +3,7 @@ playwright==1.52.0
 pynput==1.7.7
 edge-tts==7.2.3
 pymediainfo==7.0.1
-opencv-python==4.11.0.86
+opencv-python==4.11.0.86  # 不要升到 5.x: 5.x 没有 Haar 级联, 人脸检测不可用
 numpy==2.2.4
 imageio==2.37.0
 psutil==7.0.0

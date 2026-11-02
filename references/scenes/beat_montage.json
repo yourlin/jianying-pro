@@ -23,6 +23,15 @@
    "舒缓": 4,
    "标准": 2,
    "快闪": 1
+  },
+  "cut_on": "beat",
+  "lyric": {
+   "min_shot": 1.0,
+   "max_shot": 4.0,
+   "climax_min_shot": 1.0,
+   "climax_max_shot": 4.0,
+   "gap_s": 1.0,
+   "_note": "cut_on 改成 lyric 时用: 切点只放在歌词行边界上 (需要带时间的歌词); 想要 MV 式的长镜头用 music_video 场景"
   }
  },
  "beats": [
@@ -141,6 +150,13 @@
    "options": [
     "要",
     "不要"
+   ]
+  },
+  "cut_on": {
+   "question": "按什么切？",
+   "options": [
+    "按节拍（默认）",
+    "按歌词行"
    ]
   }
  },

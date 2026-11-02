@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG bar_chart</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/* 柱状图增长: data = {items:[{label,value,color}], title, unit, max, orientation, decimals, show_values} */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, pad = MG.pad, th = MG.theme;
+  var items = d.items, n = items.length;
+  var top = pad + MG.title(d.title);
+  var maxV = d.max || Math.max.apply(null, items.map(function (it) { return it.value; })) || 1;
+  var horizontal = d.orientation === "horizontal" || (d.orientation === "auto" && (MG.portrait || n > 10));
+  var growDur = MG.A * 0.6;
+  var stagger = n > 1 ? Math.min(0.18, (MG.A * 0.35) / (n - 1)) : 0;
+  var unit = d.unit || "";
+  var bars = [];
+  var labelFs = Math.round((horizontal ? 38 : 34) * U);
+  var valueFs = Math.round(40 * U);
+
+  if (!horizontal) {
+    var x0 = pad, x1 = W - pad, y0 = top + valueFs * 1.6, y1 = H - pad - labelFs * 1.8;
+    var slot = (x1 - x0) / n, bw = Math.min(slot * 0.62, 220 * U);
+    MG.el("line", { x1: x0, x2: x1, y1: y1, y2: y1, stroke: th.muted, "stroke-width": 3 * U, "stroke-linecap": "round" });
+    items.forEach(function (it, i) {
+      var cx = x0 + slot * (i + 0.5);
+      var rect = MG.el("rect", { x: cx - bw / 2, width: bw, y: y1, height: 0, rx: Math.min(bw * 0.12, 14 * U), fill: MG.color(i, it.color) });
+      var lab = MG.text(it.label, { x: cx, y: y1 + labelFs * 0.95, "font-size": labelFs, "text-anchor": "middle", fill: th.text });
+      MG.fit(lab, slot * 0.95);
+      var val = d.show_values ? MG.text("", { x: cx, y: y1, "font-size": valueFs, "text-anchor": "middle", "font-weight": 800 }) : null;
+      bars.push({ rect: rect, val: val, lab: lab, it: it, i: i, len: (y1 - y0) * (it.value / maxV), base: y1 });
+    });
+  } else {
+    var labW = Math.min(W * 0.3, 360 * U);
+    var hx0 = pad + labW + 20 * U, hx1 = W - pad - valueFs * 3.2;
+    var hy0 = top, hy1 = H - pad;
+    var row = (hy1 - hy0) / n, bh = Math.min(row * 0.62, 120 * U);
+    MG.el("line", { x1: hx0, x2: hx0, y1: hy0, y2: hy1, stroke: th.muted, "stroke-width": 3 * U, "stroke-linecap": "round" });
+    items.forEach(function (it, i) {
+      var cy = hy0 + row * (i + 0.5);
+      var rect = MG.el("rect", { x: hx0, y: cy - bh / 2, height: bh, width: 0, rx: Math.min(bh * 0.2, 14 * U), fill: MG.color(i, it.color) });
+      var lab = MG.text(it.label, { x: hx0 - 20 * U, y: cy, "font-size": labelFs, "text-anchor": "end" });
+      MG.fit(lab, labW);
+      var val = d.show_values ? MG.text("", { x: hx0, y: cy, "font-size": valueFs, "text-anchor": "start", "font-weight": 800 }) : null;
+      bars.push({ rect: rect, val: val, lab: lab, it: it, i: i, len: (hx1 - hx0) * (it.value / maxV), base: hx0 });
+    });
+  }
+
+  return function (t) {
+    bars.forEach(function (b) {
+      var start = 0.35 + b.i * stagger;
+      var k = MG.prog(t, start, growDur, MG.ease.outCubic);
+      var len = Math.max(0, b.len * k);
+      var show = MG.prog(t, start - 0.2, 0.3);
+      b.lab.setAttribute("opacity", show);
+      if (!horizontal) {
+        b.rect.setAttribute("y", b.base - len);
+        b.rect.setAttribute("height", len);
+        if (b.val) {
+          b.val.setAttribute("y", b.base - len - valueFs * 0.75);
+          b.val.textContent = MG.fmt(b.it.value * k, d.decimals) + unit;
+          b.val.setAttribute("opacity", show);
+        }
+      } else {
+        b.rect.setAttribute("width", len);
+        if (b.val) {
+          b.val.setAttribute("x", b.base + len + 16 * U);
+          b.val.textContent = MG.fmt(b.it.value * k, d.decimals) + unit;
+          b.val.setAttribute("opacity", show);
+        }
+      }
+    });
+  };
+});
+</script>
+</body>
+</html>

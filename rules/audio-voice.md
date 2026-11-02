@@ -69,6 +69,7 @@ project.add_cloud_media("7135753343380606242", start_time="5s", duration="2s", t
 ## 4) Mandatory Mixing Rule
 
 When narration and background music coexist, set BGM volume to `0.6` by default.
+Better: duck the BGM under the voice with `project.auto_duck()` (`scripts/core/mix_ops.py`). For sound effects, use `scripts/sfx_designer.py` with `data/sfx_library.csv`. See `rules/quality.md`.
 
 ## 5) Fallback
 

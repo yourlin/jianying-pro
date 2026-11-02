@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG map_route</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/*
+ * 地图路线 (简化 SVG): data = {points:[{x, y, label}], path, outline, title, smooth, marker}
+ * points 坐标为地图区域比例 0~1; path / outline 是 0~1000 坐标系的 SVG path (可选):
+ * path 给出时沿它画路线 (points 只画标注点), outline 画成淡色的陆地/区域轮廓。
+ */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, pad = MG.pad, th = MG.theme;
+  var top = pad + MG.title(d.title);
+  var size = Math.min(W - 2 * pad, H - top - pad);
+  var ox = (W - size) / 2, oy = top + (H - top - pad - size) / 2;
+  var k = size / 1000;
+  var map = MG.el("g", { transform: "translate(" + ox + "," + oy + ") scale(" + k + ")" });
+  var P = function (p) { return [p.x * 1000, p.y * 1000]; };
+  if (d.outline) {
+    MG.el("path", { d: d.outline, fill: th.primary, "fill-opacity": 0.12, stroke: th.primary, "stroke-opacity": 0.5, "stroke-width": 3 / k * U, "stroke-linejoin": "round" }, map);
+  }
+  var pts = d.points.map(P);
+  var routeD = d.path;
+  if (!routeD) {
+    routeD = "M" + pts[0][0] + " " + pts[0][1];
+    for (var i = 1; i < pts.length; i++) {
+      if (d.smooth !== false && pts.length > 2) {
+        /* Catmull-Rom -> 三次贝塞尔 */
+        var p0 = pts[Math.max(0, i - 2)], p1 = pts[i - 1], p2 = pts[i], p3 = pts[Math.min(pts.length - 1, i + 1)];
+        var c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+        var c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        routeD += " C" + c1.join(" ") + " " + c2.join(" ") + " " + p2.join(" ");
+      } else {
+        routeD += " L" + pts[i][0] + " " + pts[i][1];
+      }
+    }
+  }
+  var lw = 8 * U / k;
+  MG.el("path", { d: routeD, fill: "none", stroke: th.muted, "stroke-width": lw * 0.6, "stroke-dasharray": (lw * 1.5) + " " + (lw * 1.5), "stroke-linecap": "round", opacity: 0.6 }, map);
+  var route = MG.el("path", { d: routeD, fill: "none", stroke: th.accent, "stroke-width": lw, "stroke-linecap": "round", "stroke-linejoin": "round" }, map);
+  var total = route.getTotalLength() || 1;
+  route.setAttribute("stroke-dasharray", total + " " + total);
+  route.setAttribute("stroke-dashoffset", total);
+
+  /* 每个标注点在路线上的位置比例: 取路线上最近的采样点 */
+  var samples = [];
+  for (var s = 0; s <= 400; s++) {
+    var q = route.getPointAtLength((total * s) / 400);
+    samples.push([q.x, q.y]);
+  }
+  var pins = pts.map(function (p, i) {
+    var best = 0, bd = 1e18;
+    samples.forEach(function (q, j) {
+      var dd = (q[0] - p[0]) * (q[0] - p[0]) + (q[1] - p[1]) * (q[1] - p[1]);
+      if (dd < bd) { bd = dd; best = j; }
+    });
+    var sx = ox + p[0] * k, sy = oy + p[1] * k;
+    var g = MG.el("g", { opacity: 0 });
+    MG.el("circle", { cx: sx, cy: sy, r: 16 * U, fill: th.primary, stroke: "#ffffff", "stroke-width": 5 * U }, g);
+    var lbl = null, label = d.points[i].label;
+    if (label) {
+      var fs = Math.round(38 * U);
+      var below = sy < oy + fs * 2.5;
+      lbl = MG.pill(label, MG.clamp(sx, fs * 3, W - fs * 3), sy + (below ? fs * 1.4 : -fs * 1.4), fs, { parent: g });
+    }
+    return { g: g, frac: best / 400, sx: sx, sy: sy };
+  });
+  var marker = MG.el("circle", { r: 13 * U, fill: "#ffffff", stroke: th.accent, "stroke-width": 6 * U, opacity: 0 });
+  var drawStart = 0.6, drawDur = MG.A * 0.75;
+
+  return function (t) {
+    var p = MG.prog(t, drawStart, drawDur, MG.ease.inOutCubic);
+    route.setAttribute("stroke-dashoffset", (total * (1 - p)).toFixed(2));
+    var q = route.getPointAtLength(total * p);
+    marker.setAttribute("cx", ox + q.x * k);
+    marker.setAttribute("cy", oy + q.y * k);
+    marker.setAttribute("opacity", d.marker === false ? 0 : p > 0 && p < 1 ? 1 : 0);
+    pins.forEach(function (pin, i) {
+      var shown = i === 0 ? MG.prog(t, 0.2, 0.3) : p >= pin.frac - 0.005 ? 1 : 0;
+      pin.g.setAttribute("opacity", shown);
+      var s = i === 0 ? shown : shown ? 1 : 0;
+      pin.g.setAttribute("transform", "translate(" + pin.sx * (1 - s) + "," + pin.sy * (1 - s) + ") scale(" + Math.max(0.001, s) + ")");
+    });
+  };
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG list_reveal</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/* 列表逐条出现: data = {items:[{text, sub}], title, numbered, highlight_last} */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, pad = MG.pad, th = MG.theme;
+  var items = d.items, n = items.length;
+  var top = pad + MG.title(d.title);
+  var avail = H - top - pad;
+  var hasSub = items.some(function (it) { return it.sub; });
+  var rowH = Math.min(avail / n, (hasSub ? 190 : 140) * U);
+  var fs = Math.round(Math.min(56 * U, rowH * 0.42));
+  var subFs = Math.round(fs * 0.62);
+  var y0 = top + (avail - rowH * n) / 2;
+  var x0 = pad + (MG.portrait ? 0 : W * 0.06), x1 = W - pad;
+  var badge = fs * 1.4;
+  var stagger = Math.min(0.9, (MG.A * 0.85) / n);
+  var rows = items.map(function (it, i) {
+    var cy = y0 + rowH * (i + 0.5);
+    var g = MG.el("g", { opacity: 0 });
+    var c = MG.color(i, it.color);
+    if (d.numbered !== false) {
+      MG.el("rect", { x: x0, y: cy - badge / 2, width: badge, height: badge, rx: badge * 0.28, fill: c }, g);
+      MG.text(String(i + 1), { x: x0 + badge / 2, y: cy, "font-size": Math.round(fs * 0.8), "text-anchor": "middle", "font-weight": 900, fill: th.on_primary }, g);
+    } else {
+      MG.el("circle", { cx: x0 + badge / 2, cy: cy, r: badge * 0.22, fill: c }, g);
+    }
+    var tx = x0 + badge + 28 * U;
+    var main = MG.text(it.text, { x: tx, y: it.sub ? cy - subFs * 0.55 : cy, "font-size": fs, "text-anchor": "start", "font-weight": 700 }, g);
+    MG.fit(main, x1 - tx);
+    if (it.sub) {
+      var sub = MG.text(it.sub, { x: tx, y: cy + fs * 0.6, "font-size": subFs, "text-anchor": "start", "font-weight": 500, fill: th.muted }, g);
+      MG.fit(sub, x1 - tx);
+    }
+    return { g: g, at: 0.3 + i * stagger };
+  });
+
+  return function (t) {
+    rows.forEach(function (r, i) {
+      var k = MG.prog(t, r.at, 0.5, MG.ease.outCubic);
+      var dim = d.highlight_last && i < n - 1 ? 1 - 0.45 * MG.prog(t, rows[Math.min(n - 1, i + 1)].at, 0.4) : 1;
+      r.g.setAttribute("opacity", (k * dim).toFixed(3));
+      r.g.setAttribute("transform", "translate(" + ((1 - k) * -60 * U).toFixed(2) + ",0)");
+    });
+  };
+});
+</script>
+</body>
+</html>

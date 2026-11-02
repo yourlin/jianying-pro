@@ -1,6 +1,36 @@
 # Changelog
 
 ## Unreleased
+- **Learning from the user's own work**:
+  - `style_profile.py` learns style habits from hand-cut drafts (shot lengths, subtitles, titles, transitions, audio and so on).
+  - `edit_diff.py` aligns a skill-generated draft with the JianYing-edited version segment by segment and learns the user's corrections. Automatic JianYing normalisation is filtered out.
+  - Results go to `~/.config/jianying-pro/learned/`, outside the repo.
+  - Confirmed preferences are applied by `utils/user_prefs.py` from `~/.config/jianying-pro/style_overrides.json`. The compile report lists every override; use `--no-user-prefs` or `JY_USER_PREFS=off` to turn them off. Tests always run with prefs off (`tests/conftest.py`).
+- **New scenes `promo` and `music_video`**, learned from real promo and MV samples:
+  - `promo` has a title-card hook, equal-length montage sections every 2 beats, label-style captions and an end card. Use `--lang` for language versions that share one timeline.
+  - `music_video` cuts on lyric lines and allows long shots in the climax.
+  - `cut_on: beat|lyric` in beat_montage / `beat_snap`.
+  - In tutorials, waits over 5 s are jump-cut or sped up, BGM is on by default, and subtitles sit in a bottom bar.
+  - The title-card hook and the recap hook are added to `hook.md` / `hook_bank.md`.
+- **Builder**: lays out montage plans (`main.montage`), speed-ramped ranges (`main.speed`) and subtitle background bars.
+- **Frame alignment** (`utils/frame_align.py`): every write is snapped to whole frames, and the main track accumulates whole frames. Transitions are pre-normalised with JianYing's rule, checked against 22 samples, so the recorded duration matches what JianYing shows, with a warning when the cut exceeds 20%. JianYing no longer rewrites skill drafts on open.
+- **quality_review**: cut recall on real videos went from 29–65% to 94–95% with no extra false positives. Static CTA end cards are no longer flagged as dead zones. The viewer sheet always shows the 0–3 s hook frames. It reads the storyboard `review` block (title-card hook, intentional holds, per-section colour checks).
+- Tool fixes from real-video benchmarks: `reference_analyzer` caps edge fades (white UI recordings swallowed every cut), needs ≥ 6 cuts before judging beat sync, and uses a CJK header font. `quality_review` no longer double-counts silence. `shot_quality --scenes` accepts `reference.json` cuts.
+- **High-quality short-video toolchain** (`rules/quality.md`, `docs/TODO-quality.md`, per-tool docs in `docs/features/`):
+  - Speech cleanup (`speech_cleanup.py`): fillers, stutters, NG retakes, repeated sentences and long pauses. The returned transcript is already remapped to the cleaned timeline.
+  - Best take (`best_take.py`): picks the best of repeated takes by fluency, script similarity and picture quality.
+  - Shot quality (`shot_quality.py`): blur, shake, exposure, face and eye scores.
+  - Beat detection (`beat_detect.py`, librosa with a numpy fallback) and beat snapping / beat-montage planning (`beat_snap.py`).
+  - Auto ducking (`auto_duck()`), a sound-effect library (`data/sfx_library.csv`) and an SFX designer (`sfx_designer.py`).
+  - Colour matching to a reference frame (`color_match.py`, `match_color()`, panel parameters or a LUT).
+  - Parametric motion-graphics templates (`motion_graphics.py`, `assets/motion_graphics/`).
+  - Reference-video structure analysis that produces scene / style JSON (`reference_analyzer.py`).
+  - B-roll search from Pexels / Pixabay (`broll_fetch.py`) and a text- / image-to-video provider interface (`genvideo_providers.py`: Kling and mock).
+  - Hook writing prompt (`prompts/hook_writer.md`, `methodology/hook_bank.md`).
+  - Quality review for hook, pacing, dead zones, colour jumps and BGM-over-voice, with a viewer contact sheet (`quality_review.py`).
+  - Covers and titles (`cover_maker.py`), 15 / 30 / 60 s and multi-format variants (`variants.py`), and retention-curve feedback (`retention_feedback.py`).
+  - New mixins registered on `JyProject`: `SpeechCutOpsMixin`, `BeatOpsMixin`, `MixOpsMixin`, `ColorMatchOpsMixin`, `MotionGraphicsOpsMixin`, `BestTakeOpsMixin`.
+- `analyze_footage.detect_faces` no longer crashes on opencv-python 5.x (no Haar cascades); it skips face detection. `requirements.txt` notes not to upgrade opencv past 4.x.
 - **Layout grid with real font metrics** (`references/methodology/layout.md`). Insert, hero and end-card pages now place text into non-overlapping regions defined per format (`circle_layout.regions`) instead of hand-tuned coordinates.
   - New `utils/text_metrics.py` measures text with the font files in JianYing's cache (size 1 ≈ 6.4 px, calibrated from screenshots). It tries one line at up to 88% size, then two balanced lines (breaking at punctuation, spaces, `·` or before an opening bracket), then shrinks; the compiler warns when text still does not fit.
   - Line breaks are written into the content, because JianYing's max line width often does not wrap English.

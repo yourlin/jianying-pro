@@ -1,0 +1,18 @@
+{
+ "title": "示例教程",
+ "name": "示例教程",
+ "scene": "教程录屏",
+ "style": "tech",
+ "format": "横屏",
+ "pacing": "natural",
+ "analysis": "tutorial.analysis.json",
+ "sources": {"main": "recording.mp4"},
+ "beats": [
+  {"id": "S01", "purpose": "结果先行", "time": [0, 5.0],
+   "elements": [{"kind": "title", "text": "第 1 集 · 环境准备"}]},
+  {"id": "S02", "purpose": "步骤", "time": [5.0, 30.0],
+   "elements": [{"kind": "label", "text": "步骤 1 新建项目"}]},
+  {"id": "S03", "purpose": "CTA", "time": [30.0, 40.0],
+   "elements": [{"kind": "cta", "text": "下一集：接入数据"}]}
+ ]
+}

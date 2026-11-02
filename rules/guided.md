@@ -20,7 +20,7 @@ metadata:
 python <SKILL_ROOT>/scripts/analyze_footage.py <主视频> [--assets <素材目录>] [--language zh] [--prompt "专有名词"]
 ```
 
-得到 `analysis.json`：画幅、时长、静音气口、镜头切换、**人脸位置和可放插卡的区域**、语音转写（词级时间戳）、素材目录里的图片 / 视频及方向，以及场景推断。改已有草稿时，再跑一次 `layout_preview.py --draft <草稿名> --auto` 看现状，并 Read 对比图，把问题列出来（作为后面选择的依据）。
+得到 `analysis.json`：画幅、时长、静音气口、镜头切换、**人脸位置和可放插卡的区域**、语音转写（词级时间戳）、素材目录里的图片 / 视频及方向，以及场景推断。素材多、质量参差时，再跑 `shot_quality.py` 给镜头打分，挑掉模糊、抖动、过曝的废片。用户给了参考视频时，跑 `reference_analyzer.py` 反推场景 / 风格，作为第二轮的推荐项。口播素材在写剧本前先跑 `speech_cleanup.py`（同一句说了多遍时用 `best_take.py`），后面的字幕和定位都用它输出的 `transcript`。详见 `rules/quality.md`。改已有草稿时，再跑一次 `layout_preview.py --draft <草稿名> --auto` 看现状，并 Read 对比图，把问题列出来（作为后面选择的依据）。
 
 ## ② 引导选择（用 AskUserQuestion，每轮最多 4 题）
 
@@ -30,7 +30,7 @@ python <SKILL_ROOT>/scripts/analyze_footage.py <主视频> [--assets <素材目�
 
 | 问题 | 选项来源 |
 |---|---|
-| 场景 | `references/scenes/`：口播知识 / Vlog / 教程录屏 / 带货种草 / 影视解说 / 卡点混剪 / 剧情短片。推荐 = `analysis.json` 的 `scene_guess` |
+| 场景 | `references/scenes/`：口播知识 / Vlog / 教程录屏 / 带货种草 / 影视解说 / 卡点混剪 / 剧情短片 / 宣传片 / MV。推荐 = `analysis.json` 的 `scene_guess` |
 | 风格 | `references/styles/`：国风古韵 / 科技 / 清新文艺 / 综艺活泼 / 商务简约。推荐按内容主题（如讲汉字 → 国风） |
 | 平台与画幅 | 抖音 / 视频号竖屏 9:16、小红书 3:4、B 站横屏 16:9。推荐 = 素材方向 |
 | 成片时长 | 场景文件里的建议时长；素材本身较短时推荐"保留全部内容，只剪气口" |
@@ -56,11 +56,11 @@ python <SKILL_ROOT>/scripts/preview_assets.py "<关键词>" -c panel_flower_text
 python <SKILL_ROOT>/scripts/preview_assets.py "<关键词>" -c panel_transitions -l 12 --frames 3  # 转场
 ```
 
-用 Read 看图后，挑 3～4 个最合适的作为选项（选项的 `preview` 写编号和理由），让用户选。配乐用 `asset_search.py "<情绪关键词>" -c cloud_music_library` 找 3 首，说明情绪和时长，请用户在剪映里试听。用户想不出来时，就用风格文件的默认值。
+用 Read 看图后，挑 3～4 个最合适的作为选项（选项的 `preview` 写编号和理由），让用户选。配乐用 `asset_search.py "<情绪关键词>" -c cloud_music_library` 找 3 首，说明情绪和时长，请用户在剪映里试听。用户想不出来时，就用风格文件的默认值。需要 B-roll 时用 `broll_fetch.py`（`rules/quality.md`）。
 
 ## ④ 写剧本（用户确认后才装配）
 
-按 `references/script_schema.md` 写剧本 `script.json`（放在用户项目目录，不放 skill 里）。剧本只写内容：
+开头先按 `prompts/hook_writer.md` 写 3～5 个钩子，让用户选一个。再按 `references/script_schema.md` 写剧本 `script.json`（放在用户项目目录，不放 skill 里）。剧本只写内容：
 - 段落：用途，以及用台词定位的时间；
 - 每段的元素：标题、点题字、插卡 + 标注、关键词、词卡、CTA、结尾特效、音效；
 - 段落开头的运镜。
@@ -96,14 +96,17 @@ python <SKILL_ROOT>/scripts/script_compiler.py script.json -o storyboard.json --
 
 装配器按分镜表生成草稿，然后自动跑审片器；`--preview` 会在剪映里截取每个镜头（macOS，剪映停在首页）。装配报告里的警告（素材找不到、插卡太短、文字被剪点截断）要处理掉。
 
+有 BGM 和人声时用 `auto_duck()` 做 ducking；包装强度不是"克制"时，用 `sfx_designer.py` 铺音效；多段素材色调不一致时，用 `match_color()` 统一调色；卡点场景用 `beat_snap.py`（见 `rules/quality.md`）。
+
 ## ⑥ 审片（用户确认后才算完成）
 
 1. Read 审片器的 `sheet.jpg` 和报告，`[字号]` `[安全区]` `[平台UI]` `[重叠]` `[蒙版]` `[对比度]` `[字体]` `[闪帧]` 必须清零，回到 ④ 改分镜重跑。
 2. Read 剪映截图（必做，审片器通过不代表画面正确），看花字 / 模板的真实效果、插卡和人脸的关系、文字清不清楚。
 3. 把截图和"改了什么、为什么"给用户看；提醒用户在剪映里听一遍音量平衡（BGM 和人声）。
 4. 用户提意见 → 改剧本（内容）或改规范（呈现方式，对所有项目生效）→ 重新编译、装配。
-5. 写剧本前，可以按 `methodology/edit_grammar.md` 末尾的「剪辑师常见错误」自查一遍。
-6. 剪映截图里发现的通用问题（比如某种花字在亮背景上看不清），要写回风格 / 画幅规范，不要只在这个项目里改。
+5. 版式问题清零后跑 `quality_review.py`，Read `viewer_sheet.png`，从观众角度看钩子、节奏和死区；交付时用 `cover_maker.py` 出封面，用户要多版本时用 `variants.py`。
+6. 写剧本前，可以按 `methodology/edit_grammar.md` 末尾的「剪辑师常见错误」自查一遍。
+7. 剪映截图里发现的通用问题（比如某种花字在亮背景上看不清），要写回风格 / 画幅规范，不要只在这个项目里改。
 
 ## 原则
 

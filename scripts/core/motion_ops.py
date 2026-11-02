@@ -11,6 +11,7 @@ from typing import Optional
 
 import pyJianYingDraft as draft
 from core.picture_ops import _hex_color, _pct
+from utils.frame_align import frames_to_us, project_fps, us_to_frames
 from utils.panel_assets import _local_md5_index, find_panel_asset
 
 TEXT_GLOW_FLAG = 64  # 文字素材 check_flag: 发光
@@ -30,18 +31,31 @@ class MotionOpsMixin:
     """JyProject 的变速 / 动效 Mixin。"""
 
     def _retime(self, segment, new_duration: int, ripple: bool = True):
-        """改片段时长; ripple=True 时同一轨道后面的片段跟着前移/后移 (与剪映一致)。"""
-        fps = getattr(self.script, "fps", 30) or 30  # 剪映会把变速后的时长对齐到整帧
-        new_duration = round(round(new_duration * fps / 1_000_000) * 1_000_000 / fps)
-        old = segment.target_timerange.duration
-        delta = int(new_duration) - old
-        segment.target_timerange.duration = int(new_duration)
+        """改片段时长; ripple=True 时同一轨道后面的片段跟着前移/后移 (与剪映一致)。
+
+        按帧计算 (utils.frame_align): 新终点 = 起点帧 + 新时长换算的帧数 (至少 1 帧), 起点 / 终点都落在帧边界上;
+        后面的片段按帧数平移, 不直接加减微秒 (帧边界间隔是 33333 / 33334us, 微秒平移会离开帧边界)。
+        """
+        fps = project_fps(self)  # 剪映会把变速后的时长对齐到整帧
+        tr = segment.target_timerange
+        sf = us_to_frames(tr.start, fps)
+        old_ef = us_to_frames(tr.start + tr.duration, fps)
+        new_ef = sf + max(1, us_to_frames(new_duration, fps))
+        tr.start = frames_to_us(sf, fps)
+        tr.duration = frames_to_us(new_ef, fps) - tr.start
+        delta = new_ef - old_ef
         if ripple and delta:
             for track in self.script.tracks.values():
-                if segment in track.segments:
-                    for other in track.segments:
-                        if other is not segment and other.target_timerange.start >= segment.target_timerange.start + old:
-                            other.target_timerange.start += delta
+                if segment not in track.segments:
+                    continue
+                for other in track.segments:
+                    ot = other.target_timerange
+                    of0 = us_to_frames(ot.start, fps)
+                    if other is segment or of0 < old_ef:
+                        continue
+                    of1 = us_to_frames(ot.start + ot.duration, fps)
+                    ot.start = frames_to_us(of0 + delta, fps)
+                    ot.duration = frames_to_us(of1 + delta, fps) - ot.start
         self.script.duration = max((s.end for t in self.script.tracks.values() for s in t.segments), default=0)
 
     def set_speed(self, segment, speed: float = 2.0, change_pitch: bool = False, ripple: bool = True):

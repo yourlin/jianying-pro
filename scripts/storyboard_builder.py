@@ -12,11 +12,20 @@ import json
 import os
 import subprocess
 import sys
+from fractions import Fraction
 from typing import Dict, List, Optional, Tuple
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, "vendor"))
+
+from utils.frame_align import (  # noqa: E402
+    frames_to_us,
+    project_fps,
+    snap_range,
+    snap_us,
+    us_to_frames,
+)
 
 US = 1_000_000
 
@@ -43,25 +52,36 @@ class StoryboardError(ValueError):
 # ---------------------------------------------------------------------------
 
 class Timeline:
-    """main.keep 里保留的源视频区间依次拼接成成片。"""
+    """main.keep 里保留的源视频区间依次拼接成成片。speeds[k] 是第 k 段的倍速 (main.speed), 成片时长 (b-a)/speed。"""
 
-    def __init__(self, keep: List[Tuple[float, float]]):
-        self.keep = [(float(a), float(b)) for a, b in keep if float(b) > float(a)]
-        if not self.keep:
+    def __init__(self, keep: List[Tuple[float, float]], speeds: Optional[List[float]] = None):
+        pairs = [(float(a), float(b)) for a, b in keep]
+        sp = list(speeds) if speeds else [1.0] * len(pairs)
+        kept = [(ab, float(s or 1.0)) for ab, s in zip(pairs, sp) if ab[1] > ab[0]]
+        if not kept:
             raise StoryboardError("main.keep 为空")
-        self.starts, t = [], 0.0
-        for a, b in self.keep:
-            self.starts.append(t)
-            t += b - a
-        self.total = t
+        self.keep = [ab for ab, _s in kept]
+        self.speeds = [s for _ab, s in kept]
+        self.set_layout(None)
+
+    def set_layout(self, ranges: Optional[List[Tuple[float, float]]]):
+        """每段在成片里的 (起点, 时长) 秒; None 时按理想时长 (b-a)/speed 首尾相接。装配后换成实际写入的整帧位置。"""
+        if ranges is None:
+            ranges, t = [], 0.0
+            for (a, b), s in zip(self.keep, self.speeds):
+                ranges.append((t, (b - a) / s))
+                t += (b - a) / s
+        self.starts = [float(s) for s, _d in ranges]
+        self.out_durs = [float(d) for _s, d in ranges]
+        self.total = self.starts[-1] + self.out_durs[-1]
 
     def to_out(self, src: float) -> float:
-        """源时间 -> 成片时间。落在被剪掉的区间里时, 吸附到下一个保留区间的开头。"""
-        for (a, b), s in zip(self.keep, self.starts):
+        """源时间 -> 成片时间 (变速段按倍速换算)。落在被剪掉的区间里时, 吸附到下一个保留区间的开头。"""
+        for (a, b), s, d in zip(self.keep, self.starts, self.out_durs):
             if src < a:
                 return s
             if src <= b:
-                return s + (src - a)
+                return s + (src - a) * d / (b - a)
         return self.total
 
     def span(self, start: float, dur: float) -> Tuple[float, float]:
@@ -69,6 +89,38 @@ class Timeline:
         s = self.to_out(start)
         e = self.to_out(start + dur)
         return s, max(0.0, min(e, self.total) - s)
+
+
+def speed_keep(keep, speed) -> Tuple[List[Tuple[float, float]], List[float], List[dict]]:
+    """main.speed [{range: [a, b], speed}] -> (keep, 每段倍速, 没对上 keep 的条目)。
+
+    range 一般就是 keep 里的一段; 落在某段 keep 里面时把那段拆开 (前后按原速)。
+    """
+    out = [(float(a), float(b)) for a, b in keep]
+    speeds = [1.0] * len(out)
+    bad: List[dict] = []
+    eps = 1e-3
+    for item in speed or []:
+        try:
+            a, b = (float(v) for v in item["range"][:2])
+            sp = float(item.get("speed", 1.0))
+        except (KeyError, TypeError, ValueError):
+            bad.append(item)
+            continue
+        if not (b > a and 0.1 <= sp <= 100):
+            bad.append(item)
+            continue
+        for k, (ka, kb) in enumerate(out):
+            if ka - eps <= a and b <= kb + eps and speeds[k] == 1.0:
+                a, b = max(a, ka), min(b, kb)
+                parts = [((ka, a), 1.0), ((a, b), sp), ((b, kb), 1.0)]
+                parts = [p for p in parts if p[0][1] - p[0][0] > eps]
+                out[k : k + 1] = [p[0] for p in parts]
+                speeds[k : k + 1] = [p[1] for p in parts]
+                break
+        else:
+            bad.append(item)
+    return out, speeds, bad
 
 
 # ---------------------------------------------------------------------------
@@ -84,8 +136,37 @@ def _rgb(color) -> Optional[Tuple[float, float, float]]:
     return tuple(float(v) for v in color[:3])
 
 
+def text_background(spec):
+    """分镜表的文字背景 -> pyJianYingDraft.TextBackground。
+
+    spec: {"color": "#RRGGBB" 或 "#RRGGBBAA", "alpha": 0~1, "round_radius": 0~1, "style": 1|2,
+           "height", "width", "horizontal_offset", "vertical_offset" (0~1, 和剪映面板一致)}; True 表示黑色 60%。
+    """
+    import pyJianYingDraft as draft
+
+    spec = {"color": "#000000", "alpha": 0.6} if spec is True else dict(spec)
+    color = str(spec.get("color") or "#000000")
+    if not color.startswith("#"):
+        color = "#" + color
+    alpha = spec.get("alpha")
+    if len(color) == 9:  # #RRGGBBAA: 透明度从颜色里取 (没单独写 alpha 时)
+        if alpha is None:
+            alpha = int(color[7:9], 16) / 255
+        color = color[:7]
+    kw = {k: float(spec[k]) for k in ("round_radius", "height", "width", "horizontal_offset", "vertical_offset")
+          if spec.get(k) is not None}  # fmt: skip
+    style = int(spec.get("style", 1))
+    return draft.TextBackground(color=color, style=style if style in (1, 2) else 1,
+                                alpha=float(1.0 if alpha is None else alpha), **kw)  # fmt: skip
+
+
 def _sec(v) -> str:
     return f"{float(v):.3f}s"
+
+
+def _us(v) -> int:
+    """秒 -> 微秒 (未对齐; 对齐由 StoryboardBuilder._at / _range 按工程帧率做)。"""
+    return int(round(float(v) * US))
 
 
 def wrap_text(text: str, limit: int) -> str:
@@ -178,6 +259,17 @@ class StoryboardBuilder:
         self.tl: Optional[Timeline] = None
         self.main_segs: List = []
         self.report: Dict[str, list] = {"shots": []}
+        self.fps = 30.0
+        self.music_seg = None  # 混剪模式的音乐片段
+        self._continuous_joins: set = set()  # 源视频里连续的剪点 (变速边界, 不是真的剪点)
+
+    # -- 帧对齐: 写入草稿的时间都先对齐到工程帧率的整帧, 和剪映打开草稿时的吸附结果一致 --
+    def _at(self, t: float) -> int:
+        return snap_us(_us(t), self.fps)
+
+    def _range(self, start: float, dur: float) -> Tuple[int, int]:
+        """成片区间 (秒) -> 对齐到整帧的 (起点, 时长) 微秒: 起点 / 终点各自取最近的帧边界。"""
+        return snap_range(_us(start), _us(dur), self.fps)
 
     # -- helpers --
     def color_card(self, spec: str) -> str:
@@ -220,6 +312,11 @@ class StoryboardBuilder:
         self.warnings.append(msg)
         print(f"⚠️ {msg}")
 
+    def _main_end_us(self) -> int:
+        if not self.main_segs:
+            return self._at(self.tl.total) if self.tl else 0
+        return max(s.target_timerange.start + s.target_timerange.duration for s in self.main_segs)
+
     def main_seg_at(self, out_t: float):
         for seg in self.main_segs:
             s = seg.target_timerange.start / US
@@ -238,6 +335,7 @@ class StoryboardBuilder:
         self.p = JyProject(proj["name"], width=int(canvas.get("width", 1080)), height=int(canvas.get("height", 1920)),
                            overwrite=True)
         self.p.allow_vip = bool(proj.get("allow_vip", True))
+        self.fps = project_fps(self.p)
         self._main()
         self._camera()
         for shot in self.sb.get("shots") or []:
@@ -248,32 +346,38 @@ class StoryboardBuilder:
             if w not in self.warnings:
                 self.warnings.append(w)
         result = self.p.save()
-        self.report["total"] = round(self.tl.total, 3)
+        self.report["total"] = round(self._main_end_us() / US, 3)
+        self.report["fps"] = self.fps
+        trans = self.p.transition_report() if hasattr(self.p, "transition_report") else []
+        if trans:
+            self.report["transitions"] = trans
         self.report["warnings"] = self.warnings
         return {"draft": proj["name"], "result": result, "report": self.report}
 
     def _main(self):
         main = self.sb.get("main") or {}
-        src = self.path(main.get("source", "main"))
-        keep = main.get("keep")
-        if not keep:
-            from analyze_footage import probe
-
-            keep = [[0, probe(src).get("duration") or 0]]
-        self.tl = Timeline(keep)
-        trans = main.get("transitions")
-        for i, ((a, b), out_s) in enumerate(zip(self.tl.keep, self.tl.starts)):
-            seg = self.p.add_media_safe(src, _sec(out_s), _sec(b - a), "Main", source_start=_sec(a))
-            if seg is None:
-                raise StoryboardError(f"主视频导入失败: {src}")
-            seg.volume = float(main.get("volume", 1.0))
-            self.main_segs.append(seg)
+        if main.get("montage"):
+            pairs = self._main_montage(main)
+        else:
+            pairs = self._main_keep(main)
         # 剪点转场: transitions 可以是 {name, duration} (每个剪点都用) 或列表 (按剪点顺序, null 表示硬切)
-        cuts = len(self.main_segs) - 1
+        trans = main.get("transitions")
+        cuts = len(pairs)
         plan = trans if isinstance(trans, list) else ([trans] * cuts if trans else [])
-        for seg, t in zip(self.main_segs[:-1], plan[:cuts]):
+        if isinstance(trans, list) and len(trans) != cuts:
+            self.warn(
+                f"main.transitions 有 {len(trans)} 项, 剪点有 {cuts} 个: 多出的忽略, 缺的硬切"
+            )
+        for i, ((seg, nxt), t) in enumerate(zip(pairs, plan[:cuts])):
+            if t and t.get("name") and not isinstance(trans, list) and i in self._continuous_joins:
+                continue  # 变速段和前后原速段在源视频里是连着的, 不是剪点: 统一转场不加在这里
             if t and t.get("name"):
-                if not self.p.add_transition_simple(t["name"], seg, duration=_sec(t.get("duration", 0.5))):
+                if seg is None or nxt is None:  # 剪点两边有镜头没放进去 (素材缺失)
+                    self.warn(f"转场「{t['name']}」所在剪点的镜头缺失, 跳过")
+                    continue
+                # 时长按剪映规则规整 (偶数帧, 不超过相邻较短片段的一半), 截短较多时警告进装配报告
+                dur_us = _us(t.get("duration", 0.5))
+                if not self.p.add_transition_simple(t["name"], seg, duration=dur_us):
                     self.warn(f"转场「{t['name']}」没找到")
         bg = main.get("background")  # 背景填充: 主视频缩小 (小窗) 时露出的区域, 不设就是黑色
         if bg:
@@ -290,6 +394,10 @@ class StoryboardBuilder:
             if grade.get("beauty"):
                 self.p.set_beauty(seg, **grade["beauty"])
         audio = main.get("audio") or {}
+        if main.get("montage"):  # 混剪的素材是静音的, 响度统一加在音乐上
+            if self.music_seg is not None and audio.get("loudness_lufs") is not None:
+                self.p.set_loudness_normalize(self.music_seg, float(audio["loudness_lufs"]))
+            return
         for seg in self.main_segs:
             if audio.get("denoise"):
                 self.p.set_audio_denoise(seg, float(audio.get("denoise_strength", 85)))
@@ -297,6 +405,97 @@ class StoryboardBuilder:
                 self.p.set_vocal_beautify(seg)
             if audio.get("loudness_lufs") is not None:
                 self.p.set_loudness_normalize(seg, float(audio["loudness_lufs"]))
+
+    def _main_keep(self, main: dict) -> List[Tuple]:
+        """主视频按 keep 拼接; main.speed 的区间变速。返回剪点两侧的片段 [(前, 后)]。"""
+        src = self.path(main.get("source") or "main")
+        keep = main.get("keep")
+        if not keep:
+            from analyze_footage import probe
+
+            keep = [[0, probe(src).get("duration") or 0]]
+        keep, speeds, bad = speed_keep(keep, main.get("speed"))
+        for item in bad:
+            self.warn(f"main.speed {item} 没对上 main.keep 里的区间 (或倍速不在 0.1~100), 按原速")
+        self.tl = Timeline(keep, speeds)
+        self._continuous_joins = {i for i, ((_a, b), (c, _d)) in enumerate(zip(self.tl.keep, self.tl.keep[1:]))
+                             if abs(b - c) < 1e-3}  # fmt: skip
+        # 主轨按帧数累加: 每段起点 / 终点从累计的成片时间换算成帧, 相邻片段共用帧边界, 误差不随段数累积。
+        # 变速段先按素材时长放, 再用 set_speed 改成 (b-a)/speed (motion_ops._retime 按帧取整);
+        # 它的帧数原样计入累计 (extra), 后面原速段的帧边界仍按理想时间换算, 和 accumulate_ranges 一致。
+        cum, extra, f0 = Fraction(0), 0, 0
+        for (a, b), sp in zip(self.tl.keep, self.tl.speeds):
+            s_us = frames_to_us(f0, self.fps)
+            if sp == 1.0:
+                cum += _us(b - a)
+                f1 = max(f0, us_to_frames(cum, self.fps) + extra)
+                seg = self.p.add_media_safe(
+                    src, s_us, frames_to_us(f1, self.fps) - s_us, "Main", source_start=_us(a)
+                )
+            else:
+                seg = self.p.add_media_safe(src, s_us, _us(b - a), "Main", source_start=_us(a))
+                if seg is not None:
+                    self.p.set_speed(seg, sp, ripple=False)
+                    f1 = us_to_frames(
+                        seg.target_timerange.start + seg.target_timerange.duration, self.fps
+                    )
+                    extra += f1 - f0
+                    self.report.setdefault("speed", []).append({
+                        "range": [a, b], "speed": sp, "out_start": round(s_us / US, 3),
+                        "out_dur": round(seg.target_timerange.duration / US, 3)})  # fmt: skip
+            if seg is None:
+                raise StoryboardError(f"主视频导入失败: {src}")
+            seg.volume = float(main.get("volume", 1.0))
+            self.main_segs.append(seg)
+            f0 = f1
+        # 文字 / 插卡按实际写入的整帧位置换算成片时间
+        self.tl.set_layout([(s.target_timerange.start / US, s.target_timerange.duration / US)
+                            for s in self.main_segs])  # fmt: skip
+        return list(zip(self.main_segs[:-1], self.main_segs[1:]))
+
+    def _main_montage(self, main: dict) -> List[Tuple]:
+        """混剪: 按顶层 montage (beat_snap 计划) 铺镜头 + 音乐, 时间线 0 到总时长。返回剪点两侧的片段。"""
+        import copy
+
+        plan = copy.deepcopy(self.sb.get("montage") or {})
+        shots = plan.get("shots") or []
+        if not shots:
+            raise StoryboardError(
+                "main.montage 为 true, 但分镜表没有 montage.shots (先用 script_compiler 编译)"
+            )
+        for sh in shots:  # 相对路径相对分镜表所在目录
+            ac = sh["add_clip"]
+            if not os.path.isabs(ac["media_path"]):
+                ac["media_path"] = os.path.join(self.base, ac["media_path"])
+        music = plan.get("music") or {}
+        if music.get("path") and not os.path.isabs(music["path"]):
+            music["path"] = os.path.join(self.base, music["path"])
+        if music.get("path") and not os.path.exists(music["path"]):
+            self.warn(f"混剪音乐不存在: {music['path']}")
+        # 强拍重音已由编译器并进 main.camera, 这里不再加 punch_in, 免得叠两次
+        res = self.p.apply_beat_plan(plan, track_name="Main", accents=False)
+        segs = res.get("video") or []
+        if not segs:
+            raise StoryboardError("混剪镜头一个都没放进去 (素材都不存在?)")
+        if res.get("missing"):
+            self.warn(
+                f"混剪有 {len(res['missing'])} 个镜头素材缺失: {sorted(set(res['missing']))[:3]}"
+            )
+        self.music_seg = res.get("music")
+        self.main_segs = sorted(segs, key=lambda s: s.target_timerange.start)
+        by_frame = {us_to_frames(s.target_timerange.start, self.fps): s for s in self.main_segs}
+        by_shot = [
+            by_frame.get(us_to_frames(int(sh["add_clip"]["target_start"]), self.fps))
+            for sh in shots
+        ]
+        total = float(plan.get("total_duration") or ((main.get("keep") or [[0, 0]])[-1][1]))
+        end = self._main_end_us() / US
+        self.tl = Timeline([(0.0, max(total, end))])  # 段落 / 文字时间就是成片时间
+        self.report["montage"] = {
+            "shots": len(self.main_segs), "planned": len(shots), "cut_on": plan.get("cut_on"),
+            "music": self.music_seg is not None,
+        }  # fmt: skip
+        return list(zip(by_shot[:-1], by_shot[1:]))
 
     def _camera(self):
         """后期运镜: 主视频上的关键帧缩放 / 位移。同一片段上的多个运镜合并成一组关键帧。"""
@@ -366,12 +565,13 @@ class StoryboardBuilder:
         track = t.get("track", default_track)
         clip = draft.ClipSettings(transform_x=float(t.get("x", 0)), transform_y=float(t.get("y", 0)),
                                   scale_x=float(t.get("scale", 1)), scale_y=float(t.get("scale", 1)))
+        s_us, d_us = self._range(start, dur)
         tpl = t.get("template")
         if tpl:
             kind = tpl.get("kind", "text")
             content = t.get("content")
             add = self.p.add_subtitle_template if kind == "subtitle" else self.p.add_text_template
-            return add(content if content is not None else [None], tpl["name"], _sec(start), _sec(dur),
+            return add(content if content is not None else [None], tpl["name"], s_us, d_us,
                        track_name=track, clip_settings=clip if ("x" in t or "y" in t) else None)
         style = draft.TextStyle(size=float(t.get("size", 8)), align=int(t.get("align", 1)),
                                 max_line_width=float(t.get("max_line_width", 0.82)),
@@ -388,14 +588,17 @@ class StoryboardBuilder:
                                             alpha=float(b.get("alpha", 1)))
         elif t.get("border") is False:  # 明确不要描边 (浅底卡片上的实心字; 不写时 add_text_simple 默认加黑描边)
             kw["border"] = None
+        # 文字背景 (字幕条): {color, alpha, round_radius, style, height, width, ...}
+        if t.get("background"):
+            kw["background"] = text_background(t["background"])
         for k in ("anim_in", "anim_out", "anim_loop", "bubble"):
             if t.get(k):
                 kw[k] = t[k]
         content = wrap_text(t["content"], int(t.get("wrap_chars", 0)))
-        seg = self.p.add_text_simple(content, _sec(start), _sec(dur), track_name=track, **kw)
+        seg = self.p.add_text_simple(content, s_us, d_us, track_name=track, **kw)
         if not hasattr(self, "_track_end"):
             self._track_end = {}
-        self._track_end[track] = round(start + dur + 0.001, 6)
+        self._track_end[track] = round((s_us + d_us) / US + 0.001, 6)
         return seg
 
     def _overlay(self, o: dict):
@@ -418,15 +621,18 @@ class StoryboardBuilder:
                 x, y = 0.0, 0.0
         kw = {}
         if o.get("source_in") is not None:  # 视频叠加层从源视频的这个时间开始播放 (如和主视频同步的讲解人小窗)
-            kw["source_start"] = _sec(o["source_in"])
-        seg = self.p.add_overlay(self.path(o["source"]), _sec(start), _sec(dur), track_name=o.get("track", "Cards"),
-                                 position=(float(x), float(y)), scale=float(s0), **kw)
+            kw["source_start"] = _us(o["source_in"])
+        s_us, d_us = self._range(start, dur)
+        seg = self.p.add_overlay(
+            self.path(o["source"]), s_us, d_us, track_name=o.get("track", "Cards"),
+            position=(float(x), float(y)), scale=float(s0), **kw,
+        )  # fmt: skip
         if seg is None:
             self.warn(f"插卡导入失败: {o.get('source')}")
             return None
         if o.get("mute", True):
             seg.volume = 0.0
-        d = int(dur * US)
+        d = seg.target_timerange.duration  # 对齐到整帧后的实际时长, 末尾关键帧不超出片段
         fade = int(min(0.45, dur / 4) * US)
         motion = o.get("motion", "float_in")
         if motion in ("float_in", "push") and s1 != s0:
@@ -463,11 +669,13 @@ class StoryboardBuilder:
             s, d = self.tl.span(float(e["start"]), float(e["dur"]))
             if d < 3:
                 self.warn(f"特效「{e['name']}」只有 {d:.1f}s, 氛围特效少于 3 秒观众看不出意图")
-            if not self.p.add_effect_simple(e["name"], _sec(s), _sec(d), track_name=e.get("track", "EffectTrack")):
+            s_us, d_us = self._range(s, d)
+            track = e.get("track", "EffectTrack")
+            if not self.p.add_effect_simple(e["name"], s_us, d_us, track_name=track):
                 self.warn(f"特效「{e['name']}」没找到")
         for st in shot.get("stickers") or []:
             s, d = self.tl.span(float(st["start"]), float(st["dur"]))
-            self.p.add_sticker(st["name"], _sec(s), _sec(d), track_name=st.get("track", "Sticker"),
+            self.p.add_sticker(st["name"], *self._range(s, d), track_name=st.get("track", "Sticker"),
                                position=tuple(st.get("pos") or (0, 0)), scale=float(st.get("scale", 1)),
                                anim_in=st.get("anim_in"), anim_out=st.get("anim_out"), anim_loop=st.get("anim_loop"))
         for sfx in shot.get("sfx") or []:
@@ -480,7 +688,7 @@ class StoryboardBuilder:
             self.warn(f"音效「{sfx.get('name') or sfx.get('path')}」下载失败")
             return
         at = self.tl.to_out(float(sfx["at"]))
-        self.p.add_audio_safe(path, _sec(at), _sec(sfx["dur"]) if sfx.get("dur") else None,
+        self.p.add_audio_safe(path, self._at(at), _us(sfx["dur"]) if sfx.get("dur") else None,
                               sfx.get("track", "SFX"), volume=float(sfx.get("volume", 0.5)))
 
     def _subtitles(self):
@@ -529,12 +737,15 @@ class StoryboardBuilder:
         bgm = (self.sb.get("audio") or {}).get("bgm")
         if not bgm:
             return
+        if self.music_seg is not None:  # 混剪已经按计划铺了音乐, 不再叠一条 BGM
+            self.warn("混剪模式已有 montage.music, 忽略 audio.bgm")
+            return
         path = bgm.get("path")
         path = self.path(path) if path else self.p.cloud_manager.download_asset(str(bgm.get("id") or bgm.get("query")))
         if not path or not os.path.exists(path):
             self.warn(f"BGM 下载失败 ({bgm.get('id') or bgm.get('query')}), 请在剪映里手动添加")
             return
-        self.p.add_audio_safe(path, "0s", _sec(self.tl.total), bgm.get("track", "BGM"),
+        self.p.add_audio_safe(path, 0, self._main_end_us(), bgm.get("track", "BGM"),
                               volume=float(bgm.get("volume", 0.22)),
                               fade_in=_sec(bgm.get("fade_in", 1.2)), fade_out=_sec(bgm.get("fade_out", 2.5)))
 

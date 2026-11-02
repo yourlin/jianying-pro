@@ -1,0 +1,263 @@
+{
+ "id": "promo",
+ "name": "宣传片",
+ "doc": "promo.md",
+ "detect": {
+  "talk_ratio_max": 0.2,
+  "shots_per_min_min": 20,
+  "orientation": "landscape"
+ },
+ "duration": {
+  "min": 30,
+  "max": 90,
+  "ideal": 50
+ },
+ "pacing": {
+  "compact": 0.0,
+  "natural": 0.0,
+  "keep_breath": 0.0,
+  "avg_shot": [
+   1.0,
+   3.5
+  ],
+  "median_shot": 1.6,
+  "cut_on": "beat",
+  "energy_speedup": false,
+  "cut_every_beats": {
+   "舒缓": 8,
+   "标准": 4,
+   "快闪": 2
+  },
+  "_note": "叙事段每 6–8 拍一刀, 蒙太奇段每 2 拍一刀且等长; 实测宣传片样本镜头中位约 1.6s, P25–P75 为 1.0–3.5s"
+ },
+ "hook": {
+  "type": "title_card",
+  "hold_s": [
+   3.0,
+   4.0
+  ],
+  "text_by_s": 0.3,
+  "audio_by_s": 0.3
+ },
+ "beats": [
+  {
+   "name": "标题卡",
+   "ratio": 0.08,
+   "purpose": "片名 + 副标题 + 一句 slogan, 压在压暗的实机 / 产品画面上",
+   "required": [
+    "hero"
+   ],
+   "allowed": [
+    "title"
+   ],
+   "forbidden": [
+    "label"
+   ],
+   "camera": null,
+   "cut_every_beats": 0,
+   "transition_out": "opening",
+   "note": "约 3.8s 一个镜头不切; 0.2–0.3s 出大字; 叠化进出"
+  },
+  {
+   "name": "故事",
+   "ratio": 0.15,
+   "purpose": "世界观 / 背景 / 角色, 交代这是什么",
+   "required": [],
+   "allowed": [
+    "label",
+    "title"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "cut_every_beats": 8,
+   "note": "叙事段每 6–8 拍一刀"
+  },
+  {
+   "name": "高光",
+   "ratio": 0.12,
+   "purpose": "核心爽点 / 最强画面",
+   "required": [
+    "label"
+   ],
+   "allowed": [
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "cut_every_beats": 4,
+   "note": "能量从这里开始抬升"
+  },
+  {
+   "name": "蒙太奇",
+   "ratio": 0.13,
+   "purpose": "同类内容快速轮播 (关卡 / 场景 / 角色)",
+   "required": [
+    "label"
+   ],
+   "allowed": [],
+   "forbidden": [
+    "hero"
+   ],
+   "camera": null,
+   "cut_every_beats": 2,
+   "note": "每 2 拍一刀, 镜头等长 (同样的帧数); 全片最密的一段",
+   "equal_length": true
+  },
+  {
+   "name": "卖点",
+   "ratio": 0.44,
+   "purpose": "系统 / 功能逐个展示, 一个卖点一张标签卡",
+   "required": [
+    "label"
+   ],
+   "allowed": [
+    "sfx"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "cut_every_beats": 4,
+   "note": "每个卖点 1.5–3.5s, 演示复杂的 UI 可以单镜头放长"
+  },
+  {
+   "name": "CTA",
+   "ratio": 0.08,
+   "purpose": "Logo / 二维码 / 立即体验",
+   "required": [
+    "end_card"
+   ],
+   "allowed": [
+    "cta"
+   ],
+   "forbidden": [
+    "label"
+   ],
+   "camera": null,
+   "cut_every_beats": 0,
+   "transition_in": "ending",
+   "note": "结尾卡 ≥ 3s, 叠化进入, 跟音乐结尾对齐"
+  }
+ ],
+ "elements": {
+  "hero": {
+   "slot": "center",
+   "min_dur": 3.0,
+   "max_dur": 4.0,
+   "delay": 0.2
+  },
+  "title": {
+   "min_dur": 2.0,
+   "max_dur": 4.0,
+   "delay": 0.2
+  },
+  "label": {
+   "min_dur": 3.0,
+   "max_dur": 5.0,
+   "slot": "lower_third",
+   "align": "left",
+   "sub_gap": 0.11,
+   "note": "标签卡: 左下角, 主标题 + 小字副标题 (多语言时副标题放另一种语言), 每个卖点换一次"
+  },
+  "cta": {
+   "min_dur": 3.0
+  },
+  "end_card": {
+   "min_dur": 3.0
+  }
+ },
+ "inserts": {
+  "default": "cover"
+ },
+ "camera": {
+  "per_minute": [
+   0,
+   6
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out",
+   "punch_in"
+  ],
+  "cut_cover": null,
+  "min_gap_s": 2.0
+ },
+ "transitions": {
+  "default": null,
+  "opening": {
+   "name": "叠化",
+   "duration": 0.5
+  },
+  "ending": {
+   "name": "叠化",
+   "duration": 0.5
+  },
+  "chapter": {
+   "name": "闪黑",
+   "duration": 0.3
+  },
+  "hard_cut_min": 0.7,
+  "_note": "约 70% 硬切; 叠化只用在开头标题卡和结尾卡; 段落 (章节) 之间可以有 1 次闪黑 / 闪白"
+ },
+ "subtitles": {
+  "default": "labels",
+  "note": "不逐句出字幕; 卖点用左下角标签卡, 3–5s 换一次"
+ },
+ "continuity": {
+  "mode": "per_section",
+  "note": "段与段之间换配色是有意的 (关卡 / 主题色), 色调跳变只在同一段内部检查"
+ },
+ "languages": {
+  "shared_timeline": true,
+  "note": "多语言版本共用一条时间线, 只换文字 (编译时 --lang)"
+ },
+ "audio": {
+  "bgm_volume": 0.9,
+  "loudness_lufs": -14,
+  "sfx_max": 8,
+  "mute_footage": true
+ },
+ "effects": {
+  "max": 2,
+  "min_dur": 0.2,
+  "only_for": [
+   "opening",
+   "ending"
+  ]
+ },
+ "questions": {
+  "music": {
+   "question": "配乐？",
+   "options": [
+    "我提供",
+    "从曲库推荐（按情绪）"
+   ]
+  },
+  "selling_points": {
+   "question": "要展示哪几个卖点（按顺序）？",
+   "options": []
+  },
+  "languages": {
+   "question": "要几个语言版本？",
+   "options": [
+    "只要中文",
+    "中文 + 英文",
+    "更多"
+   ]
+  },
+  "end_card": {
+   "question": "结尾卡放什么？",
+   "options": [
+    "Logo + 立即体验",
+    "Logo + 二维码 + 立即体验"
+   ]
+  }
+ },
+ "checks": [
+  "0 秒就有标题大字, 标题卡停 3–4s",
+  "蒙太奇段每 2 拍一刀且等长",
+  "硬切 ≥ 70%, 叠化只在开头和结尾",
+  "每个卖点一张标签卡, 停 3–5s",
+  "结尾卡 ≥ 3s",
+  "色调跳变只在同一段内部检查",
+  "多语言版本切点一致"
+ ]
+}

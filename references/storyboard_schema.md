@@ -38,6 +38,8 @@
 | `grade` | 调色：`adjust`（面板名称和数值，如 `{"色温": -8, "饱和度": 5}`）、`filter`（`{"name", "intensity"}`）、`beauty`（如 `{"磨皮": 30}`） |
 | `audio` | 原声处理：`denoise`、`vocal_beautify`、`loudness_lufs`（如 -14） |
 | `camera` | 后期运镜（关键帧模拟），见下 |
+| `montage` | `true` 表示混剪模式：主轨不按 `source` / `keep` 铺，而是按顶层 `montage` 计划铺（格式和 `beat_snap.py plan` 的输出相同，音乐也由它加入），时间线从 0 开始。此时 `source` 为 `null`，`transitions` 按混剪的切点给出 |
+| `speed` | 变速段：`[{"range": [a, b], "speed": 4}]`，`range` 对应 `keep` 里的一个区间（落在区间内部时会拆开），输出时长 = (b−a)/speed。教程等待段加速用。后面的片段、文字和运镜都按变速后的时间定位 |
 
 **camera**：`[{"at": 源时间, "dur": 秒, "move": 名称, "amount": 幅度, "ease": 关键帧曲线}]`
 
@@ -106,6 +108,8 @@
 ```
 
 字幕结尾自动不超过下一句开始。也可以在 `primary` 里给 `template` 用字幕模板。
+
+`primary.background` 是字幕底条（教程底部深色条）：`{"color": "#000000", "alpha": 0.6, "round_radius": 0.2, "style": 1}`，`color` 也可以写成 `#RRGGBBAA`；写 `true` 表示 60% 黑。
 
 ## audio
 

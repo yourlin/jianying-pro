@@ -55,6 +55,10 @@ python <SKILL_ROOT>/scripts/layout_preview.py --draft "<草稿名>" --auto --rep
 
 文字按剪映缓存里的**真实字体**、真实颜色和描边渲染（size 1 ≈ 6.4px，用剪映截图校准）。
 
+## 第 3 层：质量审片（好不好看）
+
+版式问题清零后跑 `scripts/quality_review.py --draft "<草稿名>"`（有导出的成片时加 `--video`），检查钩子强度、节奏曲线、死区、相邻镜头色调跳变、配乐和人声冲突、结尾拖沓，并用 Read 看 `viewer_sheet.png`，判断哪里会划走。退出码约定和本审片器一样。发布后用 `retention_feedback.py` 把完播率曲线对回时间线。详见 `rules/quality.md`、`docs/features/quality_review.md`。
+
 ## 审片器通过 ≠ 画面正确
 
 伪渲染抓的是已知类型的问题。插卡页、结束卡、用了新字体 / 花字 / 蒙版的镜头，**交付前必须用 `jy_preview.py` 在剪映里截图核对**（2026-10-23 V7：审片器连续通过，剪映里文字压圆形、圆形被截平、黑字发糊）。截图里发现新的问题类型，就给审片器加一条检查。

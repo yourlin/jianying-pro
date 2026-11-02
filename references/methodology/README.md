@@ -5,6 +5,7 @@
 | 文件 | 内容 |
 |---|---|
 | [hook.md](hook.md) | 开头钩子、结构与信息密度 |
+| [hook_bank.md](hook_bank.md) | 钩子类型库、好坏例子、前 3 秒画面要求（配合 `prompts/hook_writer.md`） |
 | [pacing.md](pacing.md) | 节奏：剪气口、跳剪、镜头时长、卡点 |
 | [subtitles.md](subtitles.md) | 字幕断句、字号、位置、双语、关键词高亮 |
 | [inserts.md](inserts.md) | 插卡 / B-roll / 信息卡、人脸避让 |

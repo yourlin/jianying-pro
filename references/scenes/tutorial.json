@@ -18,7 +18,19 @@
    5,
    10
   ],
-  "wait_segments": "cut_or_speedup"
+  "wait_segments": "cut_or_speedup",
+  "wait": {
+   "max_s": 5.0,
+   "mode": "cut",
+   "keep_head": 1.0,
+   "keep_tail": 1.0,
+   "speed": [
+    2.0,
+    8.0
+   ],
+   "target_s": 2.0,
+   "_note": "超过 max_s 的等待 (加载 / 生成 / 无旁白的长停顿): cut 跳剪 (只留头尾) 或 speedup 加速到约 target_s; keep 原速保留。avg_shot 5–10s 是剪辑后的目标, 录屏原片靠步骤标题 / 放大 / 加速制造变化"
+  }
  },
  "beats": [
   {
@@ -113,12 +125,23 @@
   "max_chars_en": 42,
   "max_dur": 3.5,
   "lead": 0.1,
-  "note": "教程观众常静音看，字幕要完整"
+  "note": "教程观众常静音看, 字幕要完整; 横屏放在底部深色条里 (transform_y 约 -0.85)",
+  "y_by_format": {
+   "horizontal": -0.85
+  },
+  "background": {
+   "color": "#000000",
+   "alpha": 0.6,
+   "round_radius": 0.3,
+   "style": 1
+  }
  },
  "audio": {
   "bgm_volume": 0.12,
   "loudness_lufs": -14,
-  "sfx_max": 10
+  "sfx_max": 10,
+  "bgm": "default",
+  "note": "默认加轻 BGM (风格默认配乐, 音量 0.12); 剧本 bgm: false 才不加"
  },
  "effects": {
   "max": 1,
@@ -145,9 +168,9 @@
    ]
   },
   "waits": {
-   "question": "等待段？",
+   "question": "等待段（超过 5s）？",
    "options": [
-    "剪掉",
+    "跳剪（只留头尾）",
     "加速",
     "保留"
    ]
@@ -158,11 +181,33 @@
     "全程字幕",
     "只有步骤标题"
    ]
+  },
+  "bgm": {
+   "question": "背景音乐？",
+   "options": [
+    "加轻 BGM（默认）",
+    "不要"
+   ]
   }
  },
  "checks": [
   "每一步有步骤标题",
   "人像小窗不挡操作区",
-  "无长时间无操作的等待"
- ]
+  "超过 5s 的等待已加速或跳剪",
+  "旁白停顿超过 5s 时有步骤字卡或加速",
+  "有 BGM（除非用户明确不要）"
+ ],
+ "hook": {
+  "type": "title_card",
+  "hold_s": [
+   3.0,
+   4.0
+  ],
+  "text_by_s": 0.3,
+  "audio_by_s": 0.3,
+  "alt": [
+   "recap"
+  ],
+  "_note": "系列教程可以 0 秒出集标题页 (第 N 集 · 主题) 或上集回顾, 停 3–4s 不切"
+ }
 }

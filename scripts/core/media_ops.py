@@ -8,6 +8,13 @@ import pyJianYingDraft as draft
 from pyJianYingDraft import trange
 from pyJianYingDraft.exceptions import SegmentOverlap
 from utils.formatters import get_duration_ffprobe_cached, safe_tim
+from utils.frame_align import (
+    frames_to_us,
+    project_fps,
+    range_frames,
+    snap_source_range,
+    us_to_frames,
+)
 from utils.media_normalizer import normalize_video_for_jianying, normalize_webm_for_jianying
 
 
@@ -127,11 +134,16 @@ class MediaOpsMixin:
 
         start_us = safe_tim(start_time)
         actual_duration = self._calculate_duration(duration, phys_duration)
+        # 对齐到整帧 (剪映打开草稿时也会这样吸附, 提前对齐后两边一致)
+        (start_us, actual_duration), src = self._frame_aligned(
+            track_name, start_us, actual_duration
+        )
 
         seg = draft.AudioSegment(
             mat, trange(start_us, actual_duration), source_timerange=trange(0, actual_duration),
             volume=float(kwargs.get("volume", 1.0)),
         )
+        seg.source_timerange = trange(*src)
         # 可选: fade_in / fade_out (如 "1s"), 音量 volume (1.0 = 原始音量, 0 = 静音)
         fade_in, fade_out = kwargs.get("fade_in"), kwargs.get("fade_out")
         if fade_in or fade_out:
@@ -190,21 +202,54 @@ class MediaOpsMixin:
 
         start_us = safe_tim(start_time)
         src_start_us = safe_tim(source_start)
-        if getattr(mat, "material_type", "") == "photo" and duration:
+        is_photo = getattr(mat, "material_type", "") == "photo" and duration
+        if is_photo:
             # 图片没有物理时长 (素材时长只有 0.04s), 按请求时长放, 否则会被 clamp 成 1 帧闪过
             actual_duration = safe_tim(duration)
             src_start_us = 0
-            mat.duration = max(mat.duration or 0, actual_duration)
         else:
             actual_duration = self._calculate_duration(duration, phys_duration - src_start_us)
+        # 对齐到整帧 (剪映打开草稿时也会这样吸附, 提前对齐后两边一致)
+        (start_us, actual_duration), src = self._frame_aligned(
+            track_name, start_us, actual_duration, src_start_us
+        )
+        if is_photo:
+            mat.duration = max(mat.duration or 0, src[1])
 
         seg = draft.VideoSegment(
             mat,
             trange(start_us, actual_duration),
-            source_timerange=trange(src_start_us, actual_duration),
+            source_timerange=trange(src[0], actual_duration),
         )
+        # 截取范围的终点也落在帧边界上, 时长可能和目标时长差 1us (剪映自己也这样); 速度保持 1.0
+        seg.source_timerange = trange(*src)
         self.script.add_segment(seg, track_name)
+        renorm = getattr(self, "_renormalize_track_transitions", None)  # VfxOpsMixin
+        if renorm is not None:
+            renorm(track_name)  # 后一段到位后, 前一段的转场按新邻居重新规整
         return seg
+
+    def _frame_aligned(self, track_name, start_us, dur_us, src_start_us=0):
+        """
+        片段时间对齐到工程帧率的整帧: 起点 / 终点各自取最近的帧边界 (不逐段四舍五入时长, 主轨不累积误差),
+        截取起点也对齐; 和同轨已有片段只差 1 帧以内的重叠视为取整误差, 起点贴到上一段终点。
+        返回 ((目标起点, 目标时长), (截取起点, 截取时长)), 微秒。
+        """
+        fps = project_fps(self)
+        sf, n = range_frames(start_us, dur_us, fps)
+        ef = sf + (max(1, n) if dur_us > 0 else max(0, n))
+        track = self.script.tracks.get(track_name) if track_name else None
+        for other in getattr(track, "segments", None) or []:
+            tr = other.target_timerange
+            of0, of1 = us_to_frames(tr.start, fps), us_to_frames(tr.start + tr.duration, fps)
+            if of0 < sf < of1 <= sf + 1:
+                sf = of1
+        ef = max(ef, sf + 1) if dur_us > 0 else max(ef, sf)
+        n = ef - sf
+        # 截取终点可能超出素材末尾不到半帧: 剪映自己也这样取 (50888000us 的音频 -> 50900000), 不再裁掉 1 帧
+        src = snap_source_range(src_start_us, n, fps)
+        start = frames_to_us(sf, fps)
+        return (start, frames_to_us(ef, fps) - start), src
 
     def add_cloud_media(
         self,

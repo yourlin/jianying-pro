@@ -1,0 +1,221 @@
+{
+ "id": "music_video",
+ "name": "音乐视频",
+ "doc": "music_video.md",
+ "detect": {
+  "music": true,
+  "lyrics": true,
+  "shots_per_min_min": 15
+ },
+ "duration": {
+  "min": 60,
+  "max": 240,
+  "ideal": 110
+ },
+ "pacing": {
+  "compact": 0.0,
+  "natural": 0.0,
+  "keep_breath": 0.0,
+  "avg_shot": [
+   1.3,
+   3.2
+  ],
+  "median_shot": 2.0,
+  "cut_on": "lyric",
+  "energy_speedup": false,
+  "cut_every_beats": {
+   "舒缓": 8,
+   "标准": 4,
+   "快闪": 2
+  },
+  "lyric": {
+   "min_shot": 1.0,
+   "max_shot": 4.0,
+   "climax_min_shot": 2.0,
+   "climax_max_shot": 8.5,
+   "gap_s": 1.0,
+   "_note": "切点放在歌词行边界上; 比 min_shot 短的行并进上一镜头; 超过 max_shot 在拍点上补切; 高潮段允许演唱长镜头"
+  },
+  "accent_flash": {
+   "max_dur": 0.5,
+   "note": "乐器特写可以 0.4s 左右连闪 2–3 个做点缀 (在剧本里单独写一段)"
+  }
+ },
+ "hook": {
+  "type": "title_card",
+  "hold_s": [
+   3.0,
+   4.0
+  ],
+  "text_by_s": 0.3,
+  "audio_by_s": 0.3
+ },
+ "beats": [
+  {
+   "name": "片名",
+   "ratio": 0.03,
+   "purpose": "歌名大字压在乐队 / 主角全景上",
+   "required": [
+    "hero"
+   ],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "cut_every_beats": 0,
+   "note": "单镜头 3–4s 不切"
+  },
+  {
+   "name": "主歌",
+   "ratio": 0.35,
+   "purpose": "主唱交替 + 合唱 / 乐器",
+   "required": [],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "一句歌词一个镜头"
+  },
+  {
+   "name": "副歌",
+   "ratio": 0.27,
+   "purpose": "产品 / 主题画面插入",
+   "required": [],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "产品 UI 插入 2–4s, 进出用快速推近 / 拉远 (ui_insert)"
+  },
+  {
+   "name": "高潮",
+   "ratio": 0.3,
+   "purpose": "情绪顶点",
+   "required": [],
+   "allowed": [],
+   "forbidden": [],
+   "camera": null,
+   "note": "演唱长镜头撑, 不加快切速"
+  },
+  {
+   "name": "尾声",
+   "ratio": 0.05,
+   "purpose": "收束",
+   "required": [],
+   "allowed": [
+    "title"
+   ],
+   "forbidden": [],
+   "camera": null,
+   "transition_in": "ending",
+   "note": "短闪黑收"
+  }
+ ],
+ "elements": {
+  "hero": {
+   "slot": "center",
+   "min_dur": 3.0,
+   "max_dur": 4.0,
+   "delay": 0.2
+  },
+  "title": {
+   "min_dur": 2.0,
+   "max_dur": 4.0,
+   "delay": 0.2
+  }
+ },
+ "inserts": {
+  "default": "cover"
+ },
+ "camera": {
+  "per_minute": [
+   0,
+   4
+  ],
+  "allowed": [
+   "push_in",
+   "pull_out"
+  ],
+  "only_on": "ui_insert",
+  "ui_insert": {
+   "in": "push_in",
+   "out": "pull_out",
+   "dur": 0.4,
+   "amount": 0.15
+  },
+  "cut_cover": null,
+  "min_gap_s": 1.0
+ },
+ "transitions": {
+  "default": null,
+  "ending": {
+   "name": "闪黑",
+   "duration": 0.15
+  },
+  "hard_cut_min": 0.85,
+  "_note": "约 90% 硬切; 推拉只用在进出产品 UI; 片尾短闪黑"
+ },
+ "subtitles": {
+  "default": "lyrics",
+  "max_chars_zh": 18,
+  "max_chars_en": 42,
+  "y_by_format": {
+   "horizontal": -0.82
+  },
+  "size_scale": 0.85,
+  "note": "底部小号歌词字幕, 一句一条"
+ },
+ "continuity": {
+  "mode": "global",
+  "grade": "unified",
+  "note": "全片统一调色 (同一个 LUT / 滤镜); 插入的产品 UI 也调成同一色调"
+ },
+ "audio": {
+  "bgm_volume": 1.0,
+  "loudness_lufs": -14,
+  "sfx_max": 0,
+  "mute_footage": true
+ },
+ "effects": {
+  "max": 1,
+  "min_dur": 0.2,
+  "only_for": [
+   "ending"
+  ]
+ },
+ "questions": {
+  "music": {
+   "question": "歌曲和歌词时间？",
+   "options": [
+    "有带时间的歌词 (lrc / srt / json)",
+    "先转写歌曲再校对"
+   ]
+  },
+  "cut_on": {
+   "question": "按什么切？",
+   "options": [
+    "按歌词行（默认）",
+    "按节拍"
+   ]
+  },
+  "ui": {
+   "question": "要不要插入产品画面？",
+   "options": [
+    "要（进出推拉）",
+    "不要"
+   ]
+  },
+  "grade": {
+   "question": "统一色调？",
+   "options": [
+    "复古暖色",
+    "冷色科技",
+    "保持原色"
+   ]
+  }
+ },
+ "checks": [
+  "切点落在歌词行边界上 (按歌词切时)",
+  "高潮段不加快切速, 允许演唱长镜头",
+  "推拉只用在进出产品 UI",
+  "全片统一调色",
+  "歌词字幕一句一条, 不挡主体"
+ ]
+}

@@ -114,7 +114,7 @@ def detect_faces(path: str, duration: float, samples: int = 24) -> Optional[dict
     抽帧做人脸检测 (OpenCV Haar), 返回人脸在画面中的典型位置, 给插卡 / 标题避让用:
       box: 中位人脸框 [x0, y0, x1, y1] (画面比例, 左上为 0); present: 有人脸的帧占比;
       face_y: 人脸中心对应的剪映 transform_y (+ 为上); card_zones: 建议放插卡的 transform_y 区间。
-    没装 OpenCV 时返回 None。
+    没装 OpenCV 或 OpenCV 没有 Haar 级联 (5.x) 时返回 None。
     """
     try:
         import cv2
@@ -122,6 +122,9 @@ def detect_faces(path: str, duration: float, samples: int = 24) -> Optional[dict
         return None
     import tempfile
 
+    # opencv-python 5.x 去掉了 Haar 级联, 此时跳过人脸检测
+    if not hasattr(cv2, "CascadeClassifier") or not hasattr(cv2, "data"):
+        return None
     cascade = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades, "haarcascade_frontalface_default.xml"))
     boxes, seen = [], 0
     with tempfile.TemporaryDirectory() as tmp:

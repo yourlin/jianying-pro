@@ -2,6 +2,7 @@ from typing import Iterable, Optional, Tuple, Union
 
 import pyJianYingDraft as draft
 from utils.formatters import safe_tim
+from utils.frame_align import project_fps, snap_range
 from utils.panel_assets import PanelAssetUnavailable, is_vip_member, resolve_panel_member
 
 # 关键帧属性的友好别名
@@ -136,8 +137,8 @@ class TrackOpsMixin:
         x, y = PIP_POSITIONS.get(position, (0.0, 0.0)) if isinstance(position, str) else position
         cs = draft.ClipSettings(transform_x=float(x), transform_y=float(y),
                                 scale_x=float(scale), scale_y=float(scale), rotation=float(rotation))
-        seg = draft.StickerSegment(row["resource_id"], draft.Timerange(safe_tim(start_time), safe_tim(duration)),
-                                   clip_settings=cs)
+        start_us, dur_us = snap_range(safe_tim(start_time), safe_tim(duration), project_fps(self))
+        seg = draft.StickerSegment(row["resource_id"], draft.Timerange(start_us, dur_us), clip_settings=cs)
         self.script.add_segment(seg, track_name)
         for kind, name in (("in", anim_in), ("out", anim_out), ("loop", anim_loop)):
             if name:

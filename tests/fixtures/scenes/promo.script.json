@@ -1,0 +1,60 @@
+{
+ "title": "示例宣传片",
+ "name": "示例宣传片",
+ "scene": "宣传片",
+ "style": "tech",
+ "format": "横屏",
+ "platform": "bilibili",
+ "montage": {
+  "music": "bgm.mp3",
+  "beats": "beats_115.json",
+  "clips": [
+   {"path": "clips/title_bg.mp4", "duration": 8},
+   {"path": "clips/story_a.mp4", "duration": 8, "score": 60},
+   {"path": "clips/story_b.mp4", "duration": 8, "score": 55},
+   {"path": "clips/ult.mp4", "duration": 8, "score": 95},
+   {"path": "clips/stage_1.mp4", "duration": 8, "score": 70},
+   {"path": "clips/stage_2.mp4", "duration": 8, "score": 70},
+   {"path": "clips/stage_3.mp4", "duration": 8, "score": 70},
+   {"path": "clips/stage_4.mp4", "duration": 8, "score": 70},
+   {"path": "clips/ui_shop.mp4", "duration": 12, "score": 50},
+   {"path": "clips/ui_talent.mp4", "duration": 8, "score": 50},
+   {"path": "clips/end_bg.mp4", "duration": 8}
+  ],
+  "start": 0,
+  "duration": 50
+ },
+ "translations": {
+  "en": {
+   "星火突围": "STARFALL",
+   "动作肉鸽 · 一局就停不下来": "Action roguelike · one more run",
+   "末日降临，英雄集结": "Heroes rise at the end of days",
+   "大招一开，满屏清场": "Ultimates that clear the screen",
+   "七大主题场景": "Seven themed stages",
+   "升级三选一": "Pick 1 of 3 upgrades",
+   "商店随机刷新": "A shop that rerolls every run",
+   "天赋树": "Talent tree",
+   "立即体验": "Play now"
+  }
+ },
+ "beats": [
+  {"id": "S01", "purpose": "标题卡", "time": [0, 3.8], "clips": ["clips/title_bg.mp4"],
+   "elements": [{"kind": "hero", "text": "星火突围", "sub": "动作肉鸽 · 一局就停不下来"}]},
+  {"id": "S02", "purpose": "故事", "time": [3.8, 11.0],
+   "elements": [{"kind": "label", "text": "末日降临，英雄集结", "sub": "Heroes rise at the end of days"}]},
+  {"id": "S03", "purpose": "高光", "time": [11.0, 16.3], "clips": ["clips/ult.mp4"],
+   "elements": [{"kind": "label", "text": "大招一开，满屏清场", "sub": "Ultimates that clear the screen"}]},
+  {"id": "S04", "purpose": "蒙太奇", "time": [16.3, 22.5],
+   "clips": ["clips/stage_1.mp4", "clips/stage_2.mp4", "clips/stage_3.mp4", "clips/stage_4.mp4"],
+   "elements": [{"kind": "label", "text": "七大主题场景", "sub": "Seven themed stages"}]},
+  {"id": "S05", "purpose": "卖点", "time": [22.5, 46.6], "transition": "chapter",
+   "clips": ["clips/ui_shop.mp4", "clips/ui_talent.mp4", "clips/story_a.mp4", "clips/stage_1.mp4"],
+   "elements": [
+    {"kind": "label", "text": "升级三选一", "time": [22.8, 26.8]},
+    {"kind": "label", "text": "商店随机刷新", "time": [27.0, 31.5]},
+    {"kind": "label", "text": "天赋树", "time": [31.7, 35.7]}
+   ]},
+  {"id": "S06", "purpose": "CTA", "time": [46.6, 50], "clips": ["clips/end_bg.mp4"],
+   "elements": [{"kind": "end_card", "tag": "星火突围", "title": "立即体验", "last": 3.5}]}
+ ]
+}

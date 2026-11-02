@@ -51,6 +51,7 @@ Read the individual rule files for specific tasks and constraints:
 - [rules/web-vfx.md](rules/web-vfx.md) - Advanced: Web-to-Video generation.
 - [rules/generative.md](rules/generative.md) - Chain of Thought for generative editing.
 - [rules/audio-voice.md](rules/audio-voice.md) - **New**: TTS Voiceover & BGM sourcing.
+- [rules/quality.md](rules/quality.md) - **New**: 高质量短片工具链（口播精剪、最佳 take、卡点、ducking、音效、统一调色、动态图形、B-roll、质量审片、封面、多版本、数据回流）。
 - [rules/jianying-11.md](rules/jianying-11.md) - **New (11.x)**: Panel asset sync, VIP assets, multi-track (PiP/split/keyframes/masks), AI auto subtitles.
 
 ## 🎯 Agent Quick Routing
@@ -67,6 +68,22 @@ Read the individual rule files for specific tasks and constraints:
 - 画中画 / 分屏 / 关键帧 / 蒙版：`rules/jianying-11.md` -> `add_overlay` / `add_split_screen` / `add_keyframes` / `add_mask_simple`
 - AI 智能字幕（本地语音识别）：`rules/jianying-11.md` -> `add_auto_subtitles`
 - **同步剪映素材 / 模板**（用户说"同步剪映素材""更新素材索引""我在剪映里套用了新模板""刷新模板"等时）：运行 `python <SKILL_ROOT>/scripts/jy_wrapper.py sync`（全部同步：面板索引、音乐音效、字幕/文字模板预设），或只同步一部分：`--only templates` / `--only panel` / `--only music`。整个过程只读剪映缓存和草稿，不会改动剪映的数据。剪映升级后或用户在剪映里用过新素材后，都应该先同步一次。
+- **高质量短片工具链**（总表见 `rules/quality.md`，每个工具的细节见 `docs/features/`）：
+  - 口播精剪：用户说"删口癖""去嗯啊""说错重来""重复句""剪气口"时，先跑 `analyze_footage.py` 拿到转写，再用 `scripts/speech_cleanup.py analysis.json [--draft 名称]`
+  - 最佳 take：用户说"同一句说了多遍""挑最好的一遍""多机位选 take"时，用 `scripts/best_take.py analysis.json [--script 剧本] [--draft 名称]`
+  - 素材打分 / 废片检测：`scripts/shot_quality.py <视频> --json`
+  - 卡点 / 踩点 / 按鼓点混剪：先 `scripts/beat_detect.py song.mp3`，再 `scripts/beat_snap.py plan --audio song.mp3 --clips DIR --start climax [--build 名称]`
+  - BGM 让位人声 / 铺音效：ducking 用 `p.auto_duck()` 或 `scripts/core/mix_ops.py --draft 名称`；音效用 `scripts/sfx_designer.py plan --draft 名称 --write`
+  - 统一调色：`scripts/color_match.py suggest --ref ref.jpg --shots ...`；草稿内用 `p.match_color(...)`
+  - 图表 / 数字滚动 / 圈注 / 地图路线：`scripts/motion_graphics.py render <模板> --data json --out x.mov`；草稿内用 `p.add_motion_graphic(...)`
+  - 照着参考视频剪 / 拆解爆款：`scripts/reference_analyzer.py ref.mp4 --name X --install`，然后 Read `contact_sheet.jpg`
+  - 找 B-roll / 生成视频：`scripts/broll_fetch.py`（Pexels / Pixabay）、`scripts/genvideo_providers.py`（可灵 / mock）
+  - 宣传片 / MV / 按歌词切：场景用 `promo` / `music_video`，剧本里写 `montage` 字段后用 `script_compiler.py` 编译，或者用 `beat_snap.py plan --scene music_video --lyrics 歌词.json`；多语言版本加 `--lang en`，时间线不变，只换文字
+  - 个人偏好：编译时会自动套用 `~/.config/jianying-pro/style_overrides.json`（从用户手剪草稿学到的字幕、标题、调色、配乐习惯），编译报告里会列出改了哪些项；`--no-user-prefs` 或 `JY_USER_PREFS=off` 关闭。重新学习用 `scripts/style_profile.py` 和 `scripts/edit_diff.py learn`，见 `docs/features/user_prefs.md`
+  - 写钩子和剧本：`prompts/hook_writer.md` + `references/methodology/hook_bank.md`
+  - 片子好不好看 / 会不会划走：版式审片清零后跑 `scripts/quality_review.py --draft "<名>"`，然后 Read `viewer_sheet.png`
+  - 封面 / 标题：`scripts/cover_maker.py`；15 / 30 / 60 秒版本和横竖屏版本：`scripts/variants.py`
+  - 发布后看完播率和掉人点：`scripts/retention_feedback.py --csv 留存.csv --report report.json`
 - 素材封面预览（挑选前看效果）：`scripts/preview_assets.py`。常用写法：`"科技" -c panel_text_templates`、`--ready`（只看可直接用的模板）、`--ids <resource_id...>`、`--frames 3`（动图抽帧）。对比图保存在 `~/.cache/jianying-pro/previews/`
 - 字幕模板 / 文字模板：`rules/jianying-11.md` -> `add_subtitle_template` / `add_text_template`（或在字幕 API 上传 `subtitle_template=`；新模板先在剪映里套用一次，再运行 `scripts/sync_jy_templates.py`）。字幕模板全部、文字模板 2,268 个已有预设；用到还没有预设的模板时，macOS 上会自动按需预热这一个（约 30 秒，剪映需停在首页），下载不到时报错并推荐同分类候选（要看封面再选），见 `rules/jianying-11.md` 第 8 节
 

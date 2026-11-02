@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MG counter</title>
+<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style>
+</head>
+<body>
+<script>window.MG_CONFIG = /*MG_CONFIG*/null;</script>
+<script>/*MG_RUNTIME*/</script>
+<script>
+/* 数字滚动: data = {from, to, decimals, prefix, suffix, label, separator, title} */
+MG.run(function (cfg) {
+  var d = MG.data, W = MG.W, H = MG.H, U = MG.U, th = MG.theme;
+  MG.title(d.title);
+  var fs = Math.round((MG.portrait ? 200 : 240) * U);
+  var cy = H / 2 - (d.label ? fs * 0.25 : 0);
+  var g = MG.el("g", {});
+  var num = MG.text("", {
+    x: W / 2, y: cy, "font-size": fs, "text-anchor": "middle", "font-weight": 900,
+    fill: th.primary, style: "font-variant-numeric: tabular-nums",
+  }, g);
+  var label = d.label ? MG.text(d.label, { x: W / 2, y: cy + fs * 0.85, "font-size": Math.round(56 * U), "text-anchor": "middle", fill: th.text }) : null;
+  if (label) MG.fit(label, W - 2 * MG.pad);
+  var line = MG.el("rect", { x: W / 2, y: cy + fs * 0.5, width: 0, height: 8 * U, rx: 4 * U, fill: th.accent });
+  /* 用终值确定最大宽度, 防止滚动中溢出 */
+  num.textContent = (d.prefix || "") + MG.fmt(d.to, d.decimals, d.separator) + (d.suffix || "");
+  MG.fit(num, W - 2 * MG.pad);
+  var lineW = Math.min(num.getComputedTextLength() * 0.6, W - 2 * MG.pad);
+  var rollDur = MG.A * 0.8;
+
+  return function (t) {
+    var k = MG.prog(t, 0.2, rollDur, MG.ease.outExpo);
+    var v = d.from + (d.to - d.from) * k;
+    num.textContent = (d.prefix || "") + MG.fmt(v, d.decimals, d.separator) + (d.suffix || "");
+    var appear = MG.prog(t, 0, 0.35, MG.ease.outBack);
+    var pop = 1 + 0.06 * Math.sin(Math.PI * MG.prog(t, 0.2 + rollDur, 0.35, MG.ease.linear));
+    var s = (0.85 + 0.15 * appear) * pop;
+    g.setAttribute("opacity", MG.clamp(appear, 0, 1));
+    g.setAttribute("transform", "translate(" + (W / 2) * (1 - s) + "," + cy * (1 - s) + ") scale(" + s + ")");
+    var lk = MG.prog(t, 0.3, rollDur * 0.8);
+    line.setAttribute("x", W / 2 - (lineW * lk) / 2);
+    line.setAttribute("width", lineW * lk);
+    if (label) label.setAttribute("opacity", MG.prog(t, 0.4, 0.5));
+  };
+});
+</script>
+</body>
+</html>
