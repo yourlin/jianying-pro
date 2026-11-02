@@ -254,8 +254,8 @@ def test_multi_source_groups_across_files():
     assert sel["plan"] is None and set(sel["plans"]) == {cam_a, cam_b}
     g = sel["groups"][0]
     assert g["takes"][g["best"] - 1]["source"] == cam_a
-    assert [s["source"] for s in sel["sequence"]] == ["/tmp/camA.mp4", "/tmp/camA.mp4"]
-    assert sel["plans"]["/tmp/camB.mp4"]["keep"] == []
+    assert [s["source"] for s in sel["sequence"]] == [cam_a, cam_a]
+    assert sel["plans"][cam_b]["keep"] == []
 
 
 # ---------------------------------------------------------------- 画面打分
