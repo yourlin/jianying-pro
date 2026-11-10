@@ -1,0 +1,51 @@
+tests/test_draft_safety.py
+  s_2e15c77ea05b25::t_753ed78e05507d 1-144
+rules/pitfalls.md
+  s_2e15c77ea05b25::t_df1abeaa39121b 1-97
+rules/app-promo.md
+  s_2e15c77ea05b25::t_df6ee3887947e1 1-118
+CHANGELOG.md
+  s_2e15c77ea05b25::t_9d7d9723681e84 4-14
+SKILL.md
+  s_2e15c77ea05b25::t_1dc8b6b644db3b 33-38,50-51,66-67
+rules/audio-voice.md
+  s_2e15c77ea05b25::t_7efd304e1d2842 77-84
+rules/jianying-11.md
+  s_2e15c77ea05b25::t_8f8bf21433bcb8 138-140
+rules/recording.md
+  s_2e15c77ea05b25::t_db84f6f2f09639 42-56
+rules/review.md
+  s_2e15c77ea05b25::t_a4acbc86b80049 94-95,108-112
+scripts/core/media_ops.py
+  s_2e15c77ea05b25::t_20a72b59d43daf 129-134,136,148-153
+scripts/core/project_base.py
+  s_2e15c77ea05b25::t_ea8326bc8bae39 17-20,111-112,140-150
+scripts/core/text_ops.py
+  s_2e15c77ea05b25::t_d3b0081da9b441 264-265,274-281,284-305
+scripts/core/track_ops.py
+  s_2e15c77ea05b25::t_e8ed696a8d9d79 142-160
+scripts/jy_preview.py
+  s_2e15c77ea05b25::t_1df195c22d61e7 122
+scripts/layout_preview.py
+  s_2e15c77ea05b25::t_0551528832756a 547-553
+scripts/vendor/pyJianYingDraft/draft_folder.py
+  s_2e15c77ea05b25::t_94e27d8d650d19 3,6,82,86-88,96-107,111,116-133
+scripts/web_recorder.py
+  s_2e15c77ea05b25::t_9542ef4d8e13bf 100-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4ea9d20b4645f65ca7ea515986cc6eb7b08d814c",
+  "prompts": {},
+  "sessions": {
+    "s_2e15c77ea05b25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e70616e8-9eef-42bb-a517-b0125dcbe1f8",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "MasterLin <6930286+yourlin@users.noreply.github.com>"
+    }
+  }
+}
