@@ -111,6 +111,7 @@ def test_external_audio_is_staged_into_draft(drafts_root):
         shutil.rmtree(outside, ignore_errors=True)
 
 
+@pytest.mark.skipif(not shutil.which("ffmpeg"), reason="需要 ffmpeg 合成测试音频")
 def test_short_audio_sub_frame_overshoot_is_tolerated(drafts_root):
     tmp = tempfile.mkdtemp(prefix="jy_short_")
     try:
