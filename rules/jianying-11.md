@@ -135,7 +135,9 @@ p.add_sticker("play正在播放界面", "0s", "3s", anim_in="向右滑动", anim
 p.add_sticker_animation(sticker_seg, "轻微跳动", "loop")    # kind: in / out / loop
 ```
 
-贴纸动画的索引是 `panel_sticker_animations.csv`，共 33 种。它和文字循环动画有不少同名项，但并不通用。
+贴纸动画的索引是 `panel_sticker_animations.csv`，共 33 种。
+
+**贴纸必须是本机已下载的**（2026-11-10 实测）：剪映只渲染带本地资源路径的贴纸，原生草稿里贴纸素材的 `path` 指向 `Cache/artistEffect/<id>/<md5>/`。`add_sticker` 会按面板索引的 md5 写入本地路径；本机没下载时打印告警（`project.warnings`），剪映里不会显示。想用没下载的贴纸，请用户在剪映贴纸面板里点一次，再重新生成。名称很长的贴纸建议直接传 `resource_id`。它和文字循环动画有不少同名项，但并不通用。
 
 ### 文字气泡
 

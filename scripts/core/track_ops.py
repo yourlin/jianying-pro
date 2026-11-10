@@ -139,6 +139,25 @@ class TrackOpsMixin:
                                 scale_x=float(scale), scale_y=float(scale), rotation=float(rotation))
         start_us, dur_us = snap_range(safe_tim(start_time), safe_tim(duration), project_fps(self))
         seg = draft.StickerSegment(row["resource_id"], draft.Timerange(start_us, dur_us), clip_settings=cs)
+        # 剪映只渲染带本地资源路径的贴纸 (原生草稿里 path 指向 Cache/artistEffect/<id>/<md5>/), 只写 resource_id
+        # 的贴纸在剪映里不显示, 也不会自动下载 (2026-11-10 实测)。按面板索引的 md5 找本机已下载的资源写进 path
+        from utils.panel_assets import _local_md5_index
+
+        local = _local_md5_index().get(row.get("md5", ""), "")
+        if not local:
+            msg = (f"贴纸「{row['name']}」本机没有下载，剪映里不会显示。请在剪映贴纸面板里点一次它下载资源后重新生成，"
+                   "或换一个本机已有的贴纸 (preview_assets.py 可看封面)。")
+            print(f"⚠️ {msg}")
+            self.warnings = getattr(self, "warnings", []) + [msg]
+        base_export = seg.export_material
+
+        def _export_with_path(_base=base_export, _row=row, _local=local):
+            mat = _base()
+            mat.update({"path": _local, "name": _row.get("name", ""), "category_name": "贴纸素材",
+                        "icon_url": _row.get("cover_url", ""), "preview_cover_url": _row.get("cover_url", "")})
+            return mat
+
+        seg.export_material = _export_with_path
         self.script.add_segment(seg, track_name)
         for kind, name in (("in", anim_in), ("out", anim_out), ("loop", anim_loop)):
             if name:

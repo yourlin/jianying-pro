@@ -1,6 +1,17 @@
 # Changelog
 
 ## Unreleased
+- **Draft safety fixes from a real promo build (2026-11-10, see `rules/pitfalls.md`, tests in `tests/test_draft_safety.py`)**:
+  - Each new draft now gets a random draft ID and timeline ID. All skill drafts used to share the template IDs, and JianYing caches material records by ID, so media from other drafts leaked in as "media missing".
+  - Overwriting a draft keeps `materials/`, `temp_assets/` and `Resources/` and clears everything else, including JianYing's `Timelines/` copy. JianYing remembers the media library by draft path, so deleted media showed up as missing; the old timeline copy made JianYing keep showing the previous version.
+  - `JyProject(overwrite=True)` refuses to rebuild a draft that is open in JianYing (`.locked`), raising `DraftOpenInEditorError`. Closing the editor writes the old version back over the new draft. Override with `JY_ALLOW_OVERWRITE_OPEN=1`.
+  - `add_audio_safe` copies audio into the draft, like video. Cloud music and SFX in `~/cloud_cache` were unreadable in the macOS sandbox.
+  - Audio clips that overshoot the material by less than one frame after frame snapping no longer raise.
+  - Stickers carry the local resource path, which JianYing needs to render them, and warn when the sticker is not downloaded.
+  - TTS results are cached (`~/.cache/jianying-pro/tts/`, `JY_TTS_CACHE`), file names are fixed by content, and synthesis retries 3 times.
+  - `layout_preview.py` clears old frames before writing; `jy_preview.py` no longer crashes with `NameError: timeout` when it has to scroll the draft list.
+- **HiDPI web recording**: `web_recorder.record_web_hidpi()` records real pages through the DevTools screencast at device pixels (for example 1080x1920 portrait), returns the ready time, and ships `smooth_scroll()` and a touch indicator.
+- **New rules**: `rules/pitfalls.md` (symptom → cause → fix) and `rules/app-promo.md` (product screen-recording promo with narration and ad-style pacing, adapted from video-shotcraft's staged pipeline).
 - **Learning from the user's own work**:
   - `style_profile.py` learns style habits from hand-cut drafts (shot lengths, subtitles, titles, transitions, audio and so on).
   - `edit_diff.py` aligns a skill-generated draft with the JianYing-edited version segment by segment and learns the user's corrections. Automatic JianYing normalisation is filtered out.

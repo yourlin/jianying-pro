@@ -261,7 +261,8 @@ class TextOpsMixin:
         allow_fallback: bool = True,
         return_backend: bool = False,
     ):
-        import uuid
+        import hashlib
+        import shutil
 
         from universal_tts import generate_voice_with_meta
 
@@ -270,17 +271,38 @@ class TextOpsMixin:
 
         temp_dir = os.path.join(self.root, self.name, "temp_assets")
         os.makedirs(temp_dir, exist_ok=True)
-        output_file = os.path.join(temp_dir, f"tts_{uuid.uuid4().hex[:8]}.ogg")
+        # 文件名按 (音色, 文本) 固定: 同一句配音每次生成都是同一个文件。剪映按草稿路径记住素材库列表,
+        # 随机文件名会让重新生成后的草稿出现一串「媒体丢失」。合成结果另存全局缓存, 重跑不再联网
+        key = hashlib.sha1(f"{speaker}|{tts_backend or ''}|{text}".encode("utf-8")).hexdigest()
+        output_file = os.path.join(temp_dir, f"tts_{key[:12]}.ogg")
+        cache_dir = os.environ.get("JY_TTS_CACHE") or os.path.expanduser("~/.cache/jianying-pro/tts")
+        os.makedirs(cache_dir, exist_ok=True)
+        cached = os.path.join(cache_dir, f"{key}.ogg")
+        cached_backend_file = cached + ".backend"
 
         async def _generate():
-            return await generate_voice_with_meta(
-                text,
-                output_file,
-                speaker,
-                backend=tts_backend,
-                allow_fallback=allow_fallback,
-                sami_retries=2,
-            )
+            if os.path.exists(cached) and os.path.getsize(cached) > 0:
+                shutil.copyfile(cached, output_file)
+                used = open(cached_backend_file).read().strip() if os.path.exists(cached_backend_file) else (tts_backend or "sami")
+                return output_file, used
+            last = (None, None)
+            for attempt in range(3):  # 剪映朗读 (SAMI) 偶尔握手超时, 整体重试 3 次
+                last = await generate_voice_with_meta(
+                    text,
+                    output_file,
+                    speaker,
+                    backend=tts_backend,
+                    allow_fallback=allow_fallback,
+                    sami_retries=2,
+                )
+                if last and last[0]:
+                    break
+                await asyncio.sleep(2 * (attempt + 1))
+            if last and last[0] and os.path.exists(last[0]):
+                shutil.copyfile(last[0], cached)
+                with open(cached_backend_file, "w") as f:
+                    f.write(str(last[1] or ""))
+            return last
 
         try:
             asyncio.get_running_loop()

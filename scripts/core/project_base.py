@@ -14,6 +14,10 @@ from utils.draft_store import (
 from utils.formatters import get_default_drafts_root
 
 
+class DraftOpenInEditorError(RuntimeError):
+    """草稿正被剪映编辑器打开, 不能覆盖重建"""
+
+
 class JyProjectBase:
     """
     Core project lifecycle wrapper:
@@ -104,6 +108,8 @@ class JyProjectBase:
             # 加载失败时不再自动重建 (旧行为会静默清空已有草稿)
             self.script = self.df.load_template(self.name)
         else:
+            if has_draft:
+                self._refuse_if_open_in_editor()
             print(f"Creating new project: {self.name}")
             max_retries = 3
             for attempt in range(max_retries):
@@ -130,6 +136,17 @@ class JyProjectBase:
                         time.sleep(2)
                     else:
                         raise
+
+    def _refuse_if_open_in_editor(self) -> None:
+        """剪映正打开着这个草稿 (草稿目录里有 .locked) 时拒绝覆盖重建。
+        剪映关闭编辑器时会把内存里的旧版写回草稿目录, 覆盖刚生成的新版; 生成到一半时剪映读到不完整的文件还会报
+        「草稿内容已损坏」。设置环境变量 JY_ALLOW_OVERWRITE_OPEN=1 可跳过 (不推荐)。"""
+        lock = os.path.join(self._safe_join_root(self.name), ".locked")
+        if os.path.exists(lock) and os.environ.get("JY_ALLOW_OVERWRITE_OPEN") != "1":
+            raise DraftOpenInEditorError(
+                f"剪映正打开着草稿「{self.name}」。请先在剪映里关闭这个草稿回到首页 (或 Cmd+Q 退出剪映) 再重新生成，"
+                "否则剪映关闭时会用旧版覆盖新生成的草稿。"
+            )
 
     def _try_release_project_lock(self) -> bool:
         """

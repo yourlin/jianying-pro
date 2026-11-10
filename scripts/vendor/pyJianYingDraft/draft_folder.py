@@ -1,7 +1,9 @@
 """草稿文件夹管理器"""
 
+import json
 import os
 import shutil
+import uuid
 
 from typing import List
 
@@ -77,9 +79,13 @@ class DraftFolder:
             `FileExistsError`: 已存在与`draft_name`重名的草稿, 但不允许覆盖.
         """
         draft_path = os.path.join(self.folder_path, draft_name)
+        kept = None
         if os.path.exists(draft_path):
             if not allow_replace:
                 raise FileExistsError(f"草稿文件夹 {draft_name} 已存在且不允许覆盖")
+            # 覆盖重建时保留素材目录: 剪映按草稿路径记住素材库列表, 删掉旧素材文件后重新打开会提示「媒体丢失」。
+            # 其余文件 (含剪映 11 另存的 Timelines/<id>/ 时间线、加密的 draft_info.json) 全部清掉, 否则剪映仍显示旧版
+            kept = self._stash_media_dirs(draft_path)
             shutil.rmtree(draft_path)
 
         # 创建草稿文件夹
@@ -87,12 +93,43 @@ class DraftFolder:
         shutil.copy(assets.get_asset_path("DRAFT_META_TEMPLATE"), os.path.join(draft_path, "draft_meta_info.json"))
         shutil.copy(assets.get_asset_path("DRAFT_SETTINGS_TEMPLATE"), os.path.join(draft_path, "draft_settings"))
         shutil.copy(assets.get_asset_path("KEY_VALUE_TEMPLATE"), os.path.join(draft_path, "key_value.json"))
+        if kept:
+            self._restore_media_dirs(kept, draft_path)
+
+        # 模板里写死了草稿 ID 和时间线 ID: 所有草稿共用同一对 ID 时, 剪映按 ID 缓存的素材记录会串到别的草稿里
+        # (大量「媒体丢失」)。每个新草稿换一对随机 ID
+        draft_id = str(uuid.uuid4()).upper()
+        meta_path = os.path.join(draft_path, "draft_meta_info.json")
+        with open(meta_path, encoding="utf-8") as f:
+            meta = json.load(f)
+        meta["draft_id"] = draft_id
+        with open(meta_path, "w", encoding="utf-8") as f:
+            json.dump(meta, f, ensure_ascii=False)
 
         # 创建草稿文件
         script_file = ScriptFile(width, height, fps, maintrack_adsorb)
+        script_file.content["id"] = str(uuid.uuid4()).upper()
         script_file.save_path = os.path.join(draft_path, "draft_info.json")
 
         return script_file
+
+    KEEP_MEDIA_DIRS = ("materials", "temp_assets", "Resources")
+
+    def _stash_media_dirs(self, draft_path: str):
+        """把草稿里的素材目录挪到同级的临时目录, 返回临时目录 (没有素材目录时返回 None)"""
+        present = [d for d in self.KEEP_MEDIA_DIRS if os.path.isdir(os.path.join(draft_path, d))]
+        if not present:
+            return None
+        stash = os.path.join(self.folder_path, f".{os.path.basename(draft_path)}.media-keep-{uuid.uuid4().hex[:8]}")
+        os.makedirs(stash)
+        for d in present:
+            shutil.move(os.path.join(draft_path, d), os.path.join(stash, d))
+        return stash
+
+    def _restore_media_dirs(self, stash: str, draft_path: str) -> None:
+        for d in os.listdir(stash):
+            shutil.move(os.path.join(stash, d), os.path.join(draft_path, d))
+        shutil.rmtree(stash, ignore_errors=True)
 
     def inspect_material(self, draft_name: str) -> None:
         """输出指定名称草稿中的贴纸素材元数据

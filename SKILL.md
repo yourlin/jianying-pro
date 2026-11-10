@@ -30,7 +30,12 @@ For generic editing requests, always follow the "Quick Edit Runtime Template" an
     退出码 1 就改参数重新生成，不要直接交付。详见 [rules/review.md](rules/review.md)。
     **审片器通过不代表画面正确**：插卡页、结束卡、新字体 / 花字 / 蒙版的镜头，交付前必须在剪映里截图核对（重新生成前先关掉剪映编辑器，否则剪映关闭时会用旧版覆盖草稿）。版面规则见 `references/methodology/layout.md`。
     macOS 上还可以用 `python <SKILL_ROOT>/scripts/jy_preview.py "<草稿名>" --at <秒>`（或 `p.preview(at=[...])`）在剪映里打开草稿并截取播放器画面，查看剪映的实际渲染效果（剪映需停在首页；见 `rules/jianying-11.md` 第 9 节）。
-5.  **配乐选择**：
+5.  **重新生成草稿的规程**（2026-11-10 实战，详见 [rules/pitfalls.md](rules/pitfalls.md)）：
+    - 剪映**正打开着**草稿时不要重新生成：剪映关闭编辑器会用旧版覆盖新草稿（`JyProject` 检测到 `.locked` 会直接报错）。先请用户关闭草稿回到首页。
+    - 联网的步骤（TTS、云端音乐 / 音效）先做完再写草稿，避免中途失败留下「草稿已损坏」的半成品（配音已自动缓存）。
+    - 交付前确认：所有素材路径都在草稿目录内且存在；自己「打开 → 关闭 → 再打开」一次，素材库没有「媒体丢失」。
+    - 贴纸只用本机已下载的（`add_sticker` 会告警），文字背景 / 贴纸 / 特效必须在剪映里截图核对。
+6.  **配乐选择**：
     - **简单演示使用默认音乐**。实际项目，应优先检索并推荐 `data/cloud_music_library.csv` 中的相关曲目，或根据视频主题（如“科技”、“温暖”）进行关键词过滤。
     - 询问用户：“我发现了几首符合主题的云端音乐，要不要试试？（如：`Illuminate` - 科技感）”。
 
@@ -42,6 +47,8 @@ Read the individual rule files for specific tasks and constraints:
 - [rules/core.md](rules/core.md) - Core operations: Saving, Exporting, and Draft management.
 - [rules/cli.md](rules/cli.md) - CLI contracts and machine-readable output conventions.
 - [rules/review.md](rules/review.md) - **Mandatory**: 审片与版式自检 (安全区/字号/闪帧/声音冲突)。
+- [rules/pitfalls.md](rules/pitfalls.md) - **踩坑记录**: 媒体丢失、草稿已损坏、剪映显示旧版、贴纸不显示、高清录屏等的症状 → 根因 → 处理。出问题先查这里。
+- [rules/app-promo.md](rules/app-promo.md) - **App / 网页产品宣传片**: 真实录屏 + 中文解说 + 配乐卡点 + 广告式节奏的全流程 (定模式 → 卖点映射 → 分镜 → 录屏 → 装配 → 声音 → 审片)。
 - [rules/guided.md](rules/guided.md) - **引导模式**: 用选择题引导用户定场景、风格、平台、字幕、节奏和素材，再出分镜、装配、审片。
 - [rules/media.md](rules/media.md) - Importing assets & **AI Video Analysis Optimization (30m/360p)**.
 - [rules/text.md](rules/text.md) - Adding Subtitles, Text, and Captions.
@@ -56,6 +63,8 @@ Read the individual rule files for specific tasks and constraints:
 
 ## 🎯 Agent Quick Routing
 
+- **App / 网页产品宣传片、功能演示视频**（用户说「用网页版录屏做宣传片」「演示主要功能」「做个推广视频」）：读 `rules/app-promo.md` 并照做；录屏用 `scripts/web_recorder.py` 的 `record_web_hidpi()`
+- **「媒体丢失」「草稿已损坏」「剪映里还是旧版」「贴纸不显示」**：读 `rules/pitfalls.md`
 - **审片 / 版式自检（生成草稿后必做）**：`rules/review.md` -> `scripts/layout_preview.py --draft "<草稿名>" --auto`，然后 Read 对比图
 - **引导模式 / 导演流程**（用户说"引导模式""帮我规划怎么剪""不知道剪成什么样""这个剪辑有问题帮我重做""要有编排感""帮我导演"，或给了素材但没说清要什么时）：**读 `rules/guided.md` 并照做**。流程：`scripts/analyze_footage.py` 读素材 → AskUserQuestion 引导用户选场景（`references/scenes/`）、风格（`references/styles/`）、平台、字幕、节奏 → 出封面对比图让用户挑素材 → 按 `references/script_schema.md` 写剧本（只写内容），用 `scripts/script_compiler.py` 结合场景 / 风格 / 画幅规范（`references/scenes|styles|formats/*.json`）编译成分镜表并给用户确认 → 装配 → 审片 + 剪映截图给用户确认。通用剪辑方法论在 `references/methodology/`
 - 云端视频 + 云端音乐：`rules/media.md` + `rules/audio-voice.md` -> `examples/cloud_video_music_tts_demo.py`

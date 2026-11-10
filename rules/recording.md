@@ -39,3 +39,18 @@ python <SKILL_ROOT>/scripts/jy_wrapper.py apply-zoom --name "我的演示项目"
   - macOS: Homebrew 安装路径为 `/opt/homebrew/bin/ffmpeg`（`brew install ffmpeg`）。若脚本找不到 ffmpeg，需确保 `/opt/homebrew/bin` 在 PATH 中。
   - Windows: 需将 ffmpeg.exe 所在目录加入系统 PATH。
 - **坐标**: 录制器会自动处理不同分辨率下的坐标归一化，确保缩放位置精准。
+
+## 4. 网页 / App 网页版高清录屏（产品演示推荐）
+
+桌面录制器录的是整个屏幕；做产品演示时，更推荐用无头浏览器按脚本录真实页面，可重复、画面稳定：
+
+```python
+from web_recorder import record_web_hidpi, smooth_scroll
+r = record_web_hidpi(url, "clips/home.mp4", actions, viewport=(432, 768), dpr=2.5, storage_state="state.json")
+```
+
+- 用 DevTools 截屏流按**设备像素**采集（432×768 × 2.5 = 1080×1920 竖屏），按帧时间戳合成 30fps MP4。
+  不要用 Playwright 的 `record_video` 配 `deviceScaleFactor`：画面只占左上角，或放大后发糊。
+- `actions(page, ready)` 里在画面准备好时调用 `ready()`，返回值里的 `ready` 时刻用作剪辑的 `source_start`，跳过加载白屏。
+- 移动端模拟下 `mouse.wheel` 不滚动、鼠标拖动会选中文字：滚动用 `smooth_scroll()`；`TOUCH_JS`（自动注入）关闭文字选中并显示触控圆点。
+- 完整流程（每个功能一段、先登录存 `storage_state`、抽帧检查）见 `rules/app-promo.md` 第 4 节。

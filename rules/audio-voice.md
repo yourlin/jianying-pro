@@ -74,3 +74,11 @@ Better: duck the BGM under the voice with `project.auto_duck()` (`scripts/core/m
 ## 5) Fallback
 
 If cloud/local assets are unavailable, use royalty-free web audio, download to local file, then call `add_audio_safe(...)`.
+
+## 6) 配音缓存与文件名（2026-11-10）
+
+- `add_tts_intelligent` / `add_narrated_subtitles` 用的是**剪映自带的文本朗读引擎（SAMI）**，音色 ID 和剪映「文本朗读」一致；日志里的「VIP 音色」提示不影响合成。
+- 合成结果缓存在 `~/.cache/jianying-pro/tts/`（环境变量 `JY_TTS_CACHE` 可改），重跑不再联网；失败时整体重试 3 次。
+- 草稿里的配音文件名按 `(音色, 文本)` 固定（`tts_<hash>.ogg`）。剪映按草稿路径记住素材库，随机文件名会在重新生成后留下一串「媒体丢失」。
+- 联网的部分建议先做完再写草稿：先对所有台词调一次合成（预热缓存），合成失败就停下，不碰现有草稿。
+- 所有音频（包括 `~/cloud_cache` 里的云端配乐 / 音效）都会复制进草稿的 `materials/`，剪映沙盒才能读到。

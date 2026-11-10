@@ -126,8 +126,14 @@ class MediaOpsMixin:
             start_time = self.get_track_duration(track_name)
         self._ensure_track(draft.TrackType.audio, track_name)
 
+        # 和视频一样复制进草稿目录: 云端配乐 / 音效默认下载在 ~/cloud_cache, 剪映 (macOS 沙盒应用) 读不到
+        # 草稿目录以外的文件, 会提示「媒体丢失」
+        display = self._display_name(media_path) or (os.path.basename(media_path) if media_path else None)
+        if media_path and os.path.exists(media_path):
+            media_path = self._stage_local_asset(media_path)
+
         try:
-            mat = draft.AudioMaterial(media_path, self._display_name(media_path))
+            mat = draft.AudioMaterial(media_path, display)
             phys_duration = mat.duration
         except Exception:
             return None
@@ -139,6 +145,12 @@ class MediaOpsMixin:
             track_name, start_us, actual_duration
         )
 
+        # 很短的音频 (如单句配音) 对齐到整帧后, 截取终点会超出素材末尾不到 1 帧; 剪映接受这种误差,
+        # 底层库会直接报「截取的素材时间范围超出了素材时长」。不到 1 帧的超出视为取整误差, 把素材时长补齐
+        frame_us = int(round(1_000_000 / project_fps(self)))
+        need = max(actual_duration, src[0] + src[1])
+        if 0 < need - mat.duration <= frame_us:
+            mat.duration = need
         seg = draft.AudioSegment(
             mat, trange(start_us, actual_duration), source_timerange=trange(0, actual_duration),
             volume=float(kwargs.get("volume", 1.0)),

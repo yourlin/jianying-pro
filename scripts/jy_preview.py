@@ -119,7 +119,7 @@ end try''')
     return tuple(int(float(v)) for v in out.split(",")) if out else None
 
 
-def _first_title_box() -> Optional[Tuple[int, int, int, int]]:
+def _first_title_box(timeout: Optional[float] = 120) -> Optional[Tuple[int, int, int, int]]:
     """首页列表里第一个可见草稿标题的位置, 用作滚动的落点。"""
     out = _tell(f'''try
 set e to first static text of ({WIN}) whose name starts with "{TITLE_PREFIX}"

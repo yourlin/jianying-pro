@@ -544,6 +544,13 @@ def main():
     out_dir = args.out or os.path.join(tempfile.gettempdir(), "jy_layout_preview",
                                        os.path.basename(draft_dir))
     os.makedirs(out_dir, exist_ok=True)
+    # 清掉上一轮的帧图和对比图: 采样时刻每轮都不同, 旧帧留在目录里会和新结果混在一起, 误以为是当前版本的画面
+    for old in os.listdir(out_dir):
+        if (old.startswith("t") and old.endswith(".png")) or old == "sheet.jpg":
+            try:
+                os.remove(os.path.join(out_dir, old))
+            except OSError:
+                pass
 
     if not HAS_PIL and not args.report_only:
         print("⚠️ 未安装 Pillow，跳过画面伪渲染，只做时间线结构检查。")
